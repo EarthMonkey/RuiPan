@@ -11,7 +11,7 @@ define(['ui-router/angular-ui-router',
         'framework/topnav/topnavCtrl',
         'framework/topnav/navListService',
         'business/home/configures/homeRouterConfig',
-        'business/application/configures/appRouterConfig'
+        '../business/abroad/configures/abroadRouterConfig'
     ],
     function (router, topnavCtrl, navListService,
               homeRouterConfig, appRouterConfig) {

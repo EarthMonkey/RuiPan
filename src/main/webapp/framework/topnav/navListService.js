@@ -15,14 +15,47 @@ define(function () {
         this.navList = [
             {
                 // 首页
-                type: 'home',
                 text: '首页',
+                type: 'home',
                 state: 'home'
             },
             {
-                text: '应用',
-                type: 'application',
-                state: 'application'
+                text: '留学',
+                type: 'abroad',
+                state: 'abroad',
+                children: [
+                    {text: '美国'},
+                    {text: '英国'},
+                    {text: '澳洲'},
+                    {text: '新西兰'},
+                    {text: '加拿大'},
+                    {text: '一带一路国家'}
+                ]
+            },
+            {
+                text: "中外合作办学",
+                type: 'cooperation',
+                state: 'cooperation'
+            },
+            {
+                text: '考试培训',
+                type: 'training',
+                state: 'training'
+            },
+            {
+                text: '背景提升',
+                type: 'promotion',
+                state: 'promotion'
+            },
+            {
+                text: 'STEM云中心',
+                type: 'stem',
+                state: 'stem'
+            },
+            {
+                text: '关于我们',
+                type: 'about',
+                state: 'about'
             }
             // {
             //     type: 'parent',   // layout中菜单数据通过该值获取

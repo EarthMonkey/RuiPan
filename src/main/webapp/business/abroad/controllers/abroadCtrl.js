@@ -13,7 +13,7 @@ define([''], function () {
 
     ];
 
-    var homeModule = angular.module('application.config');
-    homeModule.controller('application.ctrl', appCtrl);
+    var homeModule = angular.module('abroad.config');
+    homeModule.controller('abroad.ctrl', appCtrl);
 
 });

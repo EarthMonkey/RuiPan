@@ -12,8 +12,16 @@
     </div>
     <div class="collapse navbar-collapse" uib-collapse="isNavCollapsed">
         <ul class="nav navbar-nav">
-            <li ng-repeat="na in navList">
-                <a ui-sref="{{na.state}}" ng-class="{active: isActived(na.state)}">{{na.text}}</a>
+            <li ng-repeat="na in navList track by $index" class="dropdown" ng-class="{open: isActived(na.state)}">
+
+                <a ui-sref="{{na.state}}" ng-class="{active: isActived(na.state)}"
+                   ng-focus="show[$index]=true" ng-blur="show[$index]=false">{{na.text}}</a>
+
+                <ul ng-if="na.type!='home'" ng-show="show[$index]" class="dropdown-menu">
+                    <li ng-repeat="child in na.children" class="dropdown">
+                        <a>{{child.text}}</a>
+                    </li>
+                </ul>
             </li>
         </ul>
     </div>
