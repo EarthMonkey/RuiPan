@@ -2,27 +2,34 @@
 
 <nav class="navbar navbar-default" role="navigation">
     <div class="navbar-header">
-        <button type="button" class="navbar-toggle" ng-click="isNavCollapsed = !isNavCollapsed">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-        </button>
-        <a class="navbar-brand" href="#">A menu</a>
+        <!--<button type="button" class="navbar-toggle" ng-click="isNavCollapsed = !isNavCollapsed">-->
+            <!--<span class="sr-only">Toggle navigation</span>-->
+            <!--<span class="icon-bar"></span>-->
+            <!--<span class="icon-bar"></span>-->
+            <!--<span class="icon-bar"></span>-->
+        <!--</button>-->
+        <img src="/theme/img/logo.svg" alt="瑞泮国际教育">
     </div>
-    <div class="collapse navbar-collapse" uib-collapse="isNavCollapsed">
+
+    <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-            <li ng-repeat="na in navList track by $index" class="dropdown" ng-class="{open: isActived(na.state)}">
+            <li ng-repeat="na in navList track by $index" class="dropdown">
 
                 <a ui-sref="{{na.state}}" ng-class="{active: isActived(na.state)}"
                    ng-focus="show[$index]=true" ng-blur="show[$index]=false">{{na.text}}</a>
 
-                <ul ng-if="na.type!='home'" ng-show="show[$index]" class="dropdown-menu">
+                <ul ng-if="na.children!=null" class="dropdown-menu">
                     <li ng-repeat="child in na.children" class="dropdown">
-                        <a>{{child.text}}</a>
+                        <a>
+                            <img ng-if="child.img" ng-src="{{'/theme/img/' + child.img}}" alt="留学">
+                            {{child.text}}
+                        </a>
                     </li>
                 </ul>
             </li>
         </ul>
     </div>
 </nav>
+
+<div class="top_bg"></div>
+

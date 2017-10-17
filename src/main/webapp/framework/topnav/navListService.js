@@ -14,70 +14,60 @@ define(function () {
     var service = function () {
         this.navList = [
             {
-                // 首页
                 text: '首页',
-                type: 'home',
                 state: 'home'
             },
             {
-                text: '留学',
-                type: 'abroad',
+                text: '留学服务',
                 state: 'abroad',
                 children: [
-                    {text: '美国'},
-                    {text: '英国'},
-                    {text: '澳洲'},
-                    {text: '新西兰'},
-                    {text: '加拿大'},
-                    {text: '一带一路国家'}
+                    {text: '美国留学', img: 'america.svg'},
+                    {text: '英国留学', img: 'british.svg'},
+                    {text: '澳洲留学', img: 'australia.svg'},
+                    {text: '加拿大留学', img: 'canada.svg'},
+                    {text: '其他国际留学', img: 'global.svg'}
                 ]
             },
             {
-                text: "中外合作办学",
-                type: 'cooperation',
-                state: 'cooperation'
+                text: '专业介绍',
+                state: 'introduction',
+                children: [
+                    {text: '商科专业'},
+                    {text: '工科专业'},
+                    {text: '理科专业'}
+                ]
             },
             {
-                text: '考试培训',
-                type: 'training',
-                state: 'training'
+                text: '院校排名',
+                state: 'rank',
+                children: [
+                    {text: '美国院校排名', img: 'america.svg'},
+                    {text: '英国院校排名', img: 'british.svg'},
+                    {text: '澳洲院校排名', img: 'australia.svg'},
+                    {text: '加拿大院校排名', img: 'canada.svg'},
+                    {text: '其他国际院校排名', img: 'global.svg'}
+                ]
+            },
+            {
+                text: '成功案例',
+                state: 'success'
             },
             {
                 text: '背景提升',
-                type: 'promotion',
                 state: 'promotion'
             },
             {
-                text: 'STEM云中心',
-                type: 'stem',
-                state: 'stem'
+                text: '语言培训',
+                state: 'language'
+            },
+            {
+                text: "合作办学",
+                state: 'cooperation'
             },
             {
                 text: '关于我们',
-                type: 'about',
                 state: 'about'
             }
-            // {
-            //     type: 'parent',   // layout中菜单数据通过该值获取
-            //     text: 'Layout示例', // menu中文本显示值
-            //     state: 'parent.children11', //该menu激活时，初始激活的路由状态
-            //     children: [ // menu子项配置
-            //         {
-            //             text: 'children1',
-            //             state: 'parent.children11',
-            //             children: [
-            //                 {
-            //                     text: 'children11',
-            //                     state: 'parent.children11'
-            //                 },
-            //                 {
-            //                     text: 'children12',
-            //                     state: 'parent.children12'
-            //                 }
-            //             ]
-            //         }
-            //     ]
-            // }
         ];
     };
 
