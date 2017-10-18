@@ -1,20 +1,14 @@
 <!-- Created by L.H.S on 2017/8/14. -->
 
+<!-- 顶部导航栏 -->
 <nav class="navbar navbar-default" role="navigation">
     <div class="navbar-header">
-        <!--<button type="button" class="navbar-toggle" ng-click="isNavCollapsed = !isNavCollapsed">-->
-            <!--<span class="sr-only">Toggle navigation</span>-->
-            <!--<span class="icon-bar"></span>-->
-            <!--<span class="icon-bar"></span>-->
-            <!--<span class="icon-bar"></span>-->
-        <!--</button>-->
         <img src="/theme/img/logo.svg" alt="瑞泮国际教育">
     </div>
 
     <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav">
-            <li ng-repeat="na in navList track by $index" class="dropdown">
-
+            <li ng-repeat="na in navList track by $index" class="dropdown hover_show">
                 <a ui-sref="{{na.state}}" ng-class="{active: isActived(na.state)}"
                    ng-focus="show[$index]=true" ng-blur="show[$index]=false">{{na.text}}</a>
 
@@ -31,5 +25,46 @@
     </div>
 </nav>
 
+<!-- 中间插图 -->
 <div class="top_bg"></div>
+
+<!-- 二级导航栏 -->
+<div class="menu_second">
+    <div class="nav_second">
+
+        <!-- 下拉筛选框 -->
+        <div class="nav_combox">
+            <img ng-src="{{'/theme/img/' + selectedComb.img}}" alt="留学">
+            <div uib-dropdown on-toggle="toggled(open)" id="simple-dropdown" uib-dropdown-toggle class="comb_val">
+                <span>
+                    {{selectedComb.text}} <i class="glyphicon glyphicon-menu-down"></i>
+                </span>
+
+                <ul class="dropdown-menu" uib-dropdown-menu aria-labelledby="simple-dropdown">
+                    <li ng-repeat="op in combox" class="dropdown">
+                        <a ng-click="combSelect(op)">
+                            <img ng-src="{{'/theme/img/' + op.img}}" alt="留学">
+                            {{op.text}}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 二级导航主体 -->
+        <ul class="nav navbar-nav">
+            <li ng-repeat="nc in navChild track by $index" class="dropdown hover_show">
+                <a>{{nc.text}}</a>
+
+                <ul ng-if="nc.children!=null" class="dropdown-menu">
+                    <li ng-repeat="child in nc.children" class="dropdown">
+                        <a>
+                            {{child.text}}
+                        </a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>
 

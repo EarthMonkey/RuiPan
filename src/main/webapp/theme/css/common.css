@@ -6,14 +6,21 @@ body, html {
     min-width: 1120px !important;
 }
 
+a {
+    cursor: pointer;
+}
+
 /* 导航栏 */
 .navbar-header img {
     width: 150px;
     height: 60px;
     margin-right: 50px;
+    position: relative;
+    left: 10px;
 }
 
-.dropdown:hover > .dropdown-menu {
+/* hover_show用来区分点击显示下拉框 */
+.dropdown.hover_show:hover > .dropdown-menu {
     display: block;
 }
 
@@ -23,10 +30,8 @@ body, html {
     box-shadow: none;
     -webkit-box-shadow: none;
     -moz-box-shadow: none;
-    width: 1100px;
+    width: 1010px;
     margin: 0 auto;
-    display: inline-block;
-    vertical-align: top;
 }
 
 .navbar-default .navbar-collapse {
@@ -54,6 +59,7 @@ body, html {
 
 .dropdown-menu {
     border: none;
+    min-width: 120px;
 }
 
 .dropdown-menu > li > a {
@@ -87,8 +93,75 @@ body, html {
     vertical-align: top;
 }
 
+/* 顶部插图 */
 .top_bg {
     width: 100%;
     height: 150px;
     background: url("../img/school-detail-bg.png");
+}
+
+/* 二级导航栏 */
+.menu_second {
+    width: 100%;
+    height: 70px;
+    background-color: #197bc0;
+}
+
+.nav_second {
+    width: 1010px;
+    margin: 0 auto;
+}
+
+.nav_second > ul > li {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 0;
+    margin: 0 0;
+}
+
+.nav_second > ul > li > a {
+    display: inline-block;
+    vertical-align: middle;
+    height: 70px;
+    line-height: 70px;
+    font-size: 20px;
+    color: #fff;
+    padding: 0 18px;
+}
+
+.nav_second > ul > li > a:hover,
+.nav_second > ul > li > a:focus {
+    background-color: #1591ee;
+}
+
+.nav_combox {
+    width: 256px;
+    height: 70px;
+    display: inline-block;
+    float: left;
+}
+
+.nav_combox > img {
+    width: 40px;
+    margin: 0 10px;
+}
+
+.comb_val {
+    width: 190px;
+    height: 70px;
+    line-height: 70px;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.comb_val span {
+    font-size: 26px;
+    color: #fff;
+    font-family: "Libian SC", "Kaiti SC", serif;
+}
+
+.comb_val span i {
+    font-size: 20px;
+    line-height: 70px;
 }

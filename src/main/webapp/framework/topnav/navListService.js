@@ -12,6 +12,8 @@ define(function () {
     'use strict';
 
     var service = function () {
+
+        /** 一级导航栏 */
         this.navList = [
             {
                 text: '首页',
@@ -32,9 +34,11 @@ define(function () {
                 text: '专业介绍',
                 state: 'introduction',
                 children: [
-                    {text: '商科专业'},
-                    {text: '工科专业'},
-                    {text: '理科专业'}
+                    {text: '商科'},
+                    {text: '理科'},
+                    {text: '工程'},
+                    {text: '文科'},
+                    {text: '艺术'}
                 ]
             },
             {
@@ -69,6 +73,46 @@ define(function () {
                 state: 'about'
             }
         ];
+
+        /** 二级导航栏 */
+        // 研究生、本科生、高中申请，专业介绍，院校排名，成功案例
+        this.navChild = [
+            {
+                text: '研究生申请'
+            }, {
+                text: '本科生申请'
+            }, {
+                text: '高中申请'
+            }, {
+                text: '专业介绍'
+            }, {
+                text: '院校排名'
+            }, {
+                text: '成功案例'
+            }
+
+        ];
+
+        // 商科，理科，工科，文科，艺术
+        this.navChild_sp = [
+            {
+                text: '商科',
+                children: [
+                    {text: '金融'},
+                    {text: '会计'},
+                    {text: '市场营销'}
+                ]
+            }, {
+                text: '理科'
+            }, {
+                text: '工科'
+            }, {
+                text: '文科'
+            }, {
+                text: '艺术'
+            }
+        ];
+
     };
 
     return service;
