@@ -11,7 +11,7 @@ define(['lazy-load/lazyLoad'],
             name: 'home',
             url: '/home',
             templateUrl: 'business/home/views/home.html',
-            controller: 'home.ctrl',
+            controller: 'homeCtrl',
             scripts: {
                 controllers: ['business/home/controllers/homeCtrl'],
                 services: ['business/home/services/homeService']

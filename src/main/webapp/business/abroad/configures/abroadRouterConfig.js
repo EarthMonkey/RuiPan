@@ -12,7 +12,7 @@ define(['lazy-load/lazyLoad'],
             name: 'abroad',
             url: '/abroad',
             templateUrl: 'business/abroad/views/abroad.html',
-            controller: 'abroad.ctrl',
+            controller: 'abroadCtrl',
             scripts: {
                 controllers: ['business/abroad/controllers/abroadCtrl']
             }

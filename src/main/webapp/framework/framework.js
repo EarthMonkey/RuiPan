@@ -11,10 +11,18 @@ define(['ui-router/angular-ui-router',
         'framework/topnav/topnavCtrl',
         'framework/topnav/navListService',
         'business/home/configures/homeRouterConfig',
-        '../business/abroad/configures/abroadRouterConfig'
+        'business/abroad/configures/abroadRouterConfig',
+        'business/introduction/configures/introRouterConfig',
+        'business/rank/configures/rankRouterConfig',
+        'business/success/configures/successRouterConfig',
+        'business/promotion/configures/promotionRouterConfig',
+        'business/language/configures/langRouterConfig',
+        'business/cooperation/configures/coopRouterConfig',
+        'business/about/configures/aboutRouterConfig',
     ],
     function (router, topnavCtrl, navListService,
-              homeRouterConfig, appRouterConfig) {
+              homeRouterConfig, appRouterConfig, introRouterConfig, rankRouterConfig, successRouterConfig,
+              promotionRouterConfig, langRouterConfig, coopRouterConfig, aboutRouterConfig) {
         'use strict';
 
         // 注入框架的配置文件（新增业务模块在此处添加注册）
@@ -24,7 +32,14 @@ define(['ui-router/angular-ui-router',
             'ui.bootstrap',
             'ui.router',
             homeRouterConfig.name,
-            appRouterConfig.name
+            appRouterConfig.name,
+            introRouterConfig.name,
+            rankRouterConfig.name,
+            successRouterConfig.name,
+            promotionRouterConfig.name,
+            langRouterConfig.name,
+            coopRouterConfig.name,
+            aboutRouterConfig.name
         ];
 
         var framework = angular.module('framework', dependency);

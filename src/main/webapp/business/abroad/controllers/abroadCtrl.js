@@ -5,15 +5,15 @@
 define([''], function () {
     'use strict';
 
-    var appCtrl = ['$scope', function ($scope) {
+    var abroadCtrl = ['$scope', function ($scope) {
 
-            $scope.test = "welcome to application page";
+            $scope.test = "留学服务";
 
         }
 
     ];
 
     var homeModule = angular.module('abroad.config');
-    homeModule.controller('abroad.ctrl', appCtrl);
+    homeModule.controller('abroadCtrl', abroadCtrl);
 
 });

@@ -15,6 +15,6 @@ define([''], function () {
     ];
 
     var homeModule = angular.module('home.config');
-    homeModule.controller('home.ctrl', homeCtrl);
+    homeModule.controller('homeCtrl', homeCtrl);
 
 });
