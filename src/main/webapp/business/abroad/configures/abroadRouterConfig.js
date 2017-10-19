@@ -10,7 +10,7 @@ define(['lazy-load/lazyLoad'],
 
         var configArr = [{
             name: 'abroad',
-            url: '/abroad',
+            url: '/abroad/:country',
             templateUrl: 'business/abroad/views/abroad.html',
             controller: 'abroadCtrl',
             scripts: {

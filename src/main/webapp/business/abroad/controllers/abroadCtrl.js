@@ -5,13 +5,12 @@
 define([''], function () {
     'use strict';
 
-    var abroadCtrl = ['$scope', function ($scope) {
+    var abroadCtrl = ['$scope', '$state', function ($scope, $state) {
 
-            $scope.test = "留学服务";
+        var country = $state.params.country;
+        $scope.test = "留学服务: " + country;
 
-        }
-
-    ];
+    }];
 
     var homeModule = angular.module('abroad.config');
     homeModule.controller('abroadCtrl', abroadCtrl);

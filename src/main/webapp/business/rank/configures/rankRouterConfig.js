@@ -10,7 +10,7 @@ define(['lazy-load/lazyLoad'],
 
         var configArr = [{
             name: 'rank',
-            url: '/rank',
+            url: '/rank/:country',
             templateUrl: 'business/rank/views/rank.html',
             controller: 'rankCtrl',
             scripts: {

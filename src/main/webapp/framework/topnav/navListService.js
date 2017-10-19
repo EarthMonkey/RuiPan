@@ -23,33 +23,33 @@ define(function () {
                 text: '留学服务',
                 state: 'abroad',
                 children: [
-                    {text: '美国留学', img: 'america.svg'},
-                    {text: '英国留学', img: 'british.svg'},
-                    {text: '澳洲留学', img: 'australia.svg'},
-                    {text: '加拿大留学', img: 'canada.svg'},
-                    {text: '其他国际留学', img: 'global.svg'}
+                    {text: '美国留学', country: 'america'},
+                    {text: '英国留学', country: 'british'},
+                    {text: '澳洲留学', country: 'australia'},
+                    {text: '加拿大留学', country: 'canada'},
+                    {text: '其他国际留学', country: 'global'}
                 ]
             },
             {
                 text: '专业介绍',
                 state: 'introduction',
                 children: [
-                    {text: '商科'},
-                    {text: '理科'},
-                    {text: '工程'},
-                    {text: '文科'},
-                    {text: '艺术'}
+                    {text: '美国专业', country: 'america'},
+                    {text: '英国专业', country: 'british'},
+                    {text: '澳洲专业', country: 'australia'},
+                    {text: '加拿大专业', country: 'canada'},
+                    {text: '其他国际专业', country: 'global'}
                 ]
             },
             {
                 text: '院校排名',
                 state: 'rank',
                 children: [
-                    {text: '美国院校排名', img: 'america.svg'},
-                    {text: '英国院校排名', img: 'british.svg'},
-                    {text: '澳洲院校排名', img: 'australia.svg'},
-                    {text: '加拿大院校排名', img: 'canada.svg'},
-                    {text: '其他国际院校排名', img: 'global.svg'}
+                    {text: '美国院校排名', country: 'america'},
+                    {text: '英国院校排名', country: 'british'},
+                    {text: '澳洲院校排名', country: 'australia'},
+                    {text: '加拿大院校排名', country: 'canada'},
+                    {text: '其他国际院校排名', country: 'global'}
                 ]
             },
             {
@@ -119,25 +119,25 @@ define(function () {
         // 下拉筛选框
         this.comboxAll = {
             abroad: [
-                {text: '美国留学', img: 'america.svg'},
-                {text: '英国留学', img: 'british.svg'},
-                {text: '澳洲留学', img: 'australia.svg'},
-                {text: '加拿大留学', img: 'canada.svg'},
-                {text: '其他国际留学', img: 'global.svg'}
+                {text: '美国留学', country: 'america'},
+                {text: '英国留学', country: 'british'},
+                {text: '澳洲留学', country: 'australia'},
+                {text: '加拿大留学', country: 'canada'},
+                {text: '其他国际留学', country: 'global'}
             ],
             introduction: [
-                {text: '美国专业', img: 'america.svg'},
-                {text: '英国专业', img: 'british.svg'},
-                {text: '澳洲专业', img: 'australia.svg'},
-                {text: '加拿大专业', img: 'canada.svg'},
-                {text: '其他国际专业', img: 'global.svg'}
+                {text: '美国专业', country: 'america'},
+                {text: '英国专业', country: 'british'},
+                {text: '澳洲专业', country: 'australia'},
+                {text: '加拿大专业', country: 'canada'},
+                {text: '其他国际专业', country: 'global'}
             ],
             rank: [
-                {text: '美国院校', img: 'america.svg'},
-                {text: '英国院校', img: 'british.svg'},
-                {text: '澳洲院校', img: 'australia.svg'},
-                {text: '加拿大院校', img: 'canada.svg'},
-                {text: '其他国际院校', img: 'global.svg'}
+                {text: '美国院校', country: 'america'},
+                {text: '英国院校', country: 'british'},
+                {text: '澳洲院校', country: 'australia'},
+                {text: '加拿大院校', country: 'canada'},
+                {text: '其他国际院校', country: 'global'}
             ]
         };
 
