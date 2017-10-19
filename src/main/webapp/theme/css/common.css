@@ -130,7 +130,8 @@ a {
 }
 
 .nav_second > ul > li > a:hover,
-.nav_second > ul > li > a:focus {
+.nav_second > ul > li > a:focus,
+.nav_second > ul > li > a.active {
     background-color: #1591ee;
 }
 

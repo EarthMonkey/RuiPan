@@ -84,11 +84,14 @@ define(function () {
             }, {
                 text: '高中申请'
             }, {
-                text: '专业介绍'
+                text: '专业介绍',
+                state: 'introduction'
             }, {
-                text: '院校排名'
+                text: '院校排名',
+                state: 'rank'
             }, {
-                text: '成功案例'
+                text: '成功案例',
+                state: 'success'
             }
 
         ];
@@ -112,6 +115,31 @@ define(function () {
                 text: '艺术'
             }
         ];
+
+        // 下拉筛选框
+        this.comboxAll = {
+            abroad: [
+                {text: '美国留学', img: 'america.svg'},
+                {text: '英国留学', img: 'british.svg'},
+                {text: '澳洲留学', img: 'australia.svg'},
+                {text: '加拿大留学', img: 'canada.svg'},
+                {text: '其他国际留学', img: 'global.svg'}
+            ],
+            introduction: [
+                {text: '美国专业', img: 'america.svg'},
+                {text: '英国专业', img: 'british.svg'},
+                {text: '澳洲专业', img: 'australia.svg'},
+                {text: '加拿大专业', img: 'canada.svg'},
+                {text: '其他国际专业', img: 'global.svg'}
+            ],
+            rank: [
+                {text: '美国院校', img: 'america.svg'},
+                {text: '英国院校', img: 'british.svg'},
+                {text: '澳洲院校', img: 'australia.svg'},
+                {text: '加拿大院校', img: 'canada.svg'},
+                {text: '其他国际院校', img: 'global.svg'}
+            ]
+        };
 
     };
 
