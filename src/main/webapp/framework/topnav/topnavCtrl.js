@@ -66,8 +66,8 @@ define([], function () {
         $scope.navChild = navListService.navChild;
 
         $scope.navChildLink = function (nc) {
-            if (nc.state) {
-                $scope.navListLink(nc); // 链接到第一层
+            if (nc.link) {
+                $scope.navListLink(nc.link); // 链接到第一层
             }
         };
 

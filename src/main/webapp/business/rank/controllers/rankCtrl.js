@@ -5,9 +5,10 @@
 define([''], function () {
     'use strict';
 
-    var rankCtrl = ['$scope', function ($scope) {
+    var rankCtrl = ['$scope', '$state', function ($scope, $state) {
 
-        $scope.test = "院校排名";
+        var country = $state.params.country;
+        $scope.test = "院校排名: " + country;
 
     }];
 

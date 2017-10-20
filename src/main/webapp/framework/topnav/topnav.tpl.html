@@ -33,7 +33,8 @@
 
         <!-- 下拉筛选框 -->
         <div class="nav_combox">
-            <img ng-show="combox.length>0" ng-src="{{'/theme/img/' + selectedComb.country + '.svg'}}" alt="留学">
+            <img ng-if="combox.length>0&&selectedComb.country"
+                 ng-src="{{'/theme/img/' + selectedComb.country + '.svg'}}" alt="留学">
             <img ng-show="combox.length==0" src="/theme/img/alt-img.svg" alt="瑞泮国际"
                  style="width: 100%; height: 70px;">
 
@@ -45,7 +46,7 @@
                 <ul class="dropdown-menu" uib-dropdown-menu aria-labelledby="simple-dropdown">
                     <li ng-repeat="op in combox" class="dropdown">
                         <a ng-click="combSelect(op)">
-                            <img ng-src="{{'/theme/img/' + op.country + '.svg'}}" alt="留学">
+                            <img ng-if="op.country" ng-src="{{'/theme/img/' + op.country + '.svg'}}" alt="留学">
                             {{op.text}}
                         </a>
                     </li>

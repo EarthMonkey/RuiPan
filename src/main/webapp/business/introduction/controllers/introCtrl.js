@@ -5,9 +5,10 @@
 define([''], function () {
     'use strict';
 
-    var introCtrl = ['$scope', function ($scope) {
+    var introCtrl = ['$scope', '$state', function ($scope, $state) {
 
-        $scope.test = "专业介绍";
+        var country = $state.params.country;
+        $scope.test = "专业介绍: " + country;
 
     }];
 

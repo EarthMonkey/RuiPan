@@ -74,7 +74,9 @@ define(function () {
             }
         ];
 
-        /** 二级导航栏 */
+        /** 二级导航栏
+         * @param link: 链到第一层
+         * */
         // 研究生、本科生、高中申请，专业介绍，院校排名，成功案例
         this.navChild = [
             {
@@ -85,13 +87,39 @@ define(function () {
                 text: '高中申请'
             }, {
                 text: '专业介绍',
-                state: 'introduction'
+                state: 'introduction',
+                link: {
+                    text: '专业介绍',
+                    state: 'introduction',
+                    children: [
+                        {text: '美国专业', country: 'america'},
+                        {text: '英国专业', country: 'british'},
+                        {text: '澳洲专业', country: 'australia'},
+                        {text: '加拿大专业', country: 'canada'},
+                        {text: '其他国际专业', country: 'global'}
+                    ]
+                }
             }, {
                 text: '院校排名',
-                state: 'rank'
+                state: 'rank',
+                link: {
+                    text: '院校排名',
+                    state: 'rank',
+                    children: [
+                        {text: '美国院校排名', country: 'america'},
+                        {text: '英国院校排名', country: 'british'},
+                        {text: '澳洲院校排名', country: 'australia'},
+                        {text: '加拿大院校排名', country: 'canada'},
+                        {text: '其他国际院校排名', country: 'global'}
+                    ]
+                }
             }, {
                 text: '成功案例',
-                state: 'success'
+                state: 'success',
+                link: {
+                    text: '成功案例',
+                    state: 'success'
+                }
             }
 
         ];
