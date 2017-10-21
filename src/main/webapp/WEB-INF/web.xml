@@ -19,7 +19,7 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
-        <url-pattern>/*</url-pattern>
+        <url-pattern>/</url-pattern>
     </servlet-mapping>
 
     <!-- 加载log4j的配置文件log4j.properties -->
@@ -44,6 +44,11 @@
         <param-name>RuiPan</param-name>
         <param-value>scheduleProject</param-value>
     </context-param>
+
+    <!-- session失效时长 -->
+    <session-config>
+        <session-timeout>30</session-timeout>
+    </session-config>
 
     <filter>
         <filter-name>encodingFilter</filter-name>

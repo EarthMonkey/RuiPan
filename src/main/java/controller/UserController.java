@@ -28,6 +28,8 @@ public class UserController {
 
         UserVO user=userService.login(username,password, GetClientMessageUtils.getIpAddr(request));
         if(user.getLoginMessage().equalsIgnoreCase("success")) {
+            request.getSession(false).invalidate();
+            request.getSession(true);
             request.getSession().setAttribute("User", user);
         }
         return user.getLoginMessage();
@@ -36,6 +38,7 @@ public class UserController {
     @RequestMapping(value = "/logout")
     public String logout(HttpServletRequest request) {
         request.getSession().removeAttribute("User");
+        request.getSession(false).invalidate();
         return "login";
     }
 
