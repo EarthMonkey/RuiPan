@@ -1,3 +1,95 @@
 <!-- Created by L.H.S on 2017/10/18. -->
 
-{{test}}
+<!-- 硬性条件 -->
+<div class="board">
+    <!-- title -->
+    <div class="board_title">
+        <img class="list_icon" src="/theme/img/abroad-icon-1.svg" alt="要求">
+        <span class="title_text">
+            硬性条件要求
+        </span>
+        <hr>
+    </div>
+
+    <!-- body -->
+    <div class="border_body">
+
+        <div class="condition_block" ng-repeat="con in condition">
+            <div class="condition_title">
+                {{con.title}} 申请标准
+            </div>
+
+            <div ng-repeat="sct in scoreType track by $index" class="score_condition">
+                <label>{{sct}}成绩要求：</label>
+                <span>{{con.score[$index]}}+</span>
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+<!-- 申请方案 -->
+<div class="board">
+    <!-- title -->
+    <div class="board_title orange">
+        <img class="list_icon" src="/theme/img/abroad-icon-2.svg" alt="方案">
+        <span class="title_text">
+            {{stType}}申请方案
+        </span>
+        <hr>
+    </div>
+
+    <!-- body -->
+    <div class="border_body">
+
+    </div>
+</div>
+
+<!-- 申请要素 -->
+<div class="board">
+    <!-- title -->
+    <div class="board_title pink">
+        <img class="list_icon" src="/theme/img/abroad-icon-3.svg" alt="要素">
+        <span class="title_text">
+            {{stType}}申请要素
+        </span>
+        <hr>
+    </div>
+
+    <!-- body -->
+    <div class="border_body factor_body">
+        <div class="factor_tab_container">
+            <div class="factor_tab" ng-repeat="tab in factorTab track by $index"
+                 ng-class="{no_border: $index==3, active: tab.show}" ng-click="changeTab(tab)">
+                {{tab.title}}
+            </div>
+        </div>
+
+        <!-- 申请基本条件要求 -->
+        <div ng-show="factorTab[0].show" class="tab_body">
+            <div ng-repeat="bc in baseCondition">
+                <label>{{bc.label}}：</label>
+                <span>{{bc.span}}</span>
+            </div>
+        </div>
+
+        <!-- 申请材料 -->
+        <div ng-show="factorTab[1].show" class="tab_body">
+            申请材料
+        </div>
+
+        <!-- 选校因素 -->
+        <div ng-show="factorTab[2].show" class="tab_body">
+            选校因素
+        </div>
+
+        <!-- 所需费用 -->
+        <div ng-show="factorTab[3].show" class="tab_body">
+            所需费用
+        </div>
+
+        <!-- 评估按钮 -->
+        <button>评估我的条件</button>
+    </div>
+</div>

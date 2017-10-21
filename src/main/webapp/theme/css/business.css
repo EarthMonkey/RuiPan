@@ -1,0 +1,183 @@
+/** 所有页面的css样式 **/
+
+/* abroad */
+.board {
+    width: 100%;
+    margin-bottom: 50px;
+}
+
+.board_title {
+    width: 100%;
+    height: 50px;
+    font-size: 26px;
+    color: #197bc0;
+}
+
+.list_icon {
+    height: 100%;
+    margin-right: 20px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.title_text {
+    display: inline-block;
+    vertical-align: middle;
+    width: 200px;
+    height: 50px;
+    line-height: 50px;
+}
+
+.board_title hr {
+    width: 800px;
+    border: 4px solid #197bc0;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.board_title.orange {
+    color: #e37375;
+}
+
+.board_title.orange hr {
+    border: 4px solid #e37375;
+}
+
+.board_title.pink {
+    color: #c01e5c;
+}
+
+.board_title.pink hr {
+    border: 4px solid #c01e5c;
+}
+
+.border_body {
+    width: 100%;
+    margin-top: 20px;
+
+}
+
+.condition_block {
+    width: 280px;
+    height: 300px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 40px;
+}
+
+.condition_title {
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    font-size: 20px;
+    color: #fff;
+    background-color: #197bc0;
+    -webkit-border-radius: 8px 8px 0 0;
+    -moz-border-radius: 8px 8px 0 0;
+    border-radius: 8px 8px 0 0;
+    margin-bottom: 15px;
+}
+
+.score_condition {
+    height: 50px;
+    line-height: 50px;
+    padding-left: 20px;
+    margin: 0 0;
+}
+
+.score_condition label {
+    width: 160px;
+    font-weight: normal;
+    font-size: 18px;
+}
+
+.score_condition span {
+    font-size: 24px;
+    color: #1591ee;
+}
+
+.factor_body {
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    padding-bottom: 5px;
+    position: relative;
+}
+
+.factor_tab_container {
+    width: 100%;
+    height: 40px;
+    background-color: #c01e5c;
+    color: #fff;
+    font-size: 16px;
+    line-height: 40px;
+    text-align: center;
+    -webkit-border-radius: 8px 8px 0 0;
+    -moz-border-radius: 8px 8px 0 0;
+    border-radius: 8px 8px 0 0;
+    overflow: hidden;
+}
+
+.factor_tab {
+    width: 25%;
+    height: 40px;
+    margin: 0 0;
+    border-right: 1px solid #ccd1d9;
+    display: inline-block;
+    vertical-align: top;
+    cursor: pointer;
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
+}
+
+.factor_tab.active,
+.factor_tab:hover {
+    color: #424a54;
+    background-color: #fff;
+}
+
+.no_border {
+    border: none;
+}
+
+.tab_body {
+    width: 1000px;
+    margin: 30px auto;
+    line-height: 25px;
+}
+
+.tab_body label {
+    font-weight: bold;
+}
+
+.tab_body span {
+    color: #999;
+}
+
+.factor_body button {
+    background-color: #c01e5c;
+    color: #fff;
+    position: absolute;
+    right: 5px;
+    bottom: 15px;
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
+}
+
+.factor_body button:hover {
+    background-color: #E44D87;
+}

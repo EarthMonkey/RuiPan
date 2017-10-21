@@ -77,7 +77,7 @@ define(function () {
         /** 二级导航栏
          * @param link: 链到第一层
          * */
-        // 研究生、本科生、高中申请，专业介绍，院校排名，成功案例
+        // 研究生、本科生、高中生申请，专业介绍，院校排名，成功案例
         this.navChild = [
             {
                 text: '研究生申请',
@@ -88,7 +88,7 @@ define(function () {
                 assist: 'undergraduate',
                 link: this.navList[1]
             }, {
-                text: '高中申请',
+                text: '高中生申请',
                 assist: 'high-school',
                 link: this.navList[1]
             }, {
