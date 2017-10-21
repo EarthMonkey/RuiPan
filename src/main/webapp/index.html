@@ -22,13 +22,13 @@
 </nav>
 
 <!--中间内容区-->
-<div id="content">
+<div id="content" class="main_body">
     <div ui-view></div>
 </div>
 
 <!--页脚区-->
-<footer>
-    <div id="footer"></div>
+<footer ng-controller="footerCtrl">
+    <div id="footer" ng-include="footer.url"></div>
 </footer>
 
 

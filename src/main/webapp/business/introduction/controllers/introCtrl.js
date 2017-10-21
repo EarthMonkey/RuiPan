@@ -8,7 +8,8 @@ define([''], function () {
     var introCtrl = ['$scope', '$state', function ($scope, $state) {
 
         var country = $state.params.country;
-        $scope.test = "专业介绍: " + country;
+        var type = $state.params.type;
+        $scope.test = "专业介绍: " + country + " - " + type;
 
     }];
 

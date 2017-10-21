@@ -8,7 +8,8 @@ define([''], function () {
     var abroadCtrl = ['$scope', '$state', function ($scope, $state) {
 
         var country = $state.params.country;
-        $scope.test = "留学服务: " + country;
+        var type = $state.params.type;
+        $scope.test = "留学服务: " + country + " - " + type;
 
     }];
 

@@ -33,11 +33,14 @@
 
         <!-- 下拉筛选框 -->
         <div class="nav_combox">
+            <!-- 国家下拉框 -->
             <img ng-if="combox.length>0&&selectedComb.country"
                  ng-src="{{'/theme/img/' + selectedComb.country + '.svg'}}" alt="留学">
+            <!-- 无下拉框，显示logo图标 -->
             <img ng-show="combox.length==0" src="/theme/img/alt-img.svg" alt="瑞泮国际"
                  style="width: 100%; height: 70px;">
 
+            <!-- 下拉框 -->
             <div uib-dropdown on-toggle="toggled(open)" id="simple-dropdown" uib-dropdown-toggle class="comb_val">
                 <span ng-show="combox.length>0">
                     {{selectedComb.text}} <i class="glyphicon glyphicon-menu-down"></i>
@@ -57,11 +60,12 @@
         <!-- 二级导航主体 -->
         <ul class="nav navbar-nav">
             <li ng-repeat="nc in navChild track by $index" class="dropdown hover_show">
-                <a ng-class="{active: nc.state===currentState}" ng-click="navChildLink(nc)">{{nc.text}}</a>
+                <a ng-class="{active: nc.state===currentState || (nc.assist.split('\.')[0]===currentAssist.split('\.')[0]&&nc.assist!=null)}"
+                   ng-click="navChildLink(nc)">{{nc.text}}</a>
 
                 <ul ng-if="nc.children!=null" class="dropdown-menu">
                     <li ng-repeat="child in nc.children" class="dropdown">
-                        <a>
+                        <a ng-click="navChildLink(child)">
                             {{child.text}}
                         </a>
                     </li>

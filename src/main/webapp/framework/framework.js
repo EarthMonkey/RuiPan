@@ -10,6 +10,7 @@
 define(['ui-router/angular-ui-router',
         'framework/topnav/topnavCtrl',
         'framework/topnav/navListService',
+        'framework/footer/footerCtrl',
         'business/home/configures/homeRouterConfig',
         'business/abroad/configures/abroadRouterConfig',
         'business/introduction/configures/introRouterConfig',
@@ -20,7 +21,7 @@ define(['ui-router/angular-ui-router',
         'business/cooperation/configures/coopRouterConfig',
         'business/about/configures/aboutRouterConfig',
     ],
-    function (router, topnavCtrl, navListService,
+    function (router, topnavCtrl, navListService, footerCtrl,
               homeRouterConfig, appRouterConfig, introRouterConfig, rankRouterConfig, successRouterConfig,
               promotionRouterConfig, langRouterConfig, coopRouterConfig, aboutRouterConfig) {
         'use strict';
@@ -46,6 +47,8 @@ define(['ui-router/angular-ui-router',
 
         framework.controller('topnavCtrl', topnavCtrl); // 顶部菜单控制器
         framework.service('navListService', navListService); // 菜单列表数据服务
+
+        framework.controller('footerCtrl', footerCtrl); // 底部footer控制器
 
         // 初始跳转至首页模块
         framework.config(['$urlRouterProvider', function ($urlRouterProvider) {

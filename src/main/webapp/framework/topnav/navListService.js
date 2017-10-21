@@ -80,46 +80,30 @@ define(function () {
         // 研究生、本科生、高中申请，专业介绍，院校排名，成功案例
         this.navChild = [
             {
-                text: '研究生申请'
+                text: '研究生申请',
+                assist: 'postgraduate',
+                link: this.navList[1]
             }, {
-                text: '本科生申请'
+                text: '本科生申请',
+                assist: 'undergraduate',
+                link: this.navList[1]
             }, {
-                text: '高中申请'
+                text: '高中申请',
+                assist: 'high-school',
+                link: this.navList[1]
             }, {
                 text: '专业介绍',
                 state: 'introduction',
-                link: {
-                    text: '专业介绍',
-                    state: 'introduction',
-                    children: [
-                        {text: '美国专业', country: 'america'},
-                        {text: '英国专业', country: 'british'},
-                        {text: '澳洲专业', country: 'australia'},
-                        {text: '加拿大专业', country: 'canada'},
-                        {text: '其他国际专业', country: 'global'}
-                    ]
-                }
+                assist: 'business.finance',
+                link: this.navList[2]
             }, {
                 text: '院校排名',
                 state: 'rank',
-                link: {
-                    text: '院校排名',
-                    state: 'rank',
-                    children: [
-                        {text: '美国院校排名', country: 'america'},
-                        {text: '英国院校排名', country: 'british'},
-                        {text: '澳洲院校排名', country: 'australia'},
-                        {text: '加拿大院校排名', country: 'canada'},
-                        {text: '其他国际院校排名', country: 'global'}
-                    ]
-                }
+                link: this.navList[3]
             }, {
                 text: '成功案例',
                 state: 'success',
-                link: {
-                    text: '成功案例',
-                    state: 'success'
-                }
+                link: this.navList[4]
             }
 
         ];
@@ -129,43 +113,53 @@ define(function () {
             {
                 text: '商科',
                 children: [
-                    {text: '金融'},
-                    {text: '会计'},
-                    {text: '市场营销'}
-                ]
+                    {text: '金融', assist: 'business.finance', link: this.navList[2]},
+                    {text: '会计', assist: 'business.account', link: this.navList[2]},
+                    {text: '市场营销', assist: 'business.market', link: this.navList[2]}
+                ],
+                assist: 'business.finance',
+                link: this.navList[2]
             }, {
-                text: '理科'
+                text: '理科',
+                assist: 'science',
+                link: this.navList[2]
             }, {
-                text: '工科'
+                text: '工科',
+                assist: 'engineer',
+                link: this.navList[2]
             }, {
-                text: '文科'
+                text: '文科',
+                assist: 'liberal',
+                link: this.navList[2]
             }, {
-                text: '艺术'
+                text: '艺术',
+                assist: 'art',
+                link: this.navList[2]
             }
         ];
 
         // 下拉筛选框
         this.comboxAll = {
             abroad: [
-                {text: '美国留学', country: 'america'},
-                {text: '英国留学', country: 'british'},
-                {text: '澳洲留学', country: 'australia'},
-                {text: '加拿大留学', country: 'canada'},
-                {text: '其他国际留学', country: 'global'}
+                {text: '美国留学', country: 'america', index: 0},
+                {text: '英国留学', country: 'british', index: 1},
+                {text: '澳洲留学', country: 'australia', index: 2},
+                {text: '加拿大留学', country: 'canada', index: 3},
+                {text: '其他国际留学', country: 'global', index: 4}
             ],
             introduction: [
-                {text: '美国专业', country: 'america'},
-                {text: '英国专业', country: 'british'},
-                {text: '澳洲专业', country: 'australia'},
-                {text: '加拿大专业', country: 'canada'},
-                {text: '其他国际专业', country: 'global'}
+                {text: '美国专业', country: 'america', index: 0},
+                {text: '英国专业', country: 'british', index: 1},
+                {text: '澳洲专业', country: 'australia', index: 2},
+                {text: '加拿大专业', country: 'canada', index: 3},
+                {text: '其他国际专业', country: 'global', index: 4}
             ],
             rank: [
-                {text: '美国院校', country: 'america'},
-                {text: '英国院校', country: 'british'},
-                {text: '澳洲院校', country: 'australia'},
-                {text: '加拿大院校', country: 'canada'},
-                {text: '其他国际院校', country: 'global'}
+                {text: '美国院校', country: 'america', index: 0},
+                {text: '英国院校', country: 'british', index: 1},
+                {text: '澳洲院校', country: 'australia', index: 2},
+                {text: '加拿大院校', country: 'canada', index: 3},
+                {text: '其他国际院校', country: 'global', index: 4}
             ]
         };
 

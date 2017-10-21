@@ -6,7 +6,7 @@ define([], function () {
 
     'use strict';
 
-    var topnavCtrl = ['$scope', 'navListService', '$state', function ($scope, navListService, $state, $timeout) {
+    var topnavCtrl = ['$scope', 'navListService', '$state', function ($scope, navListService, $state) {
 
         $scope.menus = {
             url: 'framework/topnav/topnav.tpl.html'
@@ -25,8 +25,21 @@ define([], function () {
             var tempBox = navListService.comboxAll[newValue];  // 留学服务下拉框
             $scope.combox = tempBox != null ? tempBox : [];
 
+            var curCountry = $scope.currState.params.country;
+            var assist = $state.params.type;
+
+            // 更新assist
+            if ($scope.currentState == 'abroad' || $scope.currentState == 'introduction') {
+                assist = assist == null ? $scope.navChild[0].assist : assist;
+            }
+            $scope.currentAssist = assist;
+
+            // 更新navChild
+            if ($scope.currentState == 'introduction') {
+                $scope.navChild = navListService.navChild_sp;
+            }
+
             if ($scope.selectedComb == null) {
-                var curCountry = $scope.currState.params.country;
                 if (curCountry) {
                     for (var i = 0; i < $scope.combox.length; i++) {
                         if ($scope.combox[i].country == curCountry) {
@@ -38,6 +51,7 @@ define([], function () {
                     $scope.selectedComb = $scope.combox[0];
                 }
             }
+
         });
 
         $scope.navListLink = function (nav, country, index) {
@@ -49,16 +63,27 @@ define([], function () {
                 $scope.navChild = navListService.navChild;
             }
 
+            // 直接点击顶部导航栏，清除副导航栏选中状态
+            if (country == null) {
+                if (nav.state === 'abroad' || nav.state === 'introduction') {
+                    $scope.currentAssist = $scope.navChild[0].assist;
+                } else {
+                    $scope.currentAssist = null;
+                }
+            }
+
             if (nav.children) {
                 country = country == null ? nav.children[0].country : country;
-                $state.go(nav.state, {country: country});
+                $state.go(nav.state, {country: country, type: $scope.currentAssist});
 
                 var tempBox = navListService.comboxAll[nav.state];  // 留学服务下拉框
                 $scope.combox = tempBox != null ? tempBox : [];
 
+                index = index == null ? 0 : index;
                 $scope.selectedComb = $scope.combox[index]; // 更新下拉框
             } else {
                 $state.go(nav.state);
+                $scope.selectedComb = '';
             }
         };
 
@@ -66,7 +91,12 @@ define([], function () {
         $scope.navChild = navListService.navChild;
 
         $scope.navChildLink = function (nc) {
-            if (nc.link) {
+            $scope.currentAssist = nc.assist;
+            if ($scope.selectedComb) {
+                $scope.navListLink(nc.link, $scope.selectedComb.country, $scope.selectedComb.index);
+            } else if (nc.assist) {
+                $scope.navListLink(nc.link, 'america', 0);
+            } else {
                 $scope.navListLink(nc.link); // 链接到第一层
             }
         };
@@ -84,6 +114,7 @@ define([], function () {
         // 选择下拉框
         $scope.combSelect = function (op) {
             $scope.selectedComb = op;
+            $state.go($scope.currentState, {country: op.country, type: $scope.currentAssist});
         };
 
     }];
