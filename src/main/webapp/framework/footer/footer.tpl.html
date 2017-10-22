@@ -3,6 +3,19 @@
 <div class="footer_bar">
     <div class="main_body">
 
+        <div class="footer_block">
+            <img src="/theme/img/logo.svg" alt="瑞泮国际教育">
+        </div>
+
+        <div class="footer_block" ng-repeat="fn in footerNav">
+            <div class="footer_title">
+                <a ng-click="navLink(fn.state, {text: fn.children[0].text, country: 'america'}, 'postgraduate')">{{fn.text}}</a>
+            </div>
+
+            <div ng-repeat="fc in fn.children">
+                <a ng-click="navLink(fn.state, fc, fc.assist)">{{fc.text}}</a>
+            </div>
+        </div>
 
         <div class="copyright">Copyright © 2017</div>
     </div>

@@ -15,8 +15,17 @@ define([''], function () {
             undergraduate: '本科生',
             'high-school': '高中生'
         };
-
         $scope.stType = typeMap[type];
+
+        var countryMap = {
+            america: '美',
+            british: '英',
+            australia: '澳',
+            canada: '加拿大',
+            global: '学'
+        };
+        $scope.couType = countryMap[country];
+
 
         $scope.condition = [
             {title: 'Top10', score: ['3.0', '95', '320', '700']},
@@ -38,7 +47,7 @@ define([''], function () {
             tab.show = true;
             LAST_TAB.show = false;
             LAST_TAB = tab;
-        }
+        };
 
         $scope.baseCondition = [{
             label: "学术背景",

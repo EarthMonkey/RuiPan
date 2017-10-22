@@ -51,6 +51,14 @@
     border: 4px solid #c01e5c;
 }
 
+.board_title.yellow {
+    color: #ffc001;
+}
+
+.board_title.blue {
+    color: #1591ee;
+}
+
 .border_body {
     width: 100%;
     margin-top: 20px;

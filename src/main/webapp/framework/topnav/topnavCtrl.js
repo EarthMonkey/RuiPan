@@ -6,7 +6,7 @@ define([], function () {
 
     'use strict';
 
-    var topnavCtrl = ['$scope', 'navListService', '$state', function ($scope, navListService, $state) {
+    var topnavCtrl = ['$scope', 'navListService', '$state', '$rootScope', function ($scope, navListService, $state, $rootScope) {
 
         $scope.menus = {
             url: 'framework/topnav/topnav.tpl.html'
@@ -116,6 +116,10 @@ define([], function () {
             $scope.selectedComb = op;
             $state.go($scope.currentState, {country: op.country, type: $scope.currentAssist});
         };
+
+        $rootScope.refreshComb = function (op) {
+            $scope.selectedComb = op;
+        }
 
     }];
 

@@ -182,15 +182,41 @@ a {
 .footer_bar {
     width: 100%;
     min-width: 1210px !important;
-    height: 40px;
     background-color: #197bc0;
     margin-top: 80px;
+    padding: 1px 20px;
+}
+
+.footer_block {
+    width: 25%;
+    display: inline-block;
+    vertical-align: top;
+    margin-right: -5px;
+    padding: 1px 0;
+    font-size: 14px;
+    line-height: 25px;
+    color: #aab2bd;
+}
+
+.footer_block a {
+    color: #aab2bd;
+}
+
+.footer_title {
+    color: #e6e9ed;
+    margin-bottom: 10px;
+}
+
+.footer_title a {
+    color: #e6e9ed;
 }
 
 .copyright {
     color: #aab2bd;
     width: 1100px;
     text-align: center;
+    position: relative;
+    bottom: -10px;
 }
 
 /* 其他全局覆盖样式 */
