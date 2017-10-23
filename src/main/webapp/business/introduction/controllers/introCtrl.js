@@ -11,6 +11,13 @@ define([''], function () {
         var type = $state.params.type;
         $scope.test = "专业介绍: " + country + " - " + type;
 
+        $scope.condition = [
+            {label: 'GPA', score: 3.5},
+            {label: 'GRE', score: "325 + 3.5"},
+            {label: 'TOFEL', score: 105}
+        ];
+
+
     }];
 
     var homeModule = angular.module('intro.config');

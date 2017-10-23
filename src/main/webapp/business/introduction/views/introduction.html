@@ -1,3 +1,191 @@
 <!-- Created by L.H.S on 2017/10/18. -->
 
-{{test}}
+<!-- 左边主题 -->
+<div class="left_part">
+
+    <!-- 详情介绍 -->
+    <div class="board" id="detail">
+        <!-- title -->
+        <div class="board_title">
+            <span class="title_text">
+            专业详情介绍
+            </span>
+            <hr>
+        </div>
+
+        <div class="border_body">
+            <p>金融工程是用数学和工程学的方法来建立金融模型（如描述股价运动的随机微分方程），并进而计算金融收益与风险的一门学科。在现代金融实践中有重要的作用。
+                在投资银行、对冲基金等公司中往往有专门研究和使用金融工程计算和管控风险的定量分析师。</p>
+            <p>学习和研究的内容主要包括证券衍生物定价，风险分析，金融模型，金融信息分析，和一些高级的金融理论。</p>
+        </div>
+
+        <div class="border_body">
+            <div class="more_btn">
+                <a class="blue">
+                    了解更多<i class="glyphicon glyphicon-menu-right"></i>
+                </a>
+            </div>
+            <br style="clear: both;">
+        </div>
+    </div>
+
+    <!-- 课程设置 -->
+    <div class="board" id="course">
+        <!-- title -->
+        <div class="board_title">
+            <span class="title_text">
+            专业课程设置
+            </span>
+            <hr>
+        </div>
+
+        <div class="border_body">
+            <p>国内研究生课程设置一般是必修课程+选修课程，美国学校研究生课程设置除此方式之外还有必修课程+分支（方向）课程+选修课程的方式</p>
+
+            <!-- 伪表格 -->
+            <div class="border_body card">
+                <div class="card_th">
+                    <div class="card_td width_30">专业方向</div>
+                    <div class="card_td width_70">相关课程</div>
+                </div>
+                <div class="card_tb">
+                    <div class="card_td width_30">专业方向</div>
+                    <div class="card_td width_70">相关课程</div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="border_body">
+            <div class="more_btn">
+                <a class="blue">
+                    了解更多<i class="glyphicon glyphicon-menu-right"></i>
+                </a>
+            </div>
+            <br style="clear: both;">
+        </div>
+    </div>
+
+    <!-- 就业前景 -->
+    <div class="board" id="prospect">
+        <!-- title -->
+        <div class="board_title">
+            <span class="title_text">
+            就业前景
+            </span>
+            <hr>
+        </div>
+
+        <div class="border_body">
+
+        </div>
+
+    </div>
+
+    <!-- 申请条件 -->
+    <div class="board" id="condition">
+        <!-- title -->
+        <div class="board_title">
+            <span class="title_text">
+            申请条件
+            </span>
+            <hr>
+        </div>
+
+        <div class="border_body">
+            <!-- 伪表格 -->
+            <div class="border_body card">
+                <div class="card_th">
+                    <div class="card_td width_30">成绩</div>
+                    <div class="card_td width_70">名校申请建议</div>
+                </div>
+                <div class="card_tb" ng-repeat="ac in condition">
+                    <div class="card_td width_30">{{ac.label}}</div>
+                    <div class="card_td width_70">{{ac.score}}</div>
+                </div>
+                <div class="card_tb">
+                    <div class="card_td width_30" style="line-height: 35px;">学生背景要求</div>
+                    <div class="card_td width_70" style="line-height: 23px; font-size: 14px; text-align: left;">美国的金融工程专业的院校申请比较看重学生的推荐信、实习经历。学生在准备的过程中需要做好自己的硬件成绩和软件条件的平衡，丰富自身的背景，准备好相关的成绩和材料。</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="border_body">
+            <div class="more_btn">
+                <a class="blue">
+                    获取申请建议<i class="glyphicon glyphicon-menu-right"></i>
+                </a>
+            </div>
+            <br style="clear: both;">
+        </div>
+    </div>
+
+    <!-- 独家申请 -->
+    <div class="board" id="advice">
+        <!-- title -->
+        <div class="board_title">
+            <span class="title_text">
+            独家申请建议
+            </span>
+            <hr>
+        </div>
+
+        <div class="border_body card">
+
+            <p>1、金融工程专业更加强调学生的数理背景，计算机的背景</p>
+            <p>2、金融工程专业更加强调学生的数理背景，计算机的背景。金融工程专业更加强调学生的数理背景，计算机的背景</p>
+
+            <div class="border_body flex_center">
+                <button>
+                    获取申请建议
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- 专业院校排名 -->
+    <div class="board" id="rank">
+        <!-- title -->
+        <div class="board_title">
+            <span class="title_text">
+            专业院校排名
+            </span>
+            <hr>
+        </div>
+
+        <div class="border_body">
+
+        </div>
+    </div>
+
+    <!-- 专业院校排名 -->
+    <div class="board" id="success">
+        <!-- title -->
+        <div class="board_title">
+            <span class="title_text">
+            成功案例
+            </span>
+            <hr>
+        </div>
+
+        <div class="border_body card">
+
+        </div>
+    </div>
+
+</div>
+
+<!-- 右边导航 -->
+<div class="right_part">
+
+    <div class="ad_div">
+        <img src="/theme/source/intro-ad-1.png" alt="顾问方案">
+    </div>
+
+    <div class="ad_div">
+        <img src="/theme/source/intro-ad-2.png" alt="总监专案">
+    </div>
+
+
+</div>

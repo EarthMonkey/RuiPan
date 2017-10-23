@@ -3,6 +3,7 @@
 /* abroad */
 .board {
     width: 100%;
+    padding: 1px 0;
     margin-bottom: 50px;
 }
 
@@ -35,7 +36,7 @@
     vertical-align: middle;
 }
 
-.board_title.orange {
+.orange {
     color: #e37375;
 }
 
@@ -43,7 +44,7 @@
     border: 4px solid #e37375;
 }
 
-.board_title.pink {
+.pink {
     color: #c01e5c;
 }
 
@@ -51,11 +52,11 @@
     border: 4px solid #c01e5c;
 }
 
-.board_title.yellow {
+.yellow {
     color: #ffc001;
 }
 
-.board_title.blue {
+.blue {
     color: #1591ee;
 }
 
@@ -68,15 +69,15 @@
 .condition_block {
     width: 280px;
     height: 300px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 40px;
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;
     -webkit-box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
     -moz-box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
-    display: inline-block;
-    vertical-align: top;
-    margin: 0 40px;
 }
 
 .condition_title {
@@ -180,12 +181,101 @@
     position: absolute;
     right: 5px;
     bottom: 15px;
-    -webkit-transition: 0.2s;
-    -moz-transition: 0.2s;
-    -o-transition: 0.2s;
-    transition: 0.2s;
 }
 
 .factor_body button:hover {
-    background-color: #E44D87;
+    background-color: #e44d87;
+}
+
+/* introduction页面 */
+.left_part {
+    width: 820px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 0;
+}
+
+.left_part .board_title .title_text {
+    width: 170px;
+}
+
+.left_part .board_title hr {
+    width: 630px;
+}
+
+.left_part .border_body {
+    padding: 0 5px;
+    font-size: 18px;
+}
+
+.left_part .border_body p {
+    margin: 0 0;
+}
+
+.more_btn {
+    float: right;
+}
+
+.right_part {
+    width: 240px;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 35px;
+}
+
+.ad_div {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.ad_div img {
+    width: 100%;
+}
+
+.flex_center {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+}
+
+#advice .card {
+    padding: 15px 15px;
+    font-size: 16px;
+    text-indent: 2em;
+}
+
+#advice .card p {
+    margin: 10px 0;
+}
+
+.card_th {
+    height: 30px;
+    line-height: 30px;
+    color: #ffc001;
+    font-size: 18px;
+}
+
+.card_tb {
+    height: 70px;
+    line-height: 70px;
+    color: #000;
+    font-size: 18px;
+    border-top: 1px solid #d8d8d8;
+}
+
+.card_td {
+    margin: 0 0;
+    display: inline-block;
+    vertical-align: top;
+    padding: 0 10px;
+}
+
+.width_30 {
+    width: 30%;
+    margin-right: -5px;
+}
+
+.width_70 {
+    width: 70%;
+    text-align: center;
 }

@@ -106,7 +106,7 @@ a {
 .top_bg {
     width: 100%;
     height: 150px;
-    background: url("../img/school-detail-bg.png");
+    background: url("../source/school-detail-bg.png");
 }
 
 /* 二级导航栏 */
@@ -194,7 +194,7 @@ a {
     margin-right: -5px;
     padding: 1px 0;
     font-size: 14px;
-    line-height: 25px;
+    line-height: 28px;
     color: #aab2bd;
 }
 
@@ -228,4 +228,26 @@ button {
     -moz-border-radius: 4px;
     border-radius: 4px;
     padding: 5px 10px;
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
+    /* 可覆盖样式 */
+    background-color: #197bc0;
+    color: #fff;
+}
+
+button:hover,
+button:focus {
+    background-color: #3097d8;
+}
+
+/* 卡片式样 */
+.card {
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
 }
