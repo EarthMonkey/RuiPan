@@ -86,4 +86,11 @@
     <aop:aspectj-autoproxy proxy-target-class="true" />
     <bean id="logAopAction" class="util.LogAopAction"></bean>
 
+    <!--文件上传-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+        <property name="defaultEncoding" value="UTF-8"/>
+        <!--max size:10M-->
+        <property name="maxUploadSize" value="10485760"/>
+        <property name="maxInMemorySize" value="4096"/>
+    </bean>
 </beans>
