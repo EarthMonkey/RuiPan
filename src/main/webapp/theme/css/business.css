@@ -257,10 +257,12 @@
 
 .card_tb {
     height: 70px;
-    line-height: 70px;
     color: #000;
     font-size: 18px;
     border-top: 1px solid #d8d8d8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .card_td {
@@ -278,4 +280,153 @@
 .width_70 {
     width: 70%;
     text-align: center;
+}
+
+/* 成功案例 */
+.border_body.card .name_div {
+    font-size: 30px;
+    color: #197bc0;
+    padding: 10px 0;
+}
+
+.border_body.card .name_div span {
+    padding: 0 20px;
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+.border_body.card .name_div span.school {
+    color: #ffc001;
+    font-size: 20px;
+}
+
+.border_body.card .each_row {
+    padding: 10px 10px;
+    font-size: 16px;
+    color: #9b9b9b;
+}
+
+.border_body.card .each_row span {
+    padding: 0 10px;
+}
+
+.border_body.card .each_row span.blue {
+    padding: 0 0;
+    color: #1591ee;
+}
+
+.sub_title {
+    padding: 0 10px;
+    color: #1591ee;
+}
+
+.sub_title span {
+    display: inline-block;
+    vertical-align: middle;
+    width: 90px;
+    font-size: 20px;
+    padding: 0 0;
+    margin: 0 10px;
+}
+
+.sub_title hr {
+    border: 1px solid #1591ee;
+    width: 630px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.photo_div {
+    width: 90px;
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+}
+
+.photo_div .img_div {
+    width: 90px;
+    height: 100px;
+    -webkit-border-radius: 45px / 50px;
+    -moz-border-radius: 45px / 50px;
+    border-radius: 45px / 50px;
+    overflow: hidden;
+    background-color: #d8d8d8;
+}
+
+.photo_div .name {
+    width: 90px;
+    text-align: center;
+    padding: 10px 0;
+    line-height: 45px;
+    font-size: 18px;
+    color: #1591ee;
+}
+
+.dialog_outer {
+    width: 620px;
+    margin-left: 25px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.dialog_outer .each_row {
+    padding-left: 0 !important;
+    line-height: 45px;
+}
+
+.dialog_outer .each_row span {
+    padding: 10px 30px 10px 0 !important;
+}
+
+.dialog_div {
+    width: 620px;
+    height: 100px;
+    background-color: #1591ee;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dialog_body {
+    width: 500px;
+    height: 80px;
+    margin: 0 auto;
+    font-size: 14px;
+    color: #fff;
+}
+
+.dialog_body div.title {
+    color: #a9b2bd;
+}
+
+.decorate_div {
+    width: 40px;
+    height: 12px;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    position: absolute;
+    left: -20px;
+    top: 50px;
+    transform: rotate(45deg);
+    background-color: #1591ee;
+}
+
+.reserve_btn {
+    position: absolute;
+    bottom: 30px;
+    right: 40px;
+    background-color: #1591ee;
+}
+
+.reserve_btn:hover,
+.reserve_btn:focus {
+    background-color: #45A9F3;
 }
