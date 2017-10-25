@@ -18,6 +18,17 @@ define([''], function () {
             {label: 'TOFEL', score: 105}
         ];
 
+        // 就业前景
+        $scope.prosWhere = [
+            {img: '/theme/source/pro-where-1.png', text: '银行'},
+            {img: '/theme/source/pro-where-2.png', text: '证券'},
+            {img: '/theme/source/pro-where-3.png', text: '保险'},
+            {img: '/theme/source/pro-where-4.png', text: '投资机构'},
+            {img: '/theme/source/pro-where-5.png', text: '金融机构'}
+        ];
+
+        $scope.prosField = ['风险管理人士', '高校科研人员', '股票交易员', '证券分析师', '金融工程师'];
+
         // 院校排名
         $scope.rankCol = ['排名', '学校名', '成绩要求', '申请难度分析', '院校申请'];
         $scope.rankData = [

@@ -188,27 +188,27 @@
 }
 
 /* introduction页面 */
-.left_part {
+.right_part {
     width: 820px;
     display: inline-block;
     vertical-align: top;
     margin: 0 0;
 }
 
-.left_part .board_title .title_text {
+.right_part .board_title .title_text {
     width: 170px;
 }
 
-.left_part .board_title hr {
+.right_part .board_title hr {
     width: 630px;
 }
 
-.left_part .border_body {
+.right_part .border_body {
     padding: 0 5px;
     font-size: 18px;
 }
 
-.left_part .border_body p {
+.right_part .border_body p {
     margin: 0 0;
 }
 
@@ -216,11 +216,11 @@
     float: right;
 }
 
-.right_part {
+.left_part {
     width: 240px;
     display: inline-block;
     vertical-align: top;
-    margin-left: 35px;
+    margin-right: 35px;
 }
 
 .ad_div {
@@ -429,4 +429,79 @@
 .reserve_btn:hover,
 .reserve_btn:focus {
     background-color: #45A9F3;
+}
+
+/* 就业前景 */
+.prospect_container {
+    width: 50%;
+    min-height: 350px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 0;
+    padding: 10px 0;
+    font-size: 24px;
+    color: #e37375;
+}
+
+.prospect_right {
+    margin-left: -5px;
+    border-left: 4px solid #197bc0;
+    color: #c01e5c;
+    padding-left: 160px;
+}
+
+.center_circle {
+    width: 150px;
+    height: 150px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    background-color: #197bc0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-75px, -75px);
+    font-size: 16px;
+    color: #fff;
+    text-align: center;
+    padding-top: 30px;
+}
+
+.center_circle .money {
+    font-size: 28px;
+    color: #ffc001;
+}
+
+.prospect_title img {
+    width: 40px;
+    height: 40px;
+    margin-right: 10px;
+    display: inline-block;
+    vertical-align: bottom;
+}
+
+.prospect_title span {
+    display: inline-block;
+    vertical-align: bottom;
+    position: relative;
+    top: 3px;
+}
+
+.prospect_body {
+    margin-top: 40px;
+}
+
+.prospect_body div {
+    margin: 15px 0;
+    line-height: 40px;
+    height: 40px;
+}
+
+.prospect_body img {
+    width: 140px;
+    height: 40px;
+    -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    margin-right: 15px;
 }

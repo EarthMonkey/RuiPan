@@ -1,7 +1,21 @@
 <!-- Created by L.H.S on 2017/10/18. -->
 
-<!-- 左边主题 -->
+<!-- 左边导航 -->
 <div class="left_part">
+
+    <div class="ad_div">
+        <img src="/theme/source/intro-ad-1.png" alt="顾问方案">
+    </div>
+
+    <div class="ad_div">
+        <img src="/theme/source/intro-ad-2.png" alt="总监专案">
+    </div>
+
+
+</div>
+
+<!-- 右边主体 -->
+<div class="right_part">
 
     <!-- 详情介绍 -->
     <div class="board" id="detail">
@@ -76,8 +90,34 @@
             <hr>
         </div>
 
-        <div class="border_body">
+        <div class="border_body" style="position: relative">
+            <div class="prospect_container">
+                <div class="prospect_title">
+                    <img src="/theme/img/prospect-where.svg" alt="就业去向">
+                    <span>就业去向</span>
+                </div>
+                <div class="prospect_body">
+                    <div ng-repeat="pw in prosWhere">
+                        <img ng-src="{{pw.img}}">
+                        {{pw.text}}
+                    </div>
+                </div>
+            </div>
 
+            <div class="prospect_container prospect_right">
+                <div class="prospect_title">
+                    <img src="/theme/img/prospect-field.svg" alt="就业领域">
+                    <span>就业领域</span>
+                </div>
+                <div class="prospect_body">
+                    <div ng-repeat="pf in prosField">{{pf}}</div>
+                </div>
+            </div>
+
+            <div class="center_circle">
+                <div class="money">$80310</div>
+                美国就业平均薪资
+            </div>
         </div>
 
     </div>
@@ -261,16 +301,4 @@
 
 </div>
 
-<!-- 右边导航 -->
-<div class="right_part">
 
-    <div class="ad_div">
-        <img src="/theme/source/intro-ad-1.png" alt="顾问方案">
-    </div>
-
-    <div class="ad_div">
-        <img src="/theme/source/intro-ad-2.png" alt="总监专案">
-    </div>
-
-
-</div>
