@@ -505,3 +505,29 @@
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     margin-right: 15px;
 }
+
+.left_bar a {
+    font-size: 24px;
+    color: #9b9b9b;
+}
+
+.left_bar div {
+    padding-left: 30px;
+}
+
+.left_bar div,
+.left_bar div a {
+    height: 30px;
+    line-height: 30px;
+    margin: 30px auto;
+}
+
+.left_bar div:hover a {
+    color: #197bc0;
+    text-decoration: none;
+}
+
+.left_bar div.active {
+    color: #197bc0 !important;
+    border-left: 6px solid #197bc0;
+}

@@ -5,11 +5,30 @@
 define([''], function () {
     'use strict';
 
-    var introCtrl = ['$scope', '$state', function ($scope, $state) {
+    var introCtrl = ['$scope', '$state', '$location', '$anchorScroll', function ($scope, $state, $location, $anchorScroll) {
 
         var country = $state.params.country;
         var type = $state.params.type;
         $scope.test = "专业介绍: " + country + " - " + type;
+
+        // 左侧导航栏
+        $scope.leftBar = [
+            {label: '专业详细介绍', link: 'detail'},
+            {label: '专业课程设置', link: 'course'},
+            {label: '就业前景', link: 'prospect'},
+            {label: '申请条件', link: 'condition'},
+            {label: '独家申请建议', link: 'advice'},
+            {label: '专业院校排名', link: 'rank'},
+            {label: '成功案例', link: 'success'}
+        ];
+
+        $scope.activeBar = "detail";
+        $scope.barClick = function (bar) {
+            $scope.activeBar = bar.link;
+
+            $location.hash(bar.link);
+            $anchorScroll(3000);
+        };
 
         // 申请条件
         $scope.condition = [
