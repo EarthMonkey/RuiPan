@@ -519,7 +519,7 @@
 .left_bar div a {
     height: 30px;
     line-height: 30px;
-    margin: 30px auto;
+    margin: 25px auto;
 }
 
 .left_bar div:hover a {
@@ -530,4 +530,10 @@
 .left_bar div.active {
     color: #197bc0 !important;
     border-left: 6px solid #197bc0;
+    padding-left: 24px!important;
+}
+
+.left_bar_fixed {
+    position: fixed;
+    top: 0;
 }

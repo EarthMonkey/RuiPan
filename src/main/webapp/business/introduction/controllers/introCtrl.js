@@ -13,22 +13,33 @@ define([''], function () {
 
         // 左侧导航栏
         $scope.leftBar = [
-            {label: '专业详细介绍', link: 'detail'},
-            {label: '专业课程设置', link: 'course'},
-            {label: '就业前景', link: 'prospect'},
-            {label: '申请条件', link: 'condition'},
-            {label: '独家申请建议', link: 'advice'},
-            {label: '专业院校排名', link: 'rank'},
-            {label: '成功案例', link: 'success'}
+            {label: '专业详细介绍', link: '#detail'},
+            {label: '专业课程设置', link: '#course'},
+            {label: '就业前景', link: '#prospect'},
+            {label: '申请条件', link: '#condition'},
+            {label: '独家申请建议', link: '#advice'},
+            {label: '专业院校排名', link: '#rank'},
+            {label: '成功案例', link: '#success'}
         ];
 
-        $scope.activeBar = "detail";
+        $scope.activeBar = "#detail";
         $scope.barClick = function (bar) {
             $scope.activeBar = bar.link;
-
-            $location.hash(bar.link);
-            $anchorScroll(3000);
+            // 缓动
+            var pos = angular.element(bar.link)[0].offsetTop;
+            $('html,body').animate({scrollTop: pos}, 500);
         };
+
+        $(window).scroll(function (e) {
+            var wst = $(window).scrollTop();
+            for (var i = 0; i < $scope.leftBar.length; i++) {
+                if (wst > 630) {
+                    $('.left_bar').addClass('left_bar_fixed');
+                } else {
+                    $('.left_bar').removeClass('left_bar_fixed');
+                }
+            }
+        });
 
         // 申请条件
         $scope.condition = [
