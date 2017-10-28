@@ -29,8 +29,8 @@
                     <td>申请</td>
                 </tr>
                 </thead>
-                <tbody>
-                <tr ng-repeat="temp in leftBar track by $index">
+                <tbody class="tr_clickable">
+                <tr ng-repeat="temp in leftBar track by $index" ng-class="{odd: $index%2==0}">
                     <td class="rank_td">{{$index}}</td>
                     <td>
                         <div class="school_logo"></div>

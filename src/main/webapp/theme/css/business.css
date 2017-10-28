@@ -625,3 +625,49 @@
     font-size: 24px;
     color: #197bc0;
 }
+
+tbody.tr_clickable tr {
+    cursor: pointer;
+}
+
+tbody.tr_clickable tr:hover {
+    background-color: #eafbff;
+}
+
+/* 成功案例 */
+.each_ex {
+    height: 25px;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+.each_ex div {
+    display: inline-block;
+    vertical-align: middle;
+    text-align: center;
+}
+
+.ex_order {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: #197bc0;
+    color: #fff !important;
+    font-size: 16px;
+    line-height: 20px;
+}
+
+.ex_info {
+    font-size: 18px;
+    color: #9b9b9b;
+    width: 200px;
+    margin-left: 5px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.ex_info:hover {
+    color: #197bc0;
+    text-decoration: underline;
+}

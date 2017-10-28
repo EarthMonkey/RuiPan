@@ -299,5 +299,7 @@ table.zebra > thead > tr > td {
     color: #000;
 }
 
-
+table.zebra tr.odd {
+    background-color: #f9f9f9;
+}
 
