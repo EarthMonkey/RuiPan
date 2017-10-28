@@ -29,6 +29,15 @@
     line-height: 50px;
 }
 
+.title_text.small {
+    font-size: 18px;
+}
+
+.title_text.smaller {
+    font-size: 16px;
+    width: 225px;
+}
+
 .board_title hr {
     width: 800px;
     border: 4px solid #197bc0;
@@ -201,6 +210,20 @@
 
 .right_part .board_title hr {
     width: 630px;
+}
+
+.right_part .board_title.img_title hr {
+    width: 550px;
+}
+
+/* 标题名太长 */
+.right_part .board_title.small .title_text {
+    width: 220px;
+    font-size: 18px;
+}
+
+.right_part .board_title.img_title.small hr {
+    width: 500px;
 }
 
 .right_part .border_body {
@@ -530,10 +553,75 @@
 .left_bar div.active {
     color: #197bc0 !important;
     border-left: 6px solid #197bc0;
-    padding-left: 24px!important;
+    padding-left: 24px !important;
 }
 
 .left_bar_fixed {
     position: fixed;
     top: 0;
+}
+
+/* 院校排名 */
+.rank_bar_div {
+    width: 100%;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    overflow: hidden;
+    font-size: 14px;
+    color: #333;
+}
+
+.rank_bar {
+    height: 35px;
+    line-height: 35px;
+    padding: 0 10px;
+    margin: 0 0;
+    border-bottom: 1px solid #ddd;
+    cursor: pointer;
+}
+
+.rank_bar:hover {
+    color: #197bc0;
+}
+
+.rank_bar.active {
+    background-color: #197bc0;
+    color: #fff;
+}
+
+.school_logo {
+    width: 35px;
+    height: 35px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    background-color: #d8d8d8;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+.school_name {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 15px;
+}
+
+.school_name span {
+    font-size: 14px;
+    color: #9b9b9b;
+}
+
+.apply_td div {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 10px;
+    margin: 0 0;
+    color: #197bc0;
+}
+
+.rank_td {
+    font-size: 24px;
+    color: #197bc0;
 }

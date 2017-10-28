@@ -252,7 +252,7 @@ button:focus {
     box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
 }
 
-/* 表格式样 */
+/* 四周边框表格式样 */
 table {
     width: 100%;
     border: 1px solid #d8d8d8;
@@ -279,6 +279,23 @@ table .blue {
 
 table > tbody > tr > td {
     height: 70px;
+    color: #000;
+}
+
+/* 斑马线表格式样 */
+table.zebra {
+    border: none;
+}
+
+table.zebra td {
+    border: none;
+    border-bottom: 1px solid #ddd;
+}
+
+table.zebra > thead > tr > td {
+    font-size: 18px;
+    font-weight: 500;
+    border-bottom: 2px solid #ddd;
     color: #000;
 }
 

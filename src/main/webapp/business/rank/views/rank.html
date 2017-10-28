@@ -1,3 +1,52 @@
 <!-- Created by L.H.S on 2017/8/14. -->
 
-{{test}}
+<div class="left_part">
+    <div class="rank_bar_div">
+        <div class="rank_bar" ng-repeat="lb in leftBar" ng-click="barClick(lb)"
+             ng-class="{active:lb.id==activeBar.id}">
+            {{lb.label}}排名
+        </div>
+    </div>
+</div>
+
+<div class="right_part">
+    <div class="board">
+        <div class="board_title img_title" ng-class="{small: activeBar.label.length>4}">
+            <img class="list_icon" src="/theme/img/abroad-icon-1.svg" alt="要求">
+            <span class="title_text">
+                {{activeBar.label}}排名
+            </span>
+            <hr>
+        </div>
+
+        <div class="border_body">
+            <table class="zebra">
+                <thead>
+                <tr>
+                    <td>排名</td>
+                    <td>学院</td>
+                    <td>所在地区</td>
+                    <td>申请</td>
+                </tr>
+                </thead>
+                <tbody>
+                <tr ng-repeat="temp in leftBar track by $index">
+                    <td class="rank_td">{{$index}}</td>
+                    <td>
+                        <div class="school_logo"></div>
+                        <div class="school_name">
+                            <div>宾法尼西亚大学</div>
+                            <span>University of Pennsylvania</span>
+                        </div>
+                    </td>
+                    <td>宾法尼西亚州费城</td>
+                    <td class="apply_td">
+                        <div><a>咨询录取条件</a></div>
+                        <div style="border-left: 1px solid #197bc0"><a>测试录取率</a></div>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
