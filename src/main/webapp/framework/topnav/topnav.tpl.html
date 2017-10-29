@@ -24,11 +24,13 @@
     </div>
 </nav>
 
+<!-- 背景提升隐藏以下部分 -->
+
 <!-- 中间插图 -->
-<div class="top_bg"></div>
+<div class="top_bg" ng-hide="currentState=='promotion'"></div>
 
 <!-- 二级导航栏 -->
-<div class="menu_second">
+<div class="menu_second" ng-hide="currentState=='promotion'">
     <div class="nav_second">
 
         <!-- 下拉筛选框 -->

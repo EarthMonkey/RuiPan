@@ -768,5 +768,19 @@ tbody.tr_clickable tr:hover {
 
 .pagination_div {
     margin-top: 20px;
-    float: right;;
+    float: right;
+}
+
+/* 背景提升 */
+.carousel_div {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    height: 450px;
+}
+
+.carousel_div img {
+    width: 100%;
+    height: 450px;
 }

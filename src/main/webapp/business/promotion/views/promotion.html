@@ -1,3 +1,17 @@
 <!-- Created by L.H.S on 2017/8/14. -->
 
-{{test}}
+<!-- 轮播图 -->
+<div class="carousel_div">
+    <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+        <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
+            <img ng-src="{{slide.image}}" style="margin:auto;">
+            <div class="carousel-caption">
+                <h4>Slide {{slide.id}}</h4>
+                <p>{{slide.text}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 占位符（满屏采用absolute布局） -->
+<div style="height: 450px;"></div>
+
