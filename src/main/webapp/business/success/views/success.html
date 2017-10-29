@@ -29,6 +29,49 @@
 <!-- 右边主体 -->
 <div class="right_part">
 
-    
+    <!-- 筛选 -->
+    <div>
+        <div class="filter_div">
+            <span class="filter_tip">国家: </span>
+            <span class="filter_option" ng-repeat="fc in filterCountry" ng-click="filterClick(0, fc)"
+                  ng-class="{active: selectedCoun==fc.id}">{{fc.label}}</span>
+        </div>
+        <div class="filter_div">
+            <span class="filter_tip">学历: </span>
+            <span class="filter_option" ng-repeat="fe in filterEdu" ng-click="filterClick(1, fe)"
+                  ng-class="{active: selectedEdu==fe.id}">{{fe.label}}</span>
+        </div>
+    </div>
 
+    <!-- 内容 -->
+    <div style="margin-top: 30px;">
+
+        <div class="ex_content" ng-repeat="temp in [0,1,2,3]">
+            <div class="ex_school_logo">
+                <img src="/theme/source/Harvard.png">
+            </div>
+            <div class="ex_brief">
+                <div class="title">名校教授亲笔推荐，斩获哈佛录取</div>
+                <div class="brief_each">
+                    <span class="tip">学生: </span>
+                    <span class="name">尹同学</span>
+                    <span class="tip">成绩: </span>
+                    TOFEL <span class="blue">109</span>,
+                    SAT <span class="blue">2330</span>
+                </div>
+                <div class="brief_each">
+                    <span class="tip">录取学校: </span>
+                    <span>哈佛大学</span>
+
+                    <div class="ex_apply_btn">我要申请<i class="glyphicon glyphicon-menu-right"></i></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 分页 -->
+        <div class="pagination_div">
+            <ul uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()"></ul>
+        </div>
+
+    </div>
 </div>
