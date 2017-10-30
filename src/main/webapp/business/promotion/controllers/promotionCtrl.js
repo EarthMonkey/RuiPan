@@ -20,6 +20,34 @@ define([''], function () {
             });
         }
 
+        // 左侧导航栏
+        $scope.leftBar = [
+            {label: '游学', link: '#tour'},
+            {label: '实习', link: '#practice'},
+            {label: '科研', link: '#research'},
+            {label: '国际义工', link: '#volunteer'},
+            {label: '短期项目', link: '#project'}
+        ];
+
+        $scope.activeBar = "#tour";
+        $scope.barClick = function (bar) {
+            $scope.activeBar = bar.link;
+            // 缓动
+            var pos = angular.element(bar.link)[0].offsetTop;
+            $('html,body').animate({scrollTop: pos}, 500);
+        };
+
+        $(window).scroll(function (e) {
+            var wst = $(window).scrollTop();
+            for (var i = 0; i < $scope.leftBar.length; i++) {
+                if (wst > 865) {
+                    $('.left_bar').addClass('left_bar_fixed');
+                } else {
+                    $('.left_bar').removeClass('left_bar_fixed');
+                }
+            }
+        });
+
     }];
 
     var homeModule = angular.module('promotion.config');

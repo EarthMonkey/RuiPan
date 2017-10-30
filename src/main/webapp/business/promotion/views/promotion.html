@@ -15,3 +15,110 @@
 <!-- 占位符（满屏采用absolute布局） -->
 <div style="height: 450px;"></div>
 
+<!-- 左边导航 -->
+<div class="left_part">
+
+    <div class="ad_div">
+        <img src="/theme/source/intro-ad-1.png" alt="顾问方案">
+    </div>
+
+    <div class="ad_div">
+        <img src="/theme/source/intro-ad-2.png" alt="总监专案">
+    </div>
+
+    <div class="left_bar">
+        <div ng-repeat="lb in leftBar" ng-click="barClick(lb)" ng-class="{active: lb.link==activeBar}">
+            <a>{{lb.label}}</a>
+        </div>
+    </div>
+
+</div>
+
+<!-- 右边主体 -->
+<div class="right_part promotion_body">
+
+    <!-- 游学 -->
+    <div class="board" id="tour">
+        <!-- title -->
+        <div class="board_title">
+            <span class="title_text">游学</span>
+            <hr>
+        </div>
+
+        <div class="border_body">
+            <div class="pro_each_item" ng-repeat="temp in [0,1,2,3,4,5] track by $index" ng-class="{last: $index%3==2}">
+                <img src="/theme/source/tour.png">
+                <div class="title">【耶鲁大学暑期项目】</div>
+                <div class="info">体验名校课堂，获取名校教授推荐信</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 实习 -->
+    <div class="board" id="practice">
+        <!-- title -->
+        <div class="board_title">
+            <span class="title_text">实习</span>
+            <hr>
+        </div>
+
+        <div class="border_body">
+            <div class="pro_each_item" ng-repeat="temp in [0,1,2,3,4,5] track by $index" ng-class="{last: $index%3==2}">
+                <img src="/theme/source/practice.png">
+                <div class="title">【耶鲁大学暑期项目】</div>
+                <div class="info">体验名校课堂，获取名校教授推荐信</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 科研 -->
+    <div class="board" id="research">
+        <!-- title -->
+        <div class="board_title">
+            <span class="title_text">科研</span>
+            <hr>
+        </div>
+
+        <div class="border_body">
+            <div class="pro_each_item" ng-repeat="temp in [0,1,2,3,4,5] track by $index" ng-class="{last: $index%3==2}">
+                <img src="/theme/source/tour.png">
+                <div class="title">【耶鲁大学暑期项目】</div>
+                <div class="info">体验名校课堂，获取名校教授推荐信</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 国际义工 -->
+    <div class="board" id="volunteer">
+        <!-- title -->
+        <div class="board_title">
+            <span class="title_text">国际义工</span>
+            <hr>
+        </div>
+
+        <div class="border_body">
+            <div class="pro_each_item" ng-repeat="temp in [0,1,2,3,4,5] track by $index" ng-class="{last: $index%3==2}">
+                <img src="/theme/source/practice.png">
+                <div class="title">【耶鲁大学暑期项目】</div>
+                <div class="info">体验名校课堂，获取名校教授推荐信</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 短期项目 -->
+    <div class="board" id="project">
+        <!-- title -->
+        <div class="board_title">
+            <span class="title_text">短期项目</span>
+            <hr>
+        </div>
+
+        <div class="border_body">
+            <div class="pro_each_item" ng-repeat="temp in [0,1,2,3,4,5] track by $index" ng-class="{last: $index%3==2}">
+                <img src="/theme/source/tour.png">
+                <div class="title">【耶鲁大学暑期项目】</div>
+                <div class="info">体验名校课堂，获取名校教授推荐信</div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -784,3 +784,38 @@ tbody.tr_clickable tr:hover {
     width: 100%;
     height: 450px;
 }
+
+.right_part.promotion_body .board_title .title_text {
+    width: 120px;
+}
+
+.right_part.promotion_body .board_title hr {
+    width: 680px;
+}
+
+.pro_each_item {
+    width: 240px;
+    height: 230px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 10px 40px 10px 0;
+}
+
+.pro_each_item.last {
+    margin-right: 0;
+}
+
+.pro_each_item img {
+    width: 100%;
+    height: 150px;
+}
+
+.pro_each_item .title {
+    font-size: 20px;
+    text-align: center;
+}
+
+.pro_each_item .info {
+    font-size: 20px;
+    color: #9b9b9b;
+}
