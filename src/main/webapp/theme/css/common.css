@@ -3,7 +3,7 @@
  */
 
 /*
- * 主体宽度：1100px
+ * 主体宽度：1210px
  */
 
 body, html {
@@ -240,6 +240,21 @@ button {
 button:hover,
 button:focus {
     background-color: #3097d8;
+}
+
+/* 空心按钮 */
+button.hollow {
+    background-color: #fff;
+    border: 1px solid #197bc0;
+    font-size: 24px;
+    color: #197bc0;
+    padding: 6px 20px;
+}
+
+button.hollow:hover,
+button.hollow:focus {
+    background-color: #197bc0;
+    color: #fff;
 }
 
 /* 卡片式样 */

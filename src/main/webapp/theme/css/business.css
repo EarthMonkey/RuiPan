@@ -777,6 +777,7 @@ tbody.tr_clickable tr:hover {
     top: 60px;
     left: 0;
     width: 100%;
+    min-width: 1210px;
     height: 450px;
 }
 
@@ -818,4 +819,77 @@ tbody.tr_clickable tr:hover {
 .pro_each_item .info {
     font-size: 20px;
     color: #9b9b9b;
+}
+
+/* 语言培训 */
+.language_ad_div {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    min-width: 1210px;
+    height: 200px;
+}
+
+.language_ad_div img {
+    width: 100%;
+    height: 200px;
+}
+
+.language_carousel {
+    display: inline-block;
+    vertical-align: top;
+    width: 745px;
+    height: 370px;
+}
+
+.language_carousel img {
+    width: 100%;
+    height: 370px;
+}
+
+.lang_news_div {
+    display: inline-block;
+    vertical-align: top;
+    width: 340px;
+    height: 370px;
+    margin-left: 10px;
+    padding: 15px 15px;
+    background: url("/theme/img/language-news-bg.png") 100%;
+    position: relative;
+    color: #fff;
+    font-size: 20px;
+}
+
+.each_news {
+    margin: 15px 0;
+    cursor: pointer;
+}
+
+.more_news {
+    position: absolute;
+    bottom: 15px;
+    right: 30px;
+    cursor: pointer;
+}
+
+.more_news i {
+    margin-right: -15px;
+    position: relative;
+    top: 3px;
+}
+
+.each_news:hover,
+.more_news:hover {
+    color: #ffbb64;
+    text-decoration: underline;
+}
+
+.language_intro {
+    font-size: 24px;
+    text-indent: 2em;
+}
+
+.language_intro p {
+    margin: 0 0;
 }
