@@ -7,7 +7,18 @@ define([''], function () {
 
     var coopCtrl = ['$scope', function ($scope) {
 
-        $scope.test = "合作办学";
+        // 轮播图
+        $scope.myInterval = 3000;
+        $scope.noWrapSlides = false;
+        $scope.active = 0;
+        $scope.slides = [];
+        for (var i = 0; i < 3; i++) {
+            $scope.slides.push({
+                image: '/theme/source/promotion-' + i + '.png',
+                text: 'This is a title',
+                id: i
+            });
+        }
 
     }];
 

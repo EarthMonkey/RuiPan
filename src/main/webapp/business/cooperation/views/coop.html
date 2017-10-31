@@ -1,3 +1,33 @@
 <!-- Created by L.H.S on 2017/10/18. -->
 
-{{test}}
+<div class="language_ad_div">
+    <img src="/theme/source/cooperation-bg.png">
+</div>
+<div style="height: 200px;"></div>
+
+<!-- 中间块 -->
+<div>
+    <div class="language_carousel">
+        <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+            <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
+                <img ng-src="{{slide.image}}" style="margin:auto;">
+                <div class="carousel-caption">
+                    <h4>Slide {{slide.id}}</h4>
+                    <p>{{slide.text}}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="lang_news_div">
+        <div class="each_news" ng-repeat="temp in [0,1,2,3]">
+            <i class="glyphicon glyphicon-menu-right"></i>
+            合作办学资讯
+        </div>
+
+        <div class="more_news">
+            更多资讯
+            <i class="glyphicon glyphicon-menu-right"></i>
+            <i class="glyphicon glyphicon-menu-right"></i>
+        </div>
+    </div>
+</div>

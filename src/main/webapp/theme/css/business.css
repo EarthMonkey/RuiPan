@@ -862,6 +862,7 @@ tbody.tr_clickable tr:hover {
 }
 
 .each_news {
+    height: 60px;
     margin: 15px 0;
     cursor: pointer;
 }
