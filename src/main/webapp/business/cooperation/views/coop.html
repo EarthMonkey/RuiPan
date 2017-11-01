@@ -31,3 +31,106 @@
         </div>
     </div>
 </div>
+
+<!-- 高中合作办学方案 -->
+<!-- 硬性条件 -->
+<div class="board coop_div">
+    <!-- title -->
+    <div class="board_title">
+        <span class="title_text">
+            高中合作办学方案
+        </span>
+        <hr>
+    </div>
+
+    <div class="border_body card">
+        <!-- 页签 -->
+        <div class="factor_tab_container">
+            <div class="factor_tab" ng-repeat="tab in highTab track by $index"
+                 ng-class="{no_border: $index==1, active: tab.show}" ng-click="changeTab(tab, 0)">
+                {{tab.title}}
+            </div>
+        </div>
+        <!-- 卡片 -->
+        <div class="methods_div">
+            <div class="pro_each_item" ng-repeat="temp in [0,1,2,3,4,5] track by $index">
+                <img src="/theme/source/practice.png">
+                <div class="title">【合作方案】</div>
+                <div class="info">体验名校课堂，获取名校教授推荐信</div>
+            </div>
+        </div>
+        <!-- 分页 -->
+        <div class="pagination_div">
+            <ul uib-pagination total-items="totalItems_high" ng-model="currentPage_high" ng-change="pageChanged_high()"></ul>
+        </div>
+        <br style="clear: both">
+    </div>
+</div>
+
+<!-- 职业学校 -->
+<div class="board coop_div">
+    <!-- title -->
+    <div class="board_title">
+        <span class="title_text">
+            职业学院办学方案
+        </span>
+        <hr>
+    </div>
+
+    <div class="border_body card">
+        <!-- 页签 -->
+        <div class="factor_tab_container">
+            <div class="factor_tab tab_5" ng-repeat="tab in careerTab track by $index"
+                 ng-class="{no_border: $index==1, active: tab.show}" ng-click="changeTab(tab, 1)">
+                {{tab.title}}
+            </div>
+        </div>
+        <!-- 卡片 -->
+        <div class="methods_div">
+            <div class="pro_each_item" ng-repeat="temp in [0,1,2,3,4,5] track by $index">
+                <img src="/theme/source/practice.png">
+                <div class="title">【合作方案】</div>
+                <div class="info">体验名校课堂，获取名校教授推荐信</div>
+            </div>
+        </div>
+        <!-- 分页 -->
+        <div class="pagination_div">
+            <ul uib-pagination total-items="totalItems_career" ng-model="currentPage_career" ng-change="pageChanged_career()"></ul>
+        </div>
+        <br style="clear: both">
+    </div>
+</div>
+
+<!-- 大学 -->
+<div class="board coop_div">
+    <!-- title -->
+    <div class="board_title">
+        <span class="title_text">
+            大学合作办学方案
+        </span>
+        <hr>
+    </div>
+
+    <div class="border_body card">
+        <!-- 页签 -->
+        <div class="factor_tab_container">
+            <div class="factor_tab tab_5" ng-repeat="tab in collegeTab track by $index"
+                 ng-class="{no_border: $index==1, active: tab.show}" ng-click="changeTab(tab, 2)">
+                {{tab.title}}
+            </div>
+        </div>
+        <!-- 卡片 -->
+        <div class="methods_div">
+            <div class="pro_each_item" ng-repeat="temp in [0,1,2,3,4,5] track by $index">
+                <img src="/theme/source/practice.png">
+                <div class="title">【合作方案】</div>
+                <div class="info">体验名校课堂，获取名校教授推荐信</div>
+            </div>
+        </div>
+        <!-- 分页 -->
+        <div class="pagination_div">
+            <ul uib-pagination total-items="totalItems_college" ng-model="currentPage_college" ng-change="pageChanged_college()"></ul>
+        </div>
+        <br style="clear: both">
+    </div>
+</div>

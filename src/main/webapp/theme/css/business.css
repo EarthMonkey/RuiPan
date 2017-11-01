@@ -158,6 +158,7 @@
     -moz-transition: 0.2s;
     -o-transition: 0.2s;
     transition: 0.2s;
+    float: left;
 }
 
 .factor_tab.active,
@@ -893,4 +894,38 @@ tbody.tr_clickable tr:hover {
 
 .language_intro p {
     margin: 0 0;
+}
+
+/* 合作办学 */
+.coop_div {
+    margin-top: 40px;
+}
+
+.board.coop_div .title_text {
+    width: 250px;
+}
+
+.board.coop_div .board_title hr {
+    width: 832px;
+}
+
+.methods_div {
+    padding: 20px 70px;
+}
+
+.coop_div .pro_each_item {
+    margin: 15px 40px;
+}
+
+.coop_div .factor_tab_container {
+    background-color: #197bc0;
+}
+
+.coop_div .pagination_div {
+    margin-top: 0;
+    margin-right: 40px;
+}
+
+.factor_tab.tab_5  {
+    width: 20%;
 }
