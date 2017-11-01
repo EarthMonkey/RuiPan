@@ -8,13 +8,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import util.SystemLog;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
-//import serviceImpl.FileServiceImpl;
+
 
 @Controller
 public class UploadController {
@@ -26,22 +30,20 @@ public class UploadController {
 
 	@RequestMapping("/oneUpload")
 	@ResponseBody
+	@SystemLog(module = "通用上传管理" ,methods = "单文件上传")
 	public String oneUpload(@RequestParam("oneFile") MultipartFile oneFile, HttpServletRequest request){
 
-		System.out.println("hhhhhhhhh");
-		// TODO: 2016/7/26 取id ，用来创建文件名，返回id用来存储
+
 		String uploadUrl=request.getSession().getServletContext().getRealPath("/");
 
-		String filename = oneFile.getOriginalFilename();
-
+		String filename = getUniqueFileName(oneFile.getOriginalFilename());
 
 
 		File dir = new File(uploadUrl);
 		if (!dir.exists()) {
 			dir.mkdirs();
 		}
-		
-		System.out.println("文件上传到: " + uploadUrl + filename);
+
 		
 		File targetFile = new File(uploadUrl + filename);
 		if (!targetFile.exists()) {
@@ -60,13 +62,15 @@ public class UploadController {
 			e.printStackTrace();
 		}
 
-		return "SUCCESS";
+		return filename;
 	}
 
 
 
 	@RequestMapping("/moreUpload")
-	public String moreUpload(HttpServletRequest request){
+	@ResponseBody
+	@SystemLog(module = "通用上传管理" ,methods = "多文件上传")
+	public List<String> moreUpload(HttpServletRequest request){
 
 
 		MultipartHttpServletRequest multipartHttpServletRequest = (MultipartHttpServletRequest)request;
@@ -79,10 +83,11 @@ public class UploadController {
 			dir.mkdirs();
 		}
 		
-//		List<String> fileList = new ArrayList<String>();
+		List<String> fileList = new ArrayList<String>();
 		
 		for (MultipartFile file :  files.values()) {
-			File targetFile = new File(uploadUrl + file.getOriginalFilename());
+			String filename=getUniqueFileName(file.getOriginalFilename());
+			File targetFile = new File(uploadUrl + filename);
 			if (!targetFile.exists()) {
 				try {
 					targetFile.createNewFile();
@@ -92,7 +97,7 @@ public class UploadController {
 				
 				try {
 					file.transferTo(targetFile);
-//					fileList.add("http://localhost:8082/upload/" + file.getOriginalFilename());
+					fileList.add(filename);
 				} catch (IllegalStateException e) {
 					e.printStackTrace();
 				} catch (IOException e) {
@@ -101,8 +106,14 @@ public class UploadController {
 				
 			}
 		}
-//		request.setAttribute("files", fileList);
-		return null;
+		return fileList;
 	}
-	
+
+	private String getUniqueFileName(String filename){
+		String uuid = UUID.randomUUID().toString().replaceAll("-", "");
+		int lastIndex=filename.lastIndexOf('.');
+		String result=uuid+(lastIndex<0?"":filename.substring(lastIndex));
+		return result;
+	}
+
 }
