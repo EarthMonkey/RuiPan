@@ -6,6 +6,36 @@
     <persistence-unit name="ruipan" transaction-type="RESOURCE_LOCAL">
         <class>model.User</class>
         <class>model.Logentity</class>
+        <class>model.ApplicationAdvice</class>
+        <class>model.ApplicationElement</class>
+        <class>model.ApplicationScheme</class>
+        <class>model.BackgroundPromote</class>
+        <class>model.CarouselFigure</class>
+        <class>model.CooperativeCategory</class>
+        <class>model.CooperativePartner</class>
+        <class>model.CooperativeScheme</class>
+        <class>model.EmploymentCompany</class>
+        <class>model.EmploymentPost</class>
+        <class>model.ForeignConsultant</class>
+        <class>model.GlobalRecommendation</class>
+        <class>model.GradeCategory</class>
+        <class>model.HardCondition</class>
+        <class>model.Honor</class>
+        <class>model.News</class>
+        <class>model.OrderForForeign</class>
+        <class>model.OrderForService</class>
+        <class>model.ProfessionCategory</class>
+        <class>model.ProfessionCourse</class>
+        <class>model.ProfessionIntroduce</class>
+        <class>model.Question</class>
+        <class>model.Salary</class>
+        <class>model.School</class>
+        <class>model.SchoolPicture</class>
+        <class>model.SchoolRanking</class>
+        <class>model.ServedCompany</class>
+        <class>model.ServiceConsultant</class>
+        <class>model.SuccessfulCase</class>
+        <class>model.TrainIntroduce</class>
         <!-- provider>org.eclipse.persistence.jpa.PersistenceProvider</provider -->
         <!--<provider>org.hibernate.ejb.HibernatePersistence</provider>-->
         <!--<class>com.ninelephas.meerkat.pojo.User</class>-->
