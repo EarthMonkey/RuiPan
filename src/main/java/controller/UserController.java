@@ -42,4 +42,11 @@ public class UserController {
         return "login";
     }
 
+    //获取所有用户列表
+
+    //修改当前用户密码
+
+    //增加用户（只有admin用户有权限）
+
+    //删除用户（只有admin用户有权限）
 }

@@ -41,10 +41,10 @@ public class LogAopAction {
     public Object around(ProceedingJoinPoint pjp) throws Throwable {
         //常见日志实体对象
         Logentity log = new Logentity();
-        //获取登录用户账户
+        //获取request请求
         HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
 
-        //获取系统ip,这里用的是我自己的工具类,可自行网上查询获取ip方法
+        //获取系统ip
         String ip = GetClientMessageUtils.getIpAddr(request);
         log.setIp(ip);
         
@@ -54,7 +54,7 @@ public class LogAopAction {
         long start = System.currentTimeMillis();
         // 拦截的实体类，就是当前正在执行的controller
         Object target = pjp.getTarget();
-        // 拦截的方法名称。当前正在执行的方法
+        // 拦截的方法名称,即当前正在执行的方法
         String methodName = pjp.getSignature().getName();
         // 拦截的方法参数
         Object[] args = pjp.getArgs();
@@ -74,16 +74,18 @@ public class LogAopAction {
             method = target.getClass().getMethod(methodName, parameterTypes);
         } catch (NoSuchMethodException e1) {
             logger.error(e1);
-        } catch (SecurityException e1) {
-            logger.error(e1);
+        } catch (SecurityException e2) {
+            logger.error(e2);
         }
         if (null != method) {
-            // 判断是否包含自定义的注解，说明一下这里的SystemLog就是我自己自定义的注解
+            // 判断是否包含自定义的注解SystemLog
             if (method.isAnnotationPresent(SystemLog.class)) {
 
+                //获取登录对象
                 UserVO userVO = (UserVO) request.getSession().getAttribute("User");
-                if(userVO==null){
-                    // TODO: 2017/10/18
+                if(userVO==null&&(!methodName.equals("login"))){
+                    //如果没有登录且不是登陆操作，则为非法访问后台，直接返回到登录界面
+                    // TODO: 2017/11/4  
                 }else{
                     log.setUsername(userVO.getUsername());
                 }
