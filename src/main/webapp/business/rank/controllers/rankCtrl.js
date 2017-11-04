@@ -24,11 +24,15 @@ define([''], function () {
         $scope.activeBar = $scope.leftBar[0];
         $scope.barClick = function (bar) {
             $scope.activeBar = bar;
+        };
+
+        $scope.getDetail = function () {
+            $state.go('schoolDetail', {name: 'Harvard'});
         }
 
     }];
 
-    var homeModule = angular.module('rank.config');
-    homeModule.controller('rankCtrl', rankCtrl);
+    var rankModule = angular.module('rank.config');
+    rankModule.controller('rankCtrl', rankCtrl);
 
 });

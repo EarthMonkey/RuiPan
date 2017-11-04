@@ -1,0 +1,61 @@
+<!-- Created by L.H.S on 2017/11/4. -->
+
+<div class="language_ad_div" style="top: 279px;">
+    <img src="/theme/source/rank-detail.png">
+</div>
+<div style="height: 200px;"></div>
+
+<!-- 顶部英文+logo -->
+<div class="detail_top_info">
+    Harvard College，86 Brattle Street，Cambridge, MA 02138
+    <div class="detail_school_logo">
+        <img src="/theme/source/Harvard-logo.png">
+    </div>
+</div>
+
+<!-- 主题部分，左右分栏 -->
+<div style="margin-top: 50px;">
+
+    <div class="left_part">
+        <div class="detail_school_name">
+            哈佛大学
+        </div>
+        <div class="detail_school_brief">
+            哈佛大学是全美最古老的大学，人曰先有哈佛后有美利坚，先后诞生了七位美国总统，四十位诺贝尔奖得主和三十位普利策奖得主
+        </div>
+        <div class="location_div">
+            <i class="glyphicon glyphicon-map-marker"></i>
+            美国马萨诸塞州剑桥市
+        </div>
+        <div class="location_div">
+            <i class="glyphicon glyphicon-link"></i>
+            <a href="https://www.harvard.edu">https://www.harvard.edu</a>
+        </div>
+        <div class="location_div">
+            <i class="glyphicon glyphicon-camera"></i>
+            <a href="https://www.harvard.edu">校园图片</a>
+            <div>
+                <div class="school_photo" ng-repeat="img in schoolImg">
+                    <img ng-src="{{img}}">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="right_part">
+
+        <div class="border_body card" style="padding: 0 0">
+            <!-- 页签 -->
+            <div class="factor_tab_container" style="width: 820px;">
+                <div class="factor_tab tab_3" ng-repeat="tab in tabs track by $index"
+                     ng-class="{no_border: $index==2, active: tab.show}" ng-click="changeTab(tab)">
+                    {{tab.title}}
+                </div>
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>

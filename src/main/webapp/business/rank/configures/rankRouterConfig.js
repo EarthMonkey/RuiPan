@@ -16,6 +16,14 @@ define(['lazy-load/lazyLoad'],
             scripts: {
                 controllers: ['business/rank/controllers/rankCtrl']
             }
+        }, {
+            name: 'schoolDetail',
+            url: '/detail/:name',
+            templateUrl: 'business/rank/views/school-detail.html',
+            controller: 'detailCtrl',
+            scripts: {
+                controllers: ['business/rank/controllers/detailCtrl']
+            }
         }];
 
         var rankModule = angular.module('rank.config', ['ui.router']);

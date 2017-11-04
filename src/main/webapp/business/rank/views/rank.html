@@ -30,7 +30,8 @@
                 </tr>
                 </thead>
                 <tbody class="tr_clickable">
-                <tr ng-repeat="temp in leftBar track by $index" ng-class="{odd: $index%2==0}">
+                <tr ng-repeat="temp in leftBar track by $index" ng-class="{odd: $index%2==0}"
+                    ng-click="getDetail()">
                     <td class="rank_td">{{$index}}</td>
                     <td>
                         <div class="school_logo"></div>
