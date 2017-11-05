@@ -15,6 +15,7 @@ public class ProfessionCategory {
     private String category;
     private String subclassification;
     private Timestamp createAt;
+    private Collection<ServiceConsultant> serviceConsultantsByPid;
     private Collection<ApplicationAdvice> applicationAdvicesByPid;
     private Collection<EmploymentCompany> employmentCompaniesByPid;
     private Collection<EmploymentPost> employmentPostsByPid;
@@ -100,6 +101,15 @@ public class ProfessionCategory {
         result = 31 * result + (subclassification != null ? subclassification.hashCode() : 0);
         result = 31 * result + (createAt != null ? createAt.hashCode() : 0);
         return result;
+    }
+
+    @OneToMany(mappedBy = "professionCategoryByPid")
+    public Collection<ServiceConsultant> getServiceConsultantsByPid() {
+        return serviceConsultantsByPid;
+    }
+
+    public void setServiceConsultantsByPid(Collection<ServiceConsultant> serviceConsultantsByPid) {
+        this.serviceConsultantsByPid = serviceConsultantsByPid;
     }
 
     @OneToMany(mappedBy = "professionCategoryByPid")

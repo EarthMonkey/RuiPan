@@ -36,6 +36,9 @@
         <class>model.ServiceConsultant</class>
         <class>model.SuccessfulCase</class>
         <class>model.TrainIntroduce</class>
+        <class>model.ContentUs</class>
+        <class>model.ContactUs</class>
+        <class>model.Logiptopreventdos</class>
         <!-- provider>org.eclipse.persistence.jpa.PersistenceProvider</provider -->
         <!--<provider>org.hibernate.ejb.HibernatePersistence</provider>-->
         <!--<class>com.ninelephas.meerkat.pojo.User</class>-->

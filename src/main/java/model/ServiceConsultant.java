@@ -11,9 +11,8 @@ import java.util.Collection;
 @Table(name = "service_consultant", schema = "ruipan", catalog = "")
 public class ServiceConsultant {
     private int id;
+    private Integer pid;
     private String name;
-    private String country;
-    private String profession;
     private String headSculpture;
     private Double workingHours;
     private Integer offerNumber;
@@ -21,6 +20,7 @@ public class ServiceConsultant {
     private String synopsis;
     private String textPath;
     private Timestamp updateAt;
+    private ProfessionCategory professionCategoryByPid;
     private Collection<OrderForService> orderForServicesById;
     private Collection<SuccessfulCase> successfulCasesById;
 
@@ -36,6 +36,16 @@ public class ServiceConsultant {
     }
 
     @Basic
+    @Column(name = "pid")
+    public Integer getPid() {
+        return pid;
+    }
+
+    public void setPid(Integer pid) {
+        this.pid = pid;
+    }
+
+    @Basic
     @Column(name = "name")
     public String getName() {
         return name;
@@ -43,26 +53,6 @@ public class ServiceConsultant {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    @Basic
-    @Column(name = "country")
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    @Basic
-    @Column(name = "profession")
-    public String getProfession() {
-        return profession;
-    }
-
-    public void setProfession(String profession) {
-        this.profession = profession;
     }
 
     @Basic
@@ -144,8 +134,7 @@ public class ServiceConsultant {
 
         if (id != that.id) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (country != null ? !country.equals(that.country) : that.country != null) return false;
-        if (profession != null ? !profession.equals(that.profession) : that.profession != null) return false;
+        if (pid != null ? !pid.equals(that.pid) : that.pid != null) return false;
         if (headSculpture != null ? !headSculpture.equals(that.headSculpture) : that.headSculpture != null)
             return false;
         if (workingHours != null ? !workingHours.equals(that.workingHours) : that.workingHours != null) return false;
@@ -163,8 +152,7 @@ public class ServiceConsultant {
     public int hashCode() {
         int result = id;
         result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (country != null ? country.hashCode() : 0);
-        result = 31 * result + (profession != null ? profession.hashCode() : 0);
+        result = 31 * result + (pid != null ? pid.hashCode() : 0);
         result = 31 * result + (headSculpture != null ? headSculpture.hashCode() : 0);
         result = 31 * result + (workingHours != null ? workingHours.hashCode() : 0);
         result = 31 * result + (offerNumber != null ? offerNumber.hashCode() : 0);
@@ -173,6 +161,16 @@ public class ServiceConsultant {
         result = 31 * result + (textPath != null ? textPath.hashCode() : 0);
         result = 31 * result + (updateAt != null ? updateAt.hashCode() : 0);
         return result;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "pid", referencedColumnName = "pid", insertable = false, updatable = false)
+    public ProfessionCategory getProfessionCategoryByPid() {
+        return professionCategoryByPid;
+    }
+
+    public void setProfessionCategoryByPid(ProfessionCategory professionCategoryByPid) {
+        this.professionCategoryByPid = professionCategoryByPid;
     }
 
     @OneToMany(mappedBy = "serviceConsultantByCid")
