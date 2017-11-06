@@ -13,8 +13,7 @@ public class GetAddress {
      * @param content
      * @param encoding 服务器端请求编码。如GBK,UTF-8等
      * @return
-     * @author www.zuidaima.com
-     * 请求的参数 格式为：name=xxx&pwd=xxx
+     * 请求的参数 格式为：ip=xxx
      */
     private static String getResult(String urlStr, String content, String encoding) {
         URL url = null;
@@ -30,7 +29,7 @@ public class GetAddress {
             connection.setUseCaches(false);// 是否缓存true|false
             connection.connect();// 打开连接端口
             DataOutputStream out = new DataOutputStream(connection.getOutputStream());// 打开输出流往对端服务器写数据
-            out.writeBytes(content);// 写数据,也就是提交你的表单 name=xxx&pwd=xxx
+            out.writeBytes(content);// 写数据,也就是提交你的表单 ip=xxx
             out.flush();// 刷新
             out.close();// 关闭输出流
             BufferedReader reader = new BufferedReader(
@@ -208,12 +207,14 @@ public class GetAddress {
         return result;
     }
 
-//    public static void main(String[] args) {
-//        try {
-//            System.out.println("hhh");
+    public static void main(String[] args) {
+        try {
+            System.out.println("hhh");
+            System.out.println(GetAddress.getAddresses("ip=202.119.45.215", "UTF-8"));
+
 //            System.out.println(GetAddress.getAddresses("ip=202.119.45.215", "UTF-8"));
-//        } catch (UnsupportedEncodingException e) {
-//            e.printStackTrace();
-//        }
-//    }
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+    }
 }

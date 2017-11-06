@@ -11,6 +11,10 @@ import org.springframework.test.context.web.WebAppConfiguration;
 import service.UserService;
 import vo.UserVO;
 
+import java.util.List;
+
+import static org.junit.Assert.assertEquals;
+
 /**
  * Created by ldchao on 2017/10/15.
  */
@@ -41,8 +45,14 @@ public class UserTest {
     }
 
     @Test
+    public void addUser(){
+        System.out.println(userService.addUser("ldchao","123"));
+    }
+
+    @Test
     public void login(){
-        UserVO userVO=userService.login("test","test","202.119.45.215");
+//        UserVO userVO=userService.login("test","test","202.119.45.215");
+        UserVO userVO=userService.login("ldchao","123","202.119.45.215");
         if(userVO.getLoginMessage().equalsIgnoreCase("no_user")){
             System.out.println("没有该用户");
         }
@@ -55,4 +65,23 @@ public class UserTest {
         }
     }
 
+    @Test
+    public void changePassword(){
+        System.out.println(userService.changePassword("ldchao","1","123"));
+        System.out.println(userService.changePassword("ldchao","123","123"));
+    }
+
+    @Test
+    public void getAllUser(){
+        List<UserVO> userVOS=userService.getAllUser();
+        for (UserVO u:userVOS) {
+            System.out.println(u.getUsername()+" "+u.getLastLoginTime()+" "+u.getLastLoginAddress());
+        }
+    }
+
+    @Test
+    public void deleteUser(){
+        System.out.println(userService.deleteUser("ldchao2"));
+        System.out.println(userService.deleteUser("ldchao"));
+    }
 }

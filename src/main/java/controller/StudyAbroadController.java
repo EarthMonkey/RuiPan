@@ -1,15 +1,31 @@
 package controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import service.StudyAboardService;
+import util.SystemLog;
+
+import java.util.List;
 
 /**
  * Created by ldchao on 2017/11/2.
  */
 @Controller
+@RequestMapping(value = "/StudyAbroad")
 public class StudyAbroadController {
 
-    //获取所有国家
+    @Autowired
+    StudyAboardService studyAboardService;
 
+    //获取所有国家
+    @RequestMapping(value = "/getAllCountry")
+    @ResponseBody
+    @SystemLog(module = "留学服务", methods = "获取所有国家")
+    public List<String> getAllCountry(){
+        return studyAboardService.getAllCountry();
+    }
 
     //根据国家、年级类别编号（gid 下同）获取所有硬性条件要求
 
@@ -36,6 +52,10 @@ public class StudyAbroadController {
 
 
     //***********************后台管理接口******************************
+
+    //增加一个国家(对应增加研究生、本科生、高中生三个分类)
+
+    //删除一个国家（对应的研究生、本科生、高中生分类都删除掉）
 
     //在某个国家和年级（gid）下增加一条硬性条件要求
 

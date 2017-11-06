@@ -146,8 +146,7 @@ public class UserServiceImpl implements UserService {
             UserVO userVO = new UserVO();
             userVO.setUsername(user.getUsername());
             userVO.setLastLoginTime(user.getLastLoginTime());
-            String address = getLastLoginAddress(user.getLastLoginIp());
-            userVO.setLastLoginAddress(address);
+            userVO.setLastLoginAddress(user.getLastLoginIp());
             userVOS.add(userVO);
         }
         return userVOS;

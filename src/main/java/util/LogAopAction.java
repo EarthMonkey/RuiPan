@@ -83,9 +83,11 @@ public class LogAopAction {
 
                 //获取登录对象
                 UserVO userVO = (UserVO) request.getSession().getAttribute("User");
-                if(userVO==null&&(!methodName.equals("login"))){
+                if(userVO==null){
                     //如果没有登录且不是登陆操作，则为非法访问后台，直接返回到登录界面
-                    // TODO: 2017/11/4  
+                    if(!methodName.equals("login")){
+                        // TODO: 2017/11/4
+                    }
                 }else{
                     log.setUsername(userVO.getUsername());
                 }
