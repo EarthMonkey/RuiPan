@@ -1,3 +1,161 @@
 <!-- Created by L.H.S on 2017/10/18. -->
 
-{{test}}
+<!-- 轮播图 -->
+<div class="carousel_div home_carousel">
+    <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
+        <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
+            <img ng-src="{{slide.image}}" style="margin:auto;">
+            <div class="carousel-caption">
+                <h4>{{slide.title}}</h4>
+                <p>{{slide.text}}</p>
+                <button>在线咨询</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- 占位符（满屏采用absolute布局） -->
+<div style="height: 600px;"></div>
+
+<!-- 第二块 -->
+<div class="main_body">
+    <div class="each_block">
+        <div class="img_div">
+            <img src="/theme/img/bulb.svg">
+        </div>
+
+        <div style="border-right: 1px solid #dfdfdf">
+            <div class="title">成功案例</div>
+            <div class="info">
+                <p>成功帮助<span class="blue">1000+</span>学子获得满意录取，</p>
+                <p><span class="blue">13</span>年申请和服务经验，</p>
+                <p><span class="blue">100%</span>服务满意度。</p>
+            </div>
+        </div>
+
+        <div class="get_more">
+            <a href="">了解更多<i class="glyphicon glyphicon-menu-right"></i></a>
+        </div>
+    </div>
+    <div class="each_block">
+        <div class="img_div">
+            <img src="/theme/img/cube.svg">
+        </div>
+
+        <div style="border-right: 1px solid #dfdfdf">
+            <div class="title">专业团队</div>
+            <div class="info">
+                <p><span class="blue">100%</span>世界名校文书团队，</p>
+                <p><span class="blue">1对1</span>个性化资深服务顾问。</p>
+            </div>
+        </div>
+
+        <div class="get_more">
+            <a href="">了解更多<i class="glyphicon glyphicon-menu-right"></i></a>
+        </div>
+    </div>
+    <div class="each_block">
+        <div class="img_div">
+            <img src="/theme/img/service.svg">
+        </div>
+
+        <div>
+            <div class="title">服务企业</div>
+            <div class="info">
+                <p>成功服务过国内外<span class="blue">300+</span>所高校，</p>
+                <p>国内知名企业服务商，</p>
+                <p>搭建国际教育服务平台</p>
+            </div>
+        </div>
+
+        <div class="get_more">
+            <a href="">了解更多<i class="glyphicon glyphicon-menu-right"></i></a>
+        </div>
+    </div>
+</div>
+
+<!-- 第三块 -->
+<div class="carousel_div home_carousel third_div">
+    <div class="title">
+        覆盖<span class="blue">30</span>个国家地区<span class="blue">2000+</span>所大学和学院的<span class="blue">10000+</span>真实成功案例
+    </div>
+
+    <!-- 中间块 -->
+    <div class="main_body row">
+        <!-- 左侧 -->
+        <div class="col-md-6">
+            <div class="board card">
+                <!-- 页签 -->
+                <div class="factor_tab_container blue">
+                    <div class="factor_tab" ng-repeat="tab in countryTab track by $index"
+                         ng-class="{no_border: $index==3, active: tab.show}" ng-click="changeTab(tab, 0)">
+                        {{tab.title}}
+                    </div>
+                </div>
+
+                <!-- 主体部分 -->
+                <!-- 美国 -->
+                <div class="home_success" ng-show="countryTab[0].show">
+                    <div class="each_success" ng-repeat="temp in [0,1,2,3,4,5,6]">
+                        <div class="circle_div"></div>
+                        <!-- 简介 -->
+                        <div>
+                            托福：<span class="blue">112</span>GRE：<span class="blue">327</span>
+                        </div>
+                        <div class="brief_success">
+                            李同学 成功录取 芝加哥大学 Financial…
+                        </div>
+
+                        <i class="glyphicon glyphicon-ok-circle"></i>
+                    </div>
+                </div>
+
+                <!-- 英国 -->
+                <div class="home_success" ng-show="countryTab[1].show">
+                    英国
+                </div>
+
+                <!-- 澳洲 -->
+                <div class="home_success" ng-show="countryTab[2].show">
+                    澳洲
+                </div>
+
+                <!-- 加拿大 -->
+                <div class="home_success" ng-show="countryTab[3].show">
+                    加拿大
+                </div>
+            </div>
+        </div>
+
+        <!-- 右侧 -->
+        <div class="col-md-6">
+            <div class="map_img">
+                <img src="/theme/img/wordmap.png">
+            </div>
+        </div>
+
+        <!-- 更多 -->
+        <div class="get_more success">
+            <a href="">了解更多<i class="glyphicon glyphicon-menu-right"></i></a>
+        </div>
+    </div>
+</div>
+<!-- 占位符 -->
+<div style="height: 600px;"></div>
+
+<!-- 专业顾问团队 -->
+<div class="main_body team_div">
+    <img class="flag_div" src="/theme/img/flag.svg">
+    <div class="title">专业顾问团队</div>
+
+    <div class="team_photo_div">
+        <div class="each_photo_div" ng-repeat="temp in [0,1,2,3,4]">
+            <div class="each_photo">
+                <!--<img>-->
+            </div>
+            <div class="name">
+                Marta Bevacqua
+                <div>Paris, France</div>
+            </div>
+        </div>
+    </div>
+</div>

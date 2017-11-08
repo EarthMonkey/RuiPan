@@ -15,7 +15,15 @@ define([''], function () {
             {title: '院校介绍', show: true},
             {title: '录取要求'},
             {title: '录取榜'}
-        ]
+        ];
+
+        var LAST_TAB = $scope.tabs[0];
+        $scope.changeTab = function (tab) {
+            tab.show = true;
+            LAST_TAB.show = false;
+            LAST_TAB = tab;
+        };
+
     }];
 
     var rankModule = angular.module('rank.config');

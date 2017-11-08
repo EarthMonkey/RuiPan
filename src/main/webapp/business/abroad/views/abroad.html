@@ -61,7 +61,7 @@
     <div class="border_body factor_body">
         <div class="factor_tab_container">
             <div class="factor_tab" ng-repeat="tab in factorTab track by $index"
-                 ng-class="{no_border: $index==3, active: tab.show}" ng-click="changeHighTab(tab)">
+                 ng-class="{no_border: $index==3, active: tab.show}" ng-click="changeTab(tab)">
                 {{tab.title}}
             </div>
         </div>
