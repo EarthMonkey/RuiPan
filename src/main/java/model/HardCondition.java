@@ -12,10 +12,8 @@ public class HardCondition {
     private int id;
     private Integer gid;
     private String rank;
-    private String tofel;
-    private String gpa;
-    private String gre;
-    private String gmat;
+    private String subject;
+    private String score;
     private Timestamp updateAt;
     private GradeCategory gradeCategoryByGid;
 
@@ -51,43 +49,23 @@ public class HardCondition {
     }
 
     @Basic
-    @Column(name = "TOFEL")
-    public String getTofel() {
-        return tofel;
+    @Column(name = "subject")
+    public String getSubject() {
+        return subject;
     }
 
-    public void setTofel(String tofel) {
-        this.tofel = tofel;
-    }
-
-    @Basic
-    @Column(name = "GPA")
-    public String getGpa() {
-        return gpa;
-    }
-
-    public void setGpa(String gpa) {
-        this.gpa = gpa;
+    public void setSubject(String subject) {
+        this.subject = subject;
     }
 
     @Basic
-    @Column(name = "GRE")
-    public String getGre() {
-        return gre;
+    @Column(name = "score")
+    public String getScore() {
+        return score;
     }
 
-    public void setGre(String gre) {
-        this.gre = gre;
-    }
-
-    @Basic
-    @Column(name = "GMAT")
-    public String getGmat() {
-        return gmat;
-    }
-
-    public void setGmat(String gmat) {
-        this.gmat = gmat;
+    public void setScore(String score) {
+        this.score = score;
     }
 
     @Basic
@@ -110,10 +88,8 @@ public class HardCondition {
         if (id != that.id) return false;
         if (gid != null ? !gid.equals(that.gid) : that.gid != null) return false;
         if (rank != null ? !rank.equals(that.rank) : that.rank != null) return false;
-        if (tofel != null ? !tofel.equals(that.tofel) : that.tofel != null) return false;
-        if (gpa != null ? !gpa.equals(that.gpa) : that.gpa != null) return false;
-        if (gre != null ? !gre.equals(that.gre) : that.gre != null) return false;
-        if (gmat != null ? !gmat.equals(that.gmat) : that.gmat != null) return false;
+        if (subject != null ? !subject.equals(that.subject) : that.subject != null) return false;
+        if (score != null ? !score.equals(that.score) : that.score != null) return false;
         if (updateAt != null ? !updateAt.equals(that.updateAt) : that.updateAt != null) return false;
 
         return true;
@@ -124,10 +100,8 @@ public class HardCondition {
         int result = id;
         result = 31 * result + (gid != null ? gid.hashCode() : 0);
         result = 31 * result + (rank != null ? rank.hashCode() : 0);
-        result = 31 * result + (tofel != null ? tofel.hashCode() : 0);
-        result = 31 * result + (gpa != null ? gpa.hashCode() : 0);
-        result = 31 * result + (gre != null ? gre.hashCode() : 0);
-        result = 31 * result + (gmat != null ? gmat.hashCode() : 0);
+        result = 31 * result + (subject != null ? subject.hashCode() : 0);
+        result = 31 * result + (score != null ? score.hashCode() : 0);
         result = 31 * result + (updateAt != null ? updateAt.hashCode() : 0);
         return result;
     }

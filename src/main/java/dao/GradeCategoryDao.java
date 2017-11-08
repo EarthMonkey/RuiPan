@@ -20,4 +20,5 @@ public interface GradeCategoryDao extends JpaRepository<GradeCategory,Serializab
 
     @Transactional
     public void deleteByCountry(String country);
+
 }
