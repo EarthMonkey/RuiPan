@@ -140,7 +140,7 @@
     </div>
 </div>
 <!-- 占位符 -->
-<div style="height: 600px;"></div>
+<div style="height: 570px;"></div>
 
 <!-- 专业顾问团队 -->
 <div class="main_body team_div">
@@ -156,6 +156,107 @@
                 Marta Bevacqua
                 <div>Paris, France</div>
             </div>
+        </div>
+    </div>
+</div>
+
+<!-- 顾问介绍 -->
+<div class="carousel_div home_carousel consultant_div">
+    <div class="title">您挑剔顾问？我们比您更挑剔</div>
+
+    <div class="brief_consult">
+        <div class="main_body">
+
+            <div class="con_each_brief">
+                <div class="cube_img">
+                    <img src="/theme/img/cube.svg">
+                </div>
+                <div class="brief_info">
+                    <div>2年我们收到<span class="blue">8000</span>多顾问的加入申请</div>
+                    <div>以极低的通过率选拔我们顾问</div>
+                </div>
+            </div>
+
+            <div class="con_each_brief">
+                <div class="cube_img">
+                    <img src="/theme/img/cube.svg">
+                </div>
+                <div class="brief_info">
+                    <div>顾问平均从业<span class="blue">5</span>年以上</div>
+                    <div>服务<span class="blue">200</span>名以上学生的资深顾问</div>
+                </div>
+            </div>
+
+            <div class="con_each_brief">
+                <div class="cube_img">
+                    <img src="/theme/img/cube.svg">
+                </div>
+                <div class="brief_info">
+
+                    <div>外教来自美国常春藤及前<span class="blue">30</span>名校</div>
+                    <div>毕业的美籍咨询导师</div>
+                </div>
+            </div>
+
+            <div class="con_each_brief">
+                <div class="cube_img">
+                    <img src="/theme/img/cube.svg">
+                </div>
+                <div class="brief_info">
+
+                    <div>语培老师<span class="blue">5-15</span>年教龄</div>
+                    <div><span class="blue">6000+</span>小时授课经历的</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- 占位符 -->
+<div style="height: 520px;"></div>
+
+<div class="carousel_div home_carousel third_div cooper_div">
+    <div class="main_body">
+        <img class="flag_div" src="/theme/img/flag.svg">
+        <div class="title">知名企业合作伙伴</div>
+
+        <!-- 企业图片 -->
+        <div class="team_photo_div" style="padding-top: 10px;padding-bottom: 20px;">
+
+            <div class="each_cooper_business" style="margin-right: 35px;">
+                <img src="/theme/source/cooper-img-0.png">
+                <div class="cover"></div>
+                <div class="flag_h_div">合作办学</div>
+            </div>
+            <div class="each_cooper_business" style="margin-right: 35px;">
+                <img src="/theme/source/cooper-img-1.png">
+                <div class="cover"></div>
+                <div class="flag_h_div">学科培训</div>
+            </div>
+            <div class="each_cooper_business">
+                <img src="/theme/source/cooper-img-2.png">
+                <div class="cover"></div>
+                <div class="flag_h_div">海外培训</div>
+            </div>
+        </div>
+
+        <!-- 合作伙伴代表 -->
+        <div class="title center">合作伙伴代表</div>
+        <div>
+            <div class="each_present" ng-repeat="temp in [0,1,2,3,4,5,6]"></div>
+        </div>
+    </div>
+</div>
+<!-- 占位符 -->
+<div style="height: 520px;"></div>
+
+<!-- 荣誉资质 -->
+<div class="main_body">
+    <div class="honor_title">荣誉资质</div>
+    <div>
+        <div class="each_cert" ng-repeat="temp in [0,1,2,3,4,5] track by $index" ng-class="{cert_center: $index%3==1}">
+            <img src="/theme/source/cert.png">
         </div>
     </div>
 </div>

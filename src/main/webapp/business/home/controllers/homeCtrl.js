@@ -37,7 +37,7 @@ define([''], function () {
                 tab.show = true;
                 LAST_TAB.show = false;
                 LAST_TAB = tab;
-            }
+            };
 
         }
 
