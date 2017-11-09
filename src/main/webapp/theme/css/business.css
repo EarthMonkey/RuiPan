@@ -1379,3 +1379,148 @@ tbody.tr_clickable tr:hover {
 .cert_center {
     margin: 20px 100px;
 }
+
+/* 关于我们 */
+.about_title {
+    width: 260px;
+    margin: 0 auto;
+    padding-bottom: 10px;
+    font-size: 32px;
+    color: #197bc0;
+    text-align: center;
+}
+
+.about_title hr {
+    width: 60px;
+    border: 1px solid #197bc0;
+    margin: 5px auto;
+}
+
+.center_brief {
+    width: 750px;
+    margin: 10px auto;
+    font-size: 16px;
+}
+
+.each_feature {
+    width: 360px;
+    display: inline-block;
+    vertical-align: top;
+    padding: 0 30px;
+}
+
+.each_feature img {
+    width: 60px;
+    height: 60px;
+    margin: 0 120px;
+}
+
+.feature_title {
+    font-size: 18px;
+    width: 100%;
+    text-align: center;
+    margin: 20px 0;
+}
+
+.feature_info {
+    font-size: 14px;
+    color: #9b9b9b;
+    text-align: center;
+}
+
+.cooper_business_info {
+    width: 100%;
+    font-size: 20px;
+    margin-top: 25px;
+    padding-left: 45px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #197bc0;
+}
+
+.cooper_business_title {
+    width: 100%;
+    text-align: center;
+    font-size: 30px;
+    font-family: "Heiti SC", "PingFang SC", "Microsoft Sans Serif", serif;
+    padding-top: 0;
+    margin: 30px auto;
+}
+
+.contact_info {
+    width: 300px;
+    text-align: center;
+    margin: 10px auto;
+}
+
+.contact_info p {
+    margin: 0 0 !important;
+}
+
+.each_input {
+    width: 100%;
+    height: 35px;
+    margin: 10px 0;
+}
+
+.each_input input[type='text'],
+.each_input textarea {
+    width: 100%;
+    height: 35px;
+    font-size: 14px;
+    outline: none;
+    border: 1px solid #197bc0;
+    padding-left: 10px;
+}
+
+input::-webkit-input-placeholder, textarea::-webkit-input-placeholder {
+    color: #197bc0;
+}
+
+input:-moz-placeholder, textarea:-moz-placeholder {
+    color: #197bc0;
+}
+
+input::-moz-placeholder, textarea::-moz-placeholder {
+    color: #197bc0;
+}
+
+input:-ms-input-placeholder, textarea:-ms-input-placeholder {
+    color: #197bc0;
+}
+
+.connect_way_div {
+    width: 100%;
+    height: 255px;
+    border: 1px dashed #197bc0;
+    margin: 10px 0;
+    color: #197bc0;
+    font-size: 14px;
+    padding: 20px 40px;
+}
+
+.connect_way_div .title {
+    font-size: 18px;
+    position: relative;
+    left: -10px;
+}
+
+.connector_part {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.connector_part i {
+    margin-right: 5px;
+}
+
+.each_con {
+    margin: 8px 0;
+}
+
+.contact_btn {
+    width: 230px;
+    height: 40px;
+    border-radius: 0;
+    font-size: 18px;
+    margin-top: 10px;
+}
