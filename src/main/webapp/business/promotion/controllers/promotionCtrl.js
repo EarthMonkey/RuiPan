@@ -5,7 +5,7 @@
 define([''], function () {
     'use strict';
 
-    var promotionCtrl = ['$scope', function ($scope) {
+    var promotionCtrl = ['$scope', '$state', function ($scope, $state) {
 
         // 轮播图
         $scope.myInterval = 3000;
@@ -47,6 +47,12 @@ define([''], function () {
                 }
             }
         });
+
+        // 详情
+        $scope.getDetail = function () {
+
+            $state.go('promotionDetail', {id: 'test'});
+        }
 
     }];
 

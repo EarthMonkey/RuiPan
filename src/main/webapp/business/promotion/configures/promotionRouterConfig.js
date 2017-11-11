@@ -16,6 +16,14 @@ define(['lazy-load/lazyLoad'],
             scripts: {
                 controllers: ['business/promotion/controllers/promotionCtrl']
             }
+        }, {
+            name: 'promotionDetail',
+            url: '/promotion-detail/:id',
+            templateUrl: 'business/promotion/views/promotion-detail.html',
+            controller: 'detailCtrl',
+            scripts: {
+                controllers: ['business/promotion/controllers/detailCtrl']
+            }
         }];
 
         var promotionModule = angular.module('promotion.config', ['ui.router']);

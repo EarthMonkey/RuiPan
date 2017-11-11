@@ -885,6 +885,12 @@ tbody.tr_clickable tr:hover {
     display: inline-block;
     vertical-align: top;
     margin: 10px 40px 10px 0;
+    cursor: pointer;
+}
+
+.pro_each_item:hover div {
+    text-decoration: underline;
+    color: #197bc0 !important;
 }
 
 .pro_each_item.last {
@@ -1560,4 +1566,21 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     color: #9b9b9b;
     font-weight: normal;
     margin-right: 5px;
+}
+
+/* 背景提升详情 */
+.article_title {
+    font-size: 24px;
+    width: 100%;
+    text-align: center;
+}
+
+.article_hr {
+    width: 100%;
+    border: 2px solid #197bc0;
+    margin: 20px 0;
+}
+
+.article {
+    font-size: 16px;
 }
