@@ -12,4 +12,7 @@ import java.util.List;
 public interface ApplicationSchemeDao extends JpaRepository<ApplicationScheme,Serializable> {
 
     public List<ApplicationScheme> findAllByGidAndFlagOrderBySubdivisionGradeAscUpdateAtDesc(Integer gid,Integer flag);
+
+    public List<ApplicationScheme> findAllByGidAndFlagOrderByUpdateAtDesc(Integer gid, Integer Flag);
+
 }

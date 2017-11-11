@@ -1,5 +1,7 @@
 package vo;
 
+import constant.GlobalRecommedationCategory;
+import constant.StatesConstant;
 import model.GlobalRecommendation;
 
 import java.sql.Timestamp;
@@ -12,7 +14,6 @@ public class RecommendApplicationScheme {
     private String picturePath;
     private Integer rid;
     private Timestamp recommendAt;
-    private Integer flag;
     private ApplicationSchemeVO applicationSchemeVO;
 
     public RecommendApplicationScheme() {
@@ -50,14 +51,6 @@ public class RecommendApplicationScheme {
         this.recommendAt = recommendAt;
     }
 
-    public Integer getFlag() {
-        return flag;
-    }
-
-    public void setFlag(Integer flag) {
-        this.flag = flag;
-    }
-
     public ApplicationSchemeVO getApplicationSchemeVO() {
         return applicationSchemeVO;
     }
@@ -69,12 +62,12 @@ public class RecommendApplicationScheme {
     public GlobalRecommendation getModel(){
         GlobalRecommendation globalRecommendation=new GlobalRecommendation();
         globalRecommendation.setId(id);
-        globalRecommendation.setCategory("ApplicationSchema");
+        globalRecommendation.setCategory(GlobalRecommedationCategory.APPLICATION_SCHEME);
         globalRecommendation.setSlogan(picturePath);
         globalRecommendation.setRid(rid);
         recommendAt=new Timestamp(System.currentTimeMillis());
         globalRecommendation.setRecommendAt(recommendAt);
-        globalRecommendation.setFlag(flag);
+        globalRecommendation.setFlag(StatesConstant.RECOMMEND);
         return  globalRecommendation;
     }
 
@@ -83,6 +76,5 @@ public class RecommendApplicationScheme {
         picturePath =globalRecommendation.getSlogan();
         rid=globalRecommendation.getRid();
         recommendAt=globalRecommendation.getRecommendAt();
-        flag=globalRecommendation.getFlag();
     }
 }

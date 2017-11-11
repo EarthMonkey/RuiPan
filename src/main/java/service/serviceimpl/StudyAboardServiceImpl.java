@@ -35,7 +35,7 @@ public class StudyAboardServiceImpl implements StudyAboardService{
     @Override
     public String addOneCountry(String country) {
         if(gradeCategoryDao.countByCountry(country)>0){
-            return "country_exit";
+            return "country_exist";
         }else{
             String grades[]={"研究生","本科生","高中生"};
             List<GradeCategory> gradeCategories=new ArrayList<GradeCategory>();
@@ -55,7 +55,7 @@ public class StudyAboardServiceImpl implements StudyAboardService{
     @Override
     public String deleteOneCountry(String country) {
         if(gradeCategoryDao.countByCountry(country)==0){
-            return "country_not_exit";
+            return "country_not_exist";
         }else{
             gradeCategoryDao.deleteByCountry(country);
             return "success";
