@@ -16,6 +16,14 @@ define(['lazy-load/lazyLoad'],
             scripts: {
                 controllers: ['business/success/controllers/successCtrl']
             }
+        }, {
+            name: 'successDetail',
+            url: '/success-detail/:sucId',
+            templateUrl: 'business/success/views/success-detail.html',
+            controller: 'detailCtrl',
+            scripts: {
+                controllers: ['business/success/controllers/detailCtrl']
+            }
         }];
 
         var successModule = angular.module('success.config', ['ui.router']);

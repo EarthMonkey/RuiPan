@@ -1524,3 +1524,40 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     font-size: 18px;
     margin-top: 10px;
 }
+
+/* 成功案例详情 */
+.suc_left {
+    width: 150px;
+    height: 150px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.suc_left img {
+    width: 150px;
+    height: 150px;
+}
+
+.suc_right {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 15px;
+    font-size: 20px;
+}
+
+.suc_right .title {
+    font-size: 22px;
+    margin-top: 10px;
+    margin-bottom: 17px;
+}
+
+.suc_right .info {
+    margin-top: 15px;
+    font-size: 18px;
+}
+
+.suc_right .info label {
+    color: #9b9b9b;
+    font-weight: normal;
+    margin-right: 5px;
+}

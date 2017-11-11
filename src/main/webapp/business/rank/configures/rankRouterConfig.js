@@ -18,7 +18,7 @@ define(['lazy-load/lazyLoad'],
             }
         }, {
             name: 'schoolDetail',
-            url: '/detail/:name',
+            url: '/rank-detail/:name',
             templateUrl: 'business/rank/views/school-detail.html',
             controller: 'detailCtrl',
             scripts: {

@@ -5,9 +5,7 @@
 define([''], function () {
     'use strict';
 
-    var successCtrl = ['$scope', function ($scope) {
-
-        $scope.test = "成功案例";
+    var successCtrl = ['$scope', '$state', function ($scope, $state) {
 
         $scope.selectedCoun = 'america';
         $scope.filterCountry = [
@@ -38,11 +36,17 @@ define([''], function () {
         $scope.currentPage = 1;
         $scope.pageChanged = function () {
             console.log($scope.currentPage);
-        }
+        };
+
+        // 获取详情
+        $scope.getDetail = function () {
+
+            $state.go("successDetail", {sucId: 'example1'});
+        };
 
     }];
 
-    var homeModule = angular.module('success.config');
-    homeModule.controller('successCtrl', successCtrl);
+    var successModule = angular.module('success.config');
+    successModule.controller('successCtrl', successCtrl);
 
 });

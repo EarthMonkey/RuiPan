@@ -318,3 +318,7 @@ table.zebra tr.odd {
     background-color: #f9f9f9;
 }
 
+/* 路径导航 */
+ol.breadcrumb {
+    background-color: transparent;
+}
