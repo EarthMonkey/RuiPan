@@ -5,15 +5,6 @@
 </div>
 <div style="height: 200px;"></div>
 
-<!-- 语种筛选 -->
-<div>
-    <div class="filter_div">
-        <span class="filter_tip">培训类型: </span>
-        <span class="filter_option" ng-repeat="ft in filterType" ng-click="filterClick(ft)"
-              ng-class="{active: selectedType.id==ft.id}">{{ft.label}}</span>
-    </div>
-</div>
-
 <!-- 中间块 -->
 <div>
     <div class="language_carousel">
@@ -48,7 +39,7 @@
         <div class="board_title">
             <img class="list_icon" src="/theme/img/abroad-icon-1.svg" alt="要求">
             <span class="title_text">
-            {{selectedType.label}}考试介绍
+            托福考试介绍
         </span>
             <hr>
         </div>
@@ -58,6 +49,31 @@
             <p>托福是由美国教育测验服务社（ETS）举办的英语能力考试，全名为“检定非英语为母语者的英语能力考试”，中文由TOEFL而音译为“托福”。</p>
             <p>TOEFL有三种，分别是： pbt—paper based test 纸考 677, cbt—computer based test 机考 300, ibt—internet based test 网考 120, 新托福满分是120分。TOEFL考试的有效期为两年，是从考试日期开始计算的。例如：2003年1月18日参加考试，这次考试成绩的有效期是从2003年1月18日到2005年1月18日。托福复习主要资料为托福机经又称民间托福答案题库。</p>
             <p>英国内政部于2014年4月初结束与美国教育考试机构ETS的合作，不再承认其旗下托福（TOEFL）和托业（TOEIC）两大英语考试的成绩。部分准备赴英留学的中国学生反映已接到校方要求重新提供英语考试成绩的通知。</p>
+        </div>
+
+        <div class="border_body">
+            <button class="hollow">在线资讯</button>
+        </div>
+    </div>
+</div>
+
+<!-- 介绍块 -->
+<div style="margin-top: 80px;">
+    <div class="board">
+        <!-- title -->
+        <div class="board_title">
+            <img class="list_icon" src="/theme/img/abroad-icon-1.svg" alt="要求">
+            <span class="title_text">
+            雅思考试介绍
+        </span>
+            <hr>
+        </div>
+
+        <!-- body -->
+        <div class="border_body language_intro">
+            <p>雅思考试（IELTS），全称国际英语语言测试系统，外文名International English Language Testing System，由剑桥大学考试委员会外语考试部、英国文化协会及IDP教育集团共同管理，是一种针英语能力，为打算到使用英语的国家学习、工作或定居的人们设置的英语水平考试。</p>
+            <p>雅思考试分学术类和培训类两种，分别针对申请留学的学生和计划在英语语言国家参加工作或移民的人士。考试分听、说、读、写四个部分，总分9分。[1]</p>
+            <p>雅思考试已获得全球135个国家逾9000所教育机构、雇主单位、专业协会和政府部门的认可；雅思考试作为全球留学及移民类英语测评的领导者，每年有超过200万人次的考生参加雅思考试。</p>
         </div>
 
         <div class="border_body">

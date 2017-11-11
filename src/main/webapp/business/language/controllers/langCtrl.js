@@ -5,20 +5,10 @@
 define([''], function () {
     'use strict';
 
-    var langCtrl = ['$scope', function ($scope) {
+    var langCtrl = ['$scope', '$state', function ($scope, $state) {
 
-        $scope.test = "语言培训";
-
-        $scope.filterType = [
-            {id: 'tofel', label: '托福'},
-            {id: 'ielts', label: '雅思'},
-            {id: 'other', label: '其他'}
-        ];
-        $scope.selectedType = $scope.filterType[0];
-
-        $scope.filterClick = function (filter) {
-            $scope.selectedType = filter;
-        };
+        var langType = $state.params.type;
+        console.log(langType);
 
         // 轮播图
         $scope.myInterval = 3000;

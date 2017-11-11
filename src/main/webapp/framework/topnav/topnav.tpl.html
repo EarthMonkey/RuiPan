@@ -13,7 +13,7 @@
 
                 <ul ng-if="na.children!=null" class="dropdown-menu">
                     <li ng-repeat="child in na.children track by $index" class="dropdown">
-                        <a ng-click="navListLink(na, child.country, $index)">
+                        <a ng-click="navListLink(na, child.country, $index, child.type)">
                             <img ng-if="child.country" ng-src="{{'/theme/img/' + child.country + '.svg'}}" alt="留学">
                             {{child.text}}
                         </a>

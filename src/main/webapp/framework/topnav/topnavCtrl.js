@@ -54,7 +54,7 @@ define([], function () {
 
         });
 
-        $scope.navListLink = function (nav, country, index) {
+        $scope.navListLink = function (nav, country, index, langType) {
 
             $scope.currentState = nav.state;
             if (nav.state == 'introduction') {
@@ -73,6 +73,12 @@ define([], function () {
             }
 
             if (nav.children) {
+                if (nav.state === "language") {
+                    langType = (langType) ? langType : 'teacher';
+                    $state.go("language", {type: langType});
+                    return;
+                }
+
                 country = country == null ? nav.children[0].country : country;
                 $state.go(nav.state, {country: country, type: $scope.currentAssist});
 

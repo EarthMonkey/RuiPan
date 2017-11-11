@@ -10,7 +10,7 @@ define(['lazy-load/lazyLoad'],
 
         var configArr = [{
             name: 'language',
-            url: '/language',
+            url: '/language/:type',
             templateUrl: 'business/language/views/lang.html',
             controller: 'langCtrl',
             scripts: {

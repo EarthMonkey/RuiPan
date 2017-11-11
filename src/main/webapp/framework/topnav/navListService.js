@@ -62,7 +62,14 @@ define(function () {
             },
             {
                 text: '语言培训',
-                state: 'language'
+                state: 'language',
+                children: [
+                    {text: '校长教师培训', type: 'teacher'},
+                    {text: '英语培训', type: 'english'},
+                    {text: '中文培训', type: 'chinese'},
+                    {text: '小语种培训', type:'small'},
+                    {text: '其他', type: 'other'}
+                ]
             },
             {
                 text: "合作办学",
