@@ -23,12 +23,12 @@ public interface StudyAboardService {
     public Map<String,List<HardConditionVO>> getHardConditionByGid(Integer gid);
 
     //在gid下增加一条硬性条件
-    public Integer addHardCondition(HardConditionVO hardConditionVO);
+    public void addHardCondition(HardConditionVO hardConditionVO);
 
     //更新一条硬性条件
     public String changeHardCondition(HardConditionVO hardConditionVO);
 
     //删除一条硬性条件
-    public String deleteHardCondition(Integer id);
+    public String deleteHardCondition(Integer hardConditionVO);
 
 }

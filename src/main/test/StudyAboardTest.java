@@ -53,7 +53,7 @@ public class StudyAboardTest {
                 hardConditionVO.setRank(ranks[i]);
                 hardConditionVO.setSubject(subjects[j]);
                 hardConditionVO.setScore(scores[i]);
-                System.out.println(studyAboardService.addHardCondition(hardConditionVO));
+                studyAboardService.addHardCondition(hardConditionVO);
             }
         }
     }
@@ -78,6 +78,17 @@ public class StudyAboardTest {
         hardConditionVO.setSubject("GRE");
         hardConditionVO.setScore("10.1");
         studyAboardService.changeHardCondition(hardConditionVO);
+    }
+
+    @Test
+    public void addHardConditon(){
+        HardConditionVO hardConditionVO=new HardConditionVO();
+        hardConditionVO.setGid(8);
+        hardConditionVO.setRank("10");
+        hardConditionVO.setSubject("GRE");
+        hardConditionVO.setScore("10.1");
+        studyAboardService.addHardCondition(hardConditionVO);
+        System.out.println(hardConditionVO.getUpdateAt());
     }
 
 }

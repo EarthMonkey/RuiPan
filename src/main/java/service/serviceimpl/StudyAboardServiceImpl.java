@@ -83,10 +83,10 @@ public class StudyAboardServiceImpl implements StudyAboardService{
     }
 
     @Override
-    public Integer addHardCondition(HardConditionVO hardConditionVO) {
+    public void addHardCondition(HardConditionVO hardConditionVO) {
         HardCondition hardCondition=hardConditionVO.getModel();
         hardConditionDao.saveAndFlush(hardCondition);
-        return hardCondition.getId();
+        hardConditionVO.setId(hardCondition.getId());
     }
 
     @Override
