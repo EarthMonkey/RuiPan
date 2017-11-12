@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by ldchao on 2017/11/1.
+ * Created by ldchao on 2017/11/12.
  */
 @Entity
 @Table(name = "successful_case", schema = "ruipan", catalog = "")
@@ -24,7 +24,7 @@ public class SuccessfulCase {
     private Timestamp updateAt;
     private ProfessionCategory professionCategoryByPid;
     private School schoolBySid;
-    private ServiceConsultant serviceConsultantByCid;
+    private Consultant consultantByCid;
 
     @Id
     @Column(name = "id")
@@ -224,11 +224,11 @@ public class SuccessfulCase {
 
     @ManyToOne
     @JoinColumn(name = "cid", referencedColumnName = "id", insertable = false, updatable = false)
-    public ServiceConsultant getServiceConsultantByCid() {
-        return serviceConsultantByCid;
+    public Consultant getConsultantByCid() {
+        return consultantByCid;
     }
 
-    public void setServiceConsultantByCid(ServiceConsultant serviceConsultantByCid) {
-        this.serviceConsultantByCid = serviceConsultantByCid;
+    public void setConsultantByCid(Consultant consultantByCid) {
+        this.consultantByCid = consultantByCid;
     }
 }

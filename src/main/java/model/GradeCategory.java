@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 import java.util.Collection;
 
 /**
- * Created by ldchao on 2017/11/1.
+ * Created by ldchao on 2017/11/12.
  */
 @Entity
 @Table(name = "grade_category", schema = "ruipan", catalog = "")
@@ -16,7 +16,6 @@ public class GradeCategory {
     private Timestamp creatAt;
     private Collection<ApplicationElement> applicationElementsByGid;
     private Collection<ApplicationScheme> applicationSchemesByGid;
-    private Collection<ForeignConsultant> foreignConsultantsByGid;
     private Collection<HardCondition> hardConditionsByGid;
     private Collection<Question> questionsByGid;
 
@@ -101,15 +100,6 @@ public class GradeCategory {
 
     public void setApplicationSchemesByGid(Collection<ApplicationScheme> applicationSchemesByGid) {
         this.applicationSchemesByGid = applicationSchemesByGid;
-    }
-
-    @OneToMany(mappedBy = "gradeCategoryByGid")
-    public Collection<ForeignConsultant> getForeignConsultantsByGid() {
-        return foreignConsultantsByGid;
-    }
-
-    public void setForeignConsultantsByGid(Collection<ForeignConsultant> foreignConsultantsByGid) {
-        this.foreignConsultantsByGid = foreignConsultantsByGid;
     }
 
     @OneToMany(mappedBy = "gradeCategoryByGid")

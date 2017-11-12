@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by ldchao on 2017/11/1.
+ * Created by ldchao on 2017/11/12.
  */
 @Entity
 @Table(name = "profession_introduce", schema = "ruipan", catalog = "")
@@ -137,7 +137,7 @@ public class ProfessionIntroduce {
     }
 
     @OneToOne
-    @JoinColumn(name = "pid", referencedColumnName = "pid", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "pid", referencedColumnName = "pid", nullable = false)
     public ProfessionCategory getProfessionCategoryByPid() {
         return professionCategoryByPid;
     }

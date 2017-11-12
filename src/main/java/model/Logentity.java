@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by ldchao on 2017/10/18.
+ * Created by ldchao on 2017/11/12.
  */
 @Entity
 public class Logentity {

@@ -5,7 +5,7 @@ import java.sql.Timestamp;
 import java.util.Collection;
 
 /**
- * Created by ldchao on 2017/11/1.
+ * Created by ldchao on 2017/11/12.
  */
 @Entity
 public class School {
@@ -24,7 +24,7 @@ public class School {
 
     @Id
     @Column(name = "sid")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     public int getSid() {
         return sid;
     }

@@ -4,11 +4,11 @@ import javax.persistence.*;
 import java.sql.Timestamp;
 
 /**
- * Created by ldchao on 2017/11/1.
+ * Created by ldchao on 2017/11/12.
  */
 @Entity
-@Table(name = "order_for_service", schema = "ruipan", catalog = "")
-public class OrderForService {
+@Table(name = "order_for_consultant", schema = "ruipan", catalog = "")
+public class OrderForConsultant {
     private int id;
     private Integer cid;
     private String name;
@@ -17,7 +17,7 @@ public class OrderForService {
     private Timestamp orderTime;
     private String isAnswer;
     private Timestamp updateAt;
-    private ServiceConsultant serviceConsultantByCid;
+    private Consultant consultantByCid;
 
     @Id
     @Column(name = "id")
@@ -105,7 +105,7 @@ public class OrderForService {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        OrderForService that = (OrderForService) o;
+        OrderForConsultant that = (OrderForConsultant) o;
 
         if (id != that.id) return false;
         if (cid != null ? !cid.equals(that.cid) : that.cid != null) return false;
@@ -134,11 +134,11 @@ public class OrderForService {
 
     @ManyToOne
     @JoinColumn(name = "cid", referencedColumnName = "id", insertable = false, updatable = false)
-    public ServiceConsultant getServiceConsultantByCid() {
-        return serviceConsultantByCid;
+    public Consultant getConsultantByCid() {
+        return consultantByCid;
     }
 
-    public void setServiceConsultantByCid(ServiceConsultant serviceConsultantByCid) {
-        this.serviceConsultantByCid = serviceConsultantByCid;
+    public void setConsultantByCid(Consultant consultantByCid) {
+        this.consultantByCid = consultantByCid;
     }
 }

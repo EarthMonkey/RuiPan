@@ -5,14 +5,14 @@ import java.sql.Timestamp;
 import java.util.Collection;
 
 /**
- * Created by ldchao on 2017/11/1.
+ * Created by ldchao on 2017/11/12.
  */
 @Entity
-@Table(name = "service_consultant", schema = "ruipan", catalog = "")
-public class ServiceConsultant {
+public class Consultant {
     private int id;
-    private Integer pid;
     private String name;
+    private String country;
+    private String profession;
     private String headSculpture;
     private Double workingHours;
     private Integer offerNumber;
@@ -20,8 +20,8 @@ public class ServiceConsultant {
     private String synopsis;
     private String textPath;
     private Timestamp updateAt;
-    private ProfessionCategory professionCategoryByPid;
-    private Collection<OrderForService> orderForServicesById;
+    private Collection<ConsultantBusiness> consultantBusinessesById;
+    private Collection<OrderForConsultant> orderForConsultantsById;
     private Collection<SuccessfulCase> successfulCasesById;
 
     @Id
@@ -36,16 +36,6 @@ public class ServiceConsultant {
     }
 
     @Basic
-    @Column(name = "pid")
-    public Integer getPid() {
-        return pid;
-    }
-
-    public void setPid(Integer pid) {
-        this.pid = pid;
-    }
-
-    @Basic
     @Column(name = "name")
     public String getName() {
         return name;
@@ -53,6 +43,26 @@ public class ServiceConsultant {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Basic
+    @Column(name = "country")
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
+    @Basic
+    @Column(name = "profession")
+    public String getProfession() {
+        return profession;
+    }
+
+    public void setProfession(String profession) {
+        this.profession = profession;
     }
 
     @Basic
@@ -130,11 +140,12 @@ public class ServiceConsultant {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        ServiceConsultant that = (ServiceConsultant) o;
+        Consultant that = (Consultant) o;
 
         if (id != that.id) return false;
         if (name != null ? !name.equals(that.name) : that.name != null) return false;
-        if (pid != null ? !pid.equals(that.pid) : that.pid != null) return false;
+        if (country != null ? !country.equals(that.country) : that.country != null) return false;
+        if (profession != null ? !profession.equals(that.profession) : that.profession != null) return false;
         if (headSculpture != null ? !headSculpture.equals(that.headSculpture) : that.headSculpture != null)
             return false;
         if (workingHours != null ? !workingHours.equals(that.workingHours) : that.workingHours != null) return false;
@@ -152,7 +163,8 @@ public class ServiceConsultant {
     public int hashCode() {
         int result = id;
         result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (pid != null ? pid.hashCode() : 0);
+        result = 31 * result + (country != null ? country.hashCode() : 0);
+        result = 31 * result + (profession != null ? profession.hashCode() : 0);
         result = 31 * result + (headSculpture != null ? headSculpture.hashCode() : 0);
         result = 31 * result + (workingHours != null ? workingHours.hashCode() : 0);
         result = 31 * result + (offerNumber != null ? offerNumber.hashCode() : 0);
@@ -163,26 +175,25 @@ public class ServiceConsultant {
         return result;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "pid", referencedColumnName = "pid", insertable = false, updatable = false)
-    public ProfessionCategory getProfessionCategoryByPid() {
-        return professionCategoryByPid;
+    @OneToMany(mappedBy = "consultantByCid")
+    public Collection<ConsultantBusiness> getConsultantBusinessesById() {
+        return consultantBusinessesById;
     }
 
-    public void setProfessionCategoryByPid(ProfessionCategory professionCategoryByPid) {
-        this.professionCategoryByPid = professionCategoryByPid;
+    public void setConsultantBusinessesById(Collection<ConsultantBusiness> consultantBusinessesById) {
+        this.consultantBusinessesById = consultantBusinessesById;
     }
 
-    @OneToMany(mappedBy = "serviceConsultantByCid")
-    public Collection<OrderForService> getOrderForServicesById() {
-        return orderForServicesById;
+    @OneToMany(mappedBy = "consultantByCid")
+    public Collection<OrderForConsultant> getOrderForConsultantsById() {
+        return orderForConsultantsById;
     }
 
-    public void setOrderForServicesById(Collection<OrderForService> orderForServicesById) {
-        this.orderForServicesById = orderForServicesById;
+    public void setOrderForConsultantsById(Collection<OrderForConsultant> orderForConsultantsById) {
+        this.orderForConsultantsById = orderForConsultantsById;
     }
 
-    @OneToMany(mappedBy = "serviceConsultantByCid")
+    @OneToMany(mappedBy = "consultantByCid")
     public Collection<SuccessfulCase> getSuccessfulCasesById() {
         return successfulCasesById;
     }
