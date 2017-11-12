@@ -25,6 +25,12 @@ public class ApplicationSchemeTest {
     public void getApplicationSchemeByGidTest(){
 //        public Map<String, List<ApplicationSchemeVO>> getApplicationSchemeByGid(Integer gid);
         Map<String, List<ApplicationSchemeVO>> result=applicationSchemeService.getApplicationSchemeByGid(7);
+        for (Map.Entry<String,List<ApplicationSchemeVO>> entry:result.entrySet()) {
+            System.out.println(entry.getKey());
+            for (ApplicationSchemeVO applicationSchemeVO:entry.getValue()) {
+                System.out.println(applicationSchemeVO.getUpdateAt());
+            }
+        }
 
     }
 

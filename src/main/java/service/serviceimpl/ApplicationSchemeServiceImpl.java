@@ -12,10 +12,7 @@ import constant.StatesConstant;
 import vo.ApplicationSchemeVO;
 import vo.RecommendApplicationScheme;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * Created by ldchao on 2017/11/9.
@@ -31,9 +28,10 @@ public class ApplicationSchemeServiceImpl implements ApplicationSchemeService{
 
     @Override
     public Map<String, List<ApplicationSchemeVO>> getApplicationSchemeByGid(Integer gid) {
-        Map<String,List<ApplicationSchemeVO>> result=new TreeMap<String, List<ApplicationSchemeVO>>();
+        Map<String,List<ApplicationSchemeVO>> result=new LinkedHashMap<String, List<ApplicationSchemeVO>>();
         List<ApplicationScheme> applicationSchemes=applicationSchemeDao.findAllByGidAndFlagOrderBySubdivisionGradeAscUpdateAtDesc(gid, StatesConstant.PUBLISHED);
         for (ApplicationScheme applicationScheme:applicationSchemes) {
+            System.out.println(applicationScheme.getSubdivisionGrade());
             ApplicationSchemeVO applicationSchemeVO=new ApplicationSchemeVO();
             applicationSchemeVO.update(applicationScheme);
             String subdivisionGrade=applicationScheme.getSubdivisionGrade();
