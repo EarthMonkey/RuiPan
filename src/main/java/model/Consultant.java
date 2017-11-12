@@ -19,6 +19,7 @@ public class Consultant {
     private String applicationSuccessRate;
     private String synopsis;
     private String textPath;
+    private String isRecommend;
     private Timestamp updateAt;
     private Collection<ConsultantBusiness> consultantBusinessesById;
     private Collection<OrderForConsultant> orderForConsultantsById;
@@ -125,6 +126,17 @@ public class Consultant {
         this.textPath = textPath;
     }
 
+
+    @Basic
+    @Column(name = "isRecommend")
+    public String getIsRecommend() {
+        return isRecommend;
+    }
+
+    public void setIsRecommend(String isRecommend) {
+        this.isRecommend = isRecommend;
+    }
+
     @Basic
     @Column(name = "updateAt")
     public Timestamp getUpdateAt() {
@@ -154,6 +166,7 @@ public class Consultant {
             return false;
         if (synopsis != null ? !synopsis.equals(that.synopsis) : that.synopsis != null) return false;
         if (textPath != null ? !textPath.equals(that.textPath) : that.textPath != null) return false;
+        if (isRecommend != null ? !isRecommend.equals(that.isRecommend) : that.isRecommend != null) return false;
         if (updateAt != null ? !updateAt.equals(that.updateAt) : that.updateAt != null) return false;
 
         return true;
@@ -171,6 +184,7 @@ public class Consultant {
         result = 31 * result + (applicationSuccessRate != null ? applicationSuccessRate.hashCode() : 0);
         result = 31 * result + (synopsis != null ? synopsis.hashCode() : 0);
         result = 31 * result + (textPath != null ? textPath.hashCode() : 0);
+        result = 31 * result + (isRecommend != null ? isRecommend.hashCode() : 0);
         result = 31 * result + (updateAt != null ? updateAt.hashCode() : 0);
         return result;
     }
