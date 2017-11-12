@@ -41,8 +41,14 @@
     </div>
 
     <!-- body -->
-    <div class="border_body">
-
+    <div class="border_body program_div">
+        <div class="each_program" ng-repeat="pro in programs track by $index"
+             ng-class="{no_border: $index%4==3}">
+            <div class="title">{{pro.title}}</div>
+            <div class="program">方案一：{{pro.methods[0]}}</div>
+            <div class="program">方案二：{{pro.methods[1]}}</div>
+            <div class="program">方案三：{{pro.methods[2]}}</div>
+        </div>
     </div>
 </div>
 
@@ -106,7 +112,19 @@
 
     <!-- body -->
     <div class="border_body">
-
+        <div>
+            <div class="each_consult" ng-repeat="con in consultants">
+                <img ng-src="{{con.img}}">
+                <div class="consult_info">
+                    <div class="name">{{con.name}}</div>
+                    <div class="special_div">{{con.special}}</div>
+                </div>
+                <div class="consult_info hover_part">
+                    {{con.brief}}
+                </div>
+                <div class="consult_info hover_part_1"></div>
+            </div>
+        </div>
     </div>
 </div>
 

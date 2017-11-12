@@ -168,7 +168,7 @@
 }
 
 .no_border {
-    border: none;
+    border: none !important;
 }
 
 .tab_body {
@@ -195,6 +195,100 @@
 
 .factor_body button:hover {
     background-color: #e44d87;
+}
+
+.program_div {
+    padding: 0 0;
+    border: 1px solid #afafaf;
+}
+
+.each_program {
+    display: inline-block;
+    vertical-align: top;
+    border-right: 1px solid #afafaf;
+    padding: 0 40px;
+    width: 25%;
+    margin: 20px -5px;
+    font-size: 14px;
+}
+
+.each_program .title {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.program {
+    color: #666;
+    line-height: 25px;
+    cursor: pointer;
+}
+
+.program:hover {
+    color: #197bc0;
+    text-decoration: underline;
+}
+
+.each_consult {
+    width: 245px;
+    height: 280px;
+    display: inline-block;
+    vertical-align: top;
+    margin: 10px 15px;
+    cursor: pointer;
+    position: relative;
+}
+
+.each_consult img {
+    width: 100%;
+    height: 280px;
+}
+
+.consult_info {
+    width: 100%;
+    height: 90px;
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 15px 20px 0 20px;
+    position: absolute;
+    bottom: 0;
+}
+
+.consult_info .name {
+    color: #fff;
+    font-size: 18px;
+}
+
+.consult_info .special_div {
+    color: #ffc001;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.consult_info.hover_part_1 {
+    bottom: 210px;
+    height: 70px;
+    display: none;
+}
+
+.consult_info.hover_part {
+    font-size: 14px;
+    color: #fff;
+    height: 120px;
+    padding-top: 5px;
+    display: none;
+}
+
+.each_consult:hover .consult_info {
+    bottom: 120px;
+}
+
+.each_consult:hover .consult_info.hover_part_1 {
+    display: block;
+    bottom: 210px;
+}
+
+.each_consult:hover .consult_info.hover_part {
+    display: block;
+    bottom: 0;
 }
 
 /* introduction页面 */
