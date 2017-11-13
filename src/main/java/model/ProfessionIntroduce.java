@@ -12,8 +12,6 @@ public class ProfessionIntroduce {
     private int pid;
     private String detailSynopsis;
     private String detailTextPath;
-    private String courseSynopsis;
-    private String courseTextPath;
     private String applicationAdvice;
     private Integer flag;
     private Timestamp updateAt;
@@ -47,26 +45,6 @@ public class ProfessionIntroduce {
 
     public void setDetailTextPath(String detailTextPath) {
         this.detailTextPath = detailTextPath;
-    }
-
-    @Basic
-    @Column(name = "course_synopsis")
-    public String getCourseSynopsis() {
-        return courseSynopsis;
-    }
-
-    public void setCourseSynopsis(String courseSynopsis) {
-        this.courseSynopsis = courseSynopsis;
-    }
-
-    @Basic
-    @Column(name = "course_text_path")
-    public String getCourseTextPath() {
-        return courseTextPath;
-    }
-
-    public void setCourseTextPath(String courseTextPath) {
-        this.courseTextPath = courseTextPath;
     }
 
     @Basic
@@ -111,10 +89,6 @@ public class ProfessionIntroduce {
             return false;
         if (detailTextPath != null ? !detailTextPath.equals(that.detailTextPath) : that.detailTextPath != null)
             return false;
-        if (courseSynopsis != null ? !courseSynopsis.equals(that.courseSynopsis) : that.courseSynopsis != null)
-            return false;
-        if (courseTextPath != null ? !courseTextPath.equals(that.courseTextPath) : that.courseTextPath != null)
-            return false;
         if (applicationAdvice != null ? !applicationAdvice.equals(that.applicationAdvice) : that.applicationAdvice != null)
             return false;
         if (flag != null ? !flag.equals(that.flag) : that.flag != null) return false;
@@ -128,8 +102,6 @@ public class ProfessionIntroduce {
         int result = pid;
         result = 31 * result + (detailSynopsis != null ? detailSynopsis.hashCode() : 0);
         result = 31 * result + (detailTextPath != null ? detailTextPath.hashCode() : 0);
-        result = 31 * result + (courseSynopsis != null ? courseSynopsis.hashCode() : 0);
-        result = 31 * result + (courseTextPath != null ? courseTextPath.hashCode() : 0);
         result = 31 * result + (applicationAdvice != null ? applicationAdvice.hashCode() : 0);
         result = 31 * result + (flag != null ? flag.hashCode() : 0);
         result = 31 * result + (updateAt != null ? updateAt.hashCode() : 0);
