@@ -1,6 +1,6 @@
-<!-- Created by L.H.S on 2017/8/13. -->
+<!-- Created by L.H.S on 2017/11/13. -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <title>瑞泮国际教育科技有限公司</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -10,28 +10,21 @@
     <meta name="description" content="北京瑞泮国际教育科技有限公司">
     <!--框架必须的CSS文件,可定制化-->
     <link type="text/css" href="./theme/bootstrap/bootstrap.css" rel="stylesheet">
-    <link type="text/css" href="./theme/css/common.css" rel="stylesheet">
-    <link type="text/css" href="./theme/css/business.css" rel="stylesheet">
     <link type="text/css" href="./theme/css/font-awesome.min.css" rel="stylesheet">
+    <link type="text/css" href="./theme/css/backend.css" rel="stylesheet">
     <link type="image/x-icon" href="./theme/img/icon.png" rel="icon"/>
 </head>
 <body>
 
 <!--页面顶层导航区-->
-<nav ng-controller="topnavCtrl">
+<nav ng-controller="topbarCtrl">
     <div id="login_nav" ng-include="menus.url"></div>
 </nav>
 
 <!--中间内容区-->
-<div id="content" class="main_body">
+<div id="content">
     <div ui-view></div>
 </div>
-
-<!--页脚区-->
-<footer ng-controller="footerCtrl">
-    <div id="footer" ng-include="footer.url"></div>
-</footer>
-
 
 <!-- 模块化代码加载起始处，入口js为main.js -->
 <script type="text/javascript" src="./lib/jquery.min.js"></script>
@@ -43,7 +36,7 @@
 <!-- bootstrap -->
 <script type="text/javascript" src="./lib/bootstrap/ui-bootstrap-tpls.js"></script>
 <!-- main -->
-<script type="text/javascript" src="./main.js"></script>
+<script type="text/javascript" src="./main-backend.js"></script>
 
 </body>
 </html>

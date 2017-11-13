@@ -1,0 +1,104 @@
+/* Created by L.H.S on 2017/11/13.
+ * styles of backend
+ */
+
+html, body {
+    min-width: 1200px !important;
+    background-color: #d4e9f9;
+}
+
+/* 按钮 */
+button {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    padding: 5px 10px;
+    -webkit-transition: 0.2s;
+    -moz-transition: 0.2s;
+    -o-transition: 0.2s;
+    transition: 0.2s;
+    /* 可覆盖样式 */
+    background-color: #197bc0;
+    color: #fff;
+}
+
+button:hover,
+button:focus {
+    background-color: #3097d8;
+}
+
+.top_bar {
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    background-color: #197bc0;
+    padding: 0 15px;
+    text-align: right;
+    color: #fff;
+    font-size: 20px;
+}
+
+/* 登录 */
+.login_div {
+    width: 400px;
+    margin: 100px auto;
+    background-color: #fff;
+    -webkit-box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    padding: 20px 0;
+}
+
+.login_input {
+    width: 250px;
+    margin: 10px auto;
+}
+
+.login_input img {
+    width: 100%;
+    height: 65px;
+    margin-bottom: 15px;
+}
+
+.login_input label {
+    font-size: 16px;
+    display: inline-block;
+    width: 65px;
+    margin-right: 5px;
+    text-align: justify;
+    text-justify: distribute-all-lines; /*ie6-8*/
+    text-align-last: justify; /* ie9*/
+    -moz-text-align-last: justify; /*ff*/
+}
+
+.login_input input[type='text'] {
+    display: inline-block;
+    height: 35px;
+    width: 175px;
+    border: 1px solid #1591ee;
+    outline: none;
+    padding-left: 5px;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.login_input input[type='text']:hover,
+.login_input input[type='text']:focus {
+    -webkit-box-shadow: 0 0 8px rgba(25, 123, 192, 0.7);
+    -moz-box-shadow: 0 0 8px rgba(25, 123, 192, 0.7);
+    box-shadow: 0 0 8px rgba(25, 123, 192, 0.7);
+}
+
+.login_input button {
+    width: 100%;
+    height: 35px;
+    text-align: center;
+    font-size: 16px;
+    margin-top: 15px;
+}

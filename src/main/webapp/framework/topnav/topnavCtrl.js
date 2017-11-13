@@ -5,7 +5,6 @@
 define([], function () {
 
     'use strict';
-
     var topnavCtrl = ['$scope', 'navListService', '$state', '$rootScope', function ($scope, navListService, $state, $rootScope) {
 
         $scope.menus = {

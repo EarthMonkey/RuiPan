@@ -19,10 +19,10 @@ define(['ui-router/angular-ui-router',
         'business/promotion/configures/promotionRouterConfig',
         'business/language/configures/langRouterConfig',
         'business/cooperation/configures/coopRouterConfig',
-        'business/about/configures/aboutRouterConfig',
+        'business/about/configures/aboutRouterConfig'
     ],
     function (router, topnavCtrl, navListService, footerCtrl,
-              homeRouterConfig, appRouterConfig, introRouterConfig, rankRouterConfig, successRouterConfig,
+              homeRouterConfig, abroadRouterConfig, introRouterConfig, rankRouterConfig, successRouterConfig,
               promotionRouterConfig, langRouterConfig, coopRouterConfig, aboutRouterConfig) {
         'use strict';
 
@@ -33,7 +33,7 @@ define(['ui-router/angular-ui-router',
             'ui.bootstrap',
             'ui.router',
             homeRouterConfig.name,
-            appRouterConfig.name,
+            abroadRouterConfig.name,
             introRouterConfig.name,
             rankRouterConfig.name,
             successRouterConfig.name,
