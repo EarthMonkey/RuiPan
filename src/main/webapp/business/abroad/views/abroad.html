@@ -140,6 +140,46 @@
 
     <!-- body -->
     <div class="border_body">
+        <!-- 问答 -->
+        <div class="row">
+            <div class="col-md-6">
+                <div class="each_answer" ng-repeat="an in problems_l track by $index">
+                    <div>{{$index + 1}}.{{an.problem}}</div>
+                    <div class="problem_answer" ng-class="{expanded: an.expanded}">
+                        答：{{an.answer}}
+                    </div>
+                    <div class="expand_btn" ng-show="an.answer.length>32" ng-click="expandClick(an)">
+                        <a class="blue">{{an.expanded ? "收起" : "展开"}}</a>
+                    </div>
+                </div>
+            </div>
 
+            <div class="col-md-6">
+                <div class="each_answer" ng-repeat="an in problems_r track by $index">
+                    <div>{{$index + 5}}.{{an.problem}}</div>
+                    <div class="problem_answer" ng-class="{expanded: an.expanded}">
+                        答：{{an.answer}}
+                    </div>
+                    <div class="expand_btn" ng-show="an.answer.length>32" ng-click="expandClick(an)">
+                        <a class="blue">{{an.expanded ? "收起" : "展开"}}</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 更多问题 -->
+        <div class="row">
+            <div class="each_problem title">更多问题资讯</div>
+            <div class="col-md-6">
+                <div class="each_problem" ng-repeat="temp in [0,1,2,3]">
+                    <a class="blue">美国本科申请对托福分数有什么要求？</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="each_problem" ng-repeat="temp in [0,1,2,3]">
+                    <a class="blue">美国本科申请对托福分数有什么要求？</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

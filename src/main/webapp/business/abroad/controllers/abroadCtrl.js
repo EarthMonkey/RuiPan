@@ -105,6 +105,27 @@ define([''], function () {
             order: 127
         }];
 
+        // 问题资讯
+        $scope.problems_l = [];
+        for (var i = 0; i < 4; i++) {
+            $scope.problems_l.push({
+                problem: "美国研究生学院录取学生主要参考什么因素？",
+                answer: '美国研究生学院录取学生主要参考成绩和个人因素背景，美国研究生学院录取学生主要参考成绩和个人因素背景'
+            });
+        }
+
+        $scope.problems_r = [];
+        for (var i = 0; i < 4; i++) {
+            $scope.problems_r.push({
+                problem: "美国研究生学院录取学生主要参考什么因素？",
+                answer: '美国研究生学院录取学生主要参考成绩和个人因素背景'
+            });
+        }
+
+        $scope.expandClick = function (answer) {
+            answer.expanded = !answer.expanded;
+        }
+
     }];
 
     var homeModule = angular.module('abroad.config');

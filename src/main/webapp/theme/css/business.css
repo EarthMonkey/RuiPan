@@ -291,6 +291,48 @@
     bottom: 0;
 }
 
+.each_answer {
+    width: 100%;
+    padding: 15px 5px;
+    font-size: 14px;
+    border-bottom: 1px solid #d8d8d8;
+    position: relative;
+}
+
+.problem_answer {
+    width: calc(100% - 40px);
+    color: #afafaf;
+    margin-top: 5px;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.expand_btn {
+    position: absolute;
+    right: 5px;
+    bottom: 15px;
+}
+
+.expanded {
+    white-space: normal !important;
+    text-overflow: clip !important;
+    overflow: visible !important;
+}
+
+.each_problem {
+    padding: 5px 15px;
+}
+
+.col-md-6 .each_problem {
+    padding-left: 0;
+}
+
+.each_problem.title {
+    margin-top: 20px;
+    font-weight: 600;
+}
+
 /* introduction页面 */
 .right_part {
     width: 820px;
