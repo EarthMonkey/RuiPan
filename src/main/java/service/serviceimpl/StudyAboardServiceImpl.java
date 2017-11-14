@@ -1,19 +1,20 @@
 package service.serviceimpl;
 
+import constant.StatesConstant;
+import dao.ApplicationElementDao;
 import dao.GradeCategoryDao;
 import dao.HardConditionDao;
-import model.GradeCategory;
-import model.HardCondition;
+import dao.QuestionDao;
+import model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.StudyAboardService;
+import vo.ApplicationElementVO;
 import vo.HardConditionVO;
+import vo.QuestionVO;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * Created by ldchao on 2017/11/6.
@@ -26,6 +27,12 @@ public class StudyAboardServiceImpl implements StudyAboardService{
 
     @Autowired
     HardConditionDao hardConditionDao;
+
+    @Autowired
+    ApplicationElementDao applicationElementDao;
+
+    @Autowired
+    QuestionDao questionDao;
 
     @Override
     public List<String> getAllCountry() {
@@ -65,7 +72,7 @@ public class StudyAboardServiceImpl implements StudyAboardService{
     @Override
     public Map<String, List<HardConditionVO>> getHardConditionByGid(Integer gid) {
 
-        Map<String,List<HardConditionVO>> result=new TreeMap<String, List<HardConditionVO>>();
+        Map<String,List<HardConditionVO>> result=new LinkedHashMap<String, List<HardConditionVO>>();
         List<HardCondition> hardConditions=hardConditionDao.findAllByGidOrderByRankAscSubjectAsc(gid);
         for (HardCondition hardCondition:hardConditions) {
             HardConditionVO hardConditionVO=new HardConditionVO();
@@ -100,6 +107,95 @@ public class StudyAboardServiceImpl implements StudyAboardService{
     public String deleteHardCondition(Integer id) {
         if(hardConditionDao.exists(id)){
             hardConditionDao.delete(id);
+            return "success";
+        }else{
+            return "not_exist";
+        }
+    }
+
+    @Override
+    public List<ApplicationElementVO> getApplicationElementByGid(Integer gid,Integer flag) {
+        List<ApplicationElementVO> applicationElementVOS=new ArrayList<ApplicationElementVO>();
+        List<ApplicationElement> applicationElements=applicationElementDao.findAllByGidAndFlagOrderByCategory(gid, flag);
+        for (ApplicationElement applicationElement:applicationElements) {
+            ApplicationElementVO applicationElementVO=new ApplicationElementVO();
+            applicationElementVO.update(applicationElement);
+            applicationElementVOS.add(applicationElementVO);
+        }
+        return applicationElementVOS;
+    }
+
+    @Override
+    public ApplicationElementVO getApplicationElementById(Integer id) {
+        ApplicationElementVO applicationElementVO=new ApplicationElementVO();
+        applicationElementVO.update(applicationElementDao.findOne(id));
+        return applicationElementVO;
+    }
+
+    @Override
+    public void addApplicationElement(ApplicationElementVO applicationElementVO) {
+        ApplicationElement applicationElement=applicationElementVO.getModel();
+        applicationElementDao.saveAndFlush(applicationElement);
+        applicationElementVO.setId(applicationElement.getId());
+    }
+
+    @Override
+    public void updateApplicationElement(ApplicationElementVO applicationElementVO) {
+        ApplicationElement applicationElement=applicationElementVO.getModel();
+        applicationElementDao.saveAndFlush(applicationElement);
+    }
+
+    @Override
+    public String deleteApplicationElement(Integer id) {
+        if(applicationElementDao.exists(id)){
+            applicationElementDao.delete(id);
+            return "success";
+        }else{
+            return "not_exist";
+        }
+    }
+
+    @Override
+    public List<QuestionVO> getPublishQuestionsByGid(Integer gid) {
+        List<Question> questions=questionDao.findAllByGidAndIsShowOrderByCreateAtDesc(gid,"true");
+        List<QuestionVO> questionVOS=new ArrayList<QuestionVO>();
+        for (Question question:questions) {
+            QuestionVO questionVO=new QuestionVO();
+            questionVO.update(question);
+            questionVOS.add(questionVO);
+        }
+        return questionVOS;
+    }
+
+    @Override
+    public List<QuestionVO> getQuestionsByGid(Integer gid) {
+        List<Question> questions=questionDao.findAllByGidOrderByCreateAtDesc(gid);
+        List<QuestionVO> questionVOS=new ArrayList<QuestionVO>();
+        for (Question question:questions) {
+            QuestionVO questionVO=new QuestionVO();
+            questionVO.update(question);
+            questionVOS.add(questionVO);
+        }
+        return questionVOS;
+    }
+
+    @Override
+    public void addQuestion(QuestionVO questionVO) {
+        Question question=questionVO.getModel();
+        questionDao.saveAndFlush(question);
+        questionVO.setId(question.getId());
+    }
+
+    @Override
+    public void updateQuestion(QuestionVO questionVO) {
+        Question question=questionVO.getModel();
+        questionDao.saveAndFlush(question);
+    }
+
+    @Override
+    public String deleteQuestion(Integer id) {
+        if(questionDao.exists(id)){
+            questionDao.delete(id);
             return "success";
         }else{
             return "not_exist";

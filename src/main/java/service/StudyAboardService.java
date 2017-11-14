@@ -1,6 +1,8 @@
 package service;
 
+import vo.ApplicationElementVO;
 import vo.HardConditionVO;
+import vo.QuestionVO;
 
 import java.util.List;
 import java.util.Map;
@@ -31,4 +33,33 @@ public interface StudyAboardService {
     //删除一条硬性条件
     public String deleteHardCondition(Integer hardConditionVO);
 
+    //通过gid和发布状态所有申请要素
+    public List<ApplicationElementVO> getApplicationElementByGid(Integer gid,Integer flag);
+
+    //通过id获取一条申请要素
+    public ApplicationElementVO getApplicationElementById(Integer id);
+
+    //增加一条申请要素
+    public void addApplicationElement(ApplicationElementVO applicationElementVO);
+
+    //通过id编辑一条申请要素
+    public void updateApplicationElement(ApplicationElementVO applicationElementVO);
+
+    //通过id删除一条申请要素
+    public String deleteApplicationElement(Integer id);
+
+    //根据gid获取所有可见的问题列表
+    public List<QuestionVO> getPublishQuestionsByGid(Integer gid);
+
+    //根据gid获取所有问题列表
+    public List<QuestionVO> getQuestionsByGid(Integer gid);
+
+    //根据gid增加一条问答
+    public void addQuestion(QuestionVO questionVO);
+
+    //根据id编辑一条问答
+    public void updateQuestion(QuestionVO questionVO);
+
+    //根据id删除一条问答
+    public String deleteQuestion(Integer id);
 }

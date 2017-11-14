@@ -31,7 +31,6 @@ public class ApplicationSchemeServiceImpl implements ApplicationSchemeService{
         Map<String,List<ApplicationSchemeVO>> result=new LinkedHashMap<String, List<ApplicationSchemeVO>>();
         List<ApplicationScheme> applicationSchemes=applicationSchemeDao.findAllByGidAndFlagOrderBySubdivisionGradeAscUpdateAtDesc(gid, StatesConstant.PUBLISHED);
         for (ApplicationScheme applicationScheme:applicationSchemes) {
-            System.out.println(applicationScheme.getSubdivisionGrade());
             ApplicationSchemeVO applicationSchemeVO=new ApplicationSchemeVO();
             applicationSchemeVO.update(applicationScheme);
             String subdivisionGrade=applicationScheme.getSubdivisionGrade();
