@@ -41,6 +41,10 @@ button:focus {
     font-size: 20px;
 }
 
+.top_bar i.fa {
+    margin-right: 5px;
+}
+
 /* 登录 */
 .login_div {
     width: 400px;
@@ -75,7 +79,7 @@ button:focus {
     -moz-text-align-last: justify; /*ff*/
 }
 
-.login_input input[type='text'] {
+.login_input input {
     display: inline-block;
     height: 35px;
     width: 175px;
@@ -88,8 +92,8 @@ button:focus {
     transition: 0.3s;
 }
 
-.login_input input[type='text']:hover,
-.login_input input[type='text']:focus {
+.login_input input:hover,
+.login_input input:focus {
     -webkit-box-shadow: 0 0 8px rgba(25, 123, 192, 0.7);
     -moz-box-shadow: 0 0 8px rgba(25, 123, 192, 0.7);
     box-shadow: 0 0 8px rgba(25, 123, 192, 0.7);
@@ -101,4 +105,73 @@ button:focus {
     text-align: center;
     font-size: 16px;
     margin-top: 15px;
+}
+
+/* backend */
+.backend_div {
+    width: 100%;
+    margin: 0 0;
+}
+
+.left_bar {
+    width: 16%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.main_body {
+    width: 84%;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: -4px;
+}
+
+/* 左侧导航栏 */
+.left_bar .panel-group .panel {
+    border-radius: 0;
+    margin-bottom: -6px;
+}
+
+.left_bar .panel-heading {
+    border-radius: 0;
+}
+
+.left_bar .panel-default > .panel-heading {
+    background-color: #4f4f4f;
+    color: #fff;
+    padding: 0;
+    height: 35px;
+    text-align: center;
+}
+
+.left_bar .panel-default > .panel-heading a {
+    display: inline-block;
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+}
+
+.left_bar .panel-body {
+    padding: 0 0;
+}
+
+.each_menu {
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.each_menu a {
+    display: inline-block;
+    width: 100%;
+    height: 30px;
+    line-height: 30px;
+    color: #4a4a4a;
+}
+
+.each_menu:hover,
+.each_menu.active {
+    background-color: #dafafc;
 }

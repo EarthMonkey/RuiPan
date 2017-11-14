@@ -5,8 +5,7 @@
 define([''], function () {
     'use strict';
 
-    var homeCtrl = ['$scope', 'homeService',
-        function ($scope, homeService) {
+    var homeCtrl = ['$scope', function ($scope) {
 
             // 轮播图
             $scope.myInterval = 5000;

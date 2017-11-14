@@ -6,9 +6,18 @@
 define([''], function () {
     'use strict';
 
-    var loginCtrl = ['$scope', function ($scope) {
+    var loginCtrl = ['$scope', '$rootScope', '$state', function ($scope, $rootScope, $state) {
 
-        $scope.test = "welcome to login"
+        $scope.user = {
+            username: '',
+            password: ''
+        };
+
+        // 登录
+        $scope.login = function () {
+            $rootScope.USER = angular.copy($scope.user.username);
+            $state.go('backend.abroadCountry');
+        };
 
     }];
 

@@ -13,8 +13,7 @@ define(['lazy-load/lazyLoad'],
             templateUrl: 'business/home/views/home.html',
             controller: 'homeCtrl',
             scripts: {
-                controllers: ['business/home/controllers/homeCtrl'],
-                services: ['business/home/services/homeService']
+                controllers: ['business/home/controllers/homeCtrl']
             }
         }];
 

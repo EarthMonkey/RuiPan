@@ -6,15 +6,15 @@
     </div>
     <div class="login_input">
         <label>用户名:</label>
-        <input type="text">
+        <input ng-model="user.username" type="text">
     </div>
     <div class="login_input">
         <label>密&nbsp;&nbsp;码:</label>
-        <input type="password">
+        <input ng-model="user.password" type="password">
     </div>
 
     <div class="login_input">
-        <button>登录</button>
+        <button ng-click="login()">登录</button>
     </div>
 
 </div>

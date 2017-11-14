@@ -1,0 +1,18 @@
+<!-- Created by L.H.S on 2017/11/14. -->
+
+<div class="backend_div">
+    <!-- 导航栏 -->
+    <div class="left_bar">
+        <uib-accordion close-others="false">
+            <div uib-accordion-group class="panel-default" ng-repeat="menu in menus"
+                 heading="{{menu.label}}">
+                <div class="each_menu" ng-repeat="child in menu.children">
+                    <a ui-sref="{{child.id}}">{{child.label}}</a>
+                </div>
+            </div>
+        </uib-accordion>
+    </div>
+
+    <!-- ui-view -->
+    <div class="main_body" ui-view></div>
+</div>

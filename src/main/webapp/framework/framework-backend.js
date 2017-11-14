@@ -9,9 +9,10 @@
 
 define(['ui-router/angular-ui-router',
         'framework/backend/topbarCtrl',
-        'backend/login/configures/loginRouterConfig'
+        'backend/login/configures/loginRouterConfig',
+        'backend/backend/configures/backendRouterConfig'
     ],
-    function (router, topbarCtrl, loginRouterConfig) {
+    function (router, topbarCtrl, loginRouterConfig, backendRouterConfig) {
         'use strict';
 
         // 注入框架的配置文件（新增业务模块在此处添加注册）
@@ -20,7 +21,8 @@ define(['ui-router/angular-ui-router',
             'ngSanitize',
             'ui.bootstrap',
             'ui.router',
-            loginRouterConfig.name
+            loginRouterConfig.name,
+            backendRouterConfig.name
         ];
 
         var framework_backend = angular.module('framework-backend', dependency);

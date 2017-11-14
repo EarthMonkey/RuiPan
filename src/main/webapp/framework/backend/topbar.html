@@ -1,5 +1,6 @@
 <!-- Created by L.H.S on 2017/11/13. -->
 
 <div class="top_bar">
-    瑞泮国际教育科技有限公司
+    <span ng-if="!username">瑞泮国际教育科技有限公司</span>
+    <span ng-if="username"><i class="fa fa-user"></i>{{username}}</span>
 </div>
