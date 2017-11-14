@@ -5,8 +5,8 @@
     <div class="left_bar">
         <uib-accordion close-others="false">
             <div uib-accordion-group class="panel-default" ng-repeat="menu in menus"
-                 heading="{{menu.label}}">
-                <div class="each_menu" ng-repeat="child in menu.children">
+                 heading="{{menu.label}}" is-open="menu.isOpen">
+                <div class="each_menu" ng-repeat="child in menu.children" ng-class="{active: isActived(child.id)}">
                     <a ui-sref="{{child.id}}">{{child.label}}</a>
                 </div>
             </div>

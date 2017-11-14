@@ -18,7 +18,8 @@ define([''], function () {
             label: '用户管理',
             children: [
                 {id: 'backend.user', label: '用户管理'}
-            ]
+            ],
+            isOpen: true
         }, {
             id: 'home',
             label: '首页管理',
