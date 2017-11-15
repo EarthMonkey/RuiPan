@@ -16,14 +16,11 @@
         <class>model.CooperativeScheme</class>
         <class>model.EmploymentCompany</class>
         <class>model.EmploymentPost</class>
-        <class>model.ForeignConsultant</class>
         <class>model.GlobalRecommendation</class>
         <class>model.GradeCategory</class>
         <class>model.HardCondition</class>
         <class>model.Honor</class>
         <class>model.News</class>
-        <class>model.OrderForForeign</class>
-        <class>model.OrderForService</class>
         <class>model.ProfessionCategory</class>
         <class>model.ProfessionCourse</class>
         <class>model.ProfessionIntroduce</class>
@@ -33,15 +30,14 @@
         <class>model.SchoolPicture</class>
         <class>model.SchoolRanking</class>
         <class>model.ServedCompany</class>
-        <class>model.ServiceConsultant</class>
         <class>model.SuccessfulCase</class>
         <class>model.TrainIntroduce</class>
-        <class>model.ContentUs</class>
         <class>model.ContactUs</class>
         <class>model.Logiptopreventdos</class>
         <class>model.Consultant</class>
         <class>model.ConsultantBusiness</class>
         <class>model.OrderForConsultant</class>
+        <class>model.AnswerForOrder</class>
         <!-- provider>org.eclipse.persistence.jpa.PersistenceProvider</provider -->
         <!--<provider>org.hibernate.ejb.HibernatePersistence</provider>-->
         <!--<class>com.ninelephas.meerkat.pojo.User</class>-->

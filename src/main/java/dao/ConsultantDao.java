@@ -12,7 +12,7 @@ import java.util.List;
  */
 public interface ConsultantDao extends JpaRepository<Consultant,Serializable> {
 
-    @Query("select Consultant from Consultant where id in ?1")
-    public List<Consultant> getAllByCids(List<Integer> cid);
+    @Query("select c from Consultant c where c.id in ?1")
+    public List<Consultant> checkConsultantInCids(List<Integer> list);
 
 }

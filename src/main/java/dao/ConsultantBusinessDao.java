@@ -14,5 +14,5 @@ import java.util.List;
 public interface ConsultantBusinessDao extends JpaRepository<ConsultantBusiness,Serializable> {
 
     @Query("select distinct cid from ConsultantBusiness where businessType=?1 and bid=?2")
-    List<Integer> getConsultantIdByGid(String businessType,Integer bid);
+    List<Integer> getConsultantIdByBid(String businessType,Integer bid);
 }

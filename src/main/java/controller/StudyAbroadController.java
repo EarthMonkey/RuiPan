@@ -239,6 +239,7 @@ public class StudyAbroadController {
 
     //根据gid获取所有草稿的申请要素
     @RequestMapping(value = "/getApplicationElementDraftByGid")
+    @SystemLog(module = "留学服务", methods = "获取申请要素草稿")
     public List<ApplicationElementVO> getApplicationElementDraftByGid(Integer gid) {
         return studyAboardService.getApplicationElementByGid(gid, StatesConstant.DRAFT);
     }
@@ -273,6 +274,7 @@ public class StudyAbroadController {
         studyAboardService.updateApplicationElement(applicationElementVO);
         return applicationElementVO;
     }
+
 
     //根据id删除某条申请要素
     @RequestMapping(value = "/deleteApplicationElement")
