@@ -1,3 +1,154 @@
 <!-- Created by L.H.S on 2017/11/14. -->
 
-{{test}}
+<div class="ui_view">
+
+    <div class="h_title">
+        <h2>关于我们</h2>
+    </div>
+
+    <!-- 公司介绍 -->
+    <div style="margin-top: 30px;">
+        <table class="table table-striped">
+            <thead>
+            <th>
+                公司介绍
+                <a style="float: right"><i class="fa fa-pencil"></i>修改</a>
+            </th>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <div class="auto_td_div">
+                        <p>金融工程是用数学和工程学的方法来建立金融模型（如描述股价运动的随机微分方程），并进而计算金融收益与风险的一门学科。在现代金融实践中有重要的作用。
+                            在投资银行、对冲基金等公司中往往有专门研究和使用金融工程计算和管控风险的定量分析师。</p>
+                        <p>学习和研究的内容主要包括证券衍生物定价，风险分析，金融模型，金融信息分析，和一些高级的金融理论。</p>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <!-- 合作的学校和企业 -->
+    <div style="margin-top: 30px;">
+        <table class="table table-hover">
+            <thead>
+            <th style="width: 180px;">合作的学校和企业</th>
+            <th>国家</th>
+            <th>类型</th>
+            <th>名称</th>
+            <th>简介</th>
+            <th class="action_col"><a><i class="fa fa-plus"></i>添加</a></th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="temp in [0,1,2, 3]">
+                <td>
+                    <div class="logo_preview">
+                        <img src="/theme/source/Harvard.png">
+                    </div>
+                </td>
+                <td>美国</td>
+                <td>学校</td>
+                <td>哈佛大学</td>
+                <td>哈佛大学巴拉巴拉巴拉巴拉</td>
+                <td>
+                    <div class="table_mod border"><a>修改</a></div>
+                    <div class="table_mod"><a>删除</a></div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 联系方式管理 -->
+    <div style="margin-top: 30px;">
+        <table class="table table-striped">
+            <thead>
+            <th>
+                联系方式
+                <a style="float: right"><i class="fa fa-pencil"></i>修改</a>
+            </th>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <div class="auto_td_div">
+                        <p>
+                            <label>地址：</label>
+                            北京市
+                            朝阳区
+                            一二路6号商务楼507室
+                        </p>
+                        <p>
+                            <label>电话：</label>
+                            +62 202 555 0117
+                        </p>
+                        <p>
+                            <label>邮箱：</label>
+                            ruipan@163.com
+                        </p>
+                        <p>
+                            <label>Q Q：</label>
+                            12345678
+                        </p>
+                        <p>
+                            <label>微信：</label>
+                            ruipanliuxue
+                        </p>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 联系信息管理 -->
+
+    <div class="h_title" style="margin-top: 50px;">
+        <h2>联系信息管理</h2>
+    </div>
+
+    <uib-tabset>
+        <uib-tab index="$index" ng-repeat="tab in tabs" heading="{{tab.title}}">
+            <!-- 未处理 -->
+            <div ng-show="tab.type==0">
+                <table class="table table-hover">
+                    <thead>
+                    <th>未处理联系信息</th>
+                    <th class="action_col"><i class="fa fa-pencil"></i></th>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="temp in [0,1,2,3]">
+                        <td>巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉</td>
+                        <td>
+                            <div class="table_mod border"><a>答复</a></div>
+                            <div class="table_mod"><a>删除</a></div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- 已处理 -->
+            <div ng-show="tab.type==1">
+                <table class="table table-hover">
+                    <thead>
+                    <th>已处理联系信息</th>
+                    <th class="action_col"><i class="fa fa-pencil"></i></th>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="temp in [0,1,2,3]">
+                        <td>巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉巴拉</td>
+                        <td>
+                            <div class="table_mod border"><a>答复</a></div>
+                            <div class="table_mod"><a>删除</a></div>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </uib-tab>
+    </uib-tabset>
+
+</div>

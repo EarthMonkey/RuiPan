@@ -6,7 +6,7 @@
 define([''], function () {
     'use strict';
 
-    var loginCtrl = ['$scope', '$rootScope', '$state', function ($scope, $rootScope, $state) {
+    var loginCtrl = ['$scope', '$state', function ($scope, $state) {
 
         $scope.user = {
             username: '',
@@ -15,7 +15,9 @@ define([''], function () {
 
         // 登录
         $scope.login = function () {
-            $rootScope.USER = angular.copy($scope.user.username);
+            var sessionStorage = window.sessionStorage;
+            sessionStorage.setItem("user", $scope.user.username);
+
             $state.go('backend.abroadCountry');
         };
 

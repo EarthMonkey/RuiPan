@@ -29,6 +29,19 @@ define(['ui-router/angular-ui-router',
 
         framework_backend.controller('topbarCtrl', topbarCtrl);
 
+        framework_backend.run(function ($rootScope, $state) {
+            $rootScope.$on('$stateChangeStart', function (event, toState) {
+                var sessionStorage = window.sessionStorage;
+                var user = sessionStorage.getItem("user");
+
+                if (!user && toState.name !== "login") {
+                    event.preventDefault();
+                    $state.transitionTo("login", null, {notify:false});
+                    $state.go('login');
+                }
+            });
+        });
+
         // 初始跳转至首页模块
         framework_backend.config(['$urlRouterProvider', function ($urlRouterProvider) {
             $urlRouterProvider.otherwise('/login');

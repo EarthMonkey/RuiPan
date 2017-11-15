@@ -30,6 +30,14 @@ button:focus {
     background-color: #3097d8;
 }
 
+a {
+    cursor: pointer;
+}
+
+p {
+    margin: 0 0;
+}
+
 .top_bar {
     width: 100%;
     height: 60px;
@@ -124,6 +132,19 @@ button:focus {
     display: inline-block;
     vertical-align: top;
     margin-left: -4px;
+    padding: 10px 10px;
+}
+
+.ui_view {
+    width: 100%;
+    min-height: 500px;
+    padding: 15px 30px;
+    background-color: #fff;
+    box-shadow: 0 0 8px rgba(42, 91, 111, 0.2);
+}
+
+.h_title {
+    margin-bottom: 30px;
 }
 
 /* 左侧导航栏 */
@@ -176,4 +197,151 @@ button:focus {
 .each_menu:hover,
 .each_menu.active {
     background-color: #dafafc;
+}
+
+/* 用户管理页 */
+.portrait_div {
+    width: 100px;
+    height: 100px;
+    line-height: 100px;
+    text-align: center;
+    font-size: 100px;
+    color: #d8d8d8;
+    border-radius: 50%;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.portrait_info_div {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 20px;
+    font-size: 16px;
+    padding-top: 5px;
+    position: relative;
+}
+
+.portrait_info_div .name {
+    font-size: 18px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.portrait_info_div .name button {
+    margin-left: 20px;
+}
+
+.portrait_btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.table_mod {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 0 10px;
+    margin: 0 0;
+}
+
+.table_mod.border {
+    border-right: 1px solid #d8d8d8;
+    margin-right: -4px;
+    padding-left: 0;
+}
+
+.action_col {
+    width: 150px;
+}
+
+th .fa {
+    margin-right: 5px;
+}
+
+/* 筛选 */
+.filter_div {
+    width: 100%;
+    height: 35px;
+    line-height: 35px;
+    border-bottom: 1px solid #979797;
+    font-size: 20px;
+    margin-bottom: 15px;
+}
+
+.filter_tip {
+    color: #9b9b9b;
+    margin-right: 40px;
+}
+
+.filter_tip.block {
+    width: 75px;
+    display: inline-block;
+    padding-bottom: 0;
+    position: relative;
+    top: 2px;
+}
+
+.filter_option {
+    cursor: pointer;
+    display: inline-block;
+    vertical-align: middle;
+    width: 80px;
+    margin-right: 15px;
+}
+
+.filter_option:hover,
+.filter_option.active {
+    color: #197bc0;
+}
+
+.photo_preview {
+    width: 150px;
+    height: 90px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.photo_preview img {
+    width: 100%;
+    height: 90px;
+}
+
+.heart_div {
+    margin: 10px 0;
+}
+
+.heart_div .fa {
+    cursor: pointer;
+}
+
+.heart_div .fa-heart {
+    color: #ec5c5c;
+}
+
+.consult_photo_preview {
+    width: 100px;
+    height: 100px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.consult_photo_preview img {
+    width: 100%;
+    height: 100px;
+}
+
+.consult_intro {
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 10px;
+}
+
+.logo_preview {
+    width: 120px;
+    height: 100px;
+}
+
+.logo_preview img {
+    width: 120px;
+    height: 100px;
 }

@@ -8,7 +8,10 @@ define([''], function () {
 
     var aboutCtrl = ['$scope', function ($scope) {
 
-        $scope.test = "关于我们";
+        $scope.tabs = [
+            { title:'未处理', type: 0},
+            { title:'已处理', type: 1}
+        ];
 
     }];
 

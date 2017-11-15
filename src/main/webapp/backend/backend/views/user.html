@@ -1,3 +1,56 @@
 <!-- Created by L.H.S on 2017/11/14. -->
 
-{{test}}
+<div class="ui_view">
+
+    <div class="h_title"><h2>用户管理</h2></div>
+
+    <!-- 用户登录信息 -->
+    <div>
+        <div class="portrait_div"><i class="fa fa-user-circle-o"></i></div>
+        <div class="portrait_info_div">
+            <div class="name">
+                admin
+                <button>修改密码</button>
+            </div>
+            <div>
+                上次登录时间：<label>2017-11-15 19:50</label>
+            </div>
+            <div>
+                上次登录位置：<label>江苏省南京市鼓楼区</label>
+            </div>
+        </div>
+    </div>
+
+    <!-- 用户管理 -->
+    <div style="margin-top: 20px;">
+        <table class="table table-hover">
+            <thead>
+            <th>用户管理</th>
+            <th class="action_col"><a><i class="fa fa-plus"></i>添加</a></th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="temp in [0,1,2,3]">
+                <td>username</td>
+                <td>
+                    <div class="table_mod border"><a>修改密码</a></div>
+                    <div class="table_mod"><a>删除</a></div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 操作记录 -->
+    <div style="margin-top: 20px;">
+        <table class="table">
+            <thead>
+            <th>操作记录</th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="temp in [0,1,2,3]">
+                <td>张三在首页管理中添加了某个顾问</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

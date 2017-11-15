@@ -1,3 +1,77 @@
 <!-- Created by L.H.S on 2017/11/14. -->
 
-{{test}}
+<div class="ui_view">
+
+    <div class="h_title">
+        <h2>顾问管理</h2>
+    </div>
+
+    <!-- 顾问列表 -->
+    <div>
+        <table class="table table-hover">
+            <thead>
+            <th>顾问列表</th>
+            <th class="action_col"><a><i class="fa fa-plus"></i>添加</a></th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in consultIntro">
+                <td>
+                    <div class="consult_photo_preview">
+                        <img src="/theme/source/consult-1.jpg">
+                    </div>
+                    <div class="consult_intro">
+                        顾问信息，介绍等
+                    </div>
+                </td>
+                <td>
+                    <div class="heart_div">
+                        <i class="fa" ng-click="star(item)"
+                           ng-class="{'fa-heart': item.starred, 'fa-heart-o': !item.starred}"></i>
+                    </div>
+                    <div>
+                        <div class="table_mod border"><a>修改</a></div>
+                        <div class="table_mod"><a>删除</a></div>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="h_title" style="margin-top: 50px;">
+        <h2>顾问业务安排</h2>
+    </div>
+
+    <!-- 筛选 -->
+    <div>
+        <div class="filter_div">
+            <span class="filter_tip">国家: </span>
+            <span class="filter_option" ng-repeat="fc in filterCountry" ng-click="filterClick(0, fc)"
+                  ng-class="{active: selectedCoun==fc.id}">{{fc.label}}</span>
+        </div>
+        <div class="filter_div">
+            <span class="filter_tip">学历: </span>
+            <span class="filter_option" ng-repeat="fe in filterEdu" ng-click="filterClick(1, fe)"
+                  ng-class="{active: selectedEdu==fe.id}">{{fe.label}}</span>
+        </div>
+    </div>
+
+    <!-- 安排顾问列表 -->
+    <div style="margin-top: 30px;">
+        <table class="table table-hover">
+            <thead>
+            <th>方案列表</th>
+            <th class="action_col"><a><i class="fa fa-plus"></i>添加</a></i></th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="temp in [0,1,2,3]">
+                <td><a>安排顾问列表</a></td>
+                <td>
+                    <div class="table_mod"><a>删除</a></div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

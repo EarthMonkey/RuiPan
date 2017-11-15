@@ -1,3 +1,38 @@
 <!-- Created by L.H.S on 2017/11/14. -->
 
-{{test}}
+<div class="ui_view">
+
+    <div class="h_title">
+        <h2>院校管理
+            <small>院校信息管理</small>
+        </h2>
+    </div>
+
+    <div>
+        <div class="filter_div">
+            <span class="filter_tip">国家: </span>
+            <span class="filter_option" ng-repeat="fc in filterCountry" ng-click="filterClick(fc)"
+                  ng-class="{active: selectedCoun==fc.id}">{{fc.label}}</span>
+        </div>
+    </div>
+
+    <!-- 院校信息管理 -->
+    <div style="margin-top: 30px;">
+        <table class="table table-hover">
+            <thead>
+            <th>学校列表</th>
+            <th class="action_col"><a><i class="fa fa-plus"></i>添加</a></th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="temp in [0,1,2,3]">
+                <td><a>哈佛大学</a></td>
+                <td>
+                    <div class="table_mod border"><a>修改</a></div>
+                    <div class="table_mod"><a>删除</a></div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

@@ -1,3 +1,115 @@
 <!-- Created by L.H.S on 2017/11/14. -->
 
-{{test}}
+<div class="ui_view">
+
+    <div class="h_title">
+        <h2>专业管理
+            <small>信息管理</small>
+        </h2>
+    </div>
+
+    <!-- 筛选 -->
+    <div>
+        <div class="filter_div">
+            <span class="filter_tip">国家: </span>
+            <span class="filter_option" ng-repeat="fc in filterCountry" ng-click="filterClick(0, fc)"
+                  ng-class="{active: selectedCoun==fc.id}">{{fc.label}}</span>
+        </div>
+        <div class="filter_div">
+            <span class="filter_tip">大类: </span>
+            <span class="filter_option" ng-repeat="fe in filterEdu" ng-click="filterClick(1, fe)"
+                  ng-class="{active: selectedEdu==fe.id}">{{fe.label}}</span>
+        </div>
+        <div class="filter_div">
+            <span class="filter_tip">专业: </span>
+            <span class="filter_option" ng-repeat="fs in filterSp" ng-click="filterClick(2, fs)"
+                  ng-class="{active: selectedSp==fs.id}">{{fs.label}}</span>
+        </div>
+    </div>
+
+    <!-- 专业详情 -->
+    <div style="margin-top: 30px;">
+        <table class="table table-striped">
+            <thead>
+            <th>
+                专业详情
+                <a style="float: right"><i class="fa fa-pencil"></i>修改</a>
+            </th>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <div class="auto_td_div">
+                        <p>金融工程是用数学和工程学的方法来建立金融模型（如描述股价运动的随机微分方程），并进而计算金融收益与风险的一门学科。在现代金融实践中有重要的作用。
+                            在投资银行、对冲基金等公司中往往有专门研究和使用金融工程计算和管控风险的定量分析师。</p>
+                        <p>学习和研究的内容主要包括证券衍生物定价，风险分析，金融模型，金融信息分析，和一些高级的金融理论。</p>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 专业课程 -->
+    <div style="margin-top: 30px;">
+        <table class="table table-hover">
+            <thead>
+            <th>专业课程</th>
+            <th class="action_col"><a><i class="fa fa-plus"></i>添加</a></th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="temp in [0,1,2,3]">
+                <td>欧几里得几何学</td>
+                <td>
+                    <div class="table_mod border"><a>修改</a></div>
+                    <div class="table_mod"><a>删除</a></div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+    <!-- 就业去向 -->
+    <div style="margin-top: 30px;">
+        <table class="table table-hover">
+            <thead>
+            <th>就业去向</th>
+            <th class="action_col"><a><i class="fa fa-plus"></i>添加</a></th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="temp in [0,1,2,3]">
+                <td>金融机构</td>
+                <td>
+                    <div class="table_mod border"><a>修改</a></div>
+                    <div class="table_mod"><a>删除</a></div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 独家申请建议 -->
+    <div style="margin-top: 30px;">
+        <table class="table table-striped">
+            <thead>
+            <th>
+                独家申请建议
+                <a style="float: right"><i class="fa fa-pencil"></i>修改</a>
+            </th>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <div class="auto_td_div">
+                        <p>金融工程是用数学和工程学的方法来建立金融模型（如描述股价运动的随机微分方程），并进而计算金融收益与风险的一门学科。在现代金融实践中有重要的作用。
+                            在投资银行、对冲基金等公司中往往有专门研究和使用金融工程计算和管控风险的定量分析师。</p>
+                        <p>学习和研究的内容主要包括证券衍生物定价，风险分析，金融模型，金融信息分析，和一些高级的金融理论。</p>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

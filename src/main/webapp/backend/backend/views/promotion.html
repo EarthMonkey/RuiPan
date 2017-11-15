@@ -1,3 +1,80 @@
 <!-- Created by L.H.S on 2017/11/14. -->
 
-{{test}}
+<div class="ui_view">
+
+    <div class="h_title">
+        <h2>背景提升</h2>
+    </div>
+
+    <!-- 轮播图管理 -->
+    <div>
+        <table class="table table-hover">
+            <thead>
+            <th style="width: 180px;">轮播图管理</th>
+            <th>标题</th>
+            <th>链接</th>
+            <th class="action_col"><a><i class="fa fa-plus"></i>添加</a></th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="temp in [0,1,2,3]">
+                <td>
+                    <div class="photo_preview">
+                        <img src="/theme/source/promotion-0.png">
+                    </div>
+                </td>
+                <td>这里放标题</td>
+                <td>http://www.baidu.com</td>
+                <td>
+                    <div class="table_mod border"><a>修改</a></div>
+                    <div class="table_mod"><a>删除</a></div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- 筛选 -->
+    <div style="margin-top: 50px;">
+        <div class="filter_div">
+            <span class="filter_tip">分类: </span>
+            <span class="filter_option" style="width: auto; padding: 0 10px;" ng-repeat="ft in filterType" ng-click="filterClick(ft)"
+                  ng-class="{active: selectedType==ft.id}">{{ft.label}}</span>
+        </div>
+    </div>
+
+    <!-- 项目管理 -->
+    <div>
+        <table class="table table-hover">
+            <thead>
+            <th style="width: 180px;">项目列表</th>
+            <th>信息</th>
+            <th class="action_col"><a><i class="fa fa-plus"></i>添加</a></th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="temp in [0,1,2,3]" style="cursor: pointer">
+                <td>
+                    <div class="photo_preview">
+                        <img src="/theme/source/promotion-0.png">
+                    </div>
+                </td>
+                <td>
+                    <div>
+                        <label>标题：</label>
+                        耶鲁大学暑期项目
+                    </div>
+                    <div>
+                        <label>导读：</label>
+                        体验名校课堂，获取教授推荐信
+                    </div>
+                </td>
+                <td>
+                    <div class="table_mod border"><a>修改</a></div>
+                    <div class="table_mod"><a>删除</a></div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+</div>

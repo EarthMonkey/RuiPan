@@ -1,3 +1,34 @@
 <!-- Created by L.H.S on 2017/11/14. -->
 
-{{test}}
+<div class="ui_view">
+
+    <div class="h_title">
+        <h2>专业管理
+            <small>专业分类</small>
+        </h2>
+    </div>
+
+    <!-- 用户管理 -->
+    <div>
+        <table class="table table-hover">
+            <thead>
+            <th>国家</th>
+            <th>大类</th>
+            <th>专业</th>
+            <th class="action_col"><a><i class="fa fa-plus"></i>添加</a></th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="temp in [0,1,2,3]">
+                <td>美国</td>
+                <td>理科</td>
+                <td>几何</td>
+                <td>
+                    <div class="table_mod border"><a>修改</a></div>
+                    <div class="table_mod"><a>删除</a></div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>

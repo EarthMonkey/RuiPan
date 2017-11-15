@@ -8,10 +8,6 @@ define([''], function () {
 
     var leftBarCtrl = ['$scope', '$rootScope', '$state', '$timeout', 'leftBarService', function ($scope, $rootScope, $state, $timeout, leftBarService) {
 
-        // if (!$rootScope.USER) {
-        //     $state.go("login");
-        // }
-
         $scope.menus = leftBarService.getMenus();
         // 展开当前状态
         for (var i = 0; i < $scope.menus.length; i++) {

@@ -11,12 +11,8 @@ define([], function () {
             url: 'framework/backend/topbar.html'
         };
 
-        $scope.username = "";
-
-        $scope.loginUser = $rootScope;
-        $scope.$watch('loginUser.USER', function (newValue) {
-            $scope.username = newValue;
-        });
+        var sessionStorage = window.sessionStorage;
+        $scope.username = sessionStorage.getItem("user");
 
     }];
 
