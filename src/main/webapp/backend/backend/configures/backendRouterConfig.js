@@ -13,8 +13,16 @@ define(['lazy-load/lazyLoad'],
             templateUrl: 'backend/backend/views/leftBar.html',
             controller: 'leftBarCtrl',
             scripts: {
-                controllers: ['backend/backend/controllers/leftBarCtrl'],
-                services: ['backend/backend/services/leftBarService']
+                controllers: [
+                    'backend/backend/controllers/leftBarCtrl',
+                    'backend/backend/controllers/modals/textFormCtrl',
+                    'backend/backend/controllers/modals/editorCtrl'
+                ],
+                services: [
+                    'backend/backend/services/leftBarService',
+                    'backend/backend/services/textFormService',
+                    'backend/backend/services/editorService'
+                ]
             }
         }, {
             name: 'backend.abroadCountry',
@@ -138,7 +146,7 @@ define(['lazy-load/lazyLoad'],
             }
         }];
 
-        var backendModule = angular.module('backend.config', ['ui.router']);
+        var backendModule = angular.module('backend.config', ['ui.router', "ng.ueditor"]);
         backendModule = lazyLoadModule.makeLazy(backendModule);
         // stateConfig属性配置路由状态基本信息；urlMatch属性配置异常url对应的url路径
         backendModule.StateConfig({

@@ -4,6 +4,7 @@
 
 html, body {
     min-width: 1200px !important;
+    height: 100%;
     background-color: #e1f1ff;
 }
 
@@ -344,4 +345,13 @@ th .fa {
 .logo_preview img {
     width: 120px;
     height: 100px;
+}
+
+.modal-body .login_input {
+    margin-left: 0;
+    width: 285px;
+}
+
+.modal-body .login_input label {
+    width: 100px;
 }

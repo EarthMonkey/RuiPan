@@ -11,14 +11,14 @@
         <table class="table table-hover">
             <thead>
             <th>留学国家列表</th>
-            <th class="action_col"><a><i class="fa fa-plus"></i>添加</a></th>
+            <th class="action_col"><a ng-click="addCountry()"><i class="fa fa-plus"></i>添加</a></th>
             </thead>
             <tbody>
-            <tr ng-repeat="temp in [0,1,2,3]">
+            <tr ng-repeat="item in [0,1,2,3]">
                 <td>username</td>
                 <td>
-                    <div class="table_mod border"><a>修改</a></div>
-                    <div class="table_mod"><a>删除</a></div>
+                    <div class="table_mod border"><a ng-click="modCountry(item)">修改</a></div>
+                    <div class="table_mod"><a ng-click="delCountry(item)">删除</a></div>
                 </td>
             </tr>
             </tbody>
