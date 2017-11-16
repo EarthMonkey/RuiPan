@@ -30,6 +30,11 @@ public class StudyAboardTest {
     }
 
     @Test
+    public void getGid() {
+        System.out.println(studyAboardService.getGidByCountryAndGrade("美国","本科生"));
+    }
+
+    @Test
     public void addCountry(){
         System.out.println(studyAboardService.addOneCountry("美国"));
         System.out.println(studyAboardService.addOneCountry("美国"));

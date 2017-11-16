@@ -120,7 +120,7 @@ public class ConsultantVO {
         this.updateAt = updateAt;
     }
 
-    public Consultant getModel(){
+    public Consultant toEntity(){
         Consultant consultant=new Consultant();
         consultant.setId(id);
         consultant.setName(name);

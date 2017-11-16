@@ -67,7 +67,7 @@ public class HardConditionVO {
         this.updateAt = updateAt;
     }
 
-    public HardCondition getModel(){
+    public HardCondition toEntity(){
         HardCondition hardCondition=new HardCondition();
         hardCondition.setId(id);
         hardCondition.setGid(gid);

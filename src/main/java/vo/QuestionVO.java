@@ -66,7 +66,7 @@ public class QuestionVO {
         this.createAt = createAt;
     }
 
-    public Question getModel() {
+    public Question toEntity() {
         Question question = new Question();
         question.setId(id);
         question.setGid(gid);

@@ -5,6 +5,7 @@ import model.HardCondition;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import service.ApplicationSchemeService;
@@ -36,6 +37,12 @@ public class StudyAbroadController {
     @RequestMapping(value = "/getAllCountry")
     public List<String> getAllCountry() {
         return studyAboardService.getAllCountry();
+    }
+
+    //根据国家和年级获取Gid
+    @RequestMapping(value = "/getGid")
+    public Integer getGidByCountryAndGrade(String country,String grade) {
+        return studyAboardService.getGidByCountryAndGrade(country,grade);
     }
 
     //根据国家、年级类别编号（gid 下同）获取所有硬性条件要求

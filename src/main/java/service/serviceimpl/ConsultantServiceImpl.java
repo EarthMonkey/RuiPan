@@ -72,14 +72,14 @@ public class ConsultantServiceImpl implements ConsultantService{
 
     @Override
     public void addConsultant(ConsultantVO consultantVO) {
-        Consultant consultant=consultantVO.getModel();
+        Consultant consultant=consultantVO.toEntity();
         consultantDao.saveAndFlush(consultant);
         consultantVO.setId(consultant.getId());
     }
 
     @Override
     public void updateConsultant(ConsultantVO consultantVO) {
-        Consultant consultant=consultantVO.getModel();
+        Consultant consultant=consultantVO.toEntity();
         consultantDao.saveAndFlush(consultant);
     }
 

@@ -15,6 +15,9 @@ public interface StudyAboardService {
     //获取留学服务中所有国家
     public List<String> getAllCountry();
 
+    //根据国家和年级获取分类ID
+    public Integer getGidByCountryAndGrade(String country,String grade);
+
     //在年级分类表中增加一个国家（对应补齐三条记录）
     public String addOneCountry(String country);
 

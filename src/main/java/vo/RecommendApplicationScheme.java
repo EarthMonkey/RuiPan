@@ -59,7 +59,7 @@ public class RecommendApplicationScheme {
         this.applicationSchemeVO = applicationSchemeVO;
     }
 
-    public GlobalRecommendation getModel(){
+    public GlobalRecommendation toEntity(){
         GlobalRecommendation globalRecommendation=new GlobalRecommendation();
         globalRecommendation.setId(id);
         globalRecommendation.setCategory(GlobalRecommedationCategory.APPLICATION_SCHEME);

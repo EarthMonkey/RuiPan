@@ -1,6 +1,5 @@
 package service.serviceimpl;
 
-import constant.StatesConstant;
 import dao.ApplicationElementDao;
 import dao.GradeCategoryDao;
 import dao.HardConditionDao;
@@ -37,6 +36,11 @@ public class StudyAboardServiceImpl implements StudyAboardService{
     @Override
     public List<String> getAllCountry() {
         return gradeCategoryDao.getDistinctCountry();
+    }
+
+    @Override
+    public Integer getGidByCountryAndGrade(String country, String grade) {
+        return gradeCategoryDao.findDistinctByCountryAndGrade(country,grade).getGid();
     }
 
     @Override
@@ -91,14 +95,14 @@ public class StudyAboardServiceImpl implements StudyAboardService{
 
     @Override
     public void addHardCondition(HardConditionVO hardConditionVO) {
-        HardCondition hardCondition=hardConditionVO.getModel();
+        HardCondition hardCondition=hardConditionVO.toEntity();
         hardConditionDao.saveAndFlush(hardCondition);
         hardConditionVO.setId(hardCondition.getId());
     }
 
     @Override
     public String changeHardCondition(HardConditionVO hardConditionVO) {
-        HardCondition hardCondition=hardConditionVO.getModel();
+        HardCondition hardCondition=hardConditionVO.toEntity();
         hardConditionDao.saveAndFlush(hardCondition);
         return "success";
     }
@@ -134,14 +138,14 @@ public class StudyAboardServiceImpl implements StudyAboardService{
 
     @Override
     public void addApplicationElement(ApplicationElementVO applicationElementVO) {
-        ApplicationElement applicationElement=applicationElementVO.getModel();
+        ApplicationElement applicationElement=applicationElementVO.toEntity();
         applicationElementDao.saveAndFlush(applicationElement);
         applicationElementVO.setId(applicationElement.getId());
     }
 
     @Override
     public void updateApplicationElement(ApplicationElementVO applicationElementVO) {
-        ApplicationElement applicationElement=applicationElementVO.getModel();
+        ApplicationElement applicationElement=applicationElementVO.toEntity();
         applicationElementDao.saveAndFlush(applicationElement);
     }
 
@@ -181,14 +185,14 @@ public class StudyAboardServiceImpl implements StudyAboardService{
 
     @Override
     public void addQuestion(QuestionVO questionVO) {
-        Question question=questionVO.getModel();
+        Question question=questionVO.toEntity();
         questionDao.saveAndFlush(question);
         questionVO.setId(question.getId());
     }
 
     @Override
     public void updateQuestion(QuestionVO questionVO) {
-        Question question=questionVO.getModel();
+        Question question=questionVO.toEntity();
         questionDao.saveAndFlush(question);
     }
 

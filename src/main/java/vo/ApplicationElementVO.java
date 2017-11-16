@@ -76,7 +76,7 @@ public class ApplicationElementVO {
         this.updateAt = updateAt;
     }
 
-    public ApplicationElement getModel(){
+    public ApplicationElement toEntity(){
         ApplicationElement applicationElement=new ApplicationElement();
         applicationElement.setId(id);
         applicationElement.setGid(gid);

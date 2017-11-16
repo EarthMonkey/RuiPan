@@ -1,11 +1,7 @@
 package controller;
 
 
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 import util.SystemLog;
@@ -20,7 +16,7 @@ import java.util.UUID;
 
 
 
-@Controller
+@RestController
 public class UploadController {
 
 	@RequestMapping(value = "/one", method = RequestMethod.GET)
@@ -30,11 +26,11 @@ public class UploadController {
 
 	@RequestMapping("/oneUpload")
 	@ResponseBody
-	@SystemLog(module = "通用上传管理" ,methods = "单文件上传")
+	@SystemLog(module = "通用上传管理" ,methods = "图片上传")
 	public String oneUpload(@RequestParam("oneFile") MultipartFile oneFile, HttpServletRequest request){
 
 
-		String uploadUrl=request.getSession().getServletContext().getRealPath("/");
+		String uploadUrl=request.getSession().getServletContext().getRealPath("/")+"upload/images/";
 
 		String filename = getUniqueFileName(oneFile.getOriginalFilename());
 
@@ -69,7 +65,7 @@ public class UploadController {
 
 	@RequestMapping("/moreUpload")
 	@ResponseBody
-	@SystemLog(module = "通用上传管理" ,methods = "多文件上传")
+	@SystemLog(module = "通用上传管理" ,methods = "多图片上传")
 	public List<String> moreUpload(HttpServletRequest request){
 
 
@@ -77,7 +73,7 @@ public class UploadController {
 		Map<String, MultipartFile> files = multipartHttpServletRequest.getFileMap();
 		
 		String uploadUrl = request.getSession().getServletContext().getRealPath("/")
-				+ "more_file/";
+				+ "upload/images/";
 		File dir = new File(uploadUrl);
 		if (!dir.exists()) {
 			dir.mkdirs();

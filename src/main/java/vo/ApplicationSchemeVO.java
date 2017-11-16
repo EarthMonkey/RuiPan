@@ -86,7 +86,7 @@ public class ApplicationSchemeVO {
         this.updateAt = updateAt;
     }
 
-    public ApplicationScheme getModel() {
+    public ApplicationScheme toEntity() {
         ApplicationScheme applicationScheme = new ApplicationScheme();
         applicationScheme.setId(id);
         applicationScheme.setGid(gid);

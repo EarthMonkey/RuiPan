@@ -55,14 +55,14 @@ public class ApplicationSchemeServiceImpl implements ApplicationSchemeService{
 
     @Override
     public void addApplicationScheme(ApplicationSchemeVO applicationSchemeVO) {
-        ApplicationScheme applicationScheme=applicationSchemeVO.getModel();
+        ApplicationScheme applicationScheme=applicationSchemeVO.toEntity();
         applicationSchemeDao.saveAndFlush(applicationScheme);
         applicationSchemeVO.setId(applicationScheme.getId());
     }
 
     @Override
     public void updateApplicationScheme(ApplicationSchemeVO applicationSchemeVO) {
-        ApplicationScheme applicationScheme=applicationSchemeVO.getModel();
+        ApplicationScheme applicationScheme=applicationSchemeVO.toEntity();
         applicationSchemeDao.saveAndFlush(applicationScheme);
     }
 
@@ -112,7 +112,7 @@ public class ApplicationSchemeServiceImpl implements ApplicationSchemeService{
 
     @Override
     public void addRecommendApplicationScheme(RecommendApplicationScheme recommendApplicationScheme) {
-        GlobalRecommendation globalRecommendation=recommendApplicationScheme.getModel();
+        GlobalRecommendation globalRecommendation=recommendApplicationScheme.toEntity();
         if(globalRecommendationDao.countByCategoryEqualsAndFlagEquals(GlobalRecommedationCategory.APPLICATION_SCHEME,StatesConstant.RECOMMEND)==3){
             GlobalRecommendation earliestGlobalRecommendation=globalRecommendationDao.findFirstByCategoryAndFlagOrderByRecommendAtAsc(
                     GlobalRecommedationCategory.APPLICATION_SCHEME,StatesConstant.RECOMMEND);
@@ -126,7 +126,7 @@ public class ApplicationSchemeServiceImpl implements ApplicationSchemeService{
 
     @Override
     public void updateRecommendApplicationScheme(RecommendApplicationScheme recommendApplicationScheme) {
-        GlobalRecommendation globalRecommendation=recommendApplicationScheme.getModel();
+        GlobalRecommendation globalRecommendation=recommendApplicationScheme.toEntity();
         globalRecommendationDao.saveAndFlush(globalRecommendation);
         recommendApplicationScheme.setApplicationSchemeVO(getApplicationSchemeById(globalRecommendation.getRid()));
 
