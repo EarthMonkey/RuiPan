@@ -5,8 +5,8 @@
 define([''], function () {
     'use strict';
 
-    var editorCtrl = ['$scope', '$http', '$uibModalInstance', 'title', 'initHtml',
-        function ($scope, $http, $uibModalInstance, title, initHtml) {
+    var editorCtrl = ['$scope', '$uibModalInstance', 'title', 'initHtml',
+        function ($scope, $uibModalInstance, title, initHtml) {
 
             $scope.title = title;  // 标题
             // 数据模型

@@ -2,8 +2,15 @@
 
 <div class="ui_view">
 
+    <div class="message" ng-show="message!=''"
+         ng-class="{'bg-success':message.type=='success', 'bg-danger': message.type=='danger'}">
+        {{message.content}}
+    </div>
+
     <div class="h_title">
-        <h2>留学管理 <small>国家管理</small></h2>
+        <h2>留学管理
+            <small>国家管理</small>
+        </h2>
     </div>
 
     <!-- 留学国家列表 -->
@@ -14,10 +21,9 @@
             <th class="action_col"><a ng-click="addCountry()"><i class="fa fa-plus"></i>添加</a></th>
             </thead>
             <tbody>
-            <tr ng-repeat="item in [0,1,2,3]">
-                <td>username</td>
+            <tr ng-repeat="item in countryList">
+                <td>{{item}}</td>
                 <td>
-                    <div class="table_mod border"><a ng-click="modCountry(item)">修改</a></div>
                     <div class="table_mod"><a ng-click="delCountry(item)">删除</a></div>
                 </td>
             </tr>

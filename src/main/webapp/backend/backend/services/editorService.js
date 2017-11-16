@@ -5,14 +5,14 @@
 define([''], function () {
     'use strict';
 
-    var editorService = function () {
+    var editorService = function ($uibModal) {
 
         var service = this;
 
         /**
          * fields: [{id: 'english', label: 'chinese'}]
          * */
-        service.open = function ($uibModal, title, initHtml) {
+        service.open = function (title, initHtml) {
             return $uibModal.open({
                 animation: true,
                 templateUrl: 'backend/backend/views/modals/editorModal.html',

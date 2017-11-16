@@ -16,12 +16,13 @@ define(['lazy-load/lazyLoad'],
                 controllers: [
                     'backend/backend/controllers/leftBarCtrl',
                     'backend/backend/controllers/modals/textFormCtrl',
-                    'backend/backend/controllers/modals/editorCtrl'
+                    'backend/backend/controllers/modals/editorCtrl',
+                    'backend/backend/controllers/modals/messageCtrl'
                 ],
                 services: [
                     'backend/backend/services/leftBarService',
-                    'backend/backend/services/textFormService',
-                    'backend/backend/services/editorService'
+                    'backend/backend/services/editorService',
+                    'backend/backend/services/commonService'
                 ]
             }
         }, {

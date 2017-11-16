@@ -5,8 +5,8 @@
 define([''], function () {
     'use strict';
 
-    var textFormCtrl = ['$scope', '$http', '$uibModalInstance', 'title', 'fields', 'initObj',
-        function ($scope, $http, $uibModalInstance, title, fields, initObj) {
+    var textFormCtrl = ['$scope', '$uibModalInstance', 'title', 'fields', 'initObj',
+        function ($scope, $uibModalInstance, title, fields, initObj) {
 
             $scope.title = title;  // 标题
             $scope.fields = fields;  // id,label
