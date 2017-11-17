@@ -8,21 +8,21 @@ define([''], function () {
 
     var abroadCountryCtrl = ['$scope', '$timeout', 'commonService', function ($scope, $timeout, commonService) {
 
-        commonService.showLoading();
-        $scope.countryList = [];
         $.ajax({
             url: "/StudyAbroad/getAllCountry",
             type: 'GET',
+            beforeSend: function () {
+                commonService.showLoading();
+            },
             success: function (data) {
-                commonService.hideLoading();
-                $scope.countryList = data;
+                $timeout(function () {
+                    commonService.hideLoading();
+                    $scope.countryList = data;
+                });
             },
             error: function (err) {
                 console.log(err);
-                commonService.showMessage($scope, {
-                    type: 'danger',
-                    content: '获取国家列表失败'
-                });
+                showMess('danger', '获取国家列表失败');
             }
         });
 
@@ -40,25 +40,16 @@ define([''], function () {
                     success: function (data) {
                         if (data == "success") {
                             $timeout(function () {
-                                commonService.showMessage($scope, {
-                                    type: 'success',
-                                    content: '添加成功'
-                                });
                                 $scope.countryList.push(resp.country);
                             });
+                            showMess('success', '添加成功');
                         } else {
-                            commonService.showMessage($scope, {
-                                type: 'danger',
-                                content: data
-                            });
+                            showMess('danger', data);
                         }
                     },
                     error: function (err) {
                         console.log(err);
-                        commonService.showMessage($scope, {
-                            type: 'danger',
-                            content: '添加失败'
-                        });
+                        showMess('danger', '添加失败');
                     }
                 });
             });
@@ -74,24 +65,27 @@ define([''], function () {
                         type: 'DELETE',
                         success: function () {
                             $timeout(function () {
-                                commonService.showMessage($scope, {
-                                    type: 'success',
-                                    content: '删除成功'
-                                });
                                 $scope.countryList.splice(pos, 1);
                             });
+                            showMess('success', '删除成功');
                         },
                         error: function (err) {
                             console.log(err);
-                            commonService.showMessage($scope, {
-                                type: 'danger',
-                                content: '删除失败'
-                            });
+                            showMess('danger', '删除失败');
                         }
                     });
                 }
             });
         };
+
+        function showMess(type, data) {
+            $timeout(function () {
+                commonService.showMessage($scope, {
+                    type: type,
+                    content: data
+                });
+            });
+        }
 
     }];
 

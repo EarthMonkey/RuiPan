@@ -5,24 +5,42 @@
 define([''], function () {
     'use strict';
 
-    var textFormCtrl = ['$scope', '$uibModalInstance', 'title', 'fields', 'initObj',
-        function ($scope, $uibModalInstance, title, fields, initObj) {
+    var textFormCtrl = ['$scope', '$uibModalInstance', '$timeout', 'title', 'fields', 'initObj',
+        function ($scope, $uibModalInstance, $timeout, title, fields, initObj) {
 
             $scope.title = title;  // 标题
-            $scope.fields = fields;  // id,label
+            $scope.fields = fields;  // id,label,placeholder
             // 数据模型
             $scope.model = {};
             if (initObj) {
                 $scope.model = initObj;
+            } else {
+                fields.forEach(function (item) {
+                    $scope.model[item.id] = "";
+                })
             }
 
             $scope.ok = function () {
+
+                for (var key in $scope.model) {
+                    if (!$scope.model[key]) {
+                        showError("请填写完整信息");
+                        return;
+                    }
+                }
                 $uibModalInstance.close($scope.model);
             };
 
             $scope.cancel = function () {
                 $uibModalInstance.dismiss('cancel');
             };
+
+            function showError(message) {
+                $scope.modalMess = message;
+                $timeout(function () {
+                    $scope.modalMess = "";
+                }, 3000);
+            }
         }];
 
     var backendModule = angular.module('backend.config');

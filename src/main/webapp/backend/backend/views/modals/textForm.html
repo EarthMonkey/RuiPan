@@ -8,12 +8,13 @@
 
     <div class="login_input" ng-repeat="item in fields">
         <label>{{item.label}}: </label>
-        <input ng-model="model[item.id]">
+        <input ng-model="model[item.id]" placeholder="{{item.placeholder}}">
     </div>
 
 </div>
 
 <div class="modal-footer">
+    <div ng-show="modalMess" class="bg-danger modal_message">{{modalMess}}</div>
     <button class="btn btn-primary" type="button" ng-click="ok()">保存</button>
     <button class="btn btn-warning" type="button" ng-click="cancel()">取消</button>
 </div>

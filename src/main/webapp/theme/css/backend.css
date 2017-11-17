@@ -149,13 +149,25 @@ p {
     width: 200px;
     height: 40px;
     line-height: 40px;
-    font-size: 18px;
-    color: #000;
     text-align: center;
     position: absolute;
     top: 0;
     left: 50%;
     transform: translate(-100px, 0);
+}
+
+.bg-danger,
+.bg-success {
+    font-size: 18px;
+    color: #000;
+}
+
+.bg-danger {
+    background-color: #ffcfcf;
+}
+
+.bg-success {
+    background-color: #d0f7c1;
 }
 
 .h_title {
@@ -382,4 +394,11 @@ th .fa {
 .loading_div img {
     width: 100%;
     height: 100px;
+}
+
+.modal_message {
+    display: inline-block;
+    vertical-align: middle;
+    padding: 5px 20px;
+    margin: 0 15px;
 }

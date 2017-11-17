@@ -2,6 +2,11 @@
 
 <div class="ui_view">
 
+    <div class="message" ng-show="message!=''"
+         ng-class="{'bg-success':message.type=='success', 'bg-danger': message.type=='danger'}">
+        {{message.content}}
+    </div>
+
     <div class="h_title">
         <h2>留学管理 <small>留学服务</small></h2>
     </div>
@@ -21,15 +26,22 @@
     </div>
 
     <!-- 硬性条件要求 -->
-    <div style="margin-top: 30px;">
+    <div class="h_title" style="margin-top: 50px;">
+        <h2>硬性条件要求</h2>
+    </div>
+    <div>
         <table class="table table-hover">
             <thead>
-            <th>硬性条件要求</th>
-            <th class="action_col"><a><i class="fa fa-plus"></i>添加</a></th>
+            <th>等级标题</th>
+            <th>要求标题</th>
+            <th>要求内容</th>
+            <th class="action_col"><a ng-click="addCondition()"><i class="fa fa-plus"></i>添加</a></th>
             </thead>
             <tbody>
-            <tr ng-repeat="temp in [0,1,2,3]">
+            <tr ng-repeat="item in conditionList">
                 <td>某些硬性的条件和要求</td>
+                <td></td>
+                <td></td>
                 <td>
                     <div class="table_mod border"><a>修改</a></div>
                     <div class="table_mod"><a>删除</a></div>
@@ -40,6 +52,9 @@
     </div>
 
     <!-- 申请要素 -->
+    <div class="h_title" style="margin-top: 50px;">
+        <h2>申请要素</h2>
+    </div>
     <div>
         <table class="table table-hover">
             <thead>
