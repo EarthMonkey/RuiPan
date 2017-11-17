@@ -369,3 +369,17 @@ th .fa {
 .modal-body .login_input label {
     width: 100px;
 }
+
+.loading_div {
+    width: 100px;
+    height: 100px;
+    position: fixed;
+    top: 250px;
+    left: 50%;
+    transform: translate(-50px, -50px);
+}
+
+.loading_div img {
+    width: 100%;
+    height: 100px;
+}

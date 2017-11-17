@@ -21,10 +21,10 @@
             <th class="action_col"><a ng-click="addCountry()"><i class="fa fa-plus"></i>添加</a></th>
             </thead>
             <tbody>
-            <tr ng-repeat="item in countryList">
+            <tr ng-repeat="item in countryList track by $index">
                 <td>{{item}}</td>
                 <td>
-                    <div class="table_mod"><a ng-click="delCountry(item)">删除</a></div>
+                    <div class="table_mod"><a ng-click="delCountry(item, $index)">删除</a></div>
                 </td>
             </tr>
             </tbody>
