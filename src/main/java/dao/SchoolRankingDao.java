@@ -11,4 +11,6 @@ import java.util.List;
  */
 public interface SchoolRankingDao extends JpaRepository<SchoolRanking,Serializable> {
     public List<SchoolRanking> findAllByPidOrderByRankingAsc(Integer pid);
+
+    public List<SchoolRanking> findAllBySid(Integer sid);
 }

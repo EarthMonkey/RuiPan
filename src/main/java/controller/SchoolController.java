@@ -15,10 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import service.SchoolService;
 import util.SystemLog;
-import vo.ProfessionCategoryVO;
-import vo.SchoolPictureVO;
-import vo.SchoolRankingVO;
-import vo.SchoolVO;
+import vo.*;
 
 import java.util.List;
 
@@ -32,8 +29,6 @@ public class SchoolController {
     @Autowired
     SchoolService schoolService;
 
-    @Autowired
-    SchoolPictureDao schoolPictureDao;
 
     //根据国家获取所有小专业
     @GetMapping(value = "/getAllCategory")
@@ -62,12 +57,13 @@ public class SchoolController {
     }
 
     //根据sid获取所有专业的录取要求
-//    @GetMapping(value = "/test")
-//    public SchoolPicture test(Integer id){
-//        return schoolPictureDao.findOne(id);
-//    }
+    @GetMapping(value = "/getProfessionRequirementsBySid")
+    public List<ProfessionRequirementVO> getProfessionRequirementsBySid(Integer sid){
+        return schoolService.getProfessionRequirementsBySid(sid);
+    }
 
-    //根据sid获取所有成功案例列表
+    //根据sid获取所有成功案例列表，见 SuccessCaseController.java
+
 
     //***********************后台管理接口******************************
 

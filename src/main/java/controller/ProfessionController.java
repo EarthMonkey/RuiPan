@@ -9,8 +9,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import service.ProfessionService;
+import service.SchoolService;
 import util.SystemLog;
 import vo.ProfessionCategoryVO;
+import vo.SchoolRankingVO;
 
 import java.sql.Timestamp;
 import java.util.List;
@@ -25,6 +27,9 @@ public class ProfessionController {
 
     @Autowired
     ProfessionService professionService;
+
+    @Autowired
+    SchoolService schoolService;
 
     //获取所有国家
     @RequestMapping(value = "/getAllCountry")
@@ -81,11 +86,10 @@ public class ProfessionController {
         return professionService.getApplicationAdvice(pid);
     }
 
-    //根据pid获取该专业所有院校排名列表
-//    @RequestMapping(value="/getApplicationAdvice")
-//    public List<>
+    //根据pid获取该专业所有院校排名列表，见 SchoolController.java
 
-    //根据pid获取该专业所有成功案例列表
+
+    //根据pid获取该专业所有成功案例列表，见 SuccessCaseController.java
 
 
 

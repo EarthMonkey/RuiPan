@@ -1,9 +1,6 @@
 package service;
 
-import vo.ProfessionCategoryVO;
-import vo.SchoolPictureVO;
-import vo.SchoolRankingVO;
-import vo.SchoolVO;
+import vo.*;
 
 import java.util.List;
 
@@ -37,5 +34,7 @@ public interface SchoolService {
     public void addSchoolPicture(SchoolPictureVO schoolPictureVO);
 
     public String deleteSchoolPicture(Integer id);
+
+    public List<ProfessionRequirementVO> getProfessionRequirementsBySid(Integer sid);
 
 }

@@ -14,6 +14,8 @@ public class SuccessCaseController {
 
     //根据专业id（pid）获取所有成功案例列表
 
+    //根据学校id（sid）获取所有成功案例列表
+
     //根据成功案例id获取成功案例详情
 
     //获取四个全局推荐的成功案例

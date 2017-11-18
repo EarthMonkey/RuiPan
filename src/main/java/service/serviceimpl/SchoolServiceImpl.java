@@ -11,10 +11,7 @@ import model.SchoolRanking;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.SchoolService;
-import vo.ProfessionCategoryVO;
-import vo.SchoolPictureVO;
-import vo.SchoolRankingVO;
-import vo.SchoolVO;
+import vo.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -158,5 +155,19 @@ public class SchoolServiceImpl implements SchoolService{
             return "success";
         }
         return "not_exist";
+    }
+
+    @Override
+    public List<ProfessionRequirementVO> getProfessionRequirementsBySid(Integer sid) {
+        List<SchoolRanking> schoolRankings=schoolRankingDao.findAllBySid(sid);
+        List<ProfessionRequirementVO> professionRequirementVOS=new ArrayList<ProfessionRequirementVO>();
+        for (SchoolRanking schoolRanking:schoolRankings) {
+            ProfessionRequirementVO professionRequirementVO=new ProfessionRequirementVO();
+            professionRequirementVO.setProfession(schoolRanking.getProfessionCategoryByPid().getSubclassification());
+            professionRequirementVO.setScoreRequirements(schoolRanking.getScoreRequirements());
+            professionRequirementVO.setApplicationDifficulty(schoolRanking.getApplicationDifficulty());
+            professionRequirementVOS.add(professionRequirementVO);
+        }
+        return professionRequirementVOS;
     }
 }
