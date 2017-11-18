@@ -161,7 +161,7 @@ public class SuccessfulCaseController {
     }
 
     //根据id将某条案例从全局推荐中移除
-    @PutMapping(value="/deleteRecommendSuccessfulCase")
+    @DeleteMapping(value="/deleteRecommendSuccessfulCase")
     @SystemLog(module = "成功案例" ,methods = "删除推荐")
     public String deleteRecommendSuccessfulCase(Integer id){
         return successfulCaseService.deleteRecommendSuccessfulCase(id);
