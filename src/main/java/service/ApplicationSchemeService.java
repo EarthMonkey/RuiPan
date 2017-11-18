@@ -1,5 +1,6 @@
 package service;
 
+import org.springframework.transaction.annotation.Transactional;
 import vo.ApplicationSchemeVO;
 import vo.RecommendApplicationScheme;
 
@@ -27,8 +28,10 @@ public interface ApplicationSchemeService {
 
     public List<RecommendApplicationScheme> getHistoryRecommendApplicationScheme();
 
+    @Transactional
     public void addRecommendApplicationScheme(RecommendApplicationScheme recommendApplicationScheme);
 
+    @Transactional
     public void updateRecommendApplicationScheme(RecommendApplicationScheme recommendApplicationScheme);
 
     public String deleteRecommendApplicationScheme(Integer id);
