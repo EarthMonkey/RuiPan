@@ -12,8 +12,6 @@ define([''], function () {
         // 消息提示
         service.showMessage = function ($scope, message) {
             $scope.message = message;
-            // 有消息提示则隐藏loading
-            service.hideLoading();
             var time = 3000;
             if (message.type == 'danger') {
                 time = 5000;
@@ -21,22 +19,6 @@ define([''], function () {
             $timeout(function () {
                 $scope.message = '';
             }, time);
-        };
-
-        // 显示加载条
-        var loadInstance;
-        service.showLoading = function () {
-            loadInstance = $uibModal.open({
-                animation: true,
-                backdrop: 'static',
-                keyboard: false,
-                templateUrl: 'backend/backend/views/modals/loading.html'
-            });
-        };
-
-        service.hideLoading = function () {
-            if (loadInstance)
-                loadInstance.close();
         };
 
         // 删除确认
@@ -74,6 +56,31 @@ define([''], function () {
                     }
                 }
             });
+        };
+
+        // 显示加载条
+        $(document).ajaxStart(function () {
+            showLoading();
+        });
+
+        $(document).ajaxStop(function () {
+            hideLoading();
+        });
+
+        var loadInstance;
+
+        function showLoading() {
+            loadInstance = $uibModal.open({
+                animation: true,
+                backdrop: 'static',
+                keyboard: false,
+                templateUrl: 'backend/backend/views/modals/loading.html'
+            });
+        }
+
+        function hideLoading() {
+            if (loadInstance)
+                loadInstance.close();
         }
     };
 

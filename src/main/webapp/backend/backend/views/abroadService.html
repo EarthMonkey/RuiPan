@@ -8,7 +8,9 @@
     </div>
 
     <div class="h_title">
-        <h2>留学管理 <small>留学服务</small></h2>
+        <h2>留学管理
+            <small>留学服务</small>
+        </h2>
     </div>
 
     <!-- 筛选 -->
@@ -38,13 +40,13 @@
             <th class="action_col"><a ng-click="addCondition()"><i class="fa fa-plus"></i>添加</a></th>
             </thead>
             <tbody>
-            <tr ng-repeat="item in conditionList">
-                <td>某些硬性的条件和要求</td>
-                <td></td>
-                <td></td>
+            <tr ng-repeat="item in conditionList track by $index">
+                <td>{{item.rank}}</td>
+                <td>{{item.subject}}</td>
+                <td>{{item.score}}</td>
                 <td>
-                    <div class="table_mod border"><a>修改</a></div>
-                    <div class="table_mod"><a>删除</a></div>
+                    <div class="table_mod border"><a ng-click="modCondition(item, $index)">修改</a></div>
+                    <div class="table_mod"><a ng-click="delCondition(item, $index)">删除</a></div>
                 </td>
             </tr>
             </tbody>
@@ -74,18 +76,25 @@
     </div>
 
     <!-- 常见问题 -->
+    <div class="h_title" style="margin-top: 50px;">
+        <h2>常见问题</h2>
+    </div>
     <div>
         <table class="table table-hover">
             <thead>
             <th>常见问题</th>
-            <th class="action_col"><a><i class="fa fa-plus"></i>添加</a></th>
+            <th>回答</th>
+            <th>推荐展示</th>
+            <th class="action_col"><a ng-click="addQuestion()"><i class="fa fa-plus"></i>添加</a></th>
             </thead>
             <tbody>
-            <tr ng-repeat="temp in [0,1,2,3]">
-                <td>常见问题</td>
+            <tr ng-repeat="item in questionList track by $index">
+                <td>{{item.question}}</td>
+                <td>{{item.answer}}</td>
+                <td>{{(item.isShow=='true'||item.isShow==true)?'是':'否'}}</td>
                 <td>
-                    <div class="table_mod border"><a>修改</a></div>
-                    <div class="table_mod"><a>删除</a></div>
+                    <div class="table_mod border"><a ng-click="modQues(item, $index)">修改</a></div>
+                    <div class="table_mod"><a ng-click="delQues(item, $index)">删除</a></div>
                 </td>
             </tr>
             </tbody>

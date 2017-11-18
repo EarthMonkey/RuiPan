@@ -17,6 +17,8 @@ define([''], function () {
                 animation: true,
                 templateUrl: 'backend/backend/views/modals/editorModal.html',
                 controller: 'editorCtrl',
+                backdrop: 'static',
+                keyboard: false,
                 size: 'lg',
                 resolve: {
                     title: function () {

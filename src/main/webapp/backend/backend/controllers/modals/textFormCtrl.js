@@ -13,10 +13,13 @@ define([''], function () {
             // 数据模型
             $scope.model = {};
             if (initObj) {
-                $scope.model = initObj;
+                $scope.model = angular.copy(initObj);
             } else {
                 fields.forEach(function (item) {
                     $scope.model[item.id] = "";
+                    if (item.type == 'checkbox') {
+                        $scope.model[item.id] = false;
+                    }
                 })
             }
 

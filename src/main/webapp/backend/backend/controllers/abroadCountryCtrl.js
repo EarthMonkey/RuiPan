@@ -6,19 +6,13 @@
 define([''], function () {
     'use strict';
 
-    var abroadCountryCtrl = ['$scope', '$timeout', 'commonService', function ($scope, $timeout, commonService) {
+    var abroadCountryCtrl = ['$scope', 'commonService', function ($scope, commonService) {
 
         $.ajax({
             url: "/StudyAbroad/getAllCountry",
             type: 'GET',
-            beforeSend: function () {
-                commonService.showLoading();
-            },
             success: function (data) {
-                $timeout(function () {
-                    commonService.hideLoading();
-                    $scope.countryList = data;
-                });
+                $scope.countryList = data;
             },
             error: function (err) {
                 console.log(err);
@@ -32,16 +26,13 @@ define([''], function () {
             );
 
             modalInstance.result.then(function (resp) {
-                commonService.showLoading();
                 $.ajax({
                     url: "/StudyAbroad/addCountry",
                     type: 'POST',
                     data: resp,
                     success: function (data) {
                         if (data == "success") {
-                            $timeout(function () {
-                                $scope.countryList.push(resp.country);
-                            });
+                            $scope.countryList.push(resp.country);
                             showMess('success', '添加成功');
                         } else {
                             showMess('danger', data);
@@ -59,14 +50,11 @@ define([''], function () {
             var messageInstance = commonService.confirm("国家: " + item);
             messageInstance.result.then(function (resp) {
                 if (resp) {
-                    commonService.showLoading();
                     $.ajax({
                         url: '/StudyAbroad/deleteCountry?country=' + item,
                         type: 'DELETE',
                         success: function () {
-                            $timeout(function () {
-                                $scope.countryList.splice(pos, 1);
-                            });
+                            $scope.countryList.splice(pos, 1);
                             showMess('success', '删除成功');
                         },
                         error: function (err) {
@@ -79,11 +67,9 @@ define([''], function () {
         };
 
         function showMess(type, data) {
-            $timeout(function () {
-                commonService.showMessage($scope, {
-                    type: type,
-                    content: data
-                });
+            commonService.showMessage($scope, {
+                type: type,
+                content: data
             });
         }
 

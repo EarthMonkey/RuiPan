@@ -8,7 +8,8 @@
 
     <div class="login_input" ng-repeat="item in fields">
         <label>{{item.label}}: </label>
-        <input ng-model="model[item.id]" placeholder="{{item.placeholder}}">
+        <input type="{{item.type==null?'text':item.type}}" ng-model="model[item.id]" placeholder="{{item.placeholder}}">
+        <span ng-if="item.type=='checkbox'">{{model[item.id]==true?'是':'否'}}</span>
     </div>
 
 </div>

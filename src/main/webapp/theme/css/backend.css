@@ -88,7 +88,8 @@ p {
     -moz-text-align-last: justify; /*ff*/
 }
 
-.login_input input {
+.login_input input[type='text'],
+.login_input input[type='password'] {
     display: inline-block;
     height: 35px;
     width: 175px;
@@ -146,14 +147,14 @@ p {
 }
 
 .message {
-    width: 200px;
-    height: 40px;
-    line-height: 40px;
+    width: 300px;
+    height: 60px;
+    line-height: 60px;
     text-align: center;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 50%;
-    transform: translate(-100px, 0);
+    transform: translate(-150px, 0);
 }
 
 .bg-danger,
@@ -375,11 +376,15 @@ th .fa {
 
 .modal-body .login_input {
     margin-left: 0;
-    width: 285px;
+    width: 100%;
 }
 
 .modal-body .login_input label {
     width: 100px;
+}
+
+.modal-body .login_input input[type='text'] {
+    width: 400px;
 }
 
 .loading_div {

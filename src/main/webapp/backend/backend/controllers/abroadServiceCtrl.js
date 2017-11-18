@@ -6,7 +6,7 @@
 define([''], function () {
     'use strict';
 
-    var abroadServiceCtrl = ['$scope', 'commonService', '$timeout', function ($scope, commonService, $timeout) {
+    var abroadServiceCtrl = ['$scope', 'commonService', function ($scope, commonService) {
 
         // 删选
         $scope.selectedCoun = '美国';
@@ -34,80 +34,212 @@ define([''], function () {
             getGid();
         };
 
+        var GID = '';
+
         getGid();
         function getGid() {
             $.ajax({
                 url: '/StudyAbroad/getGid?country=' + $scope.selectedCoun + "&grade=" + $scope.selectedEdu,
                 type: 'GET',
-                beforeSend: function () {
-                    commonService.showLoading();
-                },
                 success: function (resp) {
-                    console.log(resp);
-                    $timeout(function () {
-                       commonService.hideLoading();
-                    });
+                    GID = resp;
+                    getData();
                 },
                 error: function (err) {
                     console.log(err);
-                    $timeout(function () {
-                        commonService.showMessage($scope, {
-                            type: 'danger',
-                            content: '服务器出错啦'
+                    showMess('danger', '服务器出错啦');
+                }
+            })
+        }
+
+        $scope.conditionList = [];
+        $scope.factorList = [];
+        $scope.questionList = [];
+
+        // 初始化数据
+        function getData() {
+            // 硬性条件
+            $.ajax({
+                url: '/StudyAbroad/getHardCondionByGid?gid=' + GID,
+                type: 'GET',
+                success: function (resp) {
+                    for (var key in resp) {
+                        resp[key].forEach(function (item) {
+                            $scope.conditionList.push(item);
                         });
-                    });
+                    }
+                },
+                error: function (err) {
+                    console.log(err);
+                    showMess('danger', '获取硬性条件失败');
+                }
+            });
+
+            // 申请要素
+
+            // 常见问题
+            $.ajax({
+                url: '/StudyAbroad/getQuestionsByGid?gid=' + GID,
+                type: 'GET',
+                success: function (resp) {
+                    $scope.questionList = resp;
+                },
+                error: function (err) {
+                    console.log(err);
+                    showMess('danger', '获取常见问题失败');
                 }
             })
         }
 
         // 增加硬性条件
-        $scope.conditionList = [];
+        var conditionFields = [
+            {id: 'rank', label: '等级标题', placeholder: 'e.g.Top10申请标准'},
+            {id: 'subject', label: '要求标题', placeholder: 'e.g.GPA成绩要求'},
+            {id: 'score', label: '要求内容', placeholder: 'e.g.3.0+'}
+        ];
+
         $scope.addCondition = function () {
-            var fields = [
-                {id: 'rank', label: '等级标题', placeholder: 'e.g.Top10申请标准'},
-                {id: 'subject', label: '要求标题', placeholder: 'e.g.GPA成绩要求'},
-                {id: 'score', label: '要求内容', placeholder: 'e.g.3.0+'}
-            ];
-            var conditonInstance = commonService.openTextForm('增加硬性条件要求', fields);
+
+            var conditonInstance = commonService.openTextForm('增加硬性条件要求', conditionFields);
             conditonInstance.result.then(function (resp) {
-                commonService.showLoading();
+                resp.gid = GID;
                 $.ajax({
                     url: "/StudyAbroad/addHardCondition",
                     type: 'POST',
                     data: resp,
                     success: function (data) {
-                        if (data == "success") {
-                            $timeout(function () {
-                                commonService.showMessage($scope, {
-                                    type: 'success',
-                                    content: '添加成功'
-                                });
-                                $scope.conditionList.push(resp.country);
-                            });
-                        } else {
-                            commonService.showMessage($scope, {
-                                type: 'danger',
-                                content: data
-                            });
-                        }
+                        $scope.conditionList.push(data);
                     },
                     error: function (err) {
                         console.log(err);
-                        commonService.showMessage($scope, {
-                            type: 'danger',
-                            content: '添加失败'
-                        });
+                        showMess('danger', '添加失败');
                     }
                 });
             })
         };
 
-        function showMess(type, data) {
-            $timeout(function () {
-                commonService.showMessage($scope, {
-                    type: type,
-                    content: data
+        // 修改硬性条件
+        $scope.modCondition = function (item, pos) {
+
+            var conditionInstance = commonService.openTextForm('修改硬性条件要求', conditionFields, item);
+            conditionInstance.result.then(function (resp) {
+                resp.id = item.id;
+                resp.gid = GID;
+                $.ajax({
+                    url: '/StudyAbroad/changeHardCondition',
+                    type: 'PUT',
+                    data: resp,
+                    success: function (data) {
+                        $scope.conditionList[pos] = resp;
+                        showMess('success', '修改成功');
+                    },
+                    error: function (err) {
+                        console.log(err);
+                        showMess('danger', '修改失败');
+                    }
+                })
+            });
+        };
+
+        // 删除硬性条件
+        $scope.delCondition = function (item, pos) {
+            var conditionInstance = commonService.confirm(item.rank + " " + item.subject);
+            conditionInstance.result.then(function (resp) {
+                if (resp) {
+                    $.ajax({
+                        url: '/StudyAbroad/deleteHardCondition?id=' + item.id,
+                        type: 'DELETE',
+                        success: function () {
+                            $scope.conditionList.splice(pos, 1);
+                            showMess('success', '删除成功');
+                        },
+                        error: function (err) {
+                            console.log(err);
+                            showMess('danger', '删除失败');
+                        }
+                    })
+                }
+            });
+        };
+
+
+        // 增加问题
+        var quesFields = [
+            {id: 'question', label: '常见问题'},
+            {id: 'answer', label: '问题答案'},
+            {id: 'isShow', label: '推荐展示', type: 'checkbox'}
+        ];
+
+        $scope.addQuestion = function () {
+
+            var questionInstance = commonService.openTextForm('添加常见问题', quesFields);
+            questionInstance.result.then(function (data) {
+                data.gid = GID;
+                $.ajax({
+                    url: '/StudyAbroad/addQuestion',
+                    type: 'POST',
+                    data: data,
+                    success: function (resp) {
+                        showMess('success', '添加成功');
+                        $scope.questionList.push(resp);
+                    },
+                    error: function (err) {
+                        console.log(err);
+                        showMess('danger', '添加失败');
+                    }
                 });
+            })
+        };
+
+        // 修改问题
+        $scope.modQues = function (item, pos) {
+
+            var questionInstance = commonService.openTextForm('修改常见问题', quesFields, item);
+            questionInstance.result.then(function (data) {
+                data.gid = GID;
+                data.id = item.id;
+
+                $.ajax({
+                    url: '/StudyAbroad/updateQuestion',
+                    type: 'PUT',
+                    data: data,
+                    success: function () {
+                        $scope.questionList[pos] = data;
+                        showMess('success', '修改成功');
+                    },
+                    error: function (err) {
+                        console.log(err);
+                        showMess('danger', '修改失败');
+                    }
+                })
+            });
+        };
+
+        // 删除问题
+        $scope.delQues = function (item, pos) {
+            var quesInstance = commonService.confirm("常见问题：" + item.question);
+            quesInstance.result.then(function (resp) {
+                if (resp) {
+                    $.ajax({
+                        url: '/StudyAbroad/deleteQuestion?id=' + item.id,
+                        type: 'DELETE',
+                        success: function () {
+                            $scope.questionList.splice(pos, 1);
+                            showMess('success', '删除成功');
+                        },
+                        error: function (err) {
+                            console.log(err);
+                            showMess('danger', '删除失败');
+                        }
+                    })
+                }
+            });
+        };
+
+        function showMess(type, data) {
+            commonService.showMessage($scope, {
+                type: type,
+                content: data
             });
         }
 
