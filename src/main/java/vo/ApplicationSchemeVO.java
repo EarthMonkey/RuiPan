@@ -95,19 +95,21 @@ public class ApplicationSchemeVO {
         applicationScheme.setSynopsis(synopsis);
         applicationScheme.setTextPath(textPath);
         applicationScheme.setFlag(flag);
-        updateAt=new Timestamp(System.currentTimeMillis());
+        updateAt = new Timestamp(System.currentTimeMillis());
         applicationScheme.setUpdateAt(updateAt);
         return applicationScheme;
     }
 
     public void update(ApplicationScheme applicationScheme) {
-        id = applicationScheme.getId();
-        gid = applicationScheme.getGid();
-        subdivisionGrade = applicationScheme.getSubdivisionGrade();
-        title = applicationScheme.getTitle();
-        synopsis = applicationScheme.getSynopsis();
-        textPath = applicationScheme.getTextPath();
-        flag = applicationScheme.getFlag();
-        updateAt = applicationScheme.getUpdateAt();
+        if (applicationScheme != null) {
+            id = applicationScheme.getId();
+            gid = applicationScheme.getGid();
+            subdivisionGrade = applicationScheme.getSubdivisionGrade();
+            title = applicationScheme.getTitle();
+            synopsis = applicationScheme.getSynopsis();
+            textPath = applicationScheme.getTextPath();
+            flag = applicationScheme.getFlag();
+            updateAt = applicationScheme.getUpdateAt();
+        }
     }
 }

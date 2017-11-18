@@ -120,8 +120,8 @@ public class ConsultantVO {
         this.updateAt = updateAt;
     }
 
-    public Consultant toEntity(){
-        Consultant consultant=new Consultant();
+    public Consultant toEntity() {
+        Consultant consultant = new Consultant();
         consultant.setId(id);
         consultant.setName(name);
         consultant.setCountry(country);
@@ -133,23 +133,25 @@ public class ConsultantVO {
         consultant.setSynopsis(synopsis);
         consultant.setTextPath(textPath);
         consultant.setIsRecommend(isRecommend);
-        updateAt=new Timestamp(System.currentTimeMillis());
+        updateAt = new Timestamp(System.currentTimeMillis());
         consultant.setUpdateAt(updateAt);
         return consultant;
     }
 
-    public void update(Consultant consultant){
-        id=consultant.getId();
-        name=consultant.getName();
-        country=consultant.getCountry();
-        profession=consultant.getProfession();
-        headSculpture=consultant.getHeadSculpture();
-        workingHours=consultant.getWorkingHours();
-        offerNumber=consultant.getOfferNumber();
-        applicationSuccessRate=consultant.getApplicationSuccessRate();
-        synopsis=consultant.getSynopsis();
-        textPath=consultant.getTextPath();
-        isRecommend=consultant.getIsRecommend();
-        updateAt=consultant.getUpdateAt();
+    public void update(Consultant consultant) {
+        if (consultant != null) {
+            id = consultant.getId();
+            name = consultant.getName();
+            country = consultant.getCountry();
+            profession = consultant.getProfession();
+            headSculpture = consultant.getHeadSculpture();
+            workingHours = consultant.getWorkingHours();
+            offerNumber = consultant.getOfferNumber();
+            applicationSuccessRate = consultant.getApplicationSuccessRate();
+            synopsis = consultant.getSynopsis();
+            textPath = consultant.getTextPath();
+            isRecommend = consultant.getIsRecommend();
+            updateAt = consultant.getUpdateAt();
+        }
     }
 }

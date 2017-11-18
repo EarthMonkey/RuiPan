@@ -36,10 +36,19 @@ public class UEditorController {
 
     @RequestMapping(value = "/uploadText")
     @SystemLog(module = "UEditor后台控制" ,methods = "UEditor正文提交")
-    public String updateUEditorText(HttpServletRequest request, String text){
+    public String uploadText(HttpServletRequest request, String text){
         String uploadUrl = request.getSession().getServletContext().getRealPath("/")
                 + "upload/text/";
         String fileName= UUID.randomUUID().toString().replaceAll("-", "")+".html";
+        FileManager.WriteFile(text,uploadUrl,fileName,false);
+        return fileName;
+    }
+
+    @RequestMapping(value = "/updateText")
+    @SystemLog(module = "UEditor后台控制" ,methods = "修改UEditor正文内容")
+    public String updateText(HttpServletRequest request, String text,String fileName){
+        String uploadUrl = request.getSession().getServletContext().getRealPath("/")
+                + "upload/text/";
         FileManager.WriteFile(text,uploadUrl,fileName,false);
         return fileName;
     }

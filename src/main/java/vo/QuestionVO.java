@@ -79,11 +79,13 @@ public class QuestionVO {
     }
 
     public void update(Question question) {
-        id = question.getId();
-        gid = question.getGid();
-        this.question = question.getQuestion();
-        answer = question.getAnswer();
-        isShow = question.getIsShow();
-        createAt = question.getCreateAt();
+        if (question != null) {
+            id = question.getId();
+            gid = question.getGid();
+            this.question = question.getQuestion();
+            answer = question.getAnswer();
+            isShow = question.getIsShow();
+            createAt = question.getCreateAt();
+        }
     }
 }

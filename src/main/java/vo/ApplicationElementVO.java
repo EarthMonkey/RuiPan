@@ -76,26 +76,28 @@ public class ApplicationElementVO {
         this.updateAt = updateAt;
     }
 
-    public ApplicationElement toEntity(){
-        ApplicationElement applicationElement=new ApplicationElement();
+    public ApplicationElement toEntity() {
+        ApplicationElement applicationElement = new ApplicationElement();
         applicationElement.setId(id);
         applicationElement.setGid(gid);
         applicationElement.setCategory(category);
         applicationElement.setSynopsis(synopsis);
         applicationElement.setTextPath(textPath);
         applicationElement.setFlag(flag);
-        updateAt=new Timestamp(System.currentTimeMillis());
+        updateAt = new Timestamp(System.currentTimeMillis());
         applicationElement.setUpdateAt(updateAt);
         return applicationElement;
     }
 
-    public void update(ApplicationElement applicationElement){
-        id=applicationElement.getId();
-        gid=applicationElement.getGid();
-        category=applicationElement.getCategory();
-        synopsis=applicationElement.getSynopsis();
-        textPath=applicationElement.getTextPath();
+    public void update(ApplicationElement applicationElement) {
+        if (applicationElement != null) {
+            id = applicationElement.getId();
+            gid = applicationElement.getGid();
+            category = applicationElement.getCategory();
+            synopsis = applicationElement.getSynopsis();
+            textPath = applicationElement.getTextPath();
 //        flag=applicationElement.getFlag();
-        updateAt=applicationElement.getUpdateAt();
+            updateAt = applicationElement.getUpdateAt();
+        }
     }
 }

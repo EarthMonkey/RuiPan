@@ -57,22 +57,24 @@ public class ProfessionCategoryVO {
         this.createAt = createAt;
     }
 
-    public ProfessionCategory toEntity(){
-        ProfessionCategory professionCategory=new ProfessionCategory();
+    public ProfessionCategory toEntity() {
+        ProfessionCategory professionCategory = new ProfessionCategory();
         professionCategory.setPid(pid);
         professionCategory.setCountry(country);
         professionCategory.setCategory(category);
         professionCategory.setSubclassification(subclassification);
-        createAt=new Timestamp(System.currentTimeMillis());
+        createAt = new Timestamp(System.currentTimeMillis());
         professionCategory.setCreateAt(createAt);
         return professionCategory;
     }
 
-    public void update(ProfessionCategory professionCategory){
-        pid=professionCategory.getPid();
-        country=professionCategory.getCountry();
-        category=professionCategory.getCategory();
-        subclassification=professionCategory.getSubclassification();
-        createAt=professionCategory.getCreateAt();
+    public void update(ProfessionCategory professionCategory) {
+        if (professionCategory != null) {
+            pid = professionCategory.getPid();
+            country = professionCategory.getCountry();
+            category = professionCategory.getCategory();
+            subclassification = professionCategory.getSubclassification();
+            createAt = professionCategory.getCreateAt();
+        }
     }
 }

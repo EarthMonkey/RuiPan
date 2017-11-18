@@ -59,22 +59,24 @@ public class RecommendApplicationScheme {
         this.applicationSchemeVO = applicationSchemeVO;
     }
 
-    public GlobalRecommendation toEntity(){
-        GlobalRecommendation globalRecommendation=new GlobalRecommendation();
+    public GlobalRecommendation toEntity() {
+        GlobalRecommendation globalRecommendation = new GlobalRecommendation();
         globalRecommendation.setId(id);
         globalRecommendation.setCategory(GlobalRecommedationCategory.APPLICATION_SCHEME);
         globalRecommendation.setSlogan(picturePath);
         globalRecommendation.setRid(rid);
-        recommendAt=new Timestamp(System.currentTimeMillis());
+        recommendAt = new Timestamp(System.currentTimeMillis());
         globalRecommendation.setRecommendAt(recommendAt);
         globalRecommendation.setFlag(StatesConstant.RECOMMEND);
-        return  globalRecommendation;
+        return globalRecommendation;
     }
 
-    public void update(GlobalRecommendation globalRecommendation){
-        id=globalRecommendation.getId();
-        picturePath =globalRecommendation.getSlogan();
-        rid=globalRecommendation.getRid();
-        recommendAt=globalRecommendation.getRecommendAt();
+    public void update(GlobalRecommendation globalRecommendation) {
+        if (globalRecommendation != null) {
+            id = globalRecommendation.getId();
+            picturePath = globalRecommendation.getSlogan();
+            rid = globalRecommendation.getRid();
+            recommendAt = globalRecommendation.getRecommendAt();
+        }
     }
 }

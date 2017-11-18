@@ -67,24 +67,27 @@ public class HardConditionVO {
         this.updateAt = updateAt;
     }
 
-    public HardCondition toEntity(){
-        HardCondition hardCondition=new HardCondition();
+    public HardCondition toEntity() {
+        HardCondition hardCondition = new HardCondition();
         hardCondition.setId(id);
         hardCondition.setGid(gid);
         hardCondition.setRank(rank);
         hardCondition.setSubject(subject);
         hardCondition.setScore(score);
-        hardCondition.setUpdateAt(new Timestamp(System.currentTimeMillis()));
+        updateAt=new Timestamp(System.currentTimeMillis());
+        hardCondition.setUpdateAt(updateAt);
         return hardCondition;
     }
 
-    public void update(HardCondition hardCondition){
-        id=hardCondition.getId();
-        gid=hardCondition.getGid();
-        rank=hardCondition.getRank();
-        subject=hardCondition.getSubject();
-        score=hardCondition.getScore();
-        updateAt=hardCondition.getUpdateAt();
+    public void update(HardCondition hardCondition) {
+        if (hardCondition != null) {
+            id = hardCondition.getId();
+            gid = hardCondition.getGid();
+            rank = hardCondition.getRank();
+            subject = hardCondition.getSubject();
+            score = hardCondition.getScore();
+            updateAt = hardCondition.getUpdateAt();
+        }
     }
 
 }

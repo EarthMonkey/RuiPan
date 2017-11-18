@@ -82,8 +82,12 @@ public class ProfessionController {
     }
 
     //根据pid获取该专业所有院校排名列表
+//    @RequestMapping(value="/getApplicationAdvice")
+//    public List<>
 
     //根据pid获取该专业所有成功案例列表
+
+
 
     //***********************后台管理接口******************************
 
