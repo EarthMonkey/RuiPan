@@ -1,16 +1,13 @@
 package controller;
 
 import constant.StatesConstant;
-import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import service.SuccessfulCaseService;
 import util.SystemLog;
-import vo.RecommendApplicationScheme;
 import vo.RecommendSuccessfulCase;
 import vo.SuccessfulCaseVO;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 /**
@@ -152,7 +149,6 @@ public class SuccessfulCaseController {
     }
 
     //根据id编辑某条全局推荐的案例
-
     @PutMapping(value="/updateRecommendSuccessfulCase")
     @SystemLog(module = "成功案例" ,methods = "编辑推荐")
     public RecommendSuccessfulCase updateRecommendSuccessfulCase(Integer id,String slogan,Integer rid){
