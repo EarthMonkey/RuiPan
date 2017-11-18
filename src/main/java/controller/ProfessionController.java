@@ -4,10 +4,7 @@ import constant.StatesConstant;
 import model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import service.ProfessionService;
 import service.SchoolService;
 import util.SystemLog;
@@ -32,56 +29,56 @@ public class ProfessionController {
     SchoolService schoolService;
 
     //获取所有国家
-    @RequestMapping(value = "/getAllCountry")
+    @GetMapping(value = "/getAllCountry")
     public List<String> getAllCountry() {
         return professionService.getAllCountry();
     }
 
     //根据国家获取大分类及其下所有小分类名称
-    @RequestMapping(value = "/getAllCategoryNameByCountry")
+    @GetMapping(value = "/getAllCategoryNameByCountry")
     public Map<String,List<String>> getAllCategoryNameByCountry(String country) {
         return professionService.getAllCategoryNameByCountry(country);
     }
 
     //根据国家和小分类获取id
-    @RequestMapping(value = "/getPid")
+    @GetMapping(value = "/getPid")
     public Integer getPidByCountryAndSubclassification(String country,String subclassification) {
         return professionService.getPidByCountryAndSubclassification(country,subclassification);
     }
 
     //根据分类（pid）获取专业信息、申请建议信息
-    @RequestMapping(value = "/getProfessionIntroducePublished")
+    @GetMapping(value = "/getProfessionIntroducePublished")
     public ProfessionIntroduce getProfessionIntroducePublished(Integer pid) {
         return professionService.getProfessionIntroduce(pid, StatesConstant.PUBLISHED);
     }
 
     //根据pid获取该专业所有专业方向及相关课程列表
-    @RequestMapping(value = "/getProfessionCourse")
+    @GetMapping(value = "/getProfessionCourse")
     public List<ProfessionCourse> getProfessionCourse(Integer pid) {
         return professionService.getProfessionCourse(pid);
     }
 
     //根据pid获取该专业所有就业去向列表
-    @RequestMapping(value="/getEmploymentCompany")
+    @GetMapping(value="/getEmploymentCompany")
     public List<EmploymentCompany> getEmploymentCompany(Integer pid){
         return professionService.getEmploymentCompany(pid);
     }
 
     //根据pid获取该专业所有就业岗位列表
-    @RequestMapping(value="/getEmploymentPost")
+    @GetMapping(value="/getEmploymentPost")
     public List<EmploymentPost> getEmploymentPost(Integer pid){
         return professionService.getEmploymentPost(pid);
     }
 
     //根据pid获取该专业所有就业薪资列表
-    @RequestMapping(value="/getSalary")
+    @GetMapping(value="/getSalary")
     public List<Salary> getSalary(Integer pid){
         return professionService.getSalary(pid);
     }
 
 
     //根据pid获取该专业所有申请条件列表
-    @RequestMapping(value="/getApplicationAdvice")
+    @GetMapping(value="/getApplicationAdvice")
     public List<ApplicationAdvice> getApplicationAdvice(Integer pid){
         return professionService.getApplicationAdvice(pid);
     }
@@ -89,21 +86,21 @@ public class ProfessionController {
     //根据pid获取该专业所有院校排名列表，见 SchoolController.java
 
 
-    //根据pid获取该专业所有成功案例列表，见 SuccessCaseController.java
+    //根据pid获取该专业所有成功案例列表，见 SuccessfulCaseController.java
 
 
 
     //***********************后台管理接口******************************
 
     //根据国家获取大分类及其下所有小分类具体信息
-    @RequestMapping(value = "/getAllCategoryByCountry")
+    @GetMapping(value = "/getAllCategoryByCountry")
     @SystemLog(module = "专业管理", methods = "获取专业分类信息")
     public Map<String,List<ProfessionCategoryVO>> getAllCategoryByCountry(String country) {
         return professionService.getAllCategoryByCountry(country);
     }
 
     //在某个国家和大专业下增加一个小专业
-    @RequestMapping(value = "/addProfessionCategory")
+    @PostMapping(value = "/addProfessionCategory")
     @SystemLog(module = "专业管理", methods = "增加专业分类信息")
     public ProfessionCategoryVO addProfessionCategory(String country,String category,String subclassification) {
         ProfessionCategoryVO professionCategoryVO=new ProfessionCategoryVO();
@@ -115,14 +112,14 @@ public class ProfessionController {
     }
 
     //根据pid删除一条专业分类记录
-    @RequestMapping(value = "/deleteProfessionCategory")
+    @DeleteMapping(value = "/deleteProfessionCategory")
     @SystemLog(module = "专业管理", methods = "删除专业分类信息")
     public String deleteProfessionCategory(Integer pid){
         return professionService.deleteProfessionCategory(pid);
     }
 
     //在pid下增加/修改一条专业详情介绍+专业课程介绍+独家申请建议（每个pid只能由一条）
-    @RequestMapping(value = {"/addProfessionIntroduce","/updateProfessionIntroduce"})
+    @PostMapping(value = {"/addProfessionIntroduce","/updateProfessionIntroduce"})
     @SystemLog(module = "专业管理", methods = "修改专业介绍")
     public ProfessionIntroduce addProfessionIntroduce(Integer pid ,String detailSynopsis,String detailTextPath,
             String applicationAdvice,Integer flag) {
@@ -137,7 +134,7 @@ public class ProfessionController {
     }
 
     //根据pid删除某条专业详情介绍+专业课程介绍+独家申请建议
-    @RequestMapping(value = "/deleteProfessionIntroduce")
+    @DeleteMapping(value = "/deleteProfessionIntroduce")
     @SystemLog(module = "专业管理", methods = "删除专业介绍")
     public String deleteProfessionIntroduce(Integer pid) {
         return professionService.deleteProfessionIntroduce(pid);
@@ -145,14 +142,14 @@ public class ProfessionController {
 
     //根据pid获取草稿状态的专业详情介绍+专业课程介绍+独家申请建议
     //根据分类（pid）获取专业信息、申请建议信息
-    @RequestMapping(value = "/getProfessionIntroduceDraft")
+    @GetMapping(value = "/getProfessionIntroduceDraft")
     @SystemLog(module = "专业管理", methods = "获取专业介绍草稿")
     public ProfessionIntroduce getProfessionIntroduceDraft(Integer pid) {
         return professionService.getProfessionIntroduce(pid,StatesConstant.DRAFT);
     }
 
     //在pid下增加一条课程
-    @RequestMapping(value = "/addProfessionCourse")
+    @PostMapping(value = "/addProfessionCourse")
     @SystemLog(module = "专业管理", methods = "增加专业课程")
     public ProfessionCourse addProfessionCourse(Integer pid, String majorField, String majorCourse) {
         ProfessionCourse professionCourse=new ProfessionCourse();
@@ -164,7 +161,7 @@ public class ProfessionController {
     }
 
     //在pid下修改一条课程
-    @RequestMapping(value = "/updateProfessionCourse")
+    @PutMapping(value = "/updateProfessionCourse")
     @SystemLog(module = "专业管理", methods = "修改专业课程")
     public ProfessionCourse updateProfessionCourse(Integer id, String majorField, String majorCourse) {
         ProfessionCourse professionCourse=new ProfessionCourse();
@@ -176,14 +173,14 @@ public class ProfessionController {
     }
 
     //在pid下删除一条课程
-    @RequestMapping(value = "/deleteProfessionCourse")
+    @PostMapping(value = "/deleteProfessionCourse")
     @SystemLog(module = "专业管理", methods = "删除专业课程")
     public String deleteProfessionCourse(Integer id) {
         return professionService.deleteProfessionCourse(id);
     }
 
     //在pid下增加一条就业去向
-    @RequestMapping(value="/addEmploymentCompany")
+    @PostMapping(value="/addEmploymentCompany")
     @SystemLog(module = "专业管理", methods = "增加就业去向")
     public EmploymentCompany addEmploymentCompany(Integer pid,String logo,String employmentCompany){
         EmploymentCompany ec=new EmploymentCompany();
@@ -195,7 +192,7 @@ public class ProfessionController {
     }
 
     //在pid下修改一条就业去向
-    @RequestMapping(value="/updateEmploymentCompany")
+    @PutMapping(value="/updateEmploymentCompany")
     @SystemLog(module = "专业管理", methods = "修改就业去向")
     public EmploymentCompany updateEmploymentCompany(Integer id,String logo,String employmentCompany){
         EmploymentCompany ec=new EmploymentCompany();
@@ -207,7 +204,7 @@ public class ProfessionController {
     }
 
     //在pid下删除一条就业去向
-    @RequestMapping(value="/deleteEmploymentCompany")
+    @DeleteMapping(value="/deleteEmploymentCompany")
     @SystemLog(module = "专业管理", methods = "删除就业去向")
     public String deleteEmploymentCompany(Integer id){
         return professionService.deleteEmploymentCompany(id);
@@ -243,7 +240,7 @@ public class ProfessionController {
     }
 
     //在pid下增加一条就业薪资
-    @RequestMapping(value="/addSalary")
+    @PostMapping(value="/addSalary")
     @SystemLog(module = "专业管理", methods = "增加就业薪资")
     public Salary addSalary(Integer pid,String item,Double salary){
         Salary s=new Salary();
@@ -255,7 +252,7 @@ public class ProfessionController {
 
 
     //在pid下修改一条就业薪资
-    @RequestMapping(value="/updateSalary")
+    @PutMapping(value="/updateSalary")
     @SystemLog(module = "专业管理", methods = "编辑就业薪资")
     public Salary updateSalary(Integer id,String item,Double salary){
         Salary s=new Salary();
@@ -266,14 +263,14 @@ public class ProfessionController {
     }
 
     //根据id删除一条就业薪资
-    @RequestMapping(value="/deleteSalary")
+    @DeleteMapping(value="/deleteSalary")
     @SystemLog(module = "专业管理", methods = "删除就业薪资")
     public String deleteSalary(Integer id){
         return professionService.deleteSalary(id);
     }
 
     //在pid下增加一条申请条件
-    @RequestMapping(value="/addApplicationAdvice")
+    @PostMapping(value="/addApplicationAdvice")
     @SystemLog(module = "专业管理", methods = "增加申请条件")
     public ApplicationAdvice addApplicationAdvice(Integer pid,String item,String advice){
         ApplicationAdvice applicationAdvice=new ApplicationAdvice();
@@ -285,7 +282,7 @@ public class ProfessionController {
     }
 
     //在pid下修改一条申请条件
-    @RequestMapping(value="/updateApplicationAdvice")
+    @PutMapping(value="/updateApplicationAdvice")
     @SystemLog(module = "专业管理", methods = "更新申请条件")
     public ApplicationAdvice updateApplicationAdvice(Integer id,String item,String advice){
         ApplicationAdvice applicationAdvice=new ApplicationAdvice();
@@ -297,7 +294,7 @@ public class ProfessionController {
     }
 
     //在pid下删除一条申请条件
-    @RequestMapping(value="/deleteApplicationAdvice")
+    @DeleteMapping(value="/deleteApplicationAdvice")
     @SystemLog(module = "专业管理", methods = "删除申请条件")
     public String deleteApplicationAdvice(Integer id){
         return professionService.deleteApplicationAdvice(id);

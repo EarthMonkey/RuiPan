@@ -14,7 +14,7 @@ public class SuccessfulCase {
     private Integer sid;
     private Integer cid;
     private String degree;
-    private Timestamp enrollmentTime;
+    private String enrollmentTime;
     private String languageScore;
     private String gpa;
     private String gmatSatGre;
@@ -79,11 +79,11 @@ public class SuccessfulCase {
 
     @Basic
     @Column(name = "enrollment_time")
-    public Timestamp getEnrollmentTime() {
+    public String getEnrollmentTime() {
         return enrollmentTime;
     }
 
-    public void setEnrollmentTime(Timestamp enrollmentTime) {
+    public void setEnrollmentTime(String enrollmentTime) {
         this.enrollmentTime = enrollmentTime;
     }
 

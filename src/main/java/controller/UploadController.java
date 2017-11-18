@@ -19,13 +19,8 @@ import java.util.UUID;
 @RestController
 public class UploadController {
 
-	@RequestMapping(value = "/one", method = RequestMethod.GET)
-	public String index() {
-		return "Test_oneUpload";
-	}
 
 	@RequestMapping("/oneUpload")
-	@ResponseBody
 	@SystemLog(module = "通用上传管理" ,methods = "图片上传")
 	public String oneUpload(@RequestParam("oneFile") MultipartFile oneFile, HttpServletRequest request){
 
@@ -64,7 +59,6 @@ public class UploadController {
 
 
 	@RequestMapping("/moreUpload")
-	@ResponseBody
 	@SystemLog(module = "通用上传管理" ,methods = "多图片上传")
 	public List<String> moreUpload(HttpServletRequest request){
 

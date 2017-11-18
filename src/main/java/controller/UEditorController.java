@@ -2,9 +2,7 @@ package controller;
 
 import com.baidu.ueditor.ActionEnter;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import util.FileManager;
 import util.SystemLog;
 
@@ -34,7 +32,7 @@ public class UEditorController {
         return result;
     }
 
-    @RequestMapping(value = "/uploadText")
+    @PostMapping(value = "/uploadText")
     @SystemLog(module = "UEditor后台控制" ,methods = "UEditor正文提交")
     public String uploadText(HttpServletRequest request, String text){
         String uploadUrl = request.getSession().getServletContext().getRealPath("/")
@@ -44,7 +42,7 @@ public class UEditorController {
         return fileName;
     }
 
-    @RequestMapping(value = "/updateText")
+    @PutMapping(value = "/updateText")
     @SystemLog(module = "UEditor后台控制" ,methods = "修改UEditor正文内容")
     public String updateText(HttpServletRequest request, String text,String fileName){
         String uploadUrl = request.getSession().getServletContext().getRealPath("/")
@@ -53,7 +51,7 @@ public class UEditorController {
         return fileName;
     }
 
-    @RequestMapping(value = "/getText")
+    @GetMapping(value = "/getText")
     @SystemLog(module = "UEditor后台控制" ,methods = "获取UEditor正文提交")
     public String getUEditorText(HttpServletRequest request, String path){
         String uploadUrl = request.getSession().getServletContext().getRealPath("/")

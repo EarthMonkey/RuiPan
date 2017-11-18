@@ -4,8 +4,7 @@ import model.AnswerForOrder;
 import model.ConsultantBusiness;
 import model.OrderForConsultant;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import service.ConsultantService;
 import util.SystemLog;
 import vo.ConsultantVO;
@@ -24,19 +23,19 @@ public class ConsultantController {
     ConsultantService consultantService;
 
     //根据gid获取所有顾问列表
-    @RequestMapping(value = "/getByGid")
+    @GetMapping(value = "/getByGid")
     public List<ConsultantVO> getConsultantByGid(Integer gid){
         return consultantService.getConsultantByGid(gid);
     }
 
     //根据pid获取所有顾问列表
-    @RequestMapping(value = "/getByFid")
+    @GetMapping(value = "/getByFid")
     public List<ConsultantVO> getConsultantByFid(Integer fid){
         return consultantService.getConsultantByFid(fid);
     }
 
     //根据顾问id增加一条预约记录
-    @RequestMapping(value = "/addOrder")
+    @PostMapping(value = "/addOrder")
     public OrderForConsultant addOrderForConsultant(Integer cid,String name,String phone,String illustration){
         OrderForConsultant orderForConsultant=new OrderForConsultant();
         orderForConsultant.setCid(cid);
@@ -54,7 +53,7 @@ public class ConsultantController {
 
 
     //增加一条顾问信息（默认不推荐）
-    @RequestMapping(value = "/add")
+    @PostMapping(value = "/add")
     @SystemLog(module = "顾问管理", methods = "增加顾问")
     public ConsultantVO addConsultant(String name,String country,String profession,String headSculpture,
             Double workingHours,Integer offerNumber,String applicationSuccessRate,String synopsis,
@@ -75,7 +74,7 @@ public class ConsultantController {
     }
 
     //根据id编辑一条顾问信息
-    @RequestMapping(value = "/updateConsultant")
+    @PutMapping(value = "/updateConsultant")
     @SystemLog(module = "顾问管理", methods = "修改顾问信息")
     public ConsultantVO updateConsultant(Integer id,String name,String country,String profession,String headSculpture,
                                       Double workingHours,Integer offerNumber,String applicationSuccessRate,String synopsis,
@@ -96,7 +95,7 @@ public class ConsultantController {
     }
 
     //根据id将顾问设为推荐
-    @RequestMapping(value = "/recommend")
+    @PutMapping(value = "/recommend")
     @SystemLog(module = "顾问管理", methods = "推荐顾问")
     public String recommendConsultant(Integer id){
         return consultantService.changeRecommend(id,"true");
@@ -104,21 +103,21 @@ public class ConsultantController {
 
 
     //根据id将顾问设为不推荐
-    @RequestMapping(value = "/cancleRecommend")
+    @PutMapping(value = "/cancleRecommend")
     @SystemLog(module = "顾问管理", methods = "取消推荐顾问")
     public String cancelRecommendConsultant(Integer id){
         return consultantService.changeRecommend(id,"false");
     }
 
     //根据id删除一条顾问信息
-    @RequestMapping(value = "/delete")
+    @DeleteMapping(value = "/delete")
     @SystemLog(module = "顾问管理", methods = "删除顾问")
     public String deleteConsultant(Integer id){
         return consultantService.deleteRecommend(id);
     }
 
     //根据顾问id获得该顾问所有未答复的预约
-    @RequestMapping(value = "/checkUnAnsweredOrder")
+    @GetMapping(value = "/checkUnAnsweredOrder")
     @SystemLog(module = "顾问管理", methods = "查看未答复预约")
     public List<OrderForConsultant> checkUnAnsweredOrder(Integer id){
         return consultantService.checkOrder(id,"false");
@@ -126,14 +125,14 @@ public class ConsultantController {
 
 
     //根据顾问id获得该顾问所有已经答复的预约
-    @RequestMapping(value = "/checkAnsweredOrder")
+    @GetMapping(value = "/checkAnsweredOrder")
     @SystemLog(module = "顾问管理", methods = "查看已答复预约")
     public List<OrderForConsultant> checkAnsweredOrder(Integer id){
         return consultantService.checkOrder(id,"true");
     }
 
     //根据顾问预约id查看所有答复
-    @RequestMapping(value = "/getAnswerForOrder")
+    @GetMapping(value = "/getAnswerForOrder")
     @SystemLog(module = "顾问管理", methods = "查看答复记录")
     public List<AnswerForOrder> getAnswerForOrder(Integer oid){
         return null;
@@ -141,28 +140,28 @@ public class ConsultantController {
 
 
     //根据顾问预约id答复某条预约
-    @RequestMapping(value = "/addAnswerForOrder")
+    @PostMapping(value = "/addAnswerForOrder")
     @SystemLog(module = "顾问管理", methods = "新增答复记录")
     public AnswerForOrder addAnswerForOrder(Integer oid,String answer){
         return null;
     }
 
     //根据顾问预约答复id修改答复
-    @RequestMapping(value = "/updateAnswerForOrder")
+    @PutMapping(value = "/updateAnswerForOrder")
     @SystemLog(module = "顾问管理", methods = "更新答复记录")
     public AnswerForOrder updateAnswerForOrder(Integer id,String answer){
         return null;
     }
 
     //根据顾问预约答复id删除答复
-    @RequestMapping(value = "/deleteAnswerForOrder")
+    @DeleteMapping(value = "/deleteAnswerForOrder")
     @SystemLog(module = "顾问管理", methods = "删除答复记录")
     public String deleteAnswerForOrder(Integer id){
         return null;
     }
 
     //根据顾问预约id删除某条预约
-    @RequestMapping(value = "/deleteOrder")
+    @DeleteMapping(value = "/deleteOrder")
     @SystemLog(module = "顾问管理", methods = "删预约记录")
     public String deleteOrder(Integer id){
         return null;
@@ -170,21 +169,21 @@ public class ConsultantController {
 
 
     //根据顾问id和gid增加一条顾问业务
-    @RequestMapping(value = "/addConsultantBusinessByGid")
+    @PostMapping(value = "/addConsultantBusinessByGid")
     @SystemLog(module = "顾问管理", methods = "按年级增加顾问业务")
     public ConsultantBusiness addConsultantBusinessByGid(Integer cid, Integer gid){
         return null;
     }
 
     //根据顾问id和pid增加一条顾问业务
-    @RequestMapping(value = "/addConsultantBusinessByPid")
+    @PutMapping(value = "/addConsultantBusinessByPid")
     @SystemLog(module = "顾问管理", methods = "按专业增加顾问业务")
     public ConsultantBusiness addConsultantBusinessByPid(Integer cid, Integer pid){
         return null;
     }
 
     //根据顾问业务id删除一条顾问业务
-    @RequestMapping(value = "/deleteConsultantBusiness")
+    @DeleteMapping(value = "/deleteConsultantBusiness")
     @SystemLog(module = "顾问管理", methods = "删除顾问业务")
     public String deleteConsultantBusiness(Integer id){
         return null;

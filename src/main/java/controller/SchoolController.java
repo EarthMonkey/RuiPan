@@ -1,14 +1,9 @@
 package controller;
 
 import constant.StatesConstant;
-import dao.SchoolDao;
-import dao.SchoolPictureDao;
-import model.School;
-import model.SchoolPicture;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -62,7 +57,7 @@ public class SchoolController {
         return schoolService.getProfessionRequirementsBySid(sid);
     }
 
-    //根据sid获取所有成功案例列表，见 SuccessCaseController.java
+    //根据sid获取所有成功案例列表，见 SuccessfulCaseController.java
 
 
     //***********************后台管理接口******************************
@@ -124,7 +119,7 @@ public class SchoolController {
     }
 
     //根据sid增加一张学校图片
-    @GetMapping(value = "/addSchoolPicture")
+    @PostMapping(value = "/addSchoolPicture")
     @SystemLog(module = "院校管理", methods = "增加学校图片")
     public SchoolPictureVO addSchoolPicture(Integer sid,String picturePath){
         SchoolPictureVO schoolPictureVO=new SchoolPictureVO();
@@ -135,7 +130,7 @@ public class SchoolController {
     }
 
     //根据sid删除一张图片
-    @GetMapping(value = "/deleteSchoolPicture")
+    @DeleteMapping(value = "/deleteSchoolPicture")
     @SystemLog(module = "院校管理", methods = "删除学校图片")
     public String deleteSchoolPicture(Integer id){
         return schoolService.deleteSchoolPicture(id);
@@ -170,7 +165,7 @@ public class SchoolController {
     }
 
     //根据id删除一条院校排名记录
-    @PutMapping(value = "/deleteSchoolRanking")
+    @DeleteMapping(value = "/deleteSchoolRanking")
     @SystemLog(module = "院校管理", methods = "删除排名")
     public String deleteSchoolRanking(Integer id){
         return schoolService.deleteSchoolRanking(id);

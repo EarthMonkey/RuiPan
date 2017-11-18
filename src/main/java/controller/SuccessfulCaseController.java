@@ -1,16 +1,27 @@
 package controller;
 
-import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import vo.SuccessfulCaseVO;
+
+import java.util.List;
 
 /**
  * Created by ldchao on 2017/11/2.
  */
-@Controller
-public class SuccessCaseController {
+@RestController
+@RequestMapping(value = "/SuccessfulCase")
+public class SuccessfulCaseController {
 
-    //获取所有国家及专业分类列表
+    //获取所有国家及专业分类列表 参考ProfessionController.java
 
     //根据国家获取所有成功案例列表
+    @GetMapping(value="/getSuccessfulCaseByCountry")
+    public List<SuccessfulCaseVO> getApplicationAdvice(Integer pid){
+        return null;
+    }
+
 
     //根据专业id（pid）获取所有成功案例列表
 
