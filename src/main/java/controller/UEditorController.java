@@ -56,9 +56,7 @@ public class UEditorController {
     public String getUEditorText(HttpServletRequest request, String path){
         String uploadUrl = request.getSession().getServletContext().getRealPath("/")
                 + "upload/text/";
-        String result=FileManager.ReadFile(uploadUrl+path);
-        System.out.println(result);
-        return result;
+        return FileManager.ReadFile(uploadUrl+path);
     }
 
 }
