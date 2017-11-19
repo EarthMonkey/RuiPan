@@ -110,7 +110,11 @@ define([''], function () {
             $scope.uploadCallback = function (path) {
                 var data = angular.copy($scope.model);
                 data.textPath = path;
-                data.gid = initInfo.gid;
+                if (data.gid) {
+                    data.gid = initInfo.gid;
+                } else if (data.pid) {
+                    data.pid = initInfo.pid;
+                }
                 data.flag = 1;
                 delete data.content;
                 $.ajax({
@@ -130,7 +134,11 @@ define([''], function () {
             // 更新HTML回调
             $scope.updateHtmlCallback = function () {
                 var data = angular.copy($scope.model);
-                data.gid = initInfo.gid;
+                if (data.gid) {
+                    data.gid = initInfo.gid;
+                } else if (data.pid) {
+                    data.pid = initInfo.pid;
+                }
                 data.flag = 1;
                 delete data.content;
                 $.ajax({

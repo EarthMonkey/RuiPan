@@ -7,7 +7,7 @@
 <div class="modal-body" id="modal-body">
 
     <div class="login_input" ng-repeat="item in fields">
-        <div ng-if="item.type!='combox'&&item.type!='img'">
+        <div ng-if="item.type!='combox'&&item.type!='img'&&item.type!='textarea'">
             <label>{{item.label}}: </label>
             <input type="{{item.type==null?'text':item.type}}" ng-model="model[item.id]"
                    placeholder="{{item.placeholder}}">
@@ -29,7 +29,15 @@
         </div>
 
         <div ng-if="item.type=='img'">
-            <input type="file" accept="image/png,image/svg,image/jpg,image/jpeg">
+            <label>{{item.label}}: </label>
+            <a class="a_upload"  href="javascript:;">
+                <input type="file" accept="image/png,image/svg,image/jpg,image/jpeg">选择文件
+            </a>
+        </div>
+
+        <div ng-if="item.type=='textarea'">
+            <label>{{item.label}}: </label>
+            <textarea ng-model="model[item.id]"></textarea>
         </div>
     </div>
 

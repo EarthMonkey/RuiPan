@@ -32,19 +32,27 @@
 
             <!-- 输入框 -->
             <div class="login_input" ng-repeat="item in fields">
+                <div ng-if="item.type!='textarea'">
+                    <label>{{item.label}}: </label>
+                    <input type="text" ng-model="model[item.id]" ng-disabled="config.readonly"
+                           placeholder="{{item.placeholder}}">
+                </div>
+
+                <div ng-if="item.type=='textarea'">
+                    <label>{{item.label}}: </label>
+                    <textarea ng-disabled="config.readonly" ng-model="model[item.id]"></textarea>
+                </div>
+            </div>
+
+            <!-- 图片上传 -->
+            <div ng-if="hasPicture!==''">
                 <label>{{item.label}}: </label>
-                <input type="text" ng-model="model[item.id]" ng-disabled="config.readonly"
-                       placeholder="{{item.placeholder}}">
+                <a class="a_upload" href="javascript:;">
+                    <input type="file" accept="image/png,image/svg,image/jpg,image/jpeg">选择文件
+                </a>
             </div>
         </div>
 
-        <!-- 图片上传 -->
-        <div class="article_input" ng-if="hasPicture!==''">
-            <div class="login_input combox" style="margin-top: 12px;">
-                <label>上传图片: </label>
-                <input accept="image/png,image/jpg,image/svg,image/jpeg" type="file">
-            </div>
-        </div>
     </div>
 
     <div class="h_title" style="margin-top: 50px;">
