@@ -1,6 +1,9 @@
 package controller;
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import vo.CooperativeCategoryVO;
@@ -27,13 +30,26 @@ public class CooperativeEducationController {
 
     //根据分类编号（cid）获取所有合作方案列表
 
+
     //***********************后台管理接口******************************
 
     //在大分类下增加一条小分类
+    @PostMapping(value="/addCooperativeCategory")
+    public CooperativeCategoryVO addCooperativeCategory(String category,String subclassification){
+        return null;
+    }
 
     //在大分类下编辑一条小分类
+    @PutMapping(value="/updateCooperativeCategory")
+    public CooperativeCategoryVO updateCooperativeCategory(Integer id, String category,String subclassification){
+        return null;
+    }
 
     //在大分类下删除一条小分类
+    @DeleteMapping(value="/deleteCooperativeCategory")
+    public String deleteCooperativeCategory(Integer id){
+        return null;
+    }
 
     //在cid下增加一条合作方案
 

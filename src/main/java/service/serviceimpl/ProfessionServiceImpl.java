@@ -123,7 +123,11 @@ public class ProfessionServiceImpl implements ProfessionService{
 
     @Override
     public List<ProfessionCourse> getProfessionCourse(Integer pid) {
-        return professionCourseDao.findAllByPid(pid);
+        List<ProfessionCourse> result=professionCourseDao.findAllByPid(pid);
+        for (ProfessionCourse professionCourse:result) {
+            professionCourse.setProfessionCategoryByPid(null);
+        }
+        return result;
     }
 
     @Override
@@ -147,7 +151,11 @@ public class ProfessionServiceImpl implements ProfessionService{
 
     @Override
     public List<EmploymentCompany> getEmploymentCompany(Integer pid) {
-        return employmentCompanyDao.findAllByPid(pid);
+        List<EmploymentCompany> result=employmentCompanyDao.findAllByPid(pid);
+        for (EmploymentCompany employmentCompany:result) {
+            employmentCompany.setProfessionCategoryByPid(null);
+        }
+        return result;
     }
 
     @Override
@@ -171,7 +179,11 @@ public class ProfessionServiceImpl implements ProfessionService{
 
     @Override
     public List<EmploymentPost> getEmploymentPost(Integer pid) {
-        return employmentPostDao.findAllByPid(pid);
+        List<EmploymentPost> result=employmentPostDao.findAllByPid(pid);
+        for (EmploymentPost employmentPost:result) {
+            employmentPost.setProfessionCategoryByPid(null);
+        }
+        return result;
     }
 
     @Override
@@ -195,7 +207,11 @@ public class ProfessionServiceImpl implements ProfessionService{
 
     @Override
     public List<Salary> getSalary(Integer pid) {
-        return salaryDao.findAllByPid(pid);
+        List<Salary> result= salaryDao.findAllByPid(pid);
+        for (Salary salary:result) {
+            salary.setProfessionCategoryByPid(null);
+        }
+        return result;
     }
 
     @Override
@@ -219,7 +235,11 @@ public class ProfessionServiceImpl implements ProfessionService{
 
     @Override
     public List<ApplicationAdvice> getApplicationAdvice(Integer pid) {
-        return applicationAdviceDao.findAllByPid(pid);
+        List<ApplicationAdvice> result= applicationAdviceDao.findAllByPid(pid);
+        for (ApplicationAdvice applicationAdvice:result) {
+            applicationAdvice.setProfessionCategoryByPid(null);
+        }
+        return result;
     }
 
     @Override
