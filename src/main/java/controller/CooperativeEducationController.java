@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class CooperativeEducationController {
 
+    //轮播图相关参看 HomePageController.java
+    //资讯相关参考 NewsController.java
+
     //根据大分类，获取所有小分类列表
 
     //根据分类编号（cid）获取所有合作方案列表

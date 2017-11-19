@@ -15,40 +15,7 @@ import java.util.List;
 public class LanguageTrainingServiceImpl implements LanguageTrainingService{
 
     @Autowired
-    NewsDao newsDao;
-
-    @Autowired
     TrainIntroduceDao trainIntroduceDao;
-
-    @Override
-    public List<News> getLatestNewsByCategory(String category) {
-
-        return newsDao.findTop4ByCategoryAndFlagOrderByPulishTimeDesc(category, StatesConstant.PUBLISHED);
-    }
-
-    @Override
-    public List<News> getAllNewsByCategory(String category, Integer flag) {
-        return newsDao.findAllByCategoryAndFlagOrderByPulishTimeDesc(category,StatesConstant.PUBLISHED);
-    }
-
-    @Override
-    public News addNews(News news) {
-        return newsDao.saveAndFlush(news);
-    }
-
-    @Override
-    public News updateNews(News news) {
-        return newsDao.saveAndFlush(news);
-    }
-
-    @Override
-    public String deleteNews(Integer id) {
-        if(newsDao.exists(id)){
-            newsDao.delete(id);
-            return "success";
-        }
-        return "not_exist";
-    }
 
     @Override
     public List<TrainIntroduce> getTrainIntroduce(String category, Integer flag) {

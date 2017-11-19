@@ -8,7 +8,6 @@ import service.ProfessionService;
 import service.SchoolService;
 import util.SystemLog;
 import vo.ProfessionCategoryVO;
-import vo.SchoolRankingVO;
 
 import java.sql.Timestamp;
 import java.util.List;
