@@ -119,12 +119,12 @@ public class ProfessionController {
     //在pid下增加/修改一条专业详情介绍+专业课程介绍+独家申请建议（每个pid只能由一条）
     @PostMapping(value = {"/addProfessionIntroduce","/updateProfessionIntroduce"})
     @SystemLog(module = "专业管理", methods = "修改专业介绍")
-    public ProfessionIntroduce addProfessionIntroduce(Integer pid ,String detailSynopsis,String detailTextPath,
+    public ProfessionIntroduce addProfessionIntroduce(Integer pid ,String detailSynopsis,String textPath,
             String applicationAdvice,Integer flag) {
         ProfessionIntroduce professionIntroduce=new ProfessionIntroduce();
         professionIntroduce.setPid(pid);
         professionIntroduce.setDetailSynopsis(detailSynopsis);
-        professionIntroduce.setDetailTextPath(detailTextPath);
+        professionIntroduce.setDetailTextPath(textPath);
         professionIntroduce.setApplicationAdvice(applicationAdvice);
         professionIntroduce.setFlag(flag);
         professionIntroduce.setUpdateAt(new Timestamp(System.currentTimeMillis()));
