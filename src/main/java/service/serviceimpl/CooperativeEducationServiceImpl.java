@@ -25,23 +25,32 @@ public class CooperativeEducationServiceImpl implements CooperativeEducationServ
         List<CooperativeCategory> cooperativeCategories=cooperativeCategoryDao.findAllByCategory(category);
         List<CooperativeCategoryVO> cooperativeCategoryVOS=new ArrayList<CooperativeCategoryVO>();
         for (CooperativeCategory cooperativeCategory:cooperativeCategories) {
-
+            CooperativeCategoryVO cooperativeCategoryVO=new CooperativeCategoryVO();
+            cooperativeCategoryVO.update(cooperativeCategory);
+            cooperativeCategoryVOS.add(cooperativeCategoryVO);
         }
-        return null;
+        return cooperativeCategoryVOS;
     }
 
     @Override
     public void addCooperativeCategory(CooperativeCategoryVO cooperativeCategoryVO) {
-
+        CooperativeCategory cooperativeCategory=cooperativeCategoryVO.toEntity();
+        cooperativeCategoryDao.saveAndFlush(cooperativeCategory);
+        cooperativeCategoryVO.setId(cooperativeCategory.getId());
     }
 
     @Override
     public void updateCooperativeCategory(CooperativeCategoryVO cooperativeCategoryVO) {
-
+        CooperativeCategory cooperativeCategory=cooperativeCategoryVO.toEntity();
+        cooperativeCategoryDao.saveAndFlush(cooperativeCategory);
     }
 
     @Override
     public String deleteCooperativeCategory(Integer id) {
-        return null;
+        if(cooperativeCategoryDao.exists(id)){
+            cooperativeCategoryDao.delete(id);
+            return "success";
+        }
+        return "not_exist";
     }
 }

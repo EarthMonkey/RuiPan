@@ -161,9 +161,10 @@ public class ProfessionController {
     //在pid下修改一条课程
     @PutMapping(value = "/updateProfessionCourse")
     @SystemLog(module = "专业管理", methods = "修改专业课程")
-    public ProfessionCourse updateProfessionCourse(Integer id, String majorField, String majorCourse) {
+    public ProfessionCourse updateProfessionCourse(Integer id,Integer pid, String majorField, String majorCourse) {
         ProfessionCourse professionCourse=new ProfessionCourse();
         professionCourse.setId(id);
+        professionCourse.setPid(pid);
         professionCourse.setMajorField(majorField);
         professionCourse.setMajorCourse(majorCourse);
         professionCourse.setUpdateAt(new Timestamp(System.currentTimeMillis()));
@@ -192,9 +193,10 @@ public class ProfessionController {
     //在pid下修改一条就业去向
     @PutMapping(value="/updateEmploymentCompany")
     @SystemLog(module = "专业管理", methods = "修改就业去向")
-    public EmploymentCompany updateEmploymentCompany(Integer id,String logo,String employmentCompany){
+    public EmploymentCompany updateEmploymentCompany(Integer id,Integer pid,String logo,String employmentCompany){
         EmploymentCompany ec=new EmploymentCompany();
         ec.setId(id);
+        ec.setPid(pid);
         ec.setLogo(logo);
         ec.setEmploymentCompany(employmentCompany);
         ec.setUpdateAt(new Timestamp(System.currentTimeMillis()));
@@ -222,9 +224,10 @@ public class ProfessionController {
     //在pid下修改一条就业岗位
     @PutMapping(value="/updateEmploymentPost")
     @SystemLog(module = "专业管理", methods = "修改就业岗位")
-    public EmploymentPost updateEmploymentPost(Integer id,String post){
+    public EmploymentPost updateEmploymentPost(Integer id,Integer pid,String post){
         EmploymentPost employmentPost=new EmploymentPost();
         employmentPost.setId(id);
+        employmentPost.setPid(pid);
         employmentPost.setPost(post);
         employmentPost.setUpdateAt(new Timestamp(System.currentTimeMillis()));
         return professionService.updateEmploymentPost(employmentPost);
@@ -252,9 +255,10 @@ public class ProfessionController {
     //在pid下修改一条就业薪资
     @PutMapping(value="/updateSalary")
     @SystemLog(module = "专业管理", methods = "编辑就业薪资")
-    public Salary updateSalary(Integer id,String item,Double salary){
+    public Salary updateSalary(Integer id,Integer pid,String item,Double salary){
         Salary s=new Salary();
         s.setId(id);
+        s.setPid(pid);
         s.setItem(item);
         s.setSalary(salary);
         return professionService.updateSalary(s);
@@ -282,9 +286,10 @@ public class ProfessionController {
     //在pid下修改一条申请条件
     @PutMapping(value="/updateApplicationAdvice")
     @SystemLog(module = "专业管理", methods = "更新申请条件")
-    public ApplicationAdvice updateApplicationAdvice(Integer id,String item,String advice){
+    public ApplicationAdvice updateApplicationAdvice(Integer id,Integer pid,String item,String advice){
         ApplicationAdvice applicationAdvice=new ApplicationAdvice();
         applicationAdvice.setId(id);
+        applicationAdvice.setPid(pid);
         applicationAdvice.setItem(item);
         applicationAdvice.setAdvice(advice);
         applicationAdvice.setUpdateAt(new Timestamp(System.currentTimeMillis()));
