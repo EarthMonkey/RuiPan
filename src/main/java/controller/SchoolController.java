@@ -154,9 +154,11 @@ public class SchoolController {
     //根据id编辑一条院校排名记录
     @PutMapping(value = "/updateSchoolRanking")
     @SystemLog(module = "院校管理", methods = "修改排名")
-    public SchoolRankingVO updateSchoolRanking(Integer id,String scoreRequirements,String applicationDifficulty,Integer ranking){
+    public SchoolRankingVO updateSchoolRanking(Integer id,Integer pid,Integer sid,String scoreRequirements,String applicationDifficulty,Integer ranking){
         SchoolRankingVO schoolRankingVO=new SchoolRankingVO();
         schoolRankingVO.setId(id);
+        schoolRankingVO.setPid(pid);
+        schoolRankingVO.setSid(sid);
         schoolRankingVO.setScoreRequirements(scoreRequirements);
         schoolRankingVO.setApplicationDifficulty(applicationDifficulty);
         schoolRankingVO.setRanking(ranking);
