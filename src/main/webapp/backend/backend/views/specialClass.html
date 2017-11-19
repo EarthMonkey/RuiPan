@@ -2,11 +2,26 @@
 
 <div class="ui_view">
 
+    <div class="message" ng-show="message!=''"
+         ng-class="{'bg-success':message.type=='success', 'bg-danger': message.type=='danger'}">
+        {{message.content}}
+    </div>
+
     <div class="h_title">
         <h2>专业管理
             <small>专业分类</small>
         </h2>
     </div>
+
+    <!-- 筛选 -->
+    <div>
+        <div class="filter_div">
+            <span class="filter_tip">国家: </span>
+            <span class="filter_option" ng-repeat="fc in filterCountry" ng-click="filterClick(fc)"
+                  ng-class="{active: selectedCoun==fc}">{{fc}}</span>
+        </div>
+    </div>
+
 
     <!-- 用户管理 -->
     <div>
@@ -15,17 +30,19 @@
             <th>国家</th>
             <th>大类</th>
             <th>专业</th>
-            <th class="action_col"><a><i class="fa fa-plus"></i>添加</a></th>
+            <th class="action_col"><a ng-click="addSp()"><i class="fa fa-plus"></i>添加</a></th>
             </thead>
             <tbody>
-            <tr ng-repeat="temp in [0,1,2,3]">
-                <td>美国</td>
-                <td>理科</td>
-                <td>几何</td>
+            <tr ng-repeat="item in spList track by $index">
+                <td>{{item.country}}</td>
+                <td>{{item.category}}</td>
+                <td>{{item.subclassification}}</td>
                 <td>
-                    <div class="table_mod border"><a>修改</a></div>
-                    <div class="table_mod"><a>删除</a></div>
+                    <div class="table_mod"><a ng-click="delSp(item, $index)">删除</a></div>
                 </td>
+            </tr>
+            <tr ng-if="spList.length==0">
+                <td colspan="4" class="no_data">无数据</td>
             </tr>
             </tbody>
         </table>

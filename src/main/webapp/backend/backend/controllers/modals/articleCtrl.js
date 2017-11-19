@@ -111,6 +111,7 @@ define([''], function () {
                 var data = angular.copy($scope.model);
                 data.textPath = path;
                 data.gid = initInfo.gid;
+                data.flag = 1;
                 delete data.content;
                 $.ajax({
                     url: initInfo.ajaxUrl,
@@ -130,6 +131,7 @@ define([''], function () {
             $scope.updateHtmlCallback = function () {
                 var data = angular.copy($scope.model);
                 data.gid = initInfo.gid;
+                data.flag = 1;
                 delete data.content;
                 $.ajax({
                     url: initInfo.ajaxUrl,

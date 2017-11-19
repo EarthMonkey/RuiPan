@@ -488,3 +488,13 @@ th .fa {
     background-color: #f9f9f9;
     text-align: center;
 }
+
+.auto_width .filter_option {
+    width: auto;
+    padding: 0 10px;
+}
+
+.work_logo {
+    width: 140px;
+    height: 40px;
+}

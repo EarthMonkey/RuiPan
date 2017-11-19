@@ -23,8 +23,12 @@ define([''], function () {
                 });
             }
 
+            // 下拉框
+            $scope.comboxSelect = function (op, id) {
+                $scope.model[id] = op;
+            };
+
             $scope.ok = function () {
-                console.log($scope.model)
 
                 for (var key in $scope.model) {
                     if ($scope.model[key] === "") {

@@ -22,7 +22,9 @@ define([''], function () {
             $timeout(function () {
                 $scope.message = '';
                 if (state) {
-                    $state.go(state);
+                    $timeout(function () {
+                        $state.go(state);
+                    }, 100);
                 }
             }, time);
         };
@@ -103,9 +105,10 @@ define([''], function () {
                 }
             })
         };
-        
+
         // 获取html
         service.getHTML = function ($scope, path) {
+            console.log(path)
             $.ajax({
                 url: '/getText?path=' + path,
                 type: 'GET',

@@ -7,9 +7,30 @@
 <div class="modal-body" id="modal-body">
 
     <div class="login_input" ng-repeat="item in fields">
-        <label>{{item.label}}: </label>
-        <input type="{{item.type==null?'text':item.type}}" ng-model="model[item.id]" placeholder="{{item.placeholder}}">
-        <span ng-if="item.type=='checkbox'">{{model[item.id]==true?'是':'否'}}</span>
+        <div ng-if="item.type!='combox'&&item.type!='img'">
+            <label>{{item.label}}: </label>
+            <input type="{{item.type==null?'text':item.type}}" ng-model="model[item.id]"
+                   placeholder="{{item.placeholder}}">
+            <span ng-if="item.type=='checkbox'">{{model[item.id]==true?'是':'否'}}</span>
+        </div>
+
+        <div class="btn-group combox" ng-if="item.type=='combox'">
+            <label>{{item.label}}: </label>
+            <div uib-dropdown class="inner_combox">
+                <button id="btn-append-to-body" type="button" class="btn btn-default" uib-dropdown-toggle>
+                    {{model[item.id]}} <span class="fa fa-caret-down"></span>
+                </button>
+                <ul class="dropdown-menu" uib-dropdown-menu aria-labelledby="btn-append-to-body">
+                    <li ng-repeat="op in item.options" ng-click="comboxSelect(op, item.id)">
+                        <a>{{op}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div ng-if="item.type=='img'">
+            <input type="file" accept="image/png,image/svg,image/jpg,image/jpeg">
+        </div>
     </div>
 
 </div>
