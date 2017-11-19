@@ -3,7 +3,6 @@ package controller;
 import constant.StatesConstant;
 import model.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import service.ProfessionService;
 import service.SchoolService;
@@ -18,7 +17,7 @@ import java.util.Map;
 /**
  * Created by ldchao on 2017/11/2.
  */
-@Controller
+@RestController
 @RequestMapping(value = "/Profession")
 public class ProfessionController {
 
