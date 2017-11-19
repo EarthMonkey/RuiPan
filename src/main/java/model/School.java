@@ -10,6 +10,7 @@ import java.util.Collection;
 @Entity
 public class School {
     private int sid;
+    private String country;
     private String collegeName;
     private String schoolBadge;
     private String synopsis;
@@ -31,6 +32,16 @@ public class School {
 
     public void setSid(int sid) {
         this.sid = sid;
+    }
+
+    @Basic
+    @Column(name = "country")
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     @Basic
@@ -121,6 +132,7 @@ public class School {
         School school = (School) o;
 
         if (sid != school.sid) return false;
+        if (country != null ? !country.equals(school.country) : school.country != null) return false;
         if (collegeName != null ? !collegeName.equals(school.collegeName) : school.collegeName != null) return false;
         if (schoolBadge != null ? !schoolBadge.equals(school.schoolBadge) : school.schoolBadge != null) return false;
         if (synopsis != null ? !synopsis.equals(school.synopsis) : school.synopsis != null) return false;
@@ -137,6 +149,7 @@ public class School {
     @Override
     public int hashCode() {
         int result = sid;
+        result = 31 * result + (country != null ? country.hashCode() : 0);
         result = 31 * result + (collegeName != null ? collegeName.hashCode() : 0);
         result = 31 * result + (schoolBadge != null ? schoolBadge.hashCode() : 0);
         result = 31 * result + (synopsis != null ? synopsis.hashCode() : 0);

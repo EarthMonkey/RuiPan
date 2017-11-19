@@ -65,10 +65,11 @@ public class SchoolController {
     //根据学校id增加一所学校记录
     @PostMapping(value = "/addSchool")
     @SystemLog(module = "院校管理", methods = "增加学校")
-    public SchoolVO addSchool(String collegeName,String schoolBadge,String synopsis,
+    public SchoolVO addSchool(String country,String collegeName,String schoolBadge,String synopsis,
             String address,String officialWebsite,String textPath,Integer flag){
         SchoolVO schoolVO=new SchoolVO();
         schoolVO.setCollegeName(collegeName);
+        schoolVO.setCountry(country);
         schoolVO.setSchoolBadge(schoolBadge);
         schoolVO.setSynopsis(synopsis);
         schoolVO.setAddress(address);
@@ -82,10 +83,11 @@ public class SchoolController {
     //根据学校id编辑一所学校记录
     @PutMapping(value = "/updateSchool")
     @SystemLog(module = "院校管理", methods = "更新学校")
-    public SchoolVO updateSchool(Integer sid, String collegeName,String schoolBadge,String synopsis,
+    public SchoolVO updateSchool(Integer sid, String country,String collegeName,String schoolBadge,String synopsis,
                                  String address,String officialWebsite,String textPath,Integer flag){
         SchoolVO schoolVO=new SchoolVO();
         schoolVO.setSid(sid);
+        schoolVO.setCountry(country);
         schoolVO.setCollegeName(collegeName);
         schoolVO.setSchoolBadge(schoolBadge);
         schoolVO.setSynopsis(synopsis);
@@ -107,15 +109,15 @@ public class SchoolController {
     //获取所有发布状态下的学校记录
     @GetMapping(value = "/getSchoolPublished")
     @SystemLog(module = "院校管理", methods = "查看所有发布学校")
-    public List<SchoolVO> getSchoolPublished(){
-        return schoolService.getSchools(StatesConstant.PUBLISHED);
+    public List<SchoolVO> getSchoolByCountryPublished(String country){
+        return schoolService.getSchoolsByCountry(country,StatesConstant.PUBLISHED);
     }
 
     //获取所有草稿状态下的学校记录
     @GetMapping(value = "/getSchoolDraft")
     @SystemLog(module = "院校管理", methods = "查看所有学校草稿")
-    public List<SchoolVO> getSchoolDraft(){
-        return schoolService.getSchools(StatesConstant.DRAFT);
+    public List<SchoolVO> getSchoolByCountryDraft(String country){
+        return schoolService.getSchoolsByCountry(country,StatesConstant.DRAFT);
     }
 
     //根据sid增加一张学校图片

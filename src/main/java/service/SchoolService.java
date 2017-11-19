@@ -21,7 +21,7 @@ public interface SchoolService {
 
     public SchoolVO getSchoolBySid(Integer sid,Integer flag);
 
-    public List<SchoolVO> getSchools(Integer flag);
+    public List<SchoolVO> getSchoolsByCountry(String country, Integer flag);
 
     public void addSchool(SchoolVO schoolVO);
 

@@ -10,6 +10,7 @@ import java.sql.Timestamp;
 public class SchoolVO {
 
     private int sid;
+    private String country;
     private String collegeName;
     private String schoolBadge;
     private String synopsis;
@@ -28,6 +29,14 @@ public class SchoolVO {
 
     public void setSid(int sid) {
         this.sid = sid;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
     public String getCollegeName() {
@@ -97,6 +106,7 @@ public class SchoolVO {
     public School toEntity() {
         School school = new School();
         school.setSid(sid);
+        school.setCountry(country);
         school.setCollegeName(collegeName);
         school.setSchoolBadge(schoolBadge);
         school.setSynopsis(synopsis);
@@ -112,6 +122,7 @@ public class SchoolVO {
     public void update(School school) {
         if (school != null) {
             sid = school.getSid();
+            country=school.getCountry();
             collegeName = school.getCollegeName();
             schoolBadge = school.getSchoolBadge();
             synopsis = school.getSynopsis();

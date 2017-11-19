@@ -19,6 +19,9 @@ public interface ConsultantService {
     //根据专业类别fid获取所有顾问
     public List<ConsultantVO> getConsultantByFid(Integer fid);
 
+    //获取受推荐的顾问
+    public List<ConsultantVO> getRecommendConsultant();
+
     //增加一条预订记录
     public OrderForConsultant addOrderForConsultant(OrderForConsultant orderForConsultant);
 

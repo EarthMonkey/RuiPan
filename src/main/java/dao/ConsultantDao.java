@@ -15,4 +15,6 @@ public interface ConsultantDao extends JpaRepository<Consultant,Serializable> {
     @Query("select c from Consultant c where c.id in ?1")
     public List<Consultant> checkConsultantInCids(List<Integer> list);
 
+    public List<Consultant> findAllByIsRecommendIgnoreCase(String isRecommend);
+
 }

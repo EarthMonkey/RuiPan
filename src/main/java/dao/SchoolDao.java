@@ -10,7 +10,8 @@ import java.util.List;
  * Created by ldchao on 2017/11/4.
  */
 public interface SchoolDao extends JpaRepository<School,Serializable> {
+
     public School findDistinctBySidAndFlag(Integer sid,Integer flag);
 
-    public List<School> findAllByFlag(Integer flag);
+    public List<School> findAllByCountryAndFlagOrderByCollegeName(String country,Integer flag);
 }

@@ -49,6 +49,11 @@ public class ConsultantController {
         return consultantService.addOrderForConsultant(orderForConsultant);
     }
 
+    @GetMapping(value = "/getRecommendConsultant")
+    public List<ConsultantVO> getRecommendConsultant(){
+        return consultantService.getRecommendConsultant();
+    }
+
     //******************后台管理接口**********************
 
 

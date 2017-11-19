@@ -13,7 +13,7 @@ public class CooperativePartner {
     private String category;
     private String name;
     private String country;
-    private Timestamp cooperateAt;
+    private String cooperateAt;
     private String imagePath;
     private String birefIntroduce;
     private Timestamp updateAt;
@@ -61,11 +61,11 @@ public class CooperativePartner {
 
     @Basic
     @Column(name = "cooperateAt")
-    public Timestamp getCooperateAt() {
+    public String getCooperateAt() {
         return cooperateAt;
     }
 
-    public void setCooperateAt(Timestamp cooperateAt) {
+    public void setCooperateAt(String cooperateAt) {
         this.cooperateAt = cooperateAt;
     }
 

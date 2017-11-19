@@ -96,8 +96,8 @@ public class SchoolServiceImpl implements SchoolService{
     }
 
     @Override
-    public List<SchoolVO> getSchools(Integer flag) {
-        List<School> schools=schoolDao.findAllByFlag(flag);
+    public List<SchoolVO> getSchoolsByCountry(String country,Integer flag) {
+        List<School> schools=schoolDao.findAllByCountryAndFlagOrderByCollegeName(country,flag);
         List<SchoolVO> schoolVOS=new ArrayList<SchoolVO>();
         for (School school:schools) {
             SchoolVO schoolVO=new SchoolVO();

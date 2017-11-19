@@ -64,6 +64,17 @@ public class ConsultantServiceImpl implements ConsultantService{
         return consultantVOS;
     }
 
+    @Override
+    public List<ConsultantVO> getRecommendConsultant() {
+        List<Consultant> consultants=consultantDao.findAllByIsRecommendIgnoreCase("true");
+        List<ConsultantVO> consultantVOS=new ArrayList<ConsultantVO>();
+        for (Consultant consultant:consultants) {
+            ConsultantVO consultantVO=new ConsultantVO();
+            consultantVO.update(consultant);
+            consultantVOS.add(consultantVO);
+        }
+        return consultantVOS;
+    }
 
     @Override
     public OrderForConsultant addOrderForConsultant(OrderForConsultant orderForConsultant) {
