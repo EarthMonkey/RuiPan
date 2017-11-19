@@ -10,7 +10,7 @@ public class AboutUsController {
 
 
 
-    //获取重点推荐的顾问列表
+    //获取推荐的顾问列表
 
     //获取所有合作过的学校和企业列表
 

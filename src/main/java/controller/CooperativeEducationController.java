@@ -36,8 +36,8 @@ public class CooperativeEducationController {
     }
 
     //根据分类编号（cid）获取所有合作方案列表
-    @GetMapping(value="/getCooperativeSchemeByCid")
-    public List<CooperativeScheme> getCooperativeSchemeByCid(Integer cid){
+    @GetMapping(value="/getCooperativeSchemeByCcid")
+    public List<CooperativeScheme> getCooperativeSchemeByCcid(Integer ccid){
         return null;
     }
 
@@ -75,10 +75,33 @@ public class CooperativeEducationController {
     }
 
     //在cid下增加一条合作方案
+    @PostMapping(value="/addCooperativeScheme")
+    @SystemLog(module = "合作办学", methods = "增加方案")
+    public CooperativeScheme addCooperativeScheme(Integer ccid,String thumbnail,
+            String title,String synopsis,String textPath,Integer flag){
+        return null;
+    }
 
     //根据id编辑一条合作方案
+    @PutMapping(value="/updateCooperativeScheme")
+    @SystemLog(module = "合作办学", methods = "编辑方案")
+    public CooperativeScheme updateCooperativeScheme(Integer id,Integer ccid,String thumbnail,
+            String title,String synopsis,String textPath,Integer flag){
+        return null;
+    }
 
     //根据id删除一条合作方案
+    @DeleteMapping(value="/deleteCooperativeScheme")
+    @SystemLog(module = "合作办学", methods = "删除方案")
+    public String deleteCooperativeScheme(Integer id){
+        return null;
+    }
 
     //在cid下获取所有草稿状态的合作方案
+    @GetMapping(value="/getCooperativeSchemeDraftByCcid")
+    @SystemLog(module = "合作办学", methods = "获取方案草稿")
+    public List<CooperativeScheme> getCooperativeSchemeDraftByCcid(Integer ccid){
+        return null;
+    }
+
 }

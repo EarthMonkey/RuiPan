@@ -1,7 +1,9 @@
 package service.serviceimpl;
 
 import dao.CooperativeCategoryDao;
+import dao.CooperativeSchemeDao;
 import model.CooperativeCategory;
+import model.CooperativeScheme;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.CooperativeEducationService;
@@ -19,6 +21,9 @@ public class CooperativeEducationServiceImpl implements CooperativeEducationServ
 
     @Autowired
     CooperativeCategoryDao cooperativeCategoryDao;
+
+    @Autowired
+    CooperativeSchemeDao cooperativeSchemeDao;
 
     @Override
     public List<CooperativeCategoryVO> getSubclassificationByCategory(String category) {
@@ -49,6 +54,34 @@ public class CooperativeEducationServiceImpl implements CooperativeEducationServ
     public String deleteCooperativeCategory(Integer id) {
         if(cooperativeCategoryDao.exists(id)){
             cooperativeCategoryDao.delete(id);
+            return "success";
+        }
+        return "not_exist";
+    }
+
+    @Override
+    public List<CooperativeScheme> getCooperativeSchemeByCcid(Integer ccid, Integer flag) {
+        List<CooperativeScheme> cooperativeSchemes=cooperativeSchemeDao.findAllByCcidAndFlagOrderByUpdateAtDesc(ccid,flag);
+        for (CooperativeScheme cooperativeScheme:cooperativeSchemes) {
+            cooperativeScheme.setCooperativeCategoryByCcid(null);
+        }
+        return cooperativeSchemes;
+    }
+
+    @Override
+    public CooperativeScheme addCooperativeScheme(CooperativeScheme cooperativeScheme) {
+        return cooperativeSchemeDao.saveAndFlush(cooperativeScheme);
+    }
+
+    @Override
+    public CooperativeScheme updateCooperativeScheme(CooperativeScheme cooperativeScheme) {
+        return cooperativeSchemeDao.saveAndFlush(cooperativeScheme);
+    }
+
+    @Override
+    public String deleteCooperativeScheme(Integer id) {
+        if(cooperativeSchemeDao.exists(id)){
+            cooperativeSchemeDao.delete(id);
             return "success";
         }
         return "not_exist";

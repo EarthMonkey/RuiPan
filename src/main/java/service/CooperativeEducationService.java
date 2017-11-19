@@ -1,5 +1,6 @@
 package service;
 
+import model.CooperativeScheme;
 import vo.CooperativeCategoryVO;
 
 import java.util.List;
@@ -16,4 +17,12 @@ public interface CooperativeEducationService {
     public void updateCooperativeCategory(CooperativeCategoryVO cooperativeCategoryVO);
 
     public String deleteCooperativeCategory(Integer id);
+
+    public List<CooperativeScheme> getCooperativeSchemeByCcid(Integer ccid,Integer flag);
+
+    public CooperativeScheme addCooperativeScheme(CooperativeScheme cooperativeScheme);
+
+    public CooperativeScheme updateCooperativeScheme(CooperativeScheme cooperativeScheme);
+
+    public String deleteCooperativeScheme(Integer id);
 }
