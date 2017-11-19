@@ -6,7 +6,7 @@
 define([''], function () {
     'use strict';
 
-    var specialInfoCtrl = ['$scope', 'commonService', function ($scope, commonService) {
+    var specialInfoCtrl = ['$scope', '$state', 'commonService', function ($scope, $state, commonService) {
 
         $scope.selectedCoun = 'america';
         $scope.filterCountry = [];
@@ -82,12 +82,25 @@ define([''], function () {
             })
         }
 
+        $scope.detailAdvice = {};
         $scope.courseList = [];
         $scope.workList = [];
 
         // 获取数据
         function getData() {
             // 详情、建议
+            $.ajax({
+                url: '/Profession/getProfessionIntroducePublished?pid=' + $scope.selectedSp.pid,
+                type: 'GET',
+                success: function (resp) {
+                    console.log(resp);
+                    $scope.detailAdvice = resp;
+                },
+                error: function (err) {
+                    console.log(err);
+                    showMess('danger', '获取详情和建议失败');
+                }
+            });
 
             // 专业课程
             $.ajax({
@@ -121,6 +134,43 @@ define([''], function () {
             {id: 'majorCourse', label: '专业课程'}
         ];
 
+        // 创建/修改详情建议
+        $scope.editDetail = function () {
+            // 若修改则添加 initObj
+
+            var initInfo = {
+                title: '编辑专业详情和申请建议',
+                fields: [
+                    {id: 'applicationAdvice', label: '申请建议', type: 'textarea'},
+                    {id: 'detailSynopsis', label: '详情导语', type: 'textarea'}
+                ],
+                backState: 'backend.specialInfo',
+                ajaxUrl: '/Profession/addProfessionIntroduce',
+                pid: $scope.selectedSp.pid
+            };
+            $state.go('backend.article', {initInfo: JSON.stringify(initInfo)});
+        };
+
+        $scope.getDetail = function () {
+            var initInfo = {
+                title: '专业详情和申请建议',
+                fields: [
+                    {id: 'applicationAdvice', label: '申请建议', type: 'textarea'},
+                    {id: 'detailSynopsis', label: '详情导语', type: 'textarea'}
+                ],
+                backState: 'backend.specialInfo',
+                ajaxUrl: '/Profession/addProfessionIntroduce',
+                pid: $scope.selectedSp.pid,
+                initObj: {
+                    objId: $scope.detailAdvice.pid,
+                    url: '/Profession/getProfessionIntroducePublished?pid=' + $scope.detailAdvice.pid
+                },
+                readonly: true
+            };
+
+            $state.go("backend.article", {initInfo: JSON.stringify(initInfo)});
+        };
+
         // 添加专业课程
         $scope.addCourse = function () {
             var courInstance = commonService.openTextForm('添加专业课程', courseFields);
@@ -146,8 +196,9 @@ define([''], function () {
         $scope.modCourse = function (item, pos) {
             var courInstance = commonService.openTextForm('修改专业课程', courseFields, item);
             courInstance.result.then(function (data) {
-                data.pid = item.pid;
+                data.pid = $scope.selectedSp.pid;
                 data.id = item.id;
+                console.log(data)
                 $.ajax({
                     url: '/Profession/updateProfessionCourse',
                     type: 'PUT',
@@ -192,7 +243,7 @@ define([''], function () {
         // 添加就业去向
         $scope.addWork = function () {
             commonService.openTextForm('添加就业去向', workFields).result.then(function (data) {
-               data.pid = $scope.selectedSp.pid;
+                data.pid = $scope.selectedSp.pid;
 
 
             });

@@ -32,27 +32,8 @@
         </div>
     </div>
 
-    <!-- 专业详情 -->
-    <div style="margin-top: 30px;">
-        <table class="table table-striped">
-            <thead>
-            <th>
-                专业详情
-                <a style="float: right"><i class="fa fa-pencil"></i>修改</a>
-            </th>
-            </thead>
-            <tbody>
-            <tr>
-                <td>
-                    <div class="auto_td_div">
-                        <p>金融工程是用数学和工程学的方法来建立金融模型（如描述股价运动的随机微分方程），并进而计算金融收益与风险的一门学科。在现代金融实践中有重要的作用。
-                            在投资银行、对冲基金等公司中往往有专门研究和使用金融工程计算和管控风险的定量分析师。</p>
-                        <p>学习和研究的内容主要包括证券衍生物定价，风险分析，金融模型，金融信息分析，和一些高级的金融理论。</p>
-                    </div>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+    <div class="h_title" style="margin-top: 50px;">
+        <h2>专业详情和申请建议</h2>
     </div>
 
     <!-- 独家申请建议 -->
@@ -61,21 +42,45 @@
             <thead>
             <th>
                 独家申请建议
-                <a style="float: right"><i class="fa fa-pencil"></i>修改</a>
+                <a style="float: right" ng-click="editDetail()"><i class="fa fa-pencil"></i>修改</a>
             </th>
             </thead>
             <tbody>
             <tr>
                 <td>
                     <div class="auto_td_div">
-                        <p>金融工程是用数学和工程学的方法来建立金融模型（如描述股价运动的随机微分方程），并进而计算金融收益与风险的一门学科。在现代金融实践中有重要的作用。
-                            在投资银行、对冲基金等公司中往往有专门研究和使用金融工程计算和管控风险的定量分析师。</p>
-                        <p>学习和研究的内容主要包括证券衍生物定价，风险分析，金融模型，金融信息分析，和一些高级的金融理论。</p>
+                        &nbsp;{{detailAdvice.applicationAdvice}}
                     </div>
                 </td>
             </tr>
             </tbody>
         </table>
+    </div>
+    <!-- 专业详情 -->
+    <div style="margin-top: -15px;">
+        <table class="table table-striped">
+            <thead>
+            <th>
+                专业详情
+                <a ng-click="getDetail()" style="float: right;">
+                    查看详情<i class="glyphicon glyphicon-chevron-right"></i>
+                </a>
+            </th>
+            </thead>
+            <tbody>
+            <tr>
+                <td>
+                    <div class="auto_td_div">
+                        &nbsp;{{detailAdvice.detailSynopsis}}
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="h_title" style="margin-top: 50px;">
+        <h2>专业课程</h2>
     </div>
 
     <!-- 专业课程 -->
@@ -112,18 +117,21 @@
             <thead>
             <th>就业去向</th>
             <th>logo</th>
-            <th class="action_col"><a><i class="fa fa-plus"></i>添加</a></th>
+            <th class="action_col"><a ng-click="addWork()"><i class="fa fa-plus"></i>添加</a></th>
             </thead>
             <tbody>
-            <tr ng-repeat="temp in [0,1,2,3]">
+            <tr ng-repeat="item in workList track by $index">
                 <td>金融机构</td>
                 <td>
                     <div class="work_logo"></div>
                 </td>
                 <td>
-                    <div class="table_mod border"><a>修改</a></div>
-                    <div class="table_mod"><a>删除</a></div>
+                    <div class="table_mod border"><a ng-click="modWork(item, $index)">修改</a></div>
+                    <div class="table_mod"><a ng-click="delWork(item, $index)">删除</a></div>
                 </td>
+            </tr>
+            <tr ng-if="courseList.length==0">
+                <td colspan="3" class="no_data">无数据</td>
             </tr>
             </tbody>
         </table>

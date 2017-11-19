@@ -90,7 +90,7 @@ p {
 
 .login_input input[type='text'],
 .login_input input[type='password'],
-.login_input input[type='file'] {
+.login_input textarea {
     display: inline-block;
     height: 35px;
     width: 175px;
@@ -104,7 +104,9 @@ p {
 }
 
 .login_input input:hover,
-.login_input input:focus {
+.login_input input:focus,
+.login_input textarea:hover,
+.login_input textarea:focus {
     -webkit-box-shadow: 0 0 8px rgba(25, 123, 192, 0.7);
     -moz-box-shadow: 0 0 8px rgba(25, 123, 192, 0.7);
     box-shadow: 0 0 8px rgba(25, 123, 192, 0.7);
@@ -388,6 +390,13 @@ th .fa {
     width: 400px;
 }
 
+.login_input textarea {
+    width: 400px;
+    height: 100px;
+    display: inline-block;
+    vertical-align: top;
+}
+
 .article_input {
     display: inline-block;
     vertical-align: top;
@@ -448,7 +457,7 @@ th .fa {
     box-shadow: 0 0 8px rgba(25, 123, 192, 0.7);
 }
 
-.combox .dropdown-menu  {
+.combox .dropdown-menu {
     max-height: 200px;
     overflow: auto;
 }
@@ -497,4 +506,41 @@ th .fa {
 .work_logo {
     width: 140px;
     height: 40px;
+}
+
+/* 上传文件优化 */
+.a_upload {
+    display: inline-block;
+    vertical-align: middle;
+    height: 35px;
+    width: 400px;
+    text-align: center;
+    line-height: 35px;
+    font-size: 16px;
+    border: 1px solid #1591ee;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+    *display: inline;
+    *zoom: 1;
+    position: relative;
+}
+
+.a_upload input {
+    display: inline-block;
+    width: 395px;
+    height: 35px;
+    opacity: 0;
+    filter: alpha(opacity=0);
+    cursor: pointer;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.a_upload:hover {
+    -webkit-box-shadow: 0 0 8px rgba(25, 123, 192, 0.7);
+    -moz-box-shadow: 0 0 8px rgba(25, 123, 192, 0.7);
+    box-shadow: 0 0 8px rgba(25, 123, 192, 0.7);
 }
