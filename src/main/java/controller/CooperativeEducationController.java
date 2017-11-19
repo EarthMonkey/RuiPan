@@ -1,5 +1,6 @@
 package controller;
 
+import model.CooperativeScheme;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,6 +36,10 @@ public class CooperativeEducationController {
     }
 
     //根据分类编号（cid）获取所有合作方案列表
+    @GetMapping(value="/getCooperativeSchemeByCid")
+    public List<CooperativeScheme> getCooperativeSchemeByCid(Integer cid){
+        return null;
+    }
 
 
     //***********************后台管理接口******************************

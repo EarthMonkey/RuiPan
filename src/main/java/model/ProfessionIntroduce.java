@@ -11,7 +11,7 @@ import java.sql.Timestamp;
 public class ProfessionIntroduce {
     private int pid;
     private String detailSynopsis;
-    private String detailTextPath;
+    private String textPath;
     private String applicationAdvice;
     private Integer flag;
     private Timestamp updateAt;
@@ -38,13 +38,13 @@ public class ProfessionIntroduce {
     }
 
     @Basic
-    @Column(name = "detail_text_path")
-    public String getDetailTextPath() {
-        return detailTextPath;
+    @Column(name = "text_path")
+    public String getTextPath() {
+        return textPath;
     }
 
-    public void setDetailTextPath(String detailTextPath) {
-        this.detailTextPath = detailTextPath;
+    public void setTextPath(String textPath) {
+        this.textPath = textPath;
     }
 
     @Basic
@@ -87,7 +87,7 @@ public class ProfessionIntroduce {
         if (pid != that.pid) return false;
         if (detailSynopsis != null ? !detailSynopsis.equals(that.detailSynopsis) : that.detailSynopsis != null)
             return false;
-        if (detailTextPath != null ? !detailTextPath.equals(that.detailTextPath) : that.detailTextPath != null)
+        if (textPath != null ? !textPath.equals(that.textPath) : that.textPath != null)
             return false;
         if (applicationAdvice != null ? !applicationAdvice.equals(that.applicationAdvice) : that.applicationAdvice != null)
             return false;
@@ -101,7 +101,7 @@ public class ProfessionIntroduce {
     public int hashCode() {
         int result = pid;
         result = 31 * result + (detailSynopsis != null ? detailSynopsis.hashCode() : 0);
-        result = 31 * result + (detailTextPath != null ? detailTextPath.hashCode() : 0);
+        result = 31 * result + (textPath != null ? textPath.hashCode() : 0);
         result = 31 * result + (applicationAdvice != null ? applicationAdvice.hashCode() : 0);
         result = 31 * result + (flag != null ? flag.hashCode() : 0);
         result = 31 * result + (updateAt != null ? updateAt.hashCode() : 0);

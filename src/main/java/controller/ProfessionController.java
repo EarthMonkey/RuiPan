@@ -124,7 +124,7 @@ public class ProfessionController {
         ProfessionIntroduce professionIntroduce=new ProfessionIntroduce();
         professionIntroduce.setPid(pid);
         professionIntroduce.setDetailSynopsis(detailSynopsis);
-        professionIntroduce.setDetailTextPath(textPath);
+        professionIntroduce.setTextPath(textPath);
         professionIntroduce.setApplicationAdvice(applicationAdvice);
         professionIntroduce.setFlag(flag);
         professionIntroduce.setUpdateAt(new Timestamp(System.currentTimeMillis()));

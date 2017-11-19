@@ -104,6 +104,7 @@ public class ProfessionServiceImpl implements ProfessionService{
     @Override
     public ProfessionIntroduce getProfessionIntroduce(Integer pid,Integer flag) {
         ProfessionIntroduce professionIntroduce=professionIntroduceDao.findOne(pid);
+        professionIntroduce.setProfessionCategoryByPid(null);
         return flag==professionIntroduce.getFlag()?professionIntroduce:null;
     }
 
