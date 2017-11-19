@@ -89,7 +89,8 @@ p {
 }
 
 .login_input input[type='text'],
-.login_input input[type='password'] {
+.login_input input[type='password'],
+.login_input input[type='file'] {
     display: inline-block;
     height: 35px;
     width: 175px;
@@ -387,6 +388,75 @@ th .fa {
     width: 400px;
 }
 
+.article_input {
+    display: inline-block;
+    vertical-align: top;
+}
+
+.article_input .login_input {
+    margin-left: 0;
+    width: 520px;
+}
+
+.article_input .login_input label {
+    width: 100px;
+}
+
+.article_input .login_input input {
+    width: 400px;
+}
+
+/* 下拉框 */
+.combox {
+    margin: 0 0;
+}
+
+.combox label {
+    position: relative;
+    top: 10px;
+}
+
+.combox button {
+    display: inline-block;
+    height: 35px;
+    width: 400px;
+    border: 1px solid #1591ee;
+    border-radius: 0;
+    outline: none;
+    padding-left: 5px;
+    float: none !important;
+    text-align: left;
+    -webkit-transition: 0.3s;
+    -moz-transition: 0.3s;
+    -o-transition: 0.3s;
+    transition: 0.3s;
+}
+
+.combox button .fa {
+    font-size: 18px;
+    float: right;
+    position: relative;
+    top: 3px;
+}
+
+.combox button:hover,
+.combox button:focus {
+    background-color: #fff !important;
+    border: 1px solid #1591ee !important;
+    -webkit-box-shadow: 0 0 8px rgba(25, 123, 192, 0.7);
+    -moz-box-shadow: 0 0 8px rgba(25, 123, 192, 0.7);
+    box-shadow: 0 0 8px rgba(25, 123, 192, 0.7);
+}
+
+.combox .dropdown-menu  {
+    max-height: 200px;
+    overflow: auto;
+}
+
+.inner_combox {
+    display: inline-block;
+}
+
 .loading_div {
     width: 100px;
     height: 100px;
@@ -406,4 +476,15 @@ th .fa {
     vertical-align: middle;
     padding: 5px 20px;
     margin: 0 15px;
+}
+
+.tab_edit_btn {
+    position: absolute;
+    right: 15px;
+    top: 11px;
+}
+
+.no_data {
+    background-color: #f9f9f9;
+    text-align: center;
 }

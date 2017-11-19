@@ -5,19 +5,25 @@
 define([''], function () {
     'use strict';
 
-    var commonService = function ($uibModal, $timeout) {
+    var commonService = function ($uibModal, $timeout, $state) {
 
         var service = this;
 
         // 消息提示
-        service.showMessage = function ($scope, message) {
+        service.showMessage = function ($scope, message, state) {
             $scope.message = message;
             var time = 3000;
             if (message.type == 'danger') {
                 time = 5000;
             }
+            if (state) {
+                time = 1000;
+            }
             $timeout(function () {
                 $scope.message = '';
+                if (state) {
+                    $state.go(state);
+                }
             }, time);
         };
 
@@ -56,6 +62,82 @@ define([''], function () {
                     }
                 }
             });
+        };
+
+        // 打开文本编辑器
+        service.openEditor = function (title, initHtml, limit) {
+            return $uibModal.open({
+                animation: true,
+                templateUrl: 'backend/backend/views/modals/editorModal.html',
+                controller: 'editorCtrl',
+                backdrop: 'static',
+                keyboard: false,
+                size: 'lg',
+                resolve: {
+                    title: function () {
+                        return title;
+                    },
+                    initHtml: function () {
+                        return initHtml;
+                    },
+                    limit: function () {
+                        return limit;
+                    }
+                }
+            });
+        };
+
+        // 上传html
+        service.uploadHTML = function ($scope, text) {
+            $.ajax({
+                url: '/uploadText',
+                type: 'POST',
+                data: {text: text},
+                success: function (resp) {
+                    console.log(resp);
+                    $scope.uploadCallback(resp);
+                },
+                error: function (err) {
+                    console.log(err);
+                    service.showMessage($scope, {type: 'danger', message: '上传文本失败'});
+                }
+            })
+        };
+        
+        // 获取html
+        service.getHTML = function ($scope, path) {
+            $.ajax({
+                url: '/getText?path=' + path,
+                type: 'GET',
+                success: function (resp) {
+                    console.log(resp);
+                    $scope.getHtmlCallback(resp);
+                },
+                error: function (err) {
+                    console.log(err);
+                    service.showMessage($scope, {type: 'danger', message: '获取文本失败'});
+                }
+            })
+        };
+
+        // 更新HTML
+        service.updateHTML = function ($scope, text, path) {
+            $.ajax({
+                url: "/updateText",
+                type: 'PUT',
+                data: {
+                    text: text,
+                    fileName: path
+                },
+                success: function (resp) {
+                    service.showMessage($scope, {type: 'success', message: '更新成功'});
+                    $scope.updateHtmlCallback();
+                },
+                error: function (err) {
+                    console.log(err);
+                    service.showMessage($scope, {type: 'danger', message: '更新文本失败'});
+                }
+            })
         };
 
         // 显示加载条

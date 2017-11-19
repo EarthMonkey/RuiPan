@@ -20,13 +20,14 @@ define([''], function () {
                     if (item.type == 'checkbox') {
                         $scope.model[item.id] = false;
                     }
-                })
+                });
             }
 
             $scope.ok = function () {
+                console.log($scope.model)
 
                 for (var key in $scope.model) {
-                    if (!$scope.model[key]) {
+                    if ($scope.model[key] === "") {
                         showError("请填写完整信息");
                         return;
                     }

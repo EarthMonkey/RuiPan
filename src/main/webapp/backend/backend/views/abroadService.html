@@ -57,23 +57,22 @@
     <div class="h_title" style="margin-top: 50px;">
         <h2>申请要素</h2>
     </div>
-    <div>
-        <table class="table table-hover">
-            <thead>
-            <th>申请要素</th>
-            <th class="action_col"><a><i class="fa fa-plus"></i>添加</a></th>
-            </thead>
-            <tbody>
-            <tr ng-repeat="temp in [0,1,2,3]">
-                <td><a>申请要素</a></td>
-                <td>
-                    <div class="table_mod border"><a>修改</a></div>
-                    <div class="table_mod"><a>删除</a></div>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-    </div>
+    <uib-tabset style="position: relative">
+        <uib-tab index="$index" ng-repeat="tab in factorTabs track by $index" heading="{{tab.category}}">
+            <a class="tab_edit_btn" ng-click="editFactor(tab, $index)"><i class="fa fa-pencil"></i>编辑</a>
+            <table class="table table-striped">
+                <tbody>
+                <tr ng-if="tab.synopsis">
+                    <td>{{tab.synopsis}}</td>
+                </tr>
+                <tr ng-if="!tab.synopsis">
+                    <td class="no_data">无数据</td>
+                </tr>
+                </tbody>
+            </table>
+        </uib-tab>
+    </uib-tabset>
+
 
     <!-- 常见问题 -->
     <div class="h_title" style="margin-top: 50px;">

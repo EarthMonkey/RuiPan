@@ -21,7 +21,6 @@ define(['lazy-load/lazyLoad'],
                 ],
                 services: [
                     'backend/backend/services/leftBarService',
-                    'backend/backend/services/editorService',
                     'backend/backend/services/commonService'
                 ]
             }
@@ -144,6 +143,14 @@ define(['lazy-load/lazyLoad'],
             controller: 'userCtrl',
             scripts: {
                 controllers: ['backend/backend/controllers/userCtrl']
+            }
+        }, {
+            name: 'backend.article',
+            url: '/article?initInfo',
+            templateUrl: 'backend/backend/views/modals/article.html',
+            controller: 'articleCtrl',
+            scripts: {
+                controllers: ['backend/backend/controllers/modals/articleCtrl']
             }
         }];
 

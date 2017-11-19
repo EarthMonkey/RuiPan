@@ -6,11 +6,13 @@
 
 <div class="modal-body" id="modal-body">
 
-    <div class="ueditor" style="width: 100%;height: 300px;" ng-model="model" ></div>
+    <div style="width: 100%;height: 350px;" class="ueditor"
+         config="config" ng-model="model"></div>
 
 </div>
 
 <div class="modal-footer">
+    <div ng-show="modalMess" class="bg-danger modal_message">{{modalMess}}</div>
     <button class="btn btn-primary" type="button" ng-click="ok()">保存</button>
     <button class="btn btn-warning" type="button" ng-click="cancel()">取消</button>
 </div>

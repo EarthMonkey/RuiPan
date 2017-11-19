@@ -53,7 +53,6 @@ define([''], function () {
         }
 
         $scope.conditionList = [];
-        $scope.factorList = [];
         $scope.questionList = [];
 
         // 初始化数据
@@ -76,6 +75,24 @@ define([''], function () {
             });
 
             // 申请要素
+            $.ajax({
+                url: '/StudyAbroad/getApplicationElementByGid?gid=' + GID,
+                type: 'GET',
+                success: function (resp) {
+                    resp.forEach(function (item) {
+                        for (var i = 0; i < $scope.factorTabs.length; i++) {
+                            if (item.category === $scope.factorTabs[i].category) {
+                                $scope.factorTabs[i] = item;
+                                break;
+                            }
+                        }
+                    });
+                },
+                error: function (err) {
+                    console.log(err);
+                    showMess('danger', '获取申请要素失败');
+                }
+            });
 
             // 常见问题
             $.ajax({
@@ -162,6 +179,57 @@ define([''], function () {
             });
         };
 
+        // 申请要素
+        $scope.factorTabs = [
+            {category: '申请基本条件'},
+            {category: '申请材料'},
+            {category: '选校因素'},
+            {category: '所需费用'}
+        ];
+
+        // 添加 or 修改
+        $scope.editFactor = function (tab, pos) {
+            var factorInstance = commonService.openEditor(tab.category, tab.synopsis, 200);
+            factorInstance.result.then(function (data) {
+                tab.gid = GID;
+                tab.synopsis = data;
+                tab.textPath = "";
+                tab.flag = 1;
+
+                console.log(tab);
+                if (tab.id) { // 修改
+                    $.ajax({
+                        url: '/StudyAbroad/updateApplicationElement',
+                        type: 'PUT',
+                        data: tab,
+                        success: function (resp) {
+                            $scope.factorTabs[pos] = data;
+                            showMess('success', '修改成功');
+                        },
+                        error: function (err) {
+                            console.log(err);
+                            showMess('danger', '修改失败');
+                        }
+                    });
+
+                } else { // 创建
+                    $.ajax({
+                        url: '/StudyAbroad/addApplicationElement',
+                        type: 'POST',
+                        data: tab,
+                        success: function (resp) {
+                            console.log(resp);
+                            $scope.factorTabs[pos] = resp;
+                            showMess('success', '添加成功');
+                        },
+                        error: function (err) {
+                            console.log(err);
+                            showMess('danger', '添加失败');
+                        }
+                    });
+                }
+            });
+        };
 
         // 增加问题
         var quesFields = [
