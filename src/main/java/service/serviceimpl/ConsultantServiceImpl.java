@@ -107,6 +107,9 @@ public class ConsultantServiceImpl implements ConsultantService{
     @Override
     public List<OrderForConsultant> checkOrder(Integer id, String isAnswer) {
         List<OrderForConsultant> orderForConsultants=orderForConsultantDao.findAllByCidAndIsAnswerOrderByOrderTimeAsc(id,isAnswer);
+        for (OrderForConsultant orderForConsultant:orderForConsultants) {
+            orderForConsultant.setConsultantByCid(null);
+        }
         return orderForConsultants;
     }
 
