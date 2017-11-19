@@ -8,7 +8,7 @@ import java.util.List;
 public interface LanguageTrainingService {
 
     //根据分类获取最近四条资讯信息
-    public List<News> getLatestNewsByCategory(String category, Integer limit);
+    public List<News> getLatestNewsByCategory(String category);
 
     //根据分类获得所有资讯信息列表
     public List<News> getAllNewsByCategory(String category,Integer flag);
@@ -20,10 +20,10 @@ public interface LanguageTrainingService {
     public News updateNews(News news);
 
     //在分类下删除一条资讯信息
-    public News deleteNews(Integer id);
+    public String deleteNews(Integer id);
 
     //根据分类获得所有介绍信息列表
-    public List<TrainIntroduce> getTrainIntroducePublish(String category,Integer flag);
+    public List<TrainIntroduce> getTrainIntroduce(String category,Integer flag);
 
     //在分类下增加一条介绍信息
     public TrainIntroduce addTrainIntroduce(TrainIntroduce trainIntroduce);

@@ -15,6 +15,7 @@ import java.util.List;
  * Created by ldchao on 2017/11/2.
  */
 @RestController
+@RequestMapping(value = "/LanguageTraining")
 public class LanguageTrainingController {
 
     @Autowired
@@ -22,8 +23,8 @@ public class LanguageTrainingController {
 
     //根据分类获取最近四条资讯信息
     @GetMapping(value = "/getLatestNewsByCategory")
-    public List<News> getLatestNewsByCategory(String category,Integer limit){
-        return languageTrainingService.getLatestNewsByCategory(category,limit);
+    public List<News> getLatestNewsByCategory(String category){
+        return languageTrainingService.getLatestNewsByCategory(category);
     }
 
     //根据分类获得所有已发布资讯信息列表
@@ -35,7 +36,7 @@ public class LanguageTrainingController {
     //根据分类获得所有发布介绍信息列表
     @GetMapping(value = "/getTrainIntroducePublish")
     public List<TrainIntroduce> getTrainIntroducePublish(String category){
-        return languageTrainingService.getTrainIntroducePublish(category,StatesConstant.PUBLISHED);
+        return languageTrainingService.getTrainIntroduce(category,StatesConstant.PUBLISHED);
     }
 
 
@@ -46,7 +47,14 @@ public class LanguageTrainingController {
     @SystemLog(module = "语言培训", methods = "增加资讯")
     public News addNews(String category,String title,String synopsis,
             String textPath,Integer flag){
-        return null;
+        News news=new News();
+        news.setCategory(category);
+        news.setTitle(title);
+        news.setSynopsis(synopsis);
+        news.setTextPath(textPath);
+        news.setFlag(flag);
+        news.setPulishTime(new Timestamp(System.currentTimeMillis()));
+        return languageTrainingService.addNews(news);
     }
 
     //在分类下编辑一条资讯信息
@@ -54,14 +62,22 @@ public class LanguageTrainingController {
     @SystemLog(module = "语言培训", methods = "编辑资讯")
     public News updateNews(Integer id,String category,String title,String synopsis,
                            String textPath,Integer flag){
-        return null;
+        News news=new News();
+        news.setId(id);
+        news.setCategory(category);
+        news.setTitle(title);
+        news.setSynopsis(synopsis);
+        news.setTextPath(textPath);
+        news.setFlag(flag);
+        news.setPulishTime(new Timestamp(System.currentTimeMillis()));
+        return languageTrainingService.updateNews(news);
     }
 
     //在分类下删除一条资讯信息
     @DeleteMapping(value = "/deleteNews")
     @SystemLog(module = "语言培训", methods = "删除资讯")
-    public News deleteNews(Integer id){
-        return null;
+    public String deleteNews(Integer id){
+        return languageTrainingService.deleteNews(id);
     }
 
     //在分类下获取所有草稿状态的咨询信息
@@ -75,7 +91,13 @@ public class LanguageTrainingController {
     @PostMapping(value = "/addTrainIntroduce")
     @SystemLog(module = "语言培训", methods = "增加培训介绍")
     public TrainIntroduce addTrainIntroduce(String category,String title,String textPath,Integer flag){
-        return null;
+        TrainIntroduce trainIntroduce=new TrainIntroduce();
+        trainIntroduce.setCategory(category);
+        trainIntroduce.setTitle(title);
+        trainIntroduce.setTextPath(textPath);
+        trainIntroduce.setFlag(flag);
+        trainIntroduce.setUpdateAt(new Timestamp(System.currentTimeMillis()));
+        return languageTrainingService.addTrainIntroduce(trainIntroduce);
     }
 
     //根据id编辑一条介绍信息
@@ -103,6 +125,6 @@ public class LanguageTrainingController {
     @GetMapping(value = "/getTrainIntroduceDraft")
     @SystemLog(module = "语言培训", methods = "获取培训介绍草稿")
     public List<TrainIntroduce> getTrainIntroduceDraft(String category){
-        return languageTrainingService.getTrainIntroducePublish(category,StatesConstant.DRAFT);
+        return languageTrainingService.getTrainIntroduce(category,StatesConstant.DRAFT);
     }
 }
