@@ -143,28 +143,33 @@ public class ConsultantController {
     @PostMapping(value = "/addAnswerForOrder")
     @SystemLog(module = "顾问管理", methods = "新增答复记录")
     public AnswerForOrder addAnswerForOrder(Integer oid,String answer){
-        return null;
+        return consultantService.addAnswerForOrder(oid,answer);
     }
 
     //根据顾问预约答复id修改答复
     @PutMapping(value = "/updateAnswerForOrder")
     @SystemLog(module = "顾问管理", methods = "更新答复记录")
-    public AnswerForOrder updateAnswerForOrder(Integer id,String answer){
-        return null;
+    public AnswerForOrder updateAnswerForOrder(Integer id,Integer oid,String answer){
+        AnswerForOrder answerForOrder=new AnswerForOrder();
+        answerForOrder.setId(id);
+        answerForOrder.setOid(oid);
+        answerForOrder.setAnswer(answer);
+        answerForOrder.setCreatAt(new Timestamp(System.currentTimeMillis()));
+        return consultantService.updateAnswerForOrder(answerForOrder);
     }
 
     //根据顾问预约答复id删除答复
     @DeleteMapping(value = "/deleteAnswerForOrder")
     @SystemLog(module = "顾问管理", methods = "删除答复记录")
     public String deleteAnswerForOrder(Integer id){
-        return null;
+        return consultantService.deleteAnswerForOrder(id);
     }
 
     //根据顾问预约id删除某条预约
     @DeleteMapping(value = "/deleteOrder")
     @SystemLog(module = "顾问管理", methods = "删预约记录")
     public String deleteOrder(Integer id){
-        return null;
+        return deleteOrder(id);
     }
 
 
@@ -172,20 +177,26 @@ public class ConsultantController {
     @PostMapping(value = "/addConsultantBusinessByGid")
     @SystemLog(module = "顾问管理", methods = "按年级增加顾问业务")
     public ConsultantBusiness addConsultantBusinessByGid(Integer cid, Integer gid){
-        return null;
+        ConsultantBusiness consultantBusiness=new ConsultantBusiness();
+        consultantBusiness.setCid(cid);
+        consultantBusiness.setBid(gid);
+        return consultantService.addConsultantBusiness(consultantBusiness);
     }
 
     //根据顾问id和pid增加一条顾问业务
     @PutMapping(value = "/addConsultantBusinessByPid")
     @SystemLog(module = "顾问管理", methods = "按专业增加顾问业务")
     public ConsultantBusiness addConsultantBusinessByPid(Integer cid, Integer pid){
-        return null;
+        ConsultantBusiness consultantBusiness=new ConsultantBusiness();
+        consultantBusiness.setCid(cid);
+        consultantBusiness.setBid(pid);
+        return consultantService.addConsultantBusiness(consultantBusiness);
     }
 
     //根据顾问业务id删除一条顾问业务
     @DeleteMapping(value = "/deleteConsultantBusiness")
     @SystemLog(module = "顾问管理", methods = "删除顾问业务")
     public String deleteConsultantBusiness(Integer id){
-        return null;
+        return consultantService.deleteConsultantBusiness(id);
     }
 }

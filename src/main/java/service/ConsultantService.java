@@ -42,7 +42,7 @@ public interface ConsultantService {
     public AnswerForOrder addAnswerForOrder(Integer oid, String answer);
 
     //根据顾问预约答复id修改答复
-    public AnswerForOrder updateAnswerForOrder(Integer id,String answer);
+    public AnswerForOrder updateAnswerForOrder(AnswerForOrder answerForOrder);
 
     //根据顾问预约答复id删除答复
     public String deleteAnswerForOrder(Integer id);

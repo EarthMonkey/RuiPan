@@ -129,11 +129,7 @@ public class ConsultantServiceImpl implements ConsultantService{
     }
 
     @Override
-    public AnswerForOrder updateAnswerForOrder(Integer id, String answer) {
-        AnswerForOrder answerForOrder=new AnswerForOrder();
-        answerForOrder.setId(id);
-        answerForOrder.setAnswer(answer);
-        answerForOrder.setCreatAt(new Timestamp(System.currentTimeMillis()));
+    public AnswerForOrder updateAnswerForOrder(AnswerForOrder answerForOrder) {
         return answerForOrderDao.saveAndFlush(answerForOrder);
     }
 
