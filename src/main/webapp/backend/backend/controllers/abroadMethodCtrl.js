@@ -203,6 +203,7 @@ define([''], function () {
             {id: "title", label: '方案标题', placeholder: '单申ESL课程'},
             {id: 'synopsis', label: '方案导语'}
         ];
+
         // 添加方案
         $scope.addMethod = function () {
             var initInfo = {
