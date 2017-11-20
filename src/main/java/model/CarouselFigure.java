@@ -11,8 +11,6 @@ public class CarouselFigure {
     private int id;
     private String category;
     private String imagePath;
-    private Double length;
-    private Double width;
     private String link;
 
     @Id
@@ -47,26 +45,6 @@ public class CarouselFigure {
     }
 
     @Basic
-    @Column(name = "length")
-    public Double getLength() {
-        return length;
-    }
-
-    public void setLength(Double length) {
-        this.length = length;
-    }
-
-    @Basic
-    @Column(name = "width")
-    public Double getWidth() {
-        return width;
-    }
-
-    public void setWidth(Double width) {
-        this.width = width;
-    }
-
-    @Basic
     @Column(name = "link")
     public String getLink() {
         return link;
@@ -86,8 +64,6 @@ public class CarouselFigure {
         if (id != that.id) return false;
         if (category != null ? !category.equals(that.category) : that.category != null) return false;
         if (imagePath != null ? !imagePath.equals(that.imagePath) : that.imagePath != null) return false;
-        if (length != null ? !length.equals(that.length) : that.length != null) return false;
-        if (width != null ? !width.equals(that.width) : that.width != null) return false;
         if (link != null ? !link.equals(that.link) : that.link != null) return false;
 
         return true;
@@ -98,8 +74,6 @@ public class CarouselFigure {
         int result = id;
         result = 31 * result + (category != null ? category.hashCode() : 0);
         result = 31 * result + (imagePath != null ? imagePath.hashCode() : 0);
-        result = 31 * result + (length != null ? length.hashCode() : 0);
-        result = 31 * result + (width != null ? width.hashCode() : 0);
         result = 31 * result + (link != null ? link.hashCode() : 0);
         return result;
     }

@@ -1,16 +1,32 @@
 package dao.daoImpl;
 
 import dao.ComplexSituationDao;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import vo.SuccessfulCaseVO;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import java.util.List;
+import java.util.Map;
 
 /**
  * Created by ldchao on 2017/11/17.
  */
 @Repository
 public class ComplexSituationDaoImpl implements ComplexSituationDao{
+    @Autowired
+    EntityManagerFactory entityManagerFactory;
 
-//    @Autowired
-//    EntityManagerFactory entityManagerFactory;
+    @Override
+    public Map<String, List<SuccessfulCaseVO>> getSuccessfulCaseByCountry(String country) {
+
+        EntityManager em=entityManagerFactory.createEntityManager();
+        em.close();
+        return null;
+    }
+
+
 //    public HostelPlan getAvailableRoomByHidAndTimeAndPeopleNum(int hid, int peopleNum, Timestamp startAt, Timestamp endAt, double money) {
 //        EntityManager em=entityManagerFactory.createEntityManager();
 //        String sql = "SELECT * " +

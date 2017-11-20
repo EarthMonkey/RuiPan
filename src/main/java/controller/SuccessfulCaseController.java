@@ -9,6 +9,7 @@ import vo.RecommendSuccessfulCase;
 import vo.SuccessfulCaseVO;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by ldchao on 2017/11/2.
@@ -53,6 +54,13 @@ public class SuccessfulCaseController {
     public List<RecommendSuccessfulCase> getRecommendSuccessfulCase(){
         return successfulCaseService.getRecommendSuccessfulCase(StatesConstant.RECOMMEND);
     }
+
+    //获取不同国家下最近5个成功案例列表
+    @GetMapping(value="/getSuccessfulCaseByCountry")
+    public Map<String,List<SuccessfulCaseVO>> getSuccessfulCaseByCountry(String country){
+        return null;
+    }
+
 
     //***********************后台管理接口******************************
 
