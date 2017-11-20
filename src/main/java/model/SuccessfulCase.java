@@ -13,6 +13,7 @@ public class SuccessfulCase {
     private Integer pid;
     private Integer sid;
     private Integer cid;
+    private String name;
     private String degree;
     private String enrollmentTime;
     private String languageScore;
@@ -65,6 +66,17 @@ public class SuccessfulCase {
 
     public void setCid(Integer cid) {
         this.cid = cid;
+    }
+
+
+    @Basic
+    @Column(name = "name")
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     @Basic

@@ -90,13 +90,14 @@ public class SuccessfulCaseController {
     //增加一条案例
     @PostMapping(value="/addSuccessfulCase")
     @SystemLog(module = "成功案例" ,methods = "增加案例")
-    public SuccessfulCaseVO addSuccessfulCase(Integer pid,Integer sid,Integer cid,
+    public SuccessfulCaseVO addSuccessfulCase(Integer pid,Integer sid,Integer cid,String name,
             String degree,String enrollmentTime,String languageScore,String gpa,
             String gmatSatGre,String undergraduateMajor,String textPath,Integer flag){
         SuccessfulCaseVO successfulCaseVO=new SuccessfulCaseVO();
         successfulCaseVO.setPid(pid);
         successfulCaseVO.setSid(sid);
         successfulCaseVO.setCid(cid);
+        successfulCaseVO.setName(name);
         successfulCaseVO.setDegree(degree);
         successfulCaseVO.setEnrollmentTime(enrollmentTime);
         successfulCaseVO.setLanguageScore(languageScore);
@@ -112,7 +113,7 @@ public class SuccessfulCaseController {
     //根据案例id修改一条案例
     @PutMapping(value="/updateSuccessfulCase")
     @SystemLog(module = "成功案例" ,methods = "编辑案例")
-    public SuccessfulCaseVO updateSuccessfulCase(Integer id,Integer pid,Integer sid,Integer cid,
+    public SuccessfulCaseVO updateSuccessfulCase(Integer id,Integer pid,Integer sid,Integer cid,String name,
                                                  String degree,String enrollmentTime,String languageScore,String gpa,
                                                  String gmatSatGre,String undergraduateMajor,String textPath,Integer flag){
         SuccessfulCaseVO successfulCaseVO=new SuccessfulCaseVO();
@@ -120,6 +121,7 @@ public class SuccessfulCaseController {
         successfulCaseVO.setPid(pid);
         successfulCaseVO.setSid(sid);
         successfulCaseVO.setCid(cid);
+        successfulCaseVO.setName(name);
         successfulCaseVO.setDegree(degree);
         successfulCaseVO.setEnrollmentTime(enrollmentTime);
         successfulCaseVO.setLanguageScore(languageScore);

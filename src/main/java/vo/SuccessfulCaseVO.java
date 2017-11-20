@@ -10,6 +10,7 @@ public class SuccessfulCaseVO {
     private Integer pid;
     private Integer sid;
     private Integer cid;
+    private String name;
     private String degree;
     private String enrollmentTime;
     private String languageScore;
@@ -53,6 +54,14 @@ public class SuccessfulCaseVO {
 
     public void setCid(Integer cid) {
         this.cid = cid;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDegree() {
@@ -133,6 +142,7 @@ public class SuccessfulCaseVO {
         successfulCase.setPid(pid);
         successfulCase.setSid(sid);
         successfulCase.setCid(cid);
+        successfulCase.setName(name);
         successfulCase.setDegree(degree);
         successfulCase.setEnrollmentTime(enrollmentTime);
         successfulCase.setLanguageScore(languageScore);
@@ -151,6 +161,7 @@ public class SuccessfulCaseVO {
         pid=successfulCase.getPid();
         sid=successfulCase.getSid();
         cid=successfulCase.getCid();
+        name=successfulCase.getName();
         degree=successfulCase.getDegree();
         enrollmentTime=successfulCase.getEnrollmentTime();
         languageScore=successfulCase.getLanguageScore();
