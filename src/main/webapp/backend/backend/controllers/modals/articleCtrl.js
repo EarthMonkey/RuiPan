@@ -37,9 +37,6 @@ define([''], function () {
                 content: ''
             };
 
-            // 图片
-            $scope.hasPicture = "";
-
             // 获取初始值
             var initInfo = JSON.parse($state.params.initInfo);
             if (initInfo.combox) {
@@ -51,6 +48,19 @@ define([''], function () {
             }
             $scope.fields = initInfo.fields;
             $scope.title = initInfo.title;
+
+            // 图片对象
+            var ImgObj = "";
+            for (var i = 0; i < initInfo.fields.length; i++) {
+                if (initInfo.fields[i].type === 'img') {
+                    ImgObj = {
+                        id: initInfo.fields[i].id,
+                        file: '',
+                        path: ''
+                    };
+                    break;
+                }
+            }
 
             if (initInfo.initObj) {  // 修改
                 // 根据id获取数据
@@ -109,6 +119,8 @@ define([''], function () {
                         pic.src = url;
                     }
                 }
+
+                ImgObj.file = file.files[0];
             };
 
             // 保存
@@ -125,11 +137,16 @@ define([''], function () {
                     return;
                 }
 
-                if (initInfo.initObj) {
-                    commonService.updateHTML($scope, $scope.model.content);
+                if (ImgObj !== '') { //先上传图片
+                    uploadImg();
                 } else {
-                    commonService.uploadHTML($scope, $scope.model.content);
+                    if (initInfo.initObj) {
+                        commonService.updateHTML($scope, $scope.model.content);
+                    } else {
+                        commonService.uploadHTML($scope, $scope.model.content);
+                    }
                 }
+
             };
 
             // 上传HTML回调
@@ -140,6 +157,9 @@ define([''], function () {
                     data.gid = initInfo.gid;
                 } else if (data.pid) {
                     data.pid = initInfo.pid;
+                }
+                if (ImgObj) {
+                    data[ImgObj.id] = ImgObj.path;
                 }
                 data.flag = 1;
                 delete data.content;
@@ -165,6 +185,9 @@ define([''], function () {
                 } else if (data.pid) {
                     data.pid = initInfo.pid;
                 }
+                if (ImgObj) {
+                    data[ImgObj.id] = ImgObj.path;
+                }
                 data.flag = 1;
                 delete data.content;
                 $.ajax({
@@ -180,6 +203,31 @@ define([''], function () {
                     }
                 })
             };
+
+            function uploadImg() {
+                var formData = new FormData();
+                formData.append('oneFile', ImgObj.file);
+
+                $.ajax({
+                    url: '/oneUpload',
+                    type: 'POST',
+                    data: formData,
+                    processData: false,
+                    contentType: false,
+                    success: function (resp) {
+                        ImgObj.path = resp;
+                        if (initInfo.initObj) {
+                            commonService.updateHTML($scope, $scope.model.content);
+                        } else {
+                            commonService.uploadHTML($scope, $scope.model.content);
+                        }
+                    },
+                    error: function (err) {
+                        console.log(err);
+                        showMess('danger', '上传图片失败');
+                    }
+                });
+            }
 
             // 返回上一级
             $scope.cancel = function () {

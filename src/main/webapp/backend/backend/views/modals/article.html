@@ -47,10 +47,11 @@
                 <div ng-if="item.type=='img'" style="position: relative;">
                     <label>{{item.label}}: </label>
                     <a class="a_upload" href="javascript:;">
-                        <input id='imgInput' onchange="angular.element(this).scope().selectImg()" type="file" accept="image/*">
+                        <input id='imgInput' onchange="angular.element(this).scope().selectImg()" type="file"
+                               accept="image/*">
                         选择文件
                     </a>
-                    <img id="preImg" class="preview_img">
+                    <img id="preImg" class="preview_img" alt="图片预览">
                 </div>
             </div>
 
