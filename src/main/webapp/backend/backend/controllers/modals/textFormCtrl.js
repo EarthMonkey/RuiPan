@@ -17,7 +17,7 @@ define([''], function () {
             $scope.model = {};
             if (initObj) {
                 $scope.model = angular.copy(initObj);
-                for (var i=0; i<fields.length; i++) {
+                for (var i = 0; i < fields.length; i++) {
                     if (fields[i].type === 'img') {
                         ImgObj = {
                             id: fields[i].id,
@@ -108,19 +108,25 @@ define([''], function () {
                     }
                 }
 
-                if (initObj) {
-                    if (ImgObj.file !== '') {
-                        uploadImg();
+                if (ImgObj !== '') { // 县山川图片
+                    if (initObj) {
+                        if (ImgObj.file !== '') {
+                            uploadImg();
+                        } else {
+                            $scope.model[ImgObj.id] = initObj[ImgObj.id];
+                            $uibModalInstance.close($scope.model);
+                        }
                     } else {
-                        $uibModalInstance.close($scope.model);
+                        if (ImgObj.file === '') {
+                            showError('请上传图片');
+                            return;
+                        }
+                        uploadImg();
                     }
                 } else {
-                    if (ImgObj.file === '') {
-                        showError('请上传图片');
-                        return;
-                    }
-                    uploadImg();
+                    $uibModalInstance.close($scope.model);
                 }
+
             };
 
             $scope.cancel = function () {

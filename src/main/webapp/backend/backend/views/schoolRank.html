@@ -2,6 +2,11 @@
 
 <div class="ui_view">
 
+    <div class="message" ng-show="message!=''"
+         ng-class="{'bg-success':message.type=='success', 'bg-danger': message.type=='danger'}">
+        {{message.content}}
+    </div>
+
     <div class="h_title">
         <h2>院校管理
             <small>院校排名管理</small>
@@ -40,7 +45,7 @@
             <tbody>
             <tr ng-repeat="item in rankList track by $index">
                 <td>{{item.ranking}}</td>
-                <td><a ng-click="modSchool(item, true)">{{item.schoolBySid.collegeName}}</a></td>
+                <td><a ng-click="getDetail(item)">{{item.schoolBySid.collegeName}}</a></td>
                 <td>{{item.scoreRequirements}}</td>
                 <td>{{item.applicationDifficulty}}</td>
                 <td>

@@ -24,7 +24,7 @@ define([''], function () {
                 if (state) {
                     $timeout(function () {
                         $state.go(state);
-                    }, 300);
+                    }, 100);
                 }
             }, time);
         };

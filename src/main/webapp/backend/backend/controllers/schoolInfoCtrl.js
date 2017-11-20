@@ -33,6 +33,7 @@ define([''], function () {
 
         $scope.schoolList = [];
 
+        // 根据国家获取学校
         function getData() {
             $.ajax({
                 url: '/School/getSchoolPublished?country=' + $scope.selectedCoun,
