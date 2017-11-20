@@ -1,6 +1,7 @@
 package service;
 
 import model.CarouselFigure;
+import model.Honor;
 import model.ServedCompany;
 
 import java.util.List;
@@ -25,4 +26,13 @@ public interface HomepageService {
     public ServedCompany updateServedCompany(ServedCompany servedCompany);
 
     public String deleteServedCompany(Integer id);
+
+    public List<Honor> getHonor();
+
+    public Honor addHonor(Honor honor);
+
+    public Honor updateHonor(Honor honor);
+
+    public String deleteHonor(Integer id);
+
 }

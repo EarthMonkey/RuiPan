@@ -13,6 +13,8 @@ public interface NewsService {
     //根据分类获得所有资讯信息列表
     public List<News> getAllNewsByCategory(String category, Integer flag);
 
+    public News getNewsById(Integer id);
+
     //在分类下增加一条资讯信息
     public News addNews(News news);
 

@@ -1,6 +1,7 @@
 package controller;
 
 import model.CarouselFigure;
+import model.Honor;
 import model.ServedCompany;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,6 +14,7 @@ import service.HomepageService;
 import util.SystemLog;
 import util.UrlFormatUtils;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -43,16 +45,22 @@ public class HomePageController {
     }
 
     //获取所有荣誉资质列表
+    @GetMapping(value = "/getHonor")
+    public List<Honor> getHonor(){
+        return homepageService.getHonor();
+    }
 
     //************************后台管理接口************************
 
     //在某个分类下添加一张轮播图
     @PostMapping(value = "/addCarouselFigure")
     @SystemLog(module = "首页管理", methods = "增加轮播图")
-    public CarouselFigure addCarouselFigure(String category,String imagePath,String link){
+    public CarouselFigure addCarouselFigure(String category,String imagePath,String titel,String subTitle,String link){
         CarouselFigure carouselFigure=new CarouselFigure();
         carouselFigure.setCategory(category);
         carouselFigure.setImagePath(imagePath);
+        carouselFigure.setTitle(titel);
+        carouselFigure.setSubTitle(subTitle);
         carouselFigure.setLink(UrlFormatUtils.formatUrl(link));
         return homepageService.addCarouselFigure(carouselFigure);
     }
@@ -60,11 +68,13 @@ public class HomePageController {
     //根据id编辑一张轮播图
     @PutMapping(value = "/updateCarouselFigure")
     @SystemLog(module = "首页管理", methods = "编辑轮播图")
-    public CarouselFigure updateCarouselFigure(Integer id,String category,String imagePath,String link){
+    public CarouselFigure updateCarouselFigure(Integer id,String category,String imagePath,String titel,String subTitle,String link){
         CarouselFigure carouselFigure=new CarouselFigure();
         carouselFigure.setId(id);
         carouselFigure.setCategory(category);
         carouselFigure.setImagePath(imagePath);
+        carouselFigure.setTitle(titel);
+        carouselFigure.setSubTitle(subTitle);
         carouselFigure.setLink(UrlFormatUtils.formatUrl(link));
         return homepageService.updateCarouselFigure(carouselFigure);
     }
@@ -80,27 +90,68 @@ public class HomePageController {
     @PostMapping(value = "/addServedCompany")
     @SystemLog(module = "首页管理", methods = "增加合作对象")
     public ServedCompany addServedCompany(String country,String category,String name,String briefIntroduce,String imagePath){
-        return null;
+        ServedCompany servedCompany=new ServedCompany();
+        servedCompany.setCountry(country);
+        servedCompany.setCategory(category);
+        servedCompany.setName(name);
+        servedCompany.setBriefIntroduce(briefIntroduce);
+        servedCompany.setImagePath(imagePath);
+        servedCompany.setUpdateAt(new Timestamp(System.currentTimeMillis()));
+        return homepageService.addServedCompany(servedCompany);
     }
 
     //根据id编辑一条服务过的学校和企业信息
     @PutMapping(value = "/updateServedCompany")
     @SystemLog(module = "首页管理", methods = "编辑合作对象")
     public ServedCompany updateServedCompany(Integer id,String country,String category,String name,String briefIntroduce,String imagePath){
-        return null;
+        ServedCompany servedCompany=new ServedCompany();
+        servedCompany.setId(id);
+        servedCompany.setCountry(country);
+        servedCompany.setCategory(category);
+        servedCompany.setName(name);
+        servedCompany.setBriefIntroduce(briefIntroduce);
+        servedCompany.setImagePath(imagePath);
+        servedCompany.setUpdateAt(new Timestamp(System.currentTimeMillis()));
+        return homepageService.updateServedCompany(servedCompany);
     }
 
     //根据id删除一条服务过的学校和企业信息
     @DeleteMapping(value = "/deleteServedCompany")
     @SystemLog(module = "首页管理", methods = "删除服务对象")
     public String deleteServedCompany(Integer id){
-        return null;
+        return homepageService.deleteServedCompany(id);
     }
 
     //增加一条荣誉资质信息
+    @PostMapping(value = "/addHonor")
+    @SystemLog(module = "首页管理", methods = "增加荣誉资质")
+    public Honor addHonor(String name,String imagePath,String getAt){
+        Honor honor=new Honor();
+        honor.setName(name);
+        honor.setImagePath(imagePath);
+        honor.setGetAt(getAt);
+        honor.setUpdateAt(new Timestamp(System.currentTimeMillis()));
+        return homepageService.addHonor(honor);
+    }
 
     //根据id编辑一条荣誉资质信息
+    @PutMapping(value = "/updateHonor")
+    @SystemLog(module = "首页管理", methods = "编辑荣誉资质")
+    public Honor updateHonor(Integer id,String name,String imagePath,String getAt){
+        Honor honor=new Honor();
+        honor.setId(id);
+        honor.setName(name);
+        honor.setImagePath(imagePath);
+        honor.setGetAt(getAt);
+        honor.setUpdateAt(new Timestamp(System.currentTimeMillis()));
+        return homepageService.updateHonor(honor);
+    }
 
     //根据id删除一条荣誉资质信息
+    @DeleteMapping(value = "/deleteHonor")
+    @SystemLog(module = "首页管理", methods = "删除荣誉资质")
+    public String deleteHonor(Integer id){
+        return homepageService.deleteHonor(id);
+    }
 
 }

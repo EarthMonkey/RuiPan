@@ -6,6 +6,15 @@ package util;
 public class UrlFormatUtils {
 
     public static String formatUrl(String url){
-        return url;
+        String formatUrl=url;
+        if(!formatUrl.startsWith("http://")){
+            formatUrl="http://"+formatUrl;
+        }
+        return formatUrl;
     }
+
+//    public static void main(String[] args) {
+//        String url="localhost:8080/#/home";
+//        System.out.println(UrlFormatUtils.formatUrl(url));
+//    }
 }

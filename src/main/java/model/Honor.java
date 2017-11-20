@@ -11,7 +11,7 @@ public class Honor {
     private int id;
     private String name;
     private String imagePath;
-    private Timestamp getAt;
+    private String getAt;
     private Timestamp updateAt;
 
     @Id
@@ -47,11 +47,11 @@ public class Honor {
 
     @Basic
     @Column(name = "getAt")
-    public Timestamp getGetAt() {
+    public String getGetAt() {
         return getAt;
     }
 
-    public void setGetAt(Timestamp getAt) {
+    public void setGetAt(String getAt) {
         this.getAt = getAt;
     }
 

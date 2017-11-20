@@ -31,6 +31,11 @@ public class NewsServiceImpl implements NewsService{
     }
 
     @Override
+    public News getNewsById(Integer id) {
+        return newsDao.findOne(id);
+    }
+
+    @Override
     public News addNews(News news) {
         return newsDao.saveAndFlush(news);
     }

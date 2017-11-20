@@ -11,6 +11,8 @@ public class CarouselFigure {
     private int id;
     private String category;
     private String imagePath;
+    private String title;
+    private String subTitle;
     private String link;
 
     @Id
@@ -45,6 +47,26 @@ public class CarouselFigure {
     }
 
     @Basic
+    @Column(name = "title")
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    @Basic
+    @Column(name = "sub_title")
+    public String getSubTitle() {
+        return subTitle;
+    }
+
+    public void setSubTitle(String subTitle) {
+        this.subTitle = subTitle;
+    }
+
+    @Basic
     @Column(name = "link")
     public String getLink() {
         return link;
@@ -64,6 +86,8 @@ public class CarouselFigure {
         if (id != that.id) return false;
         if (category != null ? !category.equals(that.category) : that.category != null) return false;
         if (imagePath != null ? !imagePath.equals(that.imagePath) : that.imagePath != null) return false;
+        if (title != null ? !title.equals(that.title) : that.title != null) return false;
+        if (subTitle != null ? !subTitle.equals(that.subTitle) : that.subTitle != null) return false;
         if (link != null ? !link.equals(that.link) : that.link != null) return false;
 
         return true;
@@ -74,6 +98,8 @@ public class CarouselFigure {
         int result = id;
         result = 31 * result + (category != null ? category.hashCode() : 0);
         result = 31 * result + (imagePath != null ? imagePath.hashCode() : 0);
+        result = 31 * result + (title != null ? title.hashCode() : 0);
+        result = 31 * result + (subTitle != null ? subTitle.hashCode() : 0);
         result = 31 * result + (link != null ? link.hashCode() : 0);
         return result;
     }

@@ -30,6 +30,12 @@ public class NewsController {
         return newsService.getAllNewsByCategory(category, StatesConstant.PUBLISHED);
     }
 
+    //根据id获得一条资讯
+    @GetMapping(value = "/getNewsById")
+    public News getNewsById(Integer id){
+        return newsService.getNewsById(id);
+    }
+
     //***********************后台管理接口******************************
 
     //在分类下增加一条资讯信息
