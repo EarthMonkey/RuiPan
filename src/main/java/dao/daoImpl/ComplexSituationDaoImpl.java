@@ -1,12 +1,17 @@
 package dao.daoImpl;
 
 import dao.ComplexSituationDao;
+import model.SuccessfulCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import vo.SuccessfulCaseVO;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -19,14 +24,53 @@ public class ComplexSituationDaoImpl implements ComplexSituationDao{
     EntityManagerFactory entityManagerFactory;
 
     @Override
-    public Map<String, List<SuccessfulCaseVO>> getSuccessfulCaseByCountry(String country) {
+    public Map<String, List<SuccessfulCaseVO>> getSuccessfulCaseByCountry(Integer limit) {
 
         EntityManager em=entityManagerFactory.createEntityManager();
+        String sql="select pc1.country,sc1.* " +
+                "from successful_case sc1 join profession_category pc1 on sc1.pid = pc1.pid  " +
+                "where ? > (select count(*) " +
+                "from successful_case sc2 join profession_category pc2 on sc2.pid = pc2.pid " +
+                "where pc1.country = pc2.country " +
+                "and sc1.updateAt < sc2.updateAt ) " +
+                "order by pc1.country,sc1.updateAt";
+        Query query =  em.createNativeQuery(sql);
+        query.setParameter(1,limit);
+
+        List<Object[]> objecArraytList = query.getResultList();
+        Map<String,List<SuccessfulCaseVO>> result=new LinkedHashMap<String, List<SuccessfulCaseVO>>();
+        for (Object[] o:objecArraytList) {
+            SuccessfulCaseVO successfulCaseVO=toVO(o);
+            String country=(String)o[0];
+            if(result.containsKey(country)){
+                result.get(country).add(successfulCaseVO);
+            }else{
+                List<SuccessfulCaseVO> successfulCaseVOS=new ArrayList<SuccessfulCaseVO>();
+                successfulCaseVOS.add(successfulCaseVO);
+                result.put(country,successfulCaseVOS);
+            }
+        }
         em.close();
-        return null;
+        return result;
     }
 
-
+    private SuccessfulCaseVO toVO(Object[] o){
+        SuccessfulCaseVO successfulCaseVO=new SuccessfulCaseVO();
+        successfulCaseVO.setId((Integer)o[1]);
+        successfulCaseVO.setPid((Integer)o[2]);
+        successfulCaseVO.setSid((Integer)o[3]);
+        successfulCaseVO.setCid((Integer)o[4]);
+        successfulCaseVO.setDegree((String)o[5]);
+        successfulCaseVO.setEnrollmentTime((String)o[6]);
+        successfulCaseVO.setLanguageScore((String)o[7]);
+        successfulCaseVO.setGpa((String)o[8]);
+        successfulCaseVO.setGmatSatGre((String)o[9]);
+        successfulCaseVO.setUndergraduateMajor((String)o[10]);
+        successfulCaseVO.setTextPath((String)o[11]);
+        successfulCaseVO.setFlag((Integer)o[12]);
+        successfulCaseVO.setUpdateAt((Timestamp)o[13]);
+        return successfulCaseVO;
+    }
 //    public HostelPlan getAvailableRoomByHidAndTimeAndPeopleNum(int hid, int peopleNum, Timestamp startAt, Timestamp endAt, double money) {
 //        EntityManager em=entityManagerFactory.createEntityManager();
 //        String sql = "SELECT * " +

@@ -10,5 +10,5 @@ import java.util.Map;
  */
 public interface ComplexSituationDao {
 
-    public Map<String,List<SuccessfulCaseVO>> getSuccessfulCaseByCountry(String country);
+    public Map<String,List<SuccessfulCaseVO>> getSuccessfulCaseByCountry(Integer limit);
 }

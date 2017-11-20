@@ -2,6 +2,7 @@ package service.serviceimpl;
 
 import dao.CarouselFigureDao;
 import model.CarouselFigure;
+import model.ServedCompany;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.HomepageService;
@@ -39,5 +40,25 @@ public class HomepageServiceImpl implements HomepageService{
             return "success";
         }
         return "not_exist";
+    }
+
+    @Override
+    public List<ServedCompany> getServedCompany() {
+        return null;
+    }
+
+    @Override
+    public ServedCompany addServedCompany(ServedCompany servedCompany) {
+        return null;
+    }
+
+    @Override
+    public ServedCompany updateServedCompany(ServedCompany servedCompany) {
+        return null;
+    }
+
+    @Override
+    public String deleteServedCompany(Integer id) {
+        return null;
     }
 }

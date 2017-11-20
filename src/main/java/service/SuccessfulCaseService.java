@@ -5,6 +5,7 @@ import vo.RecommendSuccessfulCase;
 import vo.SuccessfulCaseVO;
 
 import java.util.List;
+import java.util.Map;
 
 public interface SuccessfulCaseService {
 
@@ -16,6 +17,8 @@ public interface SuccessfulCaseService {
     public List<SuccessfulCaseVO> getSuccessfulCaseByCid(Integer cid,Integer flag);
 
     public SuccessfulCaseVO getSuccessfulCase(Integer id);
+
+    public Map<String,List<SuccessfulCaseVO>> getSuccessfulCaseGroupByCountry(Integer limit);
 
     public void addSuccessfulCase(SuccessfulCaseVO successfulCaseVO);
 

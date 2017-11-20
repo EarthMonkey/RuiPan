@@ -23,6 +23,11 @@ public class LanguageTrainingServiceImpl implements LanguageTrainingService{
     }
 
     @Override
+    public TrainIntroduce getTrainIntroduceById(Integer id) {
+        return trainIntroduceDao.findOne(id);
+    }
+
+    @Override
     public TrainIntroduce addTrainIntroduce(TrainIntroduce trainIntroduce) {
         return trainIntroduceDao.saveAndFlush(trainIntroduce);
     }

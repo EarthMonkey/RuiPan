@@ -1,6 +1,7 @@
 package controller;
 
 import model.CarouselFigure;
+import model.ServedCompany;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -25,7 +26,7 @@ public class HomePageController {
     HomepageService homepageService;
 
     //根据分类获取对应模块下所有轮播图列表
-    @GetMapping(value = "getCarouselFigure")
+    @GetMapping(value = "/getCarouselFigure")
     public List<CarouselFigure> getCarouselFigure(String category){
         return homepageService.getCarouselFigure(category);
     }
@@ -36,13 +37,17 @@ public class HomePageController {
     //获取推荐顾问列表 参考 ConsultantController.java
 
     //获取所有服务过的学校和企业列表
+    @GetMapping(value = "/getServedCompany")
+    public List<ServedCompany> getServedCompany(){
+        return homepageService.getServedCompany();
+    }
 
     //获取所有荣誉资质列表
 
     //************************后台管理接口************************
 
     //在某个分类下添加一张轮播图
-    @PostMapping(value = "addCarouselFigure")
+    @PostMapping(value = "/addCarouselFigure")
     @SystemLog(module = "首页管理", methods = "增加轮播图")
     public CarouselFigure addCarouselFigure(String category,String imagePath,String link){
         CarouselFigure carouselFigure=new CarouselFigure();
@@ -53,7 +58,7 @@ public class HomePageController {
     }
 
     //根据id编辑一张轮播图
-    @PutMapping(value = "updateCarouselFigure")
+    @PutMapping(value = "/updateCarouselFigure")
     @SystemLog(module = "首页管理", methods = "编辑轮播图")
     public CarouselFigure updateCarouselFigure(Integer id,String category,String imagePath,String link){
         CarouselFigure carouselFigure=new CarouselFigure();
@@ -65,17 +70,32 @@ public class HomePageController {
     }
 
     //根据id删除一张轮播图
-    @DeleteMapping(value = "deleteCarouselFigure")
+    @DeleteMapping(value = "/deleteCarouselFigure")
     @SystemLog(module = "首页管理", methods = "删除轮播图")
     public String deleteCarouselFigure(Integer id){
         return homepageService.deleteCarouselFigure(id);
     }
 
     //增加一条服务过的学校和企业信息
+    @PostMapping(value = "/addServedCompany")
+    @SystemLog(module = "首页管理", methods = "增加合作对象")
+    public ServedCompany addServedCompany(String country,String category,String name,String briefIntroduce,String imagePath){
+        return null;
+    }
 
     //根据id编辑一条服务过的学校和企业信息
+    @PutMapping(value = "/updateServedCompany")
+    @SystemLog(module = "首页管理", methods = "编辑合作对象")
+    public ServedCompany updateServedCompany(Integer id,String country,String category,String name,String briefIntroduce,String imagePath){
+        return null;
+    }
 
     //根据id删除一条服务过的学校和企业信息
+    @DeleteMapping(value = "/deleteServedCompany")
+    @SystemLog(module = "首页管理", methods = "删除服务对象")
+    public String deleteServedCompany(Integer id){
+        return null;
+    }
 
     //增加一条荣誉资质信息
 

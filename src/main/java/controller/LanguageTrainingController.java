@@ -30,6 +30,10 @@ public class LanguageTrainingController {
         return languageTrainingService.getTrainIntroduce(category,StatesConstant.PUBLISHED);
     }
 
+    @GetMapping(value = "/getTrainIntroduceById")
+    public TrainIntroduce getTrainIntroduceById(Integer id){
+        return languageTrainingService.getTrainIntroduceById(id);
+    }
 
     //***********************后台管理接口******************************
 

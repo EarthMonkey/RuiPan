@@ -2,6 +2,7 @@ package service.serviceimpl;
 
 import constant.GlobalRecommedationCategory;
 import constant.StatesConstant;
+import dao.ComplexSituationDao;
 import dao.GlobalRecommendationDao;
 import dao.SuccessfulCaseDao;
 import model.GlobalRecommendation;
@@ -14,6 +15,7 @@ import vo.SuccessfulCaseVO;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 @Service
 public class SuccessfulCaseServiceImpl implements SuccessfulCaseService{
@@ -23,6 +25,9 @@ public class SuccessfulCaseServiceImpl implements SuccessfulCaseService{
 
     @Autowired
     GlobalRecommendationDao globalRecommendationDao;
+
+    @Autowired
+    ComplexSituationDao complexSituationDao;
 
 
     @Override
@@ -59,6 +64,11 @@ public class SuccessfulCaseServiceImpl implements SuccessfulCaseService{
         SuccessfulCaseVO successfulCaseVO=new SuccessfulCaseVO();
         successfulCaseVO.update(successfulCase);
         return successfulCaseVO;
+    }
+
+    @Override
+    public Map<String, List<SuccessfulCaseVO>> getSuccessfulCaseGroupByCountry(Integer limit) {
+        return complexSituationDao.getSuccessfulCaseByCountry(limit);
     }
 
     @Override

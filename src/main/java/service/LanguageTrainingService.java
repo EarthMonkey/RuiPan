@@ -10,6 +10,8 @@ public interface LanguageTrainingService {
     //根据分类获得所有介绍信息列表
     public List<TrainIntroduce> getTrainIntroduce(String category,Integer flag);
 
+    public TrainIntroduce getTrainIntroduceById(Integer id);
+
     //在分类下增加一条介绍信息
     public TrainIntroduce addTrainIntroduce(TrainIntroduce trainIntroduce);
 

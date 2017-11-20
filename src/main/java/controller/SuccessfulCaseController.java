@@ -4,6 +4,7 @@ import constant.StatesConstant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import service.SuccessfulCaseService;
+import util.SuccessfulCaseUtil;
 import util.SystemLog;
 import vo.RecommendSuccessfulCase;
 import vo.SuccessfulCaseVO;
@@ -55,10 +56,10 @@ public class SuccessfulCaseController {
         return successfulCaseService.getRecommendSuccessfulCase(StatesConstant.RECOMMEND);
     }
 
-    //获取不同国家下最近5个成功案例列表
-    @GetMapping(value="/getSuccessfulCaseByCountry")
-    public Map<String,List<SuccessfulCaseVO>> getSuccessfulCaseByCountry(String country){
-        return null;
+    //获取不同国家下最近limit个成功案例列表
+    @GetMapping(value="/getSuccessfulCaseGroupByCountry")
+    public Map<String,List<SuccessfulCaseVO>> getSuccessfulCaseGroupByCountry(Integer limit){
+        return successfulCaseService.getSuccessfulCaseGroupByCountry(limit);
     }
 
 

@@ -1,6 +1,7 @@
 package service;
 
 import model.CarouselFigure;
+import model.ServedCompany;
 
 import java.util.List;
 
@@ -16,4 +17,12 @@ public interface HomepageService {
     public CarouselFigure updateCarouselFigure(CarouselFigure carouselFigure);
 
     public String deleteCarouselFigure(Integer id);
+
+    public List<ServedCompany> getServedCompany();
+
+    public ServedCompany addServedCompany(ServedCompany servedCompany);
+
+    public ServedCompany updateServedCompany(ServedCompany servedCompany);
+
+    public String deleteServedCompany(Integer id);
 }

@@ -172,7 +172,7 @@ public class ProfessionController {
     }
 
     //在pid下删除一条课程
-    @PostMapping(value = "/deleteProfessionCourse")
+    @DeleteMapping(value = "/deleteProfessionCourse")
     @SystemLog(module = "专业管理", methods = "删除专业课程")
     public String deleteProfessionCourse(Integer id) {
         return professionService.deleteProfessionCourse(id);

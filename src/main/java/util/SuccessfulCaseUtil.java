@@ -1,6 +1,7 @@
 package util;
 
 import dao.ComplexSituationDao;
+import dao.daoImpl.ComplexSituationDaoImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import vo.SuccessfulCaseVO;
 
@@ -12,10 +13,7 @@ import java.util.Map;
  */
 public class SuccessfulCaseUtil {
     private static SuccessfulCaseUtil ourInstance = null;
-    private Map<String,List<SuccessfulCaseVO>> successfulCaseVO = null;
-
-    @Autowired
-    ComplexSituationDao complexSituationDao;
+    private Map<String,List<SuccessfulCaseVO>> successfulCaseVOS = null;
 
     public static SuccessfulCaseUtil getInstance() {
         if(ourInstance==null){
@@ -30,6 +28,11 @@ public class SuccessfulCaseUtil {
     }
 
     private SuccessfulCaseUtil() {
+        ComplexSituationDao complexSituationDao=new ComplexSituationDaoImpl();
+        successfulCaseVOS=complexSituationDao.getSuccessfulCaseByCountry(5);
+    }
 
+    public Map<String,List<SuccessfulCaseVO>> getSuccessfulCaseVOS(){
+        return successfulCaseVOS;
     }
 }
