@@ -2,6 +2,11 @@
 
 <div class="ui_view">
 
+    <div class="message" ng-show="message!=''"
+         ng-class="{'bg-success':message.type=='success', 'bg-danger': message.type=='danger'}">
+        {{message.content}}
+    </div>
+
     <div class="h_title">
         <h2>合作办学</h2>
     </div>
@@ -11,44 +16,60 @@
         <table class="table table-hover">
             <thead>
             <th style="width: 180px;">轮播图管理</th>
-            <th>标题</th>
+            <th>主标题</th>
+            <th>父标题</th>
             <th>链接</th>
-            <th class="action_col"><a><i class="fa fa-plus"></i>添加</a></th>
+            <th class="action_col"><a ng-click="addCarousel()"><i class="fa fa-plus"></i>添加</a></th>
             </thead>
             <tbody>
-            <tr ng-repeat="temp in [0,1,2,3]">
+            <tr ng-repeat="item in carousList track by $index">
                 <td>
                     <div class="photo_preview">
-                        <img src="/theme/source/promotion-0.png">
+                        <img ng-src="{{'upload/images/' + item.imagePath}}" alt="图片加载失败">
                     </div>
                 </td>
-                <td>这里放标题</td>
-                <td>http://www.baidu.com</td>
+                <td>{{item.title}}</td>
+                <td>{{item.subTitle}}</td>
+                <td>{{item.link}}</td>
                 <td>
-                    <div class="table_mod border"><a>修改</a></div>
-                    <div class="table_mod"><a>删除</a></div>
+                    <div class="table_mod border"><a ng-click="modCarousel(item, $index)">修改</a></div>
+                    <div class="table_mod"><a ng-click="delCarousel(item, $index)">删除</a></div>
                 </td>
+            </tr>
+            <tr ng-if="carousList.length==0">
+                <td class="no_data" colspan="6">无数据</td>
             </tr>
             </tbody>
         </table>
+    </div>
+
+    <div class="h_title" style="margin-top: 50px;">
+        <h2>资讯列表</h2>
     </div>
 
     <!-- 资讯列表 -->
     <div>
         <table class="table table-hover">
             <thead>
-            <th>资讯列表</th>
-            <th class="action_col"><a><i class="fa fa-plus"></i>添加</a></th>
+            <th>标题</th>
+            <th>导语</th>
+            <th>发布时间</th>
+            <th class="action_col"><a ng-click="addNews()"><i class="fa fa-plus"></i>添加</a></th>
             </thead>
             <tbody>
-            <tr ng-repeat="temp in [0,1,2,3]" style="cursor: pointer">
+            <tr ng-repeat="item in newsList track by $index">
                 <td>
-                    <a>最新！2018年中国托福考试时间安排出炉啦</a>
+                    <a ng-click="getNews(item)">{{item.title}}</a>
                 </td>
+                <td>{{item.synopsis}}</td>
+                <td>{{item.pulishTime}}</td>
                 <td>
-                    <div class="table_mod border"><a>修改</a></div>
-                    <div class="table_mod"><a>删除</a></div>
+                    <div class="table_mod border"><a ng-click="modNews(item, $index)">修改</a></div>
+                    <div class="table_mod"><a ng-click="delNews(item, $index)">删除</a></div>
                 </td>
+            </tr>
+            <tr ng-if="newsList.length==0">
+                <td class="no_data" colspan="4">无数据</td>
             </tr>
             </tbody>
         </table>
@@ -59,43 +80,40 @@
         <div class="filter_div">
             <span class="filter_tip block">分类: </span>
             <span class="filter_option" ng-repeat="ft in filterType" ng-click="filterClick(0, ft)"
-                  ng-class="{active: selectedType==ft.id}">{{ft.label}}</span>
+                  ng-class="{active: selectedType==ft}">{{ft}}</span>
         </div>
         <div class="filter_div">
             <span class="filter_tip block">合作方: </span>
             <span class="filter_option" ng-repeat="fc in filterCountry" ng-click="filterClick(1, fc)"
-                  ng-class="{active: selectedCoun==fc.id}">{{fc.label}}</span>
+                  ng-class="{active: selectedCoun.id==fc.id}">{{fc.fcsubclassification}}</span>
         </div>
+    </div>
+
+    <div class="h_title" style="margin-top: 50px;">
+        <h2>办学方案</h2>
     </div>
 
     <!-- 方案列表 -->
     <div style="margin-top: 30px;">
         <table class="table table-hover">
             <thead>
-            <th style="width: 180px;">方案列表</th>
-            <th>信息</th>
+            <th>标题</th>
+            <th style="width: 180px;">宣传图片</th>
+            <th>导语</th>
             <th class="action_col"><a><i class="fa fa-plus"></i>添加</a></th>
             </thead>
             <tbody>
-            <tr ng-repeat="temp in [0,1,2,3]" style="cursor: pointer">
+            <tr ng-repeat="item in methodList track by $index">
+                <td><a ng-click="getMethod()">{{item.title}}</a></td>
                 <td>
                     <div class="photo_preview">
-                        <img src="/theme/source/promotion-0.png">
+                        <img ng-src="{{'upload/images/' + item.thumbnail}}" alt="图片加载失败">
                     </div>
                 </td>
+                <td>{{item.synopsis}}</td>
                 <td>
-                    <div>
-                        <label>标题：</label>
-                        耶鲁大学暑期项目
-                    </div>
-                    <div>
-                        <label>导读：</label>
-                        体验名校课堂，获取教授推荐信
-                    </div>
-                </td>
-                <td>
-                    <div class="table_mod border"><a>修改</a></div>
-                    <div class="table_mod"><a>删除</a></div>
+                    <div class="table_mod border"><a ng-click="modMethod(item)">修改</a></div>
+                    <div class="table_mod"><a ng-click="delMethod(item, $index)">删除</a></div>
                 </td>
             </tr>
             </tbody>

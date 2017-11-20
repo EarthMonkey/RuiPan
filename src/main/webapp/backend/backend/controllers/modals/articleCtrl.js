@@ -27,11 +27,6 @@ define([''], function () {
             // 输入框
             $scope.fields = [];
 
-            // editor
-            $scope.config = {
-                autoHeightEnabled: true
-            };
-
             // 数据模型
             $scope.model = {
                 content: '',
@@ -40,6 +35,13 @@ define([''], function () {
 
             // 获取初始值
             var initInfo = JSON.parse($state.params.initInfo);
+
+            // editor
+            $scope.config = {
+                autoHeightEnabled: true,
+                readonly: initInfo.readonly
+            };
+
             if (initInfo.combox) {
                 $scope.combox.id = initInfo.combox.id;
                 $scope.combox.options = initInfo.combox.options;
@@ -85,11 +87,6 @@ define([''], function () {
                         showMess('danger', '获取数据失败');
                     }
                 });
-            }
-
-            if (initInfo.readonly) {
-                // 设置editor只读
-                $scope.config.readonly = true;
             }
 
             // 获取HTML回调
