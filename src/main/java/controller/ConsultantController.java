@@ -40,6 +40,11 @@ public class ConsultantController {
         return consultantService.getConsultantByPid(pid);
     }
 
+    @GetMapping(value = "/getById")
+    public ConsultantVO getConsultantById(Integer id){
+        return consultantService.getConsultantById(id);
+    }
+
     //根据顾问id增加一条预约记录
     @PostMapping(value = "/addOrder")
     public OrderForConsultant addOrderForConsultant(Integer cid,String name,String phone,String illustration){

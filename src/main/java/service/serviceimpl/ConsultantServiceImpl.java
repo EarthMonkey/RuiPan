@@ -79,6 +79,14 @@ public class ConsultantServiceImpl implements ConsultantService{
     }
 
     @Override
+    public ConsultantVO getConsultantById(Integer id) {
+        Consultant consultant=consultantDao.findOne(id);
+        ConsultantVO consultantVO=new ConsultantVO();
+        consultantVO.update(consultant);
+        return consultantVO;
+    }
+
+    @Override
     public List<ConsultantVO> getRecommendConsultant() {
         List<Consultant> consultants=consultantDao.findAllByIsRecommendIgnoreCase("true");
         List<ConsultantVO> consultantVOS=new ArrayList<ConsultantVO>();

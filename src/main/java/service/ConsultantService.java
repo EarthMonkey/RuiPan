@@ -22,6 +22,8 @@ public interface ConsultantService {
     //根据专业类别Pid获取所有顾问
     public List<ConsultantVO> getConsultantByPid(Integer pid);
 
+    public ConsultantVO getConsultantById(Integer id);
+
     //获取受推荐的顾问
     public List<ConsultantVO> getRecommendConsultant();
 
