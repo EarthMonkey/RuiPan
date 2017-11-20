@@ -69,6 +69,13 @@ public class CooperativeEducationServiceImpl implements CooperativeEducationServ
     }
 
     @Override
+    public CooperativeScheme getCooperativeSchemeById(Integer id) {
+        CooperativeScheme cooperativeScheme=cooperativeSchemeDao.findOne(id);
+        cooperativeScheme.setCooperativeCategoryByCcid(null);
+        return cooperativeScheme;
+    }
+
+    @Override
     public CooperativeScheme addCooperativeScheme(CooperativeScheme cooperativeScheme) {
         return cooperativeSchemeDao.saveAndFlush(cooperativeScheme);
     }

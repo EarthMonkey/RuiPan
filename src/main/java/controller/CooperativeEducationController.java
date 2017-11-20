@@ -1,5 +1,6 @@
 package controller;
 
+import constant.StatesConstant;
 import model.CooperativeScheme;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -12,6 +13,7 @@ import service.CooperativeEducationService;
 import util.SystemLog;
 import vo.CooperativeCategoryVO;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -38,9 +40,13 @@ public class CooperativeEducationController {
     //根据分类编号（cid）获取所有合作方案列表
     @GetMapping(value="/getCooperativeSchemeByCcid")
     public List<CooperativeScheme> getCooperativeSchemeByCcid(Integer ccid){
-        return null;
+        return cooperativeEducationService.getCooperativeSchemeByCcid(ccid, StatesConstant.PUBLISHED);
     }
 
+    @GetMapping(value="/getCooperativeSchemeById")
+    public CooperativeScheme getCooperativeSchemeById(Integer id){
+        return cooperativeEducationService.getCooperativeSchemeById(id);
+    }
 
     //***********************后台管理接口******************************
 
@@ -79,7 +85,15 @@ public class CooperativeEducationController {
     @SystemLog(module = "合作办学", methods = "增加方案")
     public CooperativeScheme addCooperativeScheme(Integer ccid,String thumbnail,
             String title,String synopsis,String textPath,Integer flag){
-        return null;
+        CooperativeScheme cooperativeScheme=new CooperativeScheme();
+        cooperativeScheme.setCcid(ccid);
+        cooperativeScheme.setThumbnail(thumbnail);
+        cooperativeScheme.setTitle(title);
+        cooperativeScheme.setSynopsis(synopsis);
+        cooperativeScheme.setTextPath(textPath);
+        cooperativeScheme.setFlag(flag);
+        cooperativeScheme.setUpdateAt(new Timestamp(System.currentTimeMillis()));
+        return cooperativeEducationService.addCooperativeScheme(cooperativeScheme);
     }
 
     //根据id编辑一条合作方案
@@ -87,21 +101,30 @@ public class CooperativeEducationController {
     @SystemLog(module = "合作办学", methods = "编辑方案")
     public CooperativeScheme updateCooperativeScheme(Integer id,Integer ccid,String thumbnail,
             String title,String synopsis,String textPath,Integer flag){
-        return null;
+        CooperativeScheme cooperativeScheme=new CooperativeScheme();
+        cooperativeScheme.setId(id);
+        cooperativeScheme.setCcid(ccid);
+        cooperativeScheme.setThumbnail(thumbnail);
+        cooperativeScheme.setTitle(title);
+        cooperativeScheme.setSynopsis(synopsis);
+        cooperativeScheme.setTextPath(textPath);
+        cooperativeScheme.setFlag(flag);
+        cooperativeScheme.setUpdateAt(new Timestamp(System.currentTimeMillis()));
+        return cooperativeEducationService.updateCooperativeScheme(cooperativeScheme);
     }
 
     //根据id删除一条合作方案
     @DeleteMapping(value="/deleteCooperativeScheme")
     @SystemLog(module = "合作办学", methods = "删除方案")
     public String deleteCooperativeScheme(Integer id){
-        return null;
+        return cooperativeEducationService.deleteCooperativeScheme(id);
     }
 
     //在cid下获取所有草稿状态的合作方案
     @GetMapping(value="/getCooperativeSchemeDraftByCcid")
     @SystemLog(module = "合作办学", methods = "获取方案草稿")
     public List<CooperativeScheme> getCooperativeSchemeDraftByCcid(Integer ccid){
-        return null;
+        return cooperativeEducationService.getCooperativeSchemeByCcid(ccid, StatesConstant.DRAFT);
     }
 
 }

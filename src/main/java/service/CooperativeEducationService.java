@@ -20,6 +20,8 @@ public interface CooperativeEducationService {
 
     public List<CooperativeScheme> getCooperativeSchemeByCcid(Integer ccid,Integer flag);
 
+    public CooperativeScheme getCooperativeSchemeById(Integer id);
+
     public CooperativeScheme addCooperativeScheme(CooperativeScheme cooperativeScheme);
 
     public CooperativeScheme updateCooperativeScheme(CooperativeScheme cooperativeScheme);
