@@ -7,6 +7,7 @@ import model.CooperativeScheme;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.CooperativeEducationService;
+import util.FileManager;
 import vo.CooperativeCategoryVO;
 
 import javax.xml.ws.Action;
@@ -88,7 +89,10 @@ public class CooperativeEducationServiceImpl implements CooperativeEducationServ
     @Override
     public String deleteCooperativeScheme(Integer id) {
         if(cooperativeSchemeDao.exists(id)){
+            CooperativeScheme cooperativeScheme=cooperativeSchemeDao.findOne(id);
             cooperativeSchemeDao.delete(id);
+            FileManager.deleteImage(cooperativeScheme.getThumbnail());
+            FileManager.deleteText(cooperativeScheme.getTextPath());
             return "success";
         }
         return "not_exist";

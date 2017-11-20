@@ -13,6 +13,9 @@ import java.util.List;
  */
 public interface ConsultantService {
 
+    //获取所有顾问
+    public List<ConsultantVO> getConsultant();
+
     //根据年级类别gid获取所有顾问
     public List<ConsultantVO> getConsultantByGid(Integer gid);
 

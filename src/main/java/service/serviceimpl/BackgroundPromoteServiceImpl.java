@@ -5,6 +5,7 @@ import model.BackgroundPromote;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.BackgroudPromoteService;
+import util.FileManager;
 
 import java.util.List;
 
@@ -37,7 +38,10 @@ public class BackgroundPromoteServiceImpl implements BackgroudPromoteService{
     @Override
     public String deleteBackgroundPromote(Integer id) {
         if(backgroundPromoteDao.exists(id)){
+            BackgroundPromote backgroundPromote=backgroundPromoteDao.findOne(id);
             backgroundPromoteDao.delete(id);
+            FileManager.deleteImage(backgroundPromote.getThumbnail());
+            FileManager.deleteText(backgroundPromote.getTextPath());
             return "success";
         }
         return "not_exist";

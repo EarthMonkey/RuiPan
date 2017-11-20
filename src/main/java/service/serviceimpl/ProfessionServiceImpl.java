@@ -5,6 +5,7 @@ import model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.ProfessionService;
+import util.FileManager;
 import vo.ProfessionCategoryVO;
 
 import java.util.ArrayList;
@@ -119,7 +120,9 @@ public class ProfessionServiceImpl implements ProfessionService{
     @Override
     public String deleteProfessionIntroduce(Integer pid) {
         if(professionIntroduceDao.exists(pid)){
+            ProfessionIntroduce professionIntroduce=professionIntroduceDao.findOne(pid);
             professionIntroduceDao.delete(pid);
+            FileManager.deleteText(professionIntroduce.getTextPath());
             return "success";
         }
         return "not_exist";
@@ -175,7 +178,9 @@ public class ProfessionServiceImpl implements ProfessionService{
     @Override
     public String deleteEmploymentCompany(Integer id) {
         if(employmentCompanyDao.exists(id)){
+            EmploymentCompany employmentCompany=employmentCompanyDao.findOne(id);
             employmentCompanyDao.delete(id);
+            FileManager.deleteImage(employmentCompany.getLogo());
             return "success";
         }
         return "not_exist";

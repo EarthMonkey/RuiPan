@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.ApplicationSchemeService;
 import constant.StatesConstant;
+import util.FileManager;
 import vo.ApplicationSchemeVO;
 import vo.RecommendApplicationScheme;
 
@@ -69,7 +70,9 @@ public class ApplicationSchemeServiceImpl implements ApplicationSchemeService{
     @Override
     public String deleteApplicationScheme(Integer id) {
         if(applicationSchemeDao.exists(id)){
+            ApplicationScheme applicationScheme=applicationSchemeDao.findOne(id);
             applicationSchemeDao.delete(id);
+            FileManager.deleteText(applicationScheme.getTextPath());
             return "success";
         }else{
             return "not_exist";
@@ -141,7 +144,9 @@ public class ApplicationSchemeServiceImpl implements ApplicationSchemeService{
     @Override
     public String deleteRecommendApplicationScheme(Integer id) {
         if(globalRecommendationDao.exists(id)){
+            GlobalRecommendation globalRecommendation=new GlobalRecommendation();
             globalRecommendationDao.delete(id);
+            FileManager.deleteImage(globalRecommendation.getSlogan());
             return "success";
         }else{
             return "not_exist";

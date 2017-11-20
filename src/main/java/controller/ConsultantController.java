@@ -22,6 +22,12 @@ public class ConsultantController {
     @Autowired
     ConsultantService consultantService;
 
+    //获取所有顾问
+    @GetMapping(value = "/get")
+    public List<ConsultantVO> getConsultant(){
+        return consultantService.getConsultant();
+    }
+
     //根据gid获取所有顾问列表
     @GetMapping(value = "/getByGid")
     public List<ConsultantVO> getConsultantByGid(Integer gid){

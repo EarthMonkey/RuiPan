@@ -11,6 +11,7 @@ import model.SchoolRanking;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.SchoolService;
+import util.FileManager;
 import vo.*;
 
 import java.util.ArrayList;
@@ -123,7 +124,10 @@ public class SchoolServiceImpl implements SchoolService{
     @Override
     public String deleteSchool(Integer sid) {
         if(schoolDao.exists(sid)){
+            School school=schoolDao.findOne(sid);
             schoolDao.delete(sid);
+            FileManager.deleteImage(school.getSchoolBadge());
+            FileManager.deleteText(school.getTextPath());
             return "success";
         }
         return "not_exist";
@@ -151,7 +155,9 @@ public class SchoolServiceImpl implements SchoolService{
     @Override
     public String deleteSchoolPicture(Integer id) {
         if(schoolPictureDao.exists(id)){
+            SchoolPicture schoolPicture=schoolPictureDao.findOne(id);
             schoolPictureDao.delete(id);
+            FileManager.deleteImage(schoolPicture.getPicturePath());
             return "success";
         }
         return "not_exist";

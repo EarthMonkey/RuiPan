@@ -12,6 +12,7 @@ import model.OrderForConsultant;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.ConsultantService;
+import util.FileManager;
 import vo.ConsultantVO;
 
 import java.sql.Timestamp;
@@ -35,6 +36,19 @@ public class ConsultantServiceImpl implements ConsultantService{
 
     @Autowired
     AnswerForOrderDao answerForOrderDao;
+
+
+    @Override
+    public List<ConsultantVO> getConsultant() {
+        List<Consultant> consultants=consultantDao.findAll();
+        List<ConsultantVO> consultantVOS=new ArrayList<ConsultantVO>();
+        for (Consultant consultant:consultants) {
+            ConsultantVO consultantVO=new ConsultantVO();
+            consultantVO.update(consultant);
+            consultantVOS.add(consultantVO);
+        }
+        return consultantVOS;
+    }
 
     @Override
     public List<ConsultantVO> getConsultantByGid(Integer gid) {
@@ -108,7 +122,10 @@ public class ConsultantServiceImpl implements ConsultantService{
     @Override
     public String deleteRecommend(Integer cid) {
         if(consultantDao.exists(cid)){
+            Consultant consultant=consultantDao.findOne(cid);
             consultantDao.delete(cid);
+            FileManager.deleteImage(consultant.getHeadSculpture());
+            FileManager.deleteText(consultant.getTextPath());
             return "success";
         }else{
             return "not_exist";

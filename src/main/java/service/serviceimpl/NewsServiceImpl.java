@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.LanguageTrainingService;
 import service.NewsService;
+import util.FileManager;
 
 import java.util.List;
 
@@ -48,7 +49,9 @@ public class NewsServiceImpl implements NewsService{
     @Override
     public String deleteNews(Integer id) {
         if(newsDao.exists(id)){
+            News news=newsDao.findOne(id);
             newsDao.delete(id);
+            FileManager.deleteText(news.getTextPath());
             return "success";
         }
         return "not_exist";

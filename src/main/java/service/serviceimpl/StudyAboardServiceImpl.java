@@ -8,6 +8,7 @@ import model.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.StudyAboardService;
+import util.FileManager;
 import vo.ApplicationElementVO;
 import vo.HardConditionVO;
 import vo.QuestionVO;
@@ -152,7 +153,9 @@ public class StudyAboardServiceImpl implements StudyAboardService{
     @Override
     public String deleteApplicationElement(Integer id) {
         if(applicationElementDao.exists(id)){
+            ApplicationElement applicationElement=applicationElementDao.findOne(id);
             applicationElementDao.delete(id);
+            FileManager.deleteText(applicationElement.getTextPath());
             return "success";
         }else{
             return "not_exist";

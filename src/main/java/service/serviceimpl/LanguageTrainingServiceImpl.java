@@ -8,6 +8,7 @@ import model.TrainIntroduce;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.LanguageTrainingService;
+import util.FileManager;
 
 import java.util.List;
 
@@ -40,7 +41,9 @@ public class LanguageTrainingServiceImpl implements LanguageTrainingService{
     @Override
     public String deleteTrainIntroduce(Integer id) {
         if(trainIntroduceDao.exists(id)){
+            TrainIntroduce trainIntroduce=trainIntroduceDao.findOne(id);
             trainIntroduceDao.delete(id);
+            FileManager.deleteText(trainIntroduce.getTextPath());
             return "success";
         }
         return "not_exist";

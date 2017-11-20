@@ -9,6 +9,7 @@ import model.ServedCompany;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.HomepageService;
+import util.FileManager;
 
 import java.util.List;
 
@@ -45,7 +46,9 @@ public class HomepageServiceImpl implements HomepageService{
     @Override
     public String deleteCarouselFigure(Integer id) {
         if(carouselFigureDao.exists(id)){
+            CarouselFigure carouselFigure=carouselFigureDao.findOne(id);
             carouselFigureDao.delete(id);
+            FileManager.deleteImage(carouselFigure.getImagePath());
             return "success";
         }
         return "not_exist";
@@ -69,7 +72,9 @@ public class HomepageServiceImpl implements HomepageService{
     @Override
     public String deleteServedCompany(Integer id) {
         if(servedCompanyDao.exists(id)){
+            ServedCompany servedCompany=servedCompanyDao.findOne(id);
             servedCompanyDao.delete(id);
+            FileManager.deleteImage(servedCompany.getImagePath());
             return "success";
         }
         return "not_exist";
@@ -93,7 +98,9 @@ public class HomepageServiceImpl implements HomepageService{
     @Override
     public String deleteHonor(Integer id) {
         if(honorDao.exists(id)){
+            Honor honor=honorDao.findOne(id);
             honorDao.delete(id);
+            FileManager.deleteImage(honor.getImagePath());
             return "success";
         }
         return "not_exist";

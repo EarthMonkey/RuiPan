@@ -10,6 +10,7 @@ import model.SuccessfulCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.SuccessfulCaseService;
+import util.FileManager;
 import vo.RecommendSuccessfulCase;
 import vo.SuccessfulCaseVO;
 
@@ -87,7 +88,9 @@ public class SuccessfulCaseServiceImpl implements SuccessfulCaseService{
     @Override
     public String deleteSuccessfulCase(Integer id) {
         if(successfulCaseDao.exists(id)){
+            SuccessfulCase successfulCase=successfulCaseDao.findOne(id);
             successfulCaseDao.delete(id);
+            FileManager.deleteText(successfulCase.getTextPath());
             return "success";
         }
         return "not_exist";
