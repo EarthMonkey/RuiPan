@@ -121,9 +121,11 @@
             </thead>
             <tbody>
             <tr ng-repeat="item in workList track by $index">
-                <td>金融机构</td>
+                <td>{{item.employmentCompany}}</td>
                 <td>
-                    <div class="work_logo"></div>
+                    <div class="work_logo">
+                        <img ng-src="{{'upload/images/' + item.logo}}" alt="图片加载失败">
+                    </div>
                 </td>
                 <td>
                     <div class="table_mod border"><a ng-click="modWork(item, $index)">修改</a></div>

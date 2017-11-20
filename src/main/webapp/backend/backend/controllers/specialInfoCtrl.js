@@ -93,7 +93,6 @@ define([''], function () {
                 url: '/Profession/getProfessionIntroducePublished?pid=' + $scope.selectedSp.pid,
                 type: 'GET',
                 success: function (resp) {
-                    console.log(resp);
                     $scope.detailAdvice = resp;
                 },
                 error: function (err) {
@@ -248,10 +247,9 @@ define([''], function () {
                 .then(function (data) {
                     data.pid = $scope.selectedSp.pid;
 
-                    console.log(data);
                     $.ajax({
                         url: '/Profession/addEmploymentCompany',
-                        tpe: 'POST',
+                        type: 'POST',
                         data: data,
                         success: function (resp) {
                             $scope.workList.push(resp);
@@ -275,10 +273,10 @@ define([''], function () {
 
                     $.ajax({
                         url: '/Profession/updateEmploymentCompany',
-                        type: 'POST',
+                        type: 'PUT',
                         data: data,
                         success: function (resp) {
-                            $scope.workList[i] = resp;
+                            $scope.workList[pos] = resp;
                             showMess('success', '修改成功');
                         },
                         error: function (err) {

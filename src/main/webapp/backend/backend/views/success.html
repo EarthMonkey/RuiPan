@@ -2,27 +2,36 @@
 
 <div class="ui_view">
 
+    <div class="message" ng-show="message!=''"
+         ng-class="{'bg-success':message.type=='success', 'bg-danger': message.type=='danger'}">
+        {{message.content}}
+    </div>
+
     <div class="h_title">
         <h2>案例管理</h2>
     </div>
 
     <!-- 筛选 -->
-    <div>
+    <div class="auto_width">
         <div class="filter_div">
             <span class="filter_tip">国家: </span>
             <span class="filter_option" ng-repeat="fc in filterCountry" ng-click="filterClick(0, fc)"
-                  ng-class="{active: selectedCoun==fc.id}">{{fc.label}}</span>
+                  ng-class="{active: selectedCoun==fc}">{{fc}}</span>
         </div>
         <div class="filter_div">
             <span class="filter_tip">大类: </span>
             <span class="filter_option" ng-repeat="fe in filterEdu" ng-click="filterClick(1, fe)"
-                  ng-class="{active: selectedEdu==fe.id}">{{fe.label}}</span>
+                  ng-class="{active: selectedEdu.id==fe.id}">{{fe.id}}</span>
         </div>
         <div class="filter_div">
             <span class="filter_tip">专业: </span>
             <span class="filter_option" ng-repeat="fs in filterSp" ng-click="filterClick(2, fs)"
-                  ng-class="{active: selectedSp==fs.id}">{{fs.label}}</span>
+                  ng-class="{active: selectedSp.id==fs.id}">{{fs.id}}</span>
         </div>
+    </div>
+
+    <div class="h_title" style="margin-top: 50px;">
+        <h2>所有案例列表</h2>
     </div>
 
     <!-- 案例列表 -->
@@ -42,6 +51,10 @@
             </tr>
             </tbody>
         </table>
+    </div>
+
+    <div class="h_title" style="margin-top: 50px;">
+        <h2>全局推荐案例（四个）</h2>
     </div>
 
     <!-- 全局推荐 -->

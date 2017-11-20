@@ -116,7 +116,6 @@ define([''], function () {
                         type: 'POST',
                         data: data,
                         success: function (resp) {
-                            console.log(resp);
                             $scope.recomendList.push(resp);
                             showMess('success', '添加成功');
                         },
