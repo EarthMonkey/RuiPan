@@ -2,6 +2,11 @@
 
 <div class="ui_view">
 
+    <div class="message" ng-show="message!=''"
+         ng-class="{'bg-success':message.type=='success', 'bg-danger': message.type=='danger'}">
+        {{message.content}}
+    </div>
+
     <div class="h_title">
         <h2>院校管理
             <small>院校信息管理</small>
@@ -12,7 +17,7 @@
         <div class="filter_div">
             <span class="filter_tip">国家: </span>
             <span class="filter_option" ng-repeat="fc in filterCountry" ng-click="filterClick(fc)"
-                  ng-class="{active: selectedCoun==fc.id}">{{fc.label}}</span>
+                  ng-class="{active: selectedCoun==fc}">{{fc}}</span>
         </div>
     </div>
 
@@ -21,15 +26,26 @@
         <table class="table table-hover">
             <thead>
             <th>学校列表</th>
-            <th class="action_col"><a><i class="fa fa-plus"></i>添加</a></th>
+            <th>校徽logo</th>
+            <th>导语</th>
+            <th>地址</th>
+            <th class="action_col"><a ng-click="addSchool()"><i class="fa fa-plus"></i>添加</a></th>
             </thead>
             <tbody>
-            <tr ng-repeat="temp in [0,1,2,3]">
-                <td><a>哈佛大学</a></td>
+            <tr ng-repeat="item in schoolList track by $index">
+                <td><a>{{item.collegeName}}</a></td>
+                <td>
+                    <div class="logo_preview" style="width: 100px;"></div>
+                </td>
+                <td>{{item.synopsis}}</td>
+                <td>{{item.address}}</td>
                 <td>
                     <div class="table_mod border"><a>修改</a></div>
                     <div class="table_mod"><a>删除</a></div>
                 </td>
+            </tr>
+            <tr ng-if="schoolList.length==0">
+                <td class="no_data" colspan="5">无数据</td>
             </tr>
             </tbody>
         </table>

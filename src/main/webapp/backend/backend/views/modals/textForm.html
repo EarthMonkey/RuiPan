@@ -10,7 +10,7 @@
         <div ng-if="item.type!='combox'&&item.type!='img'&&item.type!='textarea'">
             <label>{{item.label}}: </label>
             <input type="{{item.type==null?'text':item.type}}" ng-model="model[item.id]"
-                   placeholder="{{item.placeholder}}">
+                   placeholder="{{item.placeholder}}" ng-disabled="item.readonly">
             <span ng-if="item.type=='checkbox'">{{model[item.id]==true?'是':'否'}}</span>
         </div>
 
