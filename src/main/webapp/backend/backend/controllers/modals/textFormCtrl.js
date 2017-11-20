@@ -90,6 +90,14 @@ define([''], function () {
                     success: function (resp) {
                         ImgObj.path = resp;
                         $scope.model[ImgObj.id] = resp;
+
+                        for (var key in $scope.model) {
+                            if ($scope.model[key] === "") {
+                                showError("请填写完整信息");
+                                return;
+                            }
+                        }
+
                         $uibModalInstance.close($scope.model);
                     },
                     error: function (err) {
@@ -101,18 +109,18 @@ define([''], function () {
 
             $scope.ok = function () {
 
-                for (var key in $scope.model) {
-                    if ($scope.model[key] === "") {
-                        showError("请填写完整信息");
-                        return;
-                    }
-                }
-
                 if (ImgObj !== '') { // 县山川图片
                     if (initObj) {
                         if (ImgObj.file !== '') {
                             uploadImg();
                         } else {
+
+                            for (var key in $scope.model) {
+                                if ($scope.model[key] === "") {
+                                    showError("请填写完整信息");
+                                    return;
+                                }
+                            }
                             $scope.model[ImgObj.id] = initObj[ImgObj.id];
                             $uibModalInstance.close($scope.model);
                         }
@@ -124,6 +132,13 @@ define([''], function () {
                         uploadImg();
                     }
                 } else {
+
+                    for (var key in $scope.model) {
+                        if ($scope.model[key] === "") {
+                            showError("请填写完整信息");
+                            return;
+                        }
+                    }
                     $uibModalInstance.close($scope.model);
                 }
 

@@ -244,21 +244,70 @@ define([''], function () {
         ];
         // 添加就业去向
         $scope.addWork = function () {
-            commonService.openTextForm('添加就业去向', workFields).result.then(function (data) {
-                data.pid = $scope.selectedSp.pid;
+            commonService.openTextForm('添加就业去向', workFields).result
+                .then(function (data) {
+                    data.pid = $scope.selectedSp.pid;
 
+                    console.log(data);
+                    $.ajax({
+                        url: '/Profession/addEmploymentCompany',
+                        tpe: 'POST',
+                        data: data,
+                        success: function (resp) {
+                            $scope.workList.push(resp);
+                            showMess('success', '添加成功');
+                        },
+                        error: function (err) {
+                            console.log(err);
+                            showMess('danger', '添加失败');
+                        }
+                    });
 
-            });
+                });
         };
 
         // 修改就业去向
         $scope.modWork = function (item, pos) {
+            commonService.openTextForm('修改就业去向', workFields, item).result
+                .then(function (data) {
+                    data.pid = item.pid;
+                    data.id = item.id;
 
+                    $.ajax({
+                        url: '/Profession/updateEmploymentCompany',
+                        type: 'POST',
+                        data: data,
+                        success: function (resp) {
+                            $scope.workList[i] = resp;
+                            showMess('success', '修改成功');
+                        },
+                        error: function (err) {
+                            console.log(err);
+                            showMess('danger', '修改失败');
+                        }
+                    });
+                });
         };
 
         // 删除就业去向
         $scope.delWork = function (item, pos) {
-
+            commonService.confirm("就业去向：" + item.employmentCompany).result
+                .then(function (resp) {
+                    if (resp) {
+                        $.ajax({
+                            url: '/Profession/deleteEmploymentCompany?id=' + item.id,
+                            type: 'DELETE',
+                            success: function () {
+                                $scope.workList.splice(pos, 1);
+                                showMess('success', '删除成功');
+                            },
+                            error: function (err) {
+                                console.log(err);
+                                showMess('danger', '删除失败');
+                            }
+                        })
+                    }
+                });
         };
 
         function showMess(type, data) {

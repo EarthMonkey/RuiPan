@@ -555,7 +555,14 @@ th .fa {
 }
 
 .preview_img_form {
-    width: 340px !important;
-    height: 190px !important;
+    width: 400px !important;
+    height: 150px !important;
+    display: inline-block;
     border: 1px solid #afafaf;
+    margin-top: 12px;
+}
+
+.preview_img_form img {
+    width: 100%;
+    height: 150px;
 }
