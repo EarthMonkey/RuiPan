@@ -123,6 +123,7 @@ public class ConsultantServiceImpl implements ConsultantService{
             return "not_exist";
         }else{
             consultant.setIsRecommend(isRecommand);
+            consultantDao.saveAndFlush(consultant);
             return "success";
         }
     }
