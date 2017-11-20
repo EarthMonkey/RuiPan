@@ -31,23 +31,48 @@
     </div>
 
     <div class="h_title" style="margin-top: 50px;">
-        <h2>所有案例列表</h2>
+        <h2>所有案例</h2>
     </div>
 
     <!-- 案例列表 -->
     <div style="margin-top: 30px;">
         <table class="table table-hover">
             <thead>
-            <th>案例列表</th>
-            <th class="action_col"><a><i class="fa fa-plus"></i>添加</a></th>
+            <th>成功案例</th>
+            <th>国家</th>
+            <th>录取学校</th>
+            <th>专业</th>
+            <th>学位</th>
+            <th>语言成绩</th>
+            <th>GPA成绩</th>
+            <th>GMAT/SAT/..</th>
+            <th>本科专业</th>
+            <th>录取时间</th>
+            <th>服务顾问</th>
+            <th style="width: 110px;">
+                <a ng-click=""><i class="fa fa-plus"></i>添加</a>
+            </th>
             </thead>
             <tbody>
-            <tr ng-repeat="temp in [0,1,2,3]">
-                <td><a>某某某成功案例</a></td>
+            <tr ng-repeat="item in successList track by $index">
+                <td><a ng-click="getSuc(item)">{{item.name}}成功案例</a></td>
+                <td>{{item.country}}</td>
+                <td>{{item.school}}</td>
+                <td>{{item.sp}}</td>
+                <td>{{item.degree}}</td>
+                <td>{{item.languageScore}}</td>
+                <td>{{item.gpa}}</td>
+                <td>{{item.gmatSatGre}}</td>
+                <td>{{item.undergraduateMajor}}</td>
+                <td>{{item.enrollmentTime}}</td>
+                <td>{{item.consultor}}</td>
                 <td>
-                    <div class="table_mod border"><a>修改</a></div>
-                    <div class="table_mod"><a>删除</a></div>
+                    <div class="table_mod border"><a ng-click="modSuc(item)">修改</a></div>
+                    <div class="table_mod"><a ng-click="delSuc(item, $index)">删除</a></div>
                 </td>
+            </tr>
+            <tr ng-if="successList.length==0">
+                <td class="no_data" colspan="12">无数据</td>
             </tr>
             </tbody>
         </table>
@@ -61,19 +86,19 @@
     <div style="margin-top: 30px;">
         <table class="table table-hover">
             <thead>
-            <th style="min-width: 130px;">全局推荐案例标语</th>
+            <th style="min-width: 130px;">推荐标语</th>
             <th>案例信息</th>
             <th style="min-width: 70px;">推荐时间</th>
-            <th class="action_col"><a><i class="fa fa-plus"></i>添加</a></th>
+            <th class="action_col"><a ng-click="addRec()"><i class="fa fa-plus"></i>添加</a></th>
             </thead>
             <tbody>
-            <tr ng-repeat="temp in [0,1,2,3]">
+            <tr ng-repeat="item in [0,1,2,3] track by $index">
                 <td><a>出色文书呈现学生的优秀</a></td>
                 <td>出色文书呈现学生的优秀出色文书呈现学生的优秀出色文书呈现学生的优秀出色文书呈现学生的优秀</td>
                 <td>2017-11-15</td>
                 <td>
-                    <div class="table_mod border"><a>修改</a></div>
-                    <div class="table_mod"><a>删除</a></div>
+                    <div class="table_mod border"><a ng-click="modRec(item, $index)">修改</a></div>
+                    <div class="table_mod"><a ng-click="delRec(item, $index)">删除</a></div>
                 </td>
             </tr>
             </tbody>

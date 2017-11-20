@@ -146,7 +146,11 @@ define([''], function () {
                 backState: 'backend.specialInfo',
                 ajaxUrl: '/Profession/addProfessionIntroduce',
                 pid: $scope.selectedSp.pid,
-                gidKey: 'pid'
+                gidKey: 'pid',
+                initObj: {
+                    objId: $scope.selectedSp.pid,
+                    url: '/Profession/getProfessionIntroducePublished?pid=' + $scope.selectedSp.pid
+                }
             };
             $state.go('backend.article', {initInfo: JSON.stringify(initInfo)});
         };
@@ -199,7 +203,6 @@ define([''], function () {
             courInstance.result.then(function (data) {
                 data.pid = $scope.selectedSp.pid;
                 data.id = item.id;
-                console.log(data)
                 $.ajax({
                     url: '/Profession/updateProfessionCourse',
                     type: 'PUT',

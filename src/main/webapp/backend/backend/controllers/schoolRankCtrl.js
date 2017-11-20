@@ -115,7 +115,6 @@ define([''], function () {
                 url: '/School/getSchoolPublished?country=' + $scope.selectedCoun,
                 type: 'GET',
                 success: function (resp) {
-                    console.log(resp);
                     var nameOption = [];
                     resp.forEach(function (item) {
                         nameOption.push(item.collegeName);

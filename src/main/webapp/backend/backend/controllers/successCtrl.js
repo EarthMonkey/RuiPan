@@ -8,16 +8,21 @@ define([''], function () {
 
     var successCtrl = ['$scope', '$state', 'commonService', function ($scope, $state, commonService) {
 
-        $scope.selectedCoun = 'america';
+        $scope.selectedCoun = '';
         $scope.filterCountry = [];
 
-        $scope.selectedEdu = 'business';
+        $scope.selectedEdu = '';
         $scope.filterEdu = [];
 
-        $scope.selectedSp = 'finance';
+        $scope.selectedSp = '';
         $scope.filterSp = [];
 
-        var Sp_Map = [];
+        var Sp_Map = []; // 专业
+        var School_Map = []; // 学校Map
+        var School_Names = []; // 学校
+
+        var Consult_Map = []; // 顾问map
+        var Consult_Names = []; // 顾问option
 
         $scope.filterClick = function (syb, selected) {
             if (syb == 0) {
@@ -80,7 +85,24 @@ define([''], function () {
                     console.log(err);
                     showMess('danger', '获取大类专业失败');
                 }
-            })
+            });
+
+            // 根据国家获取学校
+            School_Map = [];
+            $.ajax({
+                url: '/School/getSchoolPublished?country=' + $scope.selectedCoun,
+                type: 'GET',
+                success: function (resp) {
+                    School_Map = resp;
+                    resp.forEach(function (item) {
+                        School_Names.push(item.collegeName);
+                    });
+                },
+                error: function (err) {
+                    console.log(err);
+                    showMess("danger", '获取学校失败');
+                }
+            });
         }
 
         $scope.successList = [];
@@ -94,7 +116,6 @@ define([''], function () {
                 url: '/SuccessfulCase/getSuccessfulCaseByPid?pid=' + $scope.selectedSp.pid,
                 type: 'GET',
                 success: function (resp) {
-                    console.log(resp);
                     $scope.successList = resp;
                 },
                 error: function (err) {
@@ -108,15 +129,88 @@ define([''], function () {
                 url: '/SuccessfulCase/getRecommendSuccessfulCase',
                 type: 'GET',
                 success: function (resp) {
-                    console.log(resp);
                     $scope.recomendList = resp;
                 },
                 error: function (err) {
                     console.log(err);
                     showMess('danger', '获取推荐案例失败');
                 }
+            });
+
+            // 根据专业获取顾问
+            $.ajax({
+                url: '/Consultant/getByPid?pid=' + $scope.selectedSp.pid,
+                type: 'GET',
+                success: function (resp) {
+                    Consult_Map = resp;
+                    resp.forEach(function (item) {
+                        Consult_Names.push(item.name);
+                    });
+                },
+                error: function (err) {
+                    console.log(err);
+                    showMess('danger', '获取专业顾问失败');
+                }
             })
+
         }
+
+        var sucFields = [
+            {id: 'name', label: '学生称呼'},
+            {id: 'degree', label: '学生学位'},
+            {id: 'sid', label: '录取学校', type: 'combox', options: []},
+            {id: 'enrollmentTime', label: '录取时间'},
+            {id: 'languageScore', label: '语言成绩'},
+            {id: 'gpa', label: 'GPA成绩'},
+            {id: 'gmatSatGre', label: 'GMAT/SAT/..'},
+            {id: 'undergraduateMajor', label: '本科专业'},
+            {id: 'enrollmentTime', label: '录取时间'},
+            {id: 'consultant', label: '服务顾问', type: 'combox', options: []}
+        ];
+
+        // 增加成功案例
+        $scope.addSuc = function () {
+
+            scuFields[2].options = School_Names;
+
+
+        };
+
+        // 修改成功案例
+        $scope.modSuc = function (item) {
+
+        };
+
+        // 删除成功案例
+        $scope.delSuc = function (item, pos) {
+
+        };
+
+        // 查看成功案例
+        $scope.getSuc = function (item) {
+
+        };
+
+        // 增加推荐
+        $scope.addRec = function () {
+
+        };
+
+        // 修改推荐
+        $scope.modRec = function (item, pos) {
+
+        };
+
+        // 删除推荐
+        $scope.delRec = function (item, pos) {
+
+        };
+
+        // 查看推荐
+        $scope.getRec = function (item) {
+
+        };
+
 
         function showMess(type, data) {
             commonService.showMessage($scope, {

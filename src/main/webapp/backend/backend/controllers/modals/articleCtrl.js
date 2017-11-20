@@ -15,13 +15,8 @@ define([''], function () {
              * modify：id
              * */
 
-            // 下拉框
-            $scope.combox = {
-                id: '',
-                options: [],
-                select: function (option) {
-                    $scope.model[$scope.combox.id] = option;
-                }
+            $scope.comboxSelect = function (option, id) {
+                $scope.model[id] = option;
             };
 
             // 输入框
@@ -71,7 +66,6 @@ define([''], function () {
                     url: initInfo.initObj.url,
                     type: 'GET',
                     success: function (resp) {
-                        console.log(resp);
                         $scope.model = resp;
                         if (ImgObj) {
                             ImgObj.path = resp[ImgObj.id];

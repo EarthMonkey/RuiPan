@@ -45,7 +45,7 @@ define([''], function () {
                     console.log(err);
                     showMess("danger", '获取学校失败');
                 }
-            })
+            });
         }
 
         var fields = [

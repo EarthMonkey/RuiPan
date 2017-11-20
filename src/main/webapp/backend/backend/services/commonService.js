@@ -96,7 +96,6 @@ define([''], function () {
                 type: 'POST',
                 data: {text: text},
                 success: function (resp) {
-                    console.log(resp);
                     $scope.uploadCallback(resp);
                 },
                 error: function (err) {
@@ -112,7 +111,6 @@ define([''], function () {
                 url: '/getText?path=' + path,
                 type: 'GET',
                 success: function (resp) {
-                    console.log(resp);
                     $scope.getHtmlCallback(resp);
                 },
                 error: function (err) {

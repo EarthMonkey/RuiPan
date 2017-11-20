@@ -14,25 +14,10 @@
     <div>
         <!-- 输入框块 -->
         <div class="article_input">
-            <!-- 下拉框 -->
-            <div class="btn-group login_input combox" ng-if="combox.id!=''">
-                <label>{{combox.label}}: </label>
-                <div uib-dropdown class="inner_combox">
-                    <button id="btn-append-to-body" type="button" class="btn btn-default" uib-dropdown-toggle
-                            ng-disabled="config.readonly">
-                        {{model[combox.id]}} <span class="fa fa-caret-down"></span>
-                    </button>
-                    <ul class="dropdown-menu" uib-dropdown-menu aria-labelledby="btn-append-to-body">
-                        <li ng-repeat="item in combox.options" ng-click="combox.select(item)">
-                            <a>{{item}}</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
 
             <!-- 输入框 -->
             <div class="login_input" ng-repeat="item in fields">
-                <div ng-if="item.type!='textarea'&&item.type!='img'">
+                <div ng-if="item.type!='textarea'&&item.type!='img'&&item.type!='combox'">
                     <label>{{item.label}}: </label>
                     <input type="text" ng-model="model[item.id]" ng-disabled="config.readonly"
                            placeholder="{{item.placeholder}}">
@@ -41,6 +26,21 @@
                 <div ng-if="item.type=='textarea'">
                     <label>{{item.label}}: </label>
                     <textarea ng-disabled="config.readonly" ng-model="model[item.id]"></textarea>
+                </div>
+
+                <div class="btn-group combox" ng-if="item.type=='combox'">
+                    <label>{{item.label}}: </label>
+                    <div uib-dropdown class="inner_combox">
+                        <button id="btn-append-to-body" type="button" class="btn btn-default" uib-dropdown-toggle
+                                ng-disabled="config.readonly">
+                            {{model[item.id]}} <span class="fa fa-caret-down"></span>
+                        </button>
+                        <ul class="dropdown-menu" uib-dropdown-menu aria-labelledby="btn-append-to-body">
+                            <li ng-repeat="op in item.options" ng-click="comboxSelect(op, item.id)">
+                                <a>{{op}}</a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
 
                 <!-- 图片上传 -->

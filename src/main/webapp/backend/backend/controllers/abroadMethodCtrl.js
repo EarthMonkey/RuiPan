@@ -192,14 +192,12 @@ define([''], function () {
                 })
         };
 
-        var combox = {
-            id: 'subdivisionGrade',
-            label: '年级分类',
-            options: ["初一在读", '初二在读', '初三在读', '高一在读', '高二在读', '高三在读',
-                '大一在读', '大二在读', '大三在读', '大四在读', '大学毕业N年', '大专在读/毕业',
-                '研一在读', '研二在读/毕业']
-        };
+        var comboxOpt = ["初一在读", '初二在读', '初三在读', '高一在读', '高二在读', '高三在读',
+            '大一在读', '大二在读', '大三在读', '大四在读', '大学毕业N年', '大专在读/毕业',
+            '研一在读', '研二在读/毕业'];
+
         var methodField = [
+            {id: 'subdivisionGrade', label: '年级分类', type: 'combox', options: comboxOpt},
             {id: "title", label: '方案标题', placeholder: '单申ESL课程'},
             {id: 'synopsis', label: '方案导语'}
         ];
@@ -208,7 +206,6 @@ define([''], function () {
         $scope.addMethod = function () {
             var initInfo = {
                 title: '添加方案',
-                combox: combox,
                 fields: methodField,
                 backState: 'backend.abroadMethod',
                 ajaxUrl: '/StudyAbroad/addApplicationScheme',
@@ -222,7 +219,6 @@ define([''], function () {
         $scope.modMethod = function (item) {
             var initInfo = {
                 title: '修改方案',
-                combox: combox,
                 fields: methodField,
                 backState: 'backend.abroadMethod',
                 ajaxUrl: '/StudyAbroad/updateApplicationScheme',
@@ -238,24 +234,29 @@ define([''], function () {
 
         // 删除方案
         $scope.delMethod = function (item, pos) {
-            $.ajax({
-                url: '/StudyAbroad/deleteApplicationScheme?id=' + item.id,
-                type: 'DELETE',
-                success: function () {
-                    showMess('success', '删除成功');
-                    $scope.methodList.splice(pos, 1);
-                },
-                error: function (err) {
-                    console.log(err);
-                    showMess('danger', '删除失败');
-                }
-            })
+            commonService.confirm("方案：" + item.title).result
+                .then(function (resp) {
+                    if (resp) {
+                        $.ajax({
+                            url: '/StudyAbroad/deleteApplicationScheme?id=' + item.id,
+                            type: 'DELETE',
+                            success: function () {
+                                showMess('success', '删除成功');
+                                $scope.methodList.splice(pos, 1);
+                            },
+                            error: function (err) {
+                                console.log(err);
+                                showMess('danger', '删除失败');
+                            }
+                        });
+                    }
+                });
+
         };
 
         $scope.getMethod = function (item) {
             var initInfo = {
                 title: '方案详情',
-                combox: combox,
                 fields: methodField,
                 backState: 'backend.abroadMethod',
                 ajaxUrl: '/StudyAbroad/updateApplicationScheme',
