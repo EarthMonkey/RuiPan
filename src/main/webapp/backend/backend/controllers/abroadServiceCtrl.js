@@ -203,7 +203,7 @@ define([''], function () {
                         type: 'PUT',
                         data: tab,
                         success: function (resp) {
-                            $scope.factorTabs[pos] = data;
+                            $scope.factorTabs[pos] = tab;
                             showMess('success', '修改成功');
                         },
                         error: function (err) {
@@ -218,8 +218,7 @@ define([''], function () {
                         type: 'POST',
                         data: tab,
                         success: function (resp) {
-                            console.log(resp);
-                            $scope.factorTabs[pos] = resp;
+                            $scope.factorTabs[pos] = tab;
                             showMess('success', '添加成功');
                         },
                         error: function (err) {

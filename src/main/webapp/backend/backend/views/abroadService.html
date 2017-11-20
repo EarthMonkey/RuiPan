@@ -63,7 +63,9 @@
             <table class="table table-striped">
                 <tbody>
                 <tr ng-if="tab.synopsis">
-                    <td>{{tab.synopsis}}</td>
+                    <td>
+                        <div ng-bind-html="tab.synopsis"></div>
+                    </td>
                 </tr>
                 <tr ng-if="!tab.synopsis">
                     <td class="no_data">无数据</td>

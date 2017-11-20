@@ -55,6 +55,8 @@ define([''], function () {
         $scope.methodList = [];
         $scope.recomendList = [];
 
+        var Method_Opt = [];
+
         // 初始化数据
         function getData() {
             // 获取所有方案
@@ -62,9 +64,11 @@ define([''], function () {
                 url: '/StudyAbroad/getApplicationSchemeByGid?gid=' + GID,
                 type: 'GET',
                 success: function (resp) {
+                    Method_Opt = [];
                     for (var key in resp) {
                         resp[key].forEach(function (item) {
                             $scope.methodList.push(item);
+                            Method_Opt.push(item.title + ' @' + item.subdivisionGrade);
                         });
                     }
                 },
@@ -80,7 +84,7 @@ define([''], function () {
             url: '/StudyAbroad/getRecommendApplicationScheme',
             type: 'GET',
             success: function (resp) {
-                console.log(resp);
+                $scope.recomendList = resp;
             },
             error: function (err) {
                 console.log(err);
@@ -88,6 +92,106 @@ define([''], function () {
             }
         });
 
+        // 添加热门推荐
+        $scope.addRec = function () {
+
+            var fields = [
+                {id: 'name', label: '方案名称', type: 'combox', options: Method_Opt},
+                {id: 'picturePath', label: '宣传图片', type: 'img'}
+            ];
+
+            commonService.openTextForm('添加热门推荐(最多三条)', fields).result
+                .then(function (data) {
+                    var methName = data.name.split(" @")[0];
+                    for (var i = 0; i < $scope.methodList.length; i++) {
+                        if (methName == $scope.methodList[i].title) {
+                            data.rid = $scope.methodList[i].id;
+                            delete data.name;
+                            break;
+                        }
+                    }
+
+                    $.ajax({
+                        url: '/StudyAbroad/addRecommendApplicationScheme',
+                        type: 'POST',
+                        data: data,
+                        success: function (resp) {
+                            console.log(resp);
+                            $scope.recomendList.push(resp);
+                            showMess('success', '添加成功');
+                        },
+                        error: function (err) {
+                            console.log(err);
+                            showMess('danger', '添加失败');
+                        }
+                    })
+                });
+
+        };
+
+        // 修改热门推荐
+        $scope.modRec = function (item, pos) {
+
+            var fields = [
+                {id: 'name', label: '方案名称', type: 'combox', options: Method_Opt},
+                {id: 'picturePath', label: '宣传图片', type: 'img'}
+            ];
+
+            var initModel = {
+                name: item.applicationSchemeVO.title,
+                picturePath: item.picturePath
+            };
+            commonService.openTextForm('修改热门推荐', fields, initModel).result
+                .then(function (data) {
+
+                    data.id = item.id;
+                    // 获取方案id
+                    var methName = data.name.split(" @")[0];
+                    for (var i = 0; i < $scope.methodList.length; i++) {
+                        if (methName == $scope.methodList[i].title) {
+                            data.rid = $scope.methodList[i].id;
+                            delete data.name;
+                            break;
+                        }
+                    }
+
+                    $.ajax({
+                        url: '/StudyAbroad/updateRecommendApplicationScheme',
+                        type: 'PUT',
+                        data: data,
+                        success: function (resp) {
+                            $scope.recomendList[pos] = resp;
+                            showMess('success', '修改成功');
+                        },
+                        error: function (err) {
+                            console.log(err);
+                            showMess('danger', '修改失败');
+                        }
+                    })
+                });
+
+        };
+
+        // 删除热门推荐
+        $scope.delRec = function (item, pos) {
+            commonService.confirm("热门推荐：" + item.applicationSchemeVO.title).result
+                .then(function (resp) {
+                    if (resp) {
+                        $.ajax({
+                            url: '/StudyAbroad/deleteRecommendApplicationScheme?id=' + item.id,
+                            type: 'DELETE',
+                            success: function () {
+                                $scope.recomendList.splice(pos, 1);
+                                showMess('success', '删除成功');
+                            },
+                            error: function (err) {
+                                console.log(err);
+                                showMess('danger', '删除失败');
+                            }
+                        })
+                    }
+                })
+        };
 
         var combox = {
             id: 'subdivisionGrade',
