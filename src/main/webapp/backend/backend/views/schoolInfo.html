@@ -33,15 +33,17 @@
             </thead>
             <tbody>
             <tr ng-repeat="item in schoolList track by $index">
-                <td><a>{{item.collegeName}}</a></td>
+                <td><a ng-click="modSchool(item, true)">{{item.collegeName}}</a></td>
                 <td>
-                    <div class="logo_preview" style="width: 100px;"></div>
+                    <div class="logo_preview" style="width: 100px;">
+                        <img ng-src="{{'/upload/images/'+item.schoolBadge}}" alt="logo加载失败">
+                    </div>
                 </td>
                 <td>{{item.synopsis}}</td>
                 <td>{{item.address}}</td>
                 <td>
-                    <div class="table_mod border"><a>修改</a></div>
-                    <div class="table_mod"><a>删除</a></div>
+                    <div class="table_mod border" ng-click="modSchool(item)"><a>修改</a></div>
+                    <div class="table_mod"><a ng-click="delSchool(item, $index)">删除</a></div>
                 </td>
             </tr>
             <tr ng-if="schoolList.length==0">

@@ -70,6 +70,9 @@ define([''], function () {
                     success: function (resp) {
                         console.log(resp);
                         $scope.model = resp;
+                        if (ImgObj) {
+                            ImgObj.path = resp[ImgObj.id];
+                        }
                         // 根据textPath获取html
                         if (resp.textPath) {
                             commonService.getHTML($scope, resp.textPath);
@@ -138,7 +141,19 @@ define([''], function () {
                 }
 
                 if (ImgObj !== '') { //先上传图片
-                    uploadImg();
+                    if (initInfo.initObj) {
+                        if (ImgObj.file !== '') {
+                            uploadImg();
+                        } else {
+                            commonService.updateHTML($scope, $scope.model.content);
+                        }
+                    } else {
+                        if (ImgObj.file === '') {
+                            showMess('danger', '请上传图片');
+                            return;
+                        }
+                        uploadImg();
+                    }
                 } else {
                     if (initInfo.initObj) {
                         commonService.updateHTML($scope, $scope.model.content);
@@ -153,10 +168,9 @@ define([''], function () {
             $scope.uploadCallback = function (path) {
                 var data = angular.copy($scope.model);
                 data.textPath = path;
-                if (data.gid) {
-                    data.gid = initInfo.gid;
-                } else if (data.pid) {
-                    data.pid = initInfo.pid;
+                // 设置gid，pid, cid等
+                if (initInfo.gidKey) {
+                    data[initInfo.gidKey] = initInfo[initInfo.gidKey];
                 }
                 if (ImgObj) {
                     data[ImgObj.id] = ImgObj.path;
@@ -180,10 +194,8 @@ define([''], function () {
             // 更新HTML回调
             $scope.updateHtmlCallback = function () {
                 var data = angular.copy($scope.model);
-                if (data.gid) {
-                    data.gid = initInfo.gid;
-                } else if (data.pid) {
-                    data.pid = initInfo.pid;
+                if (initInfo.gidKey) {
+                    data[initInfo.gidKey] = initInfo[initInfo.gidKey];
                 }
                 if (ImgObj) {
                     data[ImgObj.id] = ImgObj.path;

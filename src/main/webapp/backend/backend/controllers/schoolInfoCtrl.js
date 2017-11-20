@@ -71,12 +71,46 @@ define([''], function () {
             $state.go('backend.article', {initInfo: JSON.stringify(initInfo)});
         };
 
-        $scope.modSchool = function (item, pos) {
-
+        $scope.modSchool = function (item, readonly) {
+            var combox = {
+                id: 'country',
+                label: '选择国家',
+                options: $scope.filterCountry
+            };
+            var initInfo = {
+                title: '添加学校',
+                combox: combox,
+                fields: fields,
+                backState: 'backend.schoolInfo',
+                ajaxUrl: '/School/updateSchool',
+                initObj: {
+                    objId: item.sid,
+                    url: '/School/getSchoolBySid?sid=' + item.sid
+                }
+            };
+            if (readonly) {
+                initInfo.readonly = true;
+            }
+            $state.go('backend.article', {initInfo: JSON.stringify(initInfo)});
         };
 
         $scope.delSchool = function (item, pos) {
-
+            commonService.confirm("学校：" + item.collegeName).result.then(function (resp) {
+                if (resp) {
+                    $.ajax({
+                        url: '/School/deleteSchool?sid=' + item.sid,
+                        type: 'DELETE',
+                        success: function () {
+                            $scope.schoolList.splice(pos, 1);
+                            showMess('success', '删除成功');
+                        },
+                        error: function (err) {
+                            console.log(err);
+                            showMess('danger', '删除失败');
+                        }
+                    })
+                }
+            });
         };
 
         function showMess(type, data) {

@@ -108,7 +108,8 @@ define([''], function () {
                 fields: methodField,
                 backState: 'backend.abroadMethod',
                 ajaxUrl: '/StudyAbroad/addApplicationScheme',
-                gid: GID
+                gid: GID,
+                gidKey: 'gid'
             };
             $state.go("backend.article", {initInfo: JSON.stringify(initInfo)});
         };
@@ -122,6 +123,7 @@ define([''], function () {
                 backState: 'backend.abroadMethod',
                 ajaxUrl: '/StudyAbroad/updateApplicationScheme',
                 gid: GID,
+                gidKey: 'gid',
                 initObj: {
                     objId: item.id,
                     url: '/StudyAbroad/getApplicationSchemeById?id=' + item.id
@@ -154,6 +156,7 @@ define([''], function () {
                 backState: 'backend.abroadMethod',
                 ajaxUrl: '/StudyAbroad/updateApplicationScheme',
                 gid: GID,
+                gidKey: 'gid',
                 initObj: {
                     objId: item.id,
                     url: '/StudyAbroad/getApplicationSchemeById?id=' + item.id

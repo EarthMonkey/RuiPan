@@ -40,7 +40,7 @@
             <tbody>
             <tr ng-repeat="item in rankList track by $index">
                 <td>{{item.ranking}}</td>
-                <td><a>{{item.schoolBySid.collegeName}}</a></td>
+                <td><a ng-click="modSchool(item, true)">{{item.schoolBySid.collegeName}}</a></td>
                 <td>{{item.scoreRequirements}}</td>
                 <td>{{item.applicationDifficulty}}</td>
                 <td>
