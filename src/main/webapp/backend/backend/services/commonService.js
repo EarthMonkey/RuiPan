@@ -108,7 +108,6 @@ define([''], function () {
 
         // 获取html
         service.getHTML = function ($scope, path) {
-            console.log(path)
             $.ajax({
                 url: '/getText?path=' + path,
                 type: 'GET',

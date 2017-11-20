@@ -55,11 +55,11 @@ public class HomePageController {
     //在某个分类下添加一张轮播图
     @PostMapping(value = "/addCarouselFigure")
     @SystemLog(module = "首页管理", methods = "增加轮播图")
-    public CarouselFigure addCarouselFigure(String category,String imagePath,String titel,String subTitle,String link){
+    public CarouselFigure addCarouselFigure(String category,String imagePath,String title,String subTitle,String link){
         CarouselFigure carouselFigure=new CarouselFigure();
         carouselFigure.setCategory(category);
         carouselFigure.setImagePath(imagePath);
-        carouselFigure.setTitle(titel);
+        carouselFigure.setTitle(title);
         carouselFigure.setSubTitle(subTitle);
         carouselFigure.setLink(UrlFormatUtils.formatUrl(link));
         return homepageService.addCarouselFigure(carouselFigure);
@@ -68,12 +68,12 @@ public class HomePageController {
     //根据id编辑一张轮播图
     @PutMapping(value = "/updateCarouselFigure")
     @SystemLog(module = "首页管理", methods = "编辑轮播图")
-    public CarouselFigure updateCarouselFigure(Integer id,String category,String imagePath,String titel,String subTitle,String link){
+    public CarouselFigure updateCarouselFigure(Integer id,String category,String imagePath,String title,String subTitle,String link){
         CarouselFigure carouselFigure=new CarouselFigure();
         carouselFigure.setId(id);
         carouselFigure.setCategory(category);
         carouselFigure.setImagePath(imagePath);
-        carouselFigure.setTitle(titel);
+        carouselFigure.setTitle(title);
         carouselFigure.setSubTitle(subTitle);
         carouselFigure.setLink(UrlFormatUtils.formatUrl(link));
         return homepageService.updateCarouselFigure(carouselFigure);
