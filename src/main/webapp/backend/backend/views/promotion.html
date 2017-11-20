@@ -2,32 +2,42 @@
 
 <div class="ui_view">
 
+    <div class="message" ng-show="message!=''"
+         ng-class="{'bg-success':message.type=='success', 'bg-danger': message.type=='danger'}">
+        {{message.content}}
+    </div>
+
     <div class="h_title">
         <h2>背景提升</h2>
     </div>
 
     <!-- 轮播图管理 -->
-    <div>
+    <div style="margin-top: 40px;">
         <table class="table table-hover">
             <thead>
             <th style="width: 180px;">轮播图管理</th>
-            <th>标题</th>
+            <th>主标题</th>
+            <th>父标题</th>
             <th>链接</th>
-            <th class="action_col"><a><i class="fa fa-plus"></i>添加</a></th>
+            <th class="action_col"><a ng-click="addCarousel()"><i class="fa fa-plus"></i>添加</a></th>
             </thead>
             <tbody>
-            <tr ng-repeat="temp in [0,1,2,3]">
+            <tr ng-repeat="item in carousList track by $index">
                 <td>
                     <div class="photo_preview">
-                        <img src="/theme/source/promotion-0.png">
+                        <img ng-src="{{'upload/images/' + item.imagePath}}" alt="图片加载失败">
                     </div>
                 </td>
-                <td>这里放标题</td>
-                <td>http://www.baidu.com</td>
+                <td>{{item.title}}</td>
+                <td>{{item.subTitle}}</td>
+                <td>{{item.link}}</td>
                 <td>
-                    <div class="table_mod border"><a>修改</a></div>
-                    <div class="table_mod"><a>删除</a></div>
+                    <div class="table_mod border"><a ng-click="modCarousel(item, $index)">修改</a></div>
+                    <div class="table_mod"><a ng-click="delCarousel(item, $index)">删除</a></div>
                 </td>
+            </tr>
+            <tr ng-if="carousList.length==0">
+                <td class="no_data" colspan="6">无数据</td>
             </tr>
             </tbody>
         </table>
@@ -37,39 +47,37 @@
     <div style="margin-top: 50px;">
         <div class="filter_div">
             <span class="filter_tip">分类: </span>
-            <span class="filter_option" style="width: auto; padding: 0 10px;" ng-repeat="ft in filterType" ng-click="filterClick(ft)"
-                  ng-class="{active: selectedType==ft.id}">{{ft.label}}</span>
+            <span class="filter_option" style="width: auto; padding: 0 10px;" ng-repeat="ft in filterType"
+                  ng-click="filterClick(ft)"
+                  ng-class="{active: selectedType==ft}">{{ft}}</span>
         </div>
     </div>
 
-    <!-- 项目管理 -->
-    <div>
+    <div class="h_title" style="margin-top: 50px;">
+        <h2>项目列表</h2>
+    </div>
+
+    <!-- 项目列表 -->
+    <div style="margin-top: 30px;">
         <table class="table table-hover">
             <thead>
-            <th style="width: 180px;">项目列表</th>
-            <th>信息</th>
-            <th class="action_col"><a><i class="fa fa-plus"></i>添加</a></th>
+            <th>项目名</th>
+            <th style="width: 180px;">宣传图片</th>
+            <th>导语</th>
+            <th class="action_col"><a ng-click="addMethod()"><i class="fa fa-plus"></i>添加</a></th>
             </thead>
             <tbody>
-            <tr ng-repeat="temp in [0,1,2,3]" style="cursor: pointer">
+            <tr ng-repeat="item in methodList track by $index">
+                <td><a ng-click="getMethod(item)">{{item.title}}</a></td>
                 <td>
                     <div class="photo_preview">
-                        <img src="/theme/source/promotion-0.png">
+                        <img ng-src="{{'upload/images/' + item.thumbnail}}" alt="图片加载失败">
                     </div>
                 </td>
+                <td>{{item.synopsis}}</td>
                 <td>
-                    <div>
-                        <label>标题：</label>
-                        耶鲁大学暑期项目
-                    </div>
-                    <div>
-                        <label>导读：</label>
-                        体验名校课堂，获取教授推荐信
-                    </div>
-                </td>
-                <td>
-                    <div class="table_mod border"><a>修改</a></div>
-                    <div class="table_mod"><a>删除</a></div>
+                    <div class="table_mod border"><a ng-click="modMethod(item)">修改</a></div>
+                    <div class="table_mod"><a ng-click="delMethod(item, $index)">删除</a></div>
                 </td>
             </tr>
             </tbody>

@@ -14,7 +14,7 @@ import java.util.List;
  * Created by ldchao on 2017/11/2.
  */
 @RestController
-@RequestMapping(value = "/SuccessfulCase")
+@RequestMapping(value = "/Promotion")
 public class BackgroundPromoteController {
 
     @Autowired

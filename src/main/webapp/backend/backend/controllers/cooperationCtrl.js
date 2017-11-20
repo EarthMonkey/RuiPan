@@ -12,7 +12,7 @@ define([''], function () {
         $scope.newsList = [];
         $scope.methodList = [];
 
-        // 轮播图
+        // 获取轮播图
         $.ajax({
             url: '/homepage/getCarouselFigure?category=合作办学',
             type: 'GET',
@@ -376,7 +376,7 @@ define([''], function () {
         $scope.getMethod = function (item) {
 
             var initInfo = {
-                title: '添加' + $scope.selectedCoun.fcsubclassification + $scope.selectedType + '合作办学方案',
+                title: $scope.selectedCoun.subclassification + $scope.selectedType + '合作办学方案',
                 fields: methodField,
                 backState: 'backend.cooperation',
                 ajaxUrl: '/CooperativeEducation/updateCooperativeScheme',
