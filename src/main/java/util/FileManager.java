@@ -91,4 +91,31 @@ public class FileManager {
         }
     }
 
+    public static void deleteText(String textPath){
+        String rootPath=RootPathUtil.getInstance().getRootPath();
+        String fullFilePath = rootPath + "upload"+File.separator+"text"+File.separator+textPath;
+        deleteFile(fullFilePath);
+    }
+
+    public static void deleteImage(String imagePath){
+        String rootPath=RootPathUtil.getInstance().getRootPath();
+        String fullFilePath = rootPath + "upload"+File.separator+"images"+File.separator+imagePath;
+        deleteFile(fullFilePath);
+    }
+
+    public static boolean deleteFile(String fileName) {
+        File file = new File(fileName);
+        // 如果文件路径所对应的文件存在，并且是一个文件，则直接删除
+        if (file.exists() && file.isFile()) {
+            if (file.delete()) {
+                return true;
+            } else {
+                logger.error("删除单个文件" + fileName + "失败！");
+                return false;
+            }
+        } else {
+            logger.error("删除单个文件失败：" + fileName + "不存在！");
+            return false;
+        }
+    }
 }

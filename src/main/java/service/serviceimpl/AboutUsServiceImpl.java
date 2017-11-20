@@ -7,7 +7,10 @@ import model.CooperativePartner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.AboutUsService;
+import util.FileManager;
+import util.RootPathUtil;
 
+import java.io.File;
 import java.sql.Timestamp;
 import java.util.List;
 
@@ -41,7 +44,9 @@ public class AboutUsServiceImpl implements AboutUsService{
     @Override
     public String deleteCooperativePartner(Integer id) {
         if(cooperativePartnerDao.exists(id)){
+            CooperativePartner cooperativePartner=cooperativePartnerDao.findOne(id);
             cooperativePartnerDao.delete(id);
+            FileManager.deleteImage(cooperativePartner.getImagePath());
             return "success";
         }
         return "not_exist";

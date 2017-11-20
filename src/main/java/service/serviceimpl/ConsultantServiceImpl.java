@@ -51,9 +51,9 @@ public class ConsultantServiceImpl implements ConsultantService{
     }
 
     @Override
-    public List<ConsultantVO> getConsultantByFid(Integer fid) {
+    public List<ConsultantVO> getConsultantByPid(Integer pid) {
 
-        List<Integer> cids=consultantBusinessDao.getConsultantIdByBid(ConsultantBusinesType.ClassifyByProfession,fid);
+        List<Integer> cids=consultantBusinessDao.getConsultantIdByBid(ConsultantBusinesType.ClassifyByProfession,pid);
         List<Consultant> consultants=consultantDao.checkConsultantInCids(cids);
         List<ConsultantVO> consultantVOS=new ArrayList<ConsultantVO>();
         for (Consultant consultant:consultants) {

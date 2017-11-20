@@ -29,9 +29,9 @@ public class ConsultantController {
     }
 
     //根据pid获取所有顾问列表
-    @GetMapping(value = "/getByFid")
-    public List<ConsultantVO> getConsultantByFid(Integer fid){
-        return consultantService.getConsultantByFid(fid);
+    @GetMapping(value = "/getByPid")
+    public List<ConsultantVO> getConsultantByPid(Integer pid){
+        return consultantService.getConsultantByPid(pid);
     }
 
     //根据顾问id增加一条预约记录
