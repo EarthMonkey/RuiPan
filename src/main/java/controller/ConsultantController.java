@@ -129,7 +129,7 @@ public class ConsultantController {
     @DeleteMapping(value = "/delete")
     @SystemLog(module = "顾问管理", methods = "删除顾问")
     public String deleteConsultant(Integer id){
-        return consultantService.deleteRecommend(id);
+        return consultantService.deleteConsultant(id);
     }
 
     //根据顾问id获得该顾问所有未答复的预约

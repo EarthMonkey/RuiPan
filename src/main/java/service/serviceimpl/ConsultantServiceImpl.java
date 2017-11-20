@@ -23,7 +23,7 @@ import java.util.List;
  * Created by ldchao on 2017/11/14.
  */
 @Service
-public class ConsultantServiceImpl implements ConsultantService{
+public class ConsultantServiceImpl implements ConsultantService {
 
     @Autowired
     ConsultantBusinessDao consultantBusinessDao;
@@ -40,10 +40,10 @@ public class ConsultantServiceImpl implements ConsultantService{
 
     @Override
     public List<ConsultantVO> getConsultant() {
-        List<Consultant> consultants=consultantDao.findAll();
-        List<ConsultantVO> consultantVOS=new ArrayList<ConsultantVO>();
-        for (Consultant consultant:consultants) {
-            ConsultantVO consultantVO=new ConsultantVO();
+        List<Consultant> consultants = consultantDao.findAll();
+        List<ConsultantVO> consultantVOS = new ArrayList<ConsultantVO>();
+        for (Consultant consultant : consultants) {
+            ConsultantVO consultantVO = new ConsultantVO();
             consultantVO.update(consultant);
             consultantVOS.add(consultantVO);
         }
@@ -53,13 +53,16 @@ public class ConsultantServiceImpl implements ConsultantService{
     @Override
     public List<ConsultantVO> getConsultantByGid(Integer gid) {
 
-        List<Integer> cids=consultantBusinessDao.getConsultantIdByBid(ConsultantBusinesType.ClassifyByGrade,gid);
-        List<Consultant> consultants=consultantDao.checkConsultantInCids(cids);
-        List<ConsultantVO> consultantVOS=new ArrayList<ConsultantVO>();
-        for (Consultant consultant:consultants) {
-            ConsultantVO consultantVO=new ConsultantVO();
-            consultantVO.update(consultant);
-            consultantVOS.add(consultantVO);
+        List<Integer> cids = consultantBusinessDao.getConsultantIdByBid(ConsultantBusinesType.ClassifyByGrade, gid);
+
+        List<ConsultantVO> consultantVOS = new ArrayList<ConsultantVO>();
+        if (cids != null&&cids.size()!=0) {
+            List<Consultant> consultants = consultantDao.checkConsultantInCids(cids);
+            for (Consultant consultant : consultants) {
+                ConsultantVO consultantVO = new ConsultantVO();
+                consultantVO.update(consultant);
+                consultantVOS.add(consultantVO);
+            }
         }
         return consultantVOS;
     }
@@ -67,31 +70,33 @@ public class ConsultantServiceImpl implements ConsultantService{
     @Override
     public List<ConsultantVO> getConsultantByPid(Integer pid) {
 
-        List<Integer> cids=consultantBusinessDao.getConsultantIdByBid(ConsultantBusinesType.ClassifyByProfession,pid);
-        List<Consultant> consultants=consultantDao.checkConsultantInCids(cids);
-        List<ConsultantVO> consultantVOS=new ArrayList<ConsultantVO>();
-        for (Consultant consultant:consultants) {
-            ConsultantVO consultantVO=new ConsultantVO();
-            consultantVO.update(consultant);
-            consultantVOS.add(consultantVO);
+        List<Integer> cids = consultantBusinessDao.getConsultantIdByBid(ConsultantBusinesType.ClassifyByProfession, pid);
+        List<ConsultantVO> consultantVOS = new ArrayList<ConsultantVO>();
+        if (cids != null&&cids.size()!=0) {
+            List<Consultant> consultants = consultantDao.checkConsultantInCids(cids);
+            for (Consultant consultant : consultants) {
+                ConsultantVO consultantVO = new ConsultantVO();
+                consultantVO.update(consultant);
+                consultantVOS.add(consultantVO);
+            }
         }
         return consultantVOS;
     }
 
     @Override
     public ConsultantVO getConsultantById(Integer id) {
-        Consultant consultant=consultantDao.findOne(id);
-        ConsultantVO consultantVO=new ConsultantVO();
+        Consultant consultant = consultantDao.findOne(id);
+        ConsultantVO consultantVO = new ConsultantVO();
         consultantVO.update(consultant);
         return consultantVO;
     }
 
     @Override
     public List<ConsultantVO> getRecommendConsultant() {
-        List<Consultant> consultants=consultantDao.findAllByIsRecommendIgnoreCase("true");
-        List<ConsultantVO> consultantVOS=new ArrayList<ConsultantVO>();
-        for (Consultant consultant:consultants) {
-            ConsultantVO consultantVO=new ConsultantVO();
+        List<Consultant> consultants = consultantDao.findAllByIsRecommendIgnoreCase("true");
+        List<ConsultantVO> consultantVOS = new ArrayList<ConsultantVO>();
+        for (Consultant consultant : consultants) {
+            ConsultantVO consultantVO = new ConsultantVO();
             consultantVO.update(consultant);
             consultantVOS.add(consultantVO);
         }
@@ -105,23 +110,35 @@ public class ConsultantServiceImpl implements ConsultantService{
 
     @Override
     public void addConsultant(ConsultantVO consultantVO) {
-        Consultant consultant=consultantVO.toEntity();
+        Consultant consultant = consultantVO.toEntity();
         consultantDao.saveAndFlush(consultant);
         consultantVO.setId(consultant.getId());
     }
 
     @Override
     public void updateConsultant(ConsultantVO consultantVO) {
-        Consultant consultant=consultantVO.toEntity();
+        Consultant consultant = consultantVO.toEntity();
         consultantDao.saveAndFlush(consultant);
     }
 
     @Override
+    public String deleteConsultant(Integer id) {
+        if (consultantDao.exists(id)) {
+            Consultant consultant = consultantDao.findOne(id);
+            consultantDao.delete(id);
+            FileManager.deleteImage(consultant.getHeadSculpture());
+            FileManager.deleteText(consultant.getTextPath());
+            return "success";
+        }
+        return "not_exist";
+    }
+
+    @Override
     public String changeRecommend(Integer cid, String isRecommand) {
-        Consultant consultant=consultantDao.findOne(cid);
-        if(consultant==null){
+        Consultant consultant = consultantDao.findOne(cid);
+        if (consultant == null) {
             return "not_exist";
-        }else{
+        } else {
             consultant.setIsRecommend(isRecommand);
             consultantDao.saveAndFlush(consultant);
             return "success";
@@ -129,22 +146,9 @@ public class ConsultantServiceImpl implements ConsultantService{
     }
 
     @Override
-    public String deleteRecommend(Integer cid) {
-        if(consultantDao.exists(cid)){
-            Consultant consultant=consultantDao.findOne(cid);
-            consultantDao.delete(cid);
-            FileManager.deleteImage(consultant.getHeadSculpture());
-            FileManager.deleteText(consultant.getTextPath());
-            return "success";
-        }else{
-            return "not_exist";
-        }
-    }
-
-    @Override
     public List<OrderForConsultant> checkOrder(Integer id, String isAnswer) {
-        List<OrderForConsultant> orderForConsultants=orderForConsultantDao.findAllByCidAndIsAnswerOrderByOrderTimeAsc(id,isAnswer);
-        for (OrderForConsultant orderForConsultant:orderForConsultants) {
+        List<OrderForConsultant> orderForConsultants = orderForConsultantDao.findAllByCidAndIsAnswerOrderByOrderTimeAsc(id, isAnswer);
+        for (OrderForConsultant orderForConsultant : orderForConsultants) {
             orderForConsultant.setConsultantByCid(null);
         }
         return orderForConsultants;
@@ -153,12 +157,12 @@ public class ConsultantServiceImpl implements ConsultantService{
 
     @Override
     public AnswerForOrder addAnswerForOrder(Integer oid, String answer) {
-        OrderForConsultant orderForConsultant=orderForConsultantDao.findOne(oid);
-        if(orderForConsultant.getIsAnswer().equals("false")){
+        OrderForConsultant orderForConsultant = orderForConsultantDao.findOne(oid);
+        if (orderForConsultant.getIsAnswer().equals("false")) {
             orderForConsultant.setIsAnswer("true");
             orderForConsultantDao.saveAndFlush(orderForConsultant);
         }
-        AnswerForOrder answerForOrder=new AnswerForOrder();
+        AnswerForOrder answerForOrder = new AnswerForOrder();
         answerForOrder.setOid(oid);
         answerForOrder.setAnswer(answer);
         answerForOrder.setCreatAt(new Timestamp(System.currentTimeMillis()));
@@ -172,7 +176,7 @@ public class ConsultantServiceImpl implements ConsultantService{
 
     @Override
     public String deleteAnswerForOrder(Integer id) {
-        if(answerForOrderDao.exists(id)){
+        if (answerForOrderDao.exists(id)) {
             answerForOrderDao.delete(id);
             return "success";
         }
@@ -186,7 +190,7 @@ public class ConsultantServiceImpl implements ConsultantService{
 
     @Override
     public String deleteConsultantBusiness(Integer id) {
-        if(consultantBusinessDao.exists(id)){
+        if (consultantBusinessDao.exists(id)) {
             consultantBusinessDao.delete(id);
             return "success";
         }

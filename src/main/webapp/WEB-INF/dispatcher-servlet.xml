@@ -96,20 +96,20 @@
         <property name="maxInMemorySize" value="4096"/>
     </bean>
 
-    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
-        <property name="exceptionMappings">
-            <map>
-                <entry key="ResourceNotFoundException" value="common/error/resourceNotFoundError" />
-                <entry key=".DataAccessException" value="common/error/dataAccessError" />
-            </map>
-        </property>
-        <property name="statusCodes">
-            <map>
-                <entry key="common/error/resourceNotFoundError" value="404" />
-                <entry key="common/error/dataAccessError" value="500" />
-            </map>
-        </property>
-    </bean>
+    <!--<bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">-->
+        <!--<property name="exceptionMappings">-->
+            <!--<map>-->
+                <!--<entry key="ResourceNotFoundException" value="common/error/resourceNotFoundError" />-->
+                <!--<entry key=".DataAccessException" value="common/error/dataAccessError" />-->
+            <!--</map>-->
+        <!--</property>-->
+        <!--<property name="statusCodes">-->
+            <!--<map>-->
+                <!--<entry key="common/error/resourceNotFoundError" value="404" />-->
+                <!--<entry key="common/error/dataAccessError" value="500" />-->
+            <!--</map>-->
+        <!--</property>-->
+    <!--</bean>-->
 
     <!--<mvc:resources mapping="/error/**" location="/WEB-INF/views/commons/error/" />-->
 </beans>

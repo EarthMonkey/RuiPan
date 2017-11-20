@@ -36,11 +36,11 @@ public interface ConsultantService {
     //编辑一条顾问
     public void updateConsultant(ConsultantVO consultantVO);
 
+    //删除一条顾问
+    public String deleteConsultant(Integer id);
+
     //设置顾问是否推荐
     public String changeRecommend(Integer cid, String isRecommand);
-
-    //删除一条顾问
-    public String deleteRecommend(Integer cid);
 
     //查看预订记录
     public List<OrderForConsultant> checkOrder(Integer id,String isAnswer);
