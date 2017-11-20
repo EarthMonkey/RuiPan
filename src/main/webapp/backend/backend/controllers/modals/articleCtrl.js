@@ -34,7 +34,8 @@ define([''], function () {
 
             // 数据模型
             $scope.model = {
-                content: ''
+                content: '',
+                path: ''
             };
 
             // 获取初始值
@@ -76,6 +77,7 @@ define([''], function () {
                         // 根据textPath获取html
                         if (resp.textPath) {
                             commonService.getHTML($scope, resp.textPath);
+                            $scope.model.path = resp.textPath;
                         }
                     },
                     error: function (err) {
@@ -92,7 +94,6 @@ define([''], function () {
 
             // 获取HTML回调
             $scope.getHtmlCallback = function (text) {
-                console.log(text);
                 $scope.model.content = text;
             };
 
@@ -145,7 +146,7 @@ define([''], function () {
                         if (ImgObj.file !== '') {
                             uploadImg();
                         } else {
-                            commonService.updateHTML($scope, $scope.model.content);
+                            commonService.updateHTML($scope, $scope.model.content, $scope.model.path);
                         }
                     } else {
                         if (ImgObj.file === '') {
@@ -156,7 +157,7 @@ define([''], function () {
                     }
                 } else {
                     if (initInfo.initObj) {
-                        commonService.updateHTML($scope, $scope.model.content);
+                        commonService.updateHTML($scope, $scope.model.content, $scope.model.path);
                     } else {
                         commonService.uploadHTML($scope, $scope.model.content);
                     }
@@ -229,7 +230,7 @@ define([''], function () {
                     success: function (resp) {
                         ImgObj.path = resp;
                         if (initInfo.initObj) {
-                            commonService.updateHTML($scope, $scope.model.content);
+                            commonService.updateHTML($scope, $scope.model.content, $scope.model.path);
                         } else {
                             commonService.uploadHTML($scope, $scope.model.content);
                         }
