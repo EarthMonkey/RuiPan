@@ -27,6 +27,7 @@ define([''], function () {
                 $scope.selectedEdu = selected;
                 $scope.filterSp = Sp_Map[selected.index];
                 $scope.selectedSp = $scope.filterSp[0];
+                getData();
             } else {
                 $scope.selectedSp = selected;
                 getData();
@@ -103,15 +104,15 @@ define([''], function () {
 
         var fields = [
             {id: 'ranking', label: '排名名次'},
-            {id: 'name', label: '院校名称', readonly: true},
+            {id: 'name', label: '院校名称', type: 'combox', options: []},
             {id: 'scoreRequirements', label: '分数要求'},
             {id: 'applicationDifficulty', label: '申请难度'}
         ];
         // 增加
         $scope.addRank = function () {
-            commonService.openTextForm('').result.then(function (data) {
+            commonService.openTextForm('添加排名信息', fields).result.then(function (data) {
                 
-            })
+            });
         };
 
         // 修改

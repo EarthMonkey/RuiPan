@@ -553,3 +553,9 @@ th .fa {
     bottom: -15px;
     border: 1px solid #afafaf;
 }
+
+.preview_img_form {
+    width: 340px !important;
+    height: 190px !important;
+    border: 1px solid #afafaf;
+}
