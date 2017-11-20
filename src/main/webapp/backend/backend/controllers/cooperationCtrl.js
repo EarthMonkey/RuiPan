@@ -205,6 +205,10 @@ define([''], function () {
         // 获取小分类
         getCountry();
         function getCountry() {
+
+            $scope.selectedCoun = '';
+            $scope.filterCountry = [];
+
             $.ajax({
                 url: '/CooperativeEducation/getSubclassificationByCategory?category=' + $scope.selectedType,
                 type: 'GET',
@@ -225,7 +229,7 @@ define([''], function () {
         $scope.filterClick = function (syb, selected) {
             if (syb == 0) {
                 $scope.selectedType = selected;
-                getData();
+                getCountry();
             } else {
                 $scope.selectedCoun = selected;
                 getData();
@@ -233,6 +237,10 @@ define([''], function () {
         };
 
         function getData() {
+
+            if (!$scope.selectedCoun.id) {
+                return;
+            }
 
             $.ajax({
                 url: '/CooperativeEducation/getCooperativeSchemeByCcid?ccid=' + $scope.selectedCoun.id,
@@ -248,8 +256,61 @@ define([''], function () {
 
         }
 
+        // 增加合作方
+        $scope.addCoop = function () {
+
+            var coopFields = [
+                {id: 'subclassification', label: '合作方'}
+            ];
+
+            var title = '添加' + $scope.selectedType + '合作方';
+            commonService.openTextForm(title, coopFields).result
+                .then(function (data) {
+                    data.category = $scope.selectedType;
+
+                    $.ajax({
+                        url: '/CooperativeEducation/addCooperativeCategory',
+                        type: 'POST',
+                        data: data,
+                        success: function (resp) {
+                            $scope.filterCountry.push(resp);
+                            showMess('success', '添加成功');
+                        }
+                    })
+                });
+
+        };
+
+        // 删除合作方
+        $scope.delCoop = function (item, pos) {
+
+            commonService.confirm('合作方：' + item.subclassification).result
+                .then(function (resp) {
+                    if (resp) {
+                        $.ajax({
+                            url: '/CooperativeEducation/deleteCooperativeCategory?id=' + item.id,
+                            type: 'DELETE',
+                            success: function () {
+                                $scope.filterCountry.splice(pos, 1);
+                                showMess('success', '删除成功');
+
+                                if ($scope.selectedCoun.id !== $scope.filterCountry[0].id) {
+                                    $scope.selectedCoun = $scope.filterCountry[0];
+                                    getData();
+                                }
+                            },
+                            error: function (err) {
+                                console.log(err);
+                                showMess('danger', '删除失败');
+                            }
+                        })
+                    }
+                });
+
+        };
+
         var methodField = [
-            {id: "title", label: '方案标题', placeholder: '单申ESL课程'},
+            {id: "title", label: '方案名称'},
             {id: 'synopsis', label: '方案导语'},
             {id: 'thumbnail', label: '宣传图片', type: 'img'}
         ];
@@ -258,7 +319,7 @@ define([''], function () {
         $scope.addMethod = function () {
 
             var initInfo = {
-                title: '添加' + $scope.selectedCoun.fcsubclassification + $scope.selectedType + '合作办学方案',
+                title: '添加' + $scope.selectedCoun.subclassification + $scope.selectedType + '合作办学方案',
                 fields: methodField,
                 backState: 'backend.cooperation',
                 ajaxUrl: '/CooperativeEducation/addCooperativeScheme',
@@ -273,7 +334,7 @@ define([''], function () {
         $scope.modMethod = function (item) {
 
             var initInfo = {
-                title: '添加' + $scope.selectedCoun.fcsubclassification + $scope.selectedType + '合作办学方案',
+                title: '添加' + $scope.selectedCoun.subclassification + $scope.selectedType + '合作办学方案',
                 fields: methodField,
                 backState: 'backend.cooperation',
                 ajaxUrl: '/CooperativeEducation/updateCooperativeScheme',
@@ -296,7 +357,7 @@ define([''], function () {
                     if (resp) {
                         $.ajax({
                             url: '/CooperativeEducation/deleteCooperativeScheme?id=' + item.id,
-                            type: 'GET',
+                            type: 'DELETE',
                             success: function () {
                                 $scope.methodList.splice(pos, 1);
                                 showMess('success', '删除成功');

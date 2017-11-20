@@ -85,8 +85,33 @@
         <div class="filter_div">
             <span class="filter_tip block">合作方: </span>
             <span class="filter_option" ng-repeat="fc in filterCountry" ng-click="filterClick(1, fc)"
-                  ng-class="{active: selectedCoun.id==fc.id}">{{fc.fcsubclassification}}</span>
+                  ng-class="{active: selectedCoun.id==fc.id}">{{fc.subclassification}}</span>
         </div>
+    </div>
+
+    <div class="h_title" style="margin-top: 50px;">
+        <h2>合作方列表</h2>
+    </div>
+
+    <!-- 合作方列表 -->
+    <div>
+        <table class="table table-hover">
+            <thead>
+            <th>合作方</th>
+            <th class="action_col"><a ng-click="addCoop()"><i class="fa fa-plus"></i>添加</a></th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in filterCountry track by $index">
+                <td>{{item.subclassification}}</td>
+                <td>
+                    <div class="table_mod"><a ng-click="delCoop(item, $index)">删除</a></div>
+                </td>
+            </tr>
+            <tr ng-if="filterCountry.length==0">
+                <td class="no_data" colspan="2">无数据</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 
     <div class="h_title" style="margin-top: 50px;">
@@ -100,11 +125,11 @@
             <th>标题</th>
             <th style="width: 180px;">宣传图片</th>
             <th>导语</th>
-            <th class="action_col"><a><i class="fa fa-plus"></i>添加</a></th>
+            <th class="action_col"><a ng-click="addMethod()"><i class="fa fa-plus"></i>添加</a></th>
             </thead>
             <tbody>
             <tr ng-repeat="item in methodList track by $index">
-                <td><a ng-click="getMethod()">{{item.title}}</a></td>
+                <td><a ng-click="getMethod(item)">{{item.title}}</a></td>
                 <td>
                     <div class="photo_preview">
                         <img ng-src="{{'upload/images/' + item.thumbnail}}" alt="图片加载失败">
