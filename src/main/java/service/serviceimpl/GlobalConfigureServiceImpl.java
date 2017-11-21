@@ -24,21 +24,25 @@ public class GlobalConfigureServiceImpl implements GlobalConfigureService{
 
     @Override
     public GlobalConfigure getConfigureByKey(String key) {
-        return null;
+        return globalConfigureDao.getDistinctByKey(key);
     }
 
     @Override
     public GlobalConfigure addConfigure(GlobalConfigure globalConfigure) {
-        return null;
+        return globalConfigureDao.saveAndFlush(globalConfigure);
     }
 
     @Override
     public GlobalConfigure updateConfigure(GlobalConfigure globalConfigure) {
-        return null;
+        return globalConfigureDao.saveAndFlush(globalConfigure);
     }
 
     @Override
     public String deleteConfigure(Integer id) {
-        return null;
+        if(globalConfigureDao.exists(id)){
+            globalConfigureDao.delete(id);
+            return "success";
+        }
+        return "not_exist";
     }
 }
