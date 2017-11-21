@@ -193,7 +193,6 @@ define([''], function () {
                 url: '/Consultant/getByGid?gid=' + GID,
                 type: 'GET',
                 success: function (resp) {
-                    console.log(resp);
                     $scope.arrangeList = resp;
                 },
                 error: function (err) {

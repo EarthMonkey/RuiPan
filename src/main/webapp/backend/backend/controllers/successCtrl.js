@@ -23,6 +23,8 @@ define([''], function () {
 
         var Consult_Map = []; // 顾问map
 
+        var Case_Map = []; // 案例map
+
         // 获取所有顾问
         $.ajax({
             url: '/Consultant/get',
@@ -134,12 +136,19 @@ define([''], function () {
                 return;
             }
 
+            Case_Map = [];
+
             // 获取所有成功案例
             $.ajax({
                 url: '/SuccessfulCase/getSuccessfulCaseByPid?pid=' + $scope.selectedSp.pid,
                 type: 'GET',
                 success: function (resp) {
                     $scope.successList = resp;
+
+                    resp.forEach(function (item) {
+                        Case_Map.push(item.name + ' @' + item.id);
+                    });
+
                 },
                 error: function (err) {
                     console.log(err);
@@ -261,23 +270,85 @@ define([''], function () {
         // 增加推荐
         $scope.addRec = function () {
 
+            var field = [
+                {id: 'slogan', label: '推荐标语', type: 'textarea'},
+                {id: 'case', label: '选择案例', type: 'combox', options: Case_Map}
+            ];
+
+            commonService.openTextForm('增加推荐', field).result
+                .then(function (data) {
+                    data.rid = data.case.split(' @')[1];
+                    delete data.case;
+
+                    $.ajax({
+                        url: '/SuccessfulCase/addRecommendSuccessfulCase',
+                        type: 'POST',
+                        data: data,
+                        success: function (resp) {
+                            $scope.recomendList.unshift(resp);
+                            showMess('success', '添加成功');
+                        },
+                        error: function (err) {
+                            console.log(err);
+                            showMess('danger', '添加失败');
+                        }
+                    })
+                });
+
         };
 
         // 修改推荐
         $scope.modRec = function (item, pos) {
+            var field = [
+                {id: 'slogan', label: '推荐标语', type: 'textarea'}
+            ];
 
+            commonService.openTextForm('增加推荐', field, {slogan: item.slogan}).result
+                .then(function (data) {
+                    $.ajax({
+                        url: '/SuccessfulCase/updateRecommendSuccessfulCase',
+                        type: 'PUT',
+                        data: {
+                            id: item.id,
+                            rid: item.rid,
+                            slogan: data.slogan
+                        },
+                        success: function () {
+                            item.slogan = data.slogan;
+                            showMess('success', '修改成功');
+                        },
+                        error: function (err) {
+                            console.log(err);
+                            showMess('danger', '修改失败');
+                        }
+                    })
+                });
         };
 
         // 删除推荐
         $scope.delRec = function (item, pos) {
 
+            commonService.confirm('推荐案例：' + item.successfulCaseVO.name).result
+                .then(function (resp) {
+                    if (resp) {
+
+                        $.ajax({
+                            url: '/SuccessfulCase/deleteRecommendSuccessfulCase?id=' + item.id,
+                            type: 'DELETE',
+                            success: function () {
+                                $scope.recomendList.splice(pos, 1);
+                                showMess('success', '删除成功');
+                            },
+                            error: function (err) {
+                                console.log(err);
+                                showMess('danger', '删除失败');
+                            }
+                        })
+
+                    }
+                });
+
         };
-
-        // 查看推荐
-        $scope.getRec = function (item) {
-
-        };
-
 
         function showMess(type, data) {
             commonService.showMessage($scope, {

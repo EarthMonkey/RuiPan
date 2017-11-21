@@ -82,20 +82,23 @@
     <div style="margin-top: 30px;">
         <table class="table table-hover">
             <thead>
-            <th style="min-width: 130px;">推荐标语</th>
-            <th>案例信息</th>
-            <th style="min-width: 70px;">推荐时间</th>
+            <th>推荐标语</th>
+            <th>案例</th>
+            <th>推荐时间</th>
             <th class="action_col"><a ng-click="addRec()"><i class="fa fa-plus"></i>添加</a></th>
             </thead>
             <tbody>
-            <tr ng-repeat="item in [0,1,2,3] track by $index">
-                <td><a>出色文书呈现学生的优秀</a></td>
-                <td>出色文书呈现学生的优秀出色文书呈现学生的优秀出色文书呈现学生的优秀出色文书呈现学生的优秀</td>
-                <td>2017-11-15</td>
+            <tr ng-repeat="item in recomendList track by $index">
+                <td>{{item.slogan}}</td>
+                <td><a ng-click="getSuc(item.successfulCaseVO)">{{item.successfulCaseVO.name}}成功案例</a></td>
+                <td>{{item.recommendAt}}</td>
                 <td>
                     <div class="table_mod border"><a ng-click="modRec(item, $index)">修改</a></div>
                     <div class="table_mod"><a ng-click="delRec(item, $index)">删除</a></div>
                 </td>
+            </tr>
+            <tr ng-if="recomendList.length==0">
+                <td class="no_data" colspan="4">无数据</td>
             </tr>
             </tbody>
         </table>
