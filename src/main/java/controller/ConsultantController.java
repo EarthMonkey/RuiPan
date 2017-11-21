@@ -196,6 +196,7 @@ public class ConsultantController {
     public ConsultantBusiness addConsultantBusinessByGid(Integer cid, Integer gid){
         ConsultantBusiness consultantBusiness=new ConsultantBusiness();
         consultantBusiness.setCid(cid);
+        consultantBusiness.setBusinessType(ConsultantBusinesType.ClassifyByGrade);
         consultantBusiness.setBid(gid);
         return consultantService.addConsultantBusiness(consultantBusiness);
     }
@@ -206,6 +207,7 @@ public class ConsultantController {
     public ConsultantBusiness addConsultantBusinessByPid(Integer cid, Integer pid){
         ConsultantBusiness consultantBusiness=new ConsultantBusiness();
         consultantBusiness.setCid(cid);
+        consultantBusiness.setBusinessType(ConsultantBusinesType.ClassifyByProfession);
         consultantBusiness.setBid(pid);
         return consultantService.addConsultantBusiness(consultantBusiness);
     }

@@ -10,6 +10,8 @@ public class SuccessfulCaseVO {
     private Integer pid;
     private Integer sid;
     private Integer cid;
+    private String schoolName;
+    private String consultantName;
     private String name;
     private String degree;
     private String enrollmentTime;
@@ -20,6 +22,7 @@ public class SuccessfulCaseVO {
     private String textPath;
     private Integer flag;
     private Timestamp updateAt;
+
 
     public SuccessfulCaseVO() {
     }
@@ -54,6 +57,22 @@ public class SuccessfulCaseVO {
 
     public void setCid(Integer cid) {
         this.cid = cid;
+    }
+
+    public String getSchoolName() {
+        return schoolName;
+    }
+
+    public void setSchoolName(String schoolName) {
+        this.schoolName = schoolName;
+    }
+
+    public String getConsultantName() {
+        return consultantName;
+    }
+
+    public void setConsultantName(String consultantName) {
+        this.consultantName = consultantName;
     }
 
     public String getName() {

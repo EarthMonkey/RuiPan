@@ -54,6 +54,8 @@ public class SuccessfulCaseServiceImpl implements SuccessfulCaseService{
         for (SuccessfulCase successfulCase:successfulCases) {
             SuccessfulCaseVO successfulCaseVO=new SuccessfulCaseVO();
             successfulCaseVO.update(successfulCase);
+            successfulCaseVO.setSchoolName(successfulCase.getSchoolBySid().getCollegeName());
+            successfulCaseVO.setConsultantName(successfulCase.getConsultantByCid().getName());
             result.add(successfulCaseVO);
         }
         return result;
