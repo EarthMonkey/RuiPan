@@ -37,28 +37,24 @@
     <!-- 案例列表 -->
     <div style="margin-top: 30px;">
         <table class="table table-hover">
-            <thead>
+            <thead class="limit_min_width">
             <th>成功案例</th>
-            <th>国家</th>
             <th>录取学校</th>
-            <th>专业</th>
-            <th>学位</th>
+            <th style="min-width: 40px;">学位</th>
             <th>语言成绩</th>
             <th>GPA成绩</th>
-            <th>GMAT/SAT/..</th>
+            <th style="min-width: 95px;">GMAT/SAT/..</th>
             <th>本科专业</th>
             <th>录取时间</th>
             <th>服务顾问</th>
-            <th style="width: 110px;">
-                <a ng-click=""><i class="fa fa-plus"></i>添加</a>
+            <th style="width: 110px; min-width: 110px;">
+                <a ng-click="addSuc()"><i class="fa fa-plus"></i>添加</a>
             </th>
             </thead>
             <tbody>
             <tr ng-repeat="item in successList track by $index">
                 <td><a ng-click="getSuc(item)">{{item.name}}成功案例</a></td>
-                <td>{{item.country}}</td>
                 <td>{{item.school}}</td>
-                <td>{{item.sp}}</td>
                 <td>{{item.degree}}</td>
                 <td>{{item.languageScore}}</td>
                 <td>{{item.gpa}}</td>

@@ -28,16 +28,16 @@
                     <textarea ng-disabled="config.readonly" ng-model="model[item.id]"></textarea>
                 </div>
 
-                <div class="btn-group combox" ng-if="item.type=='combox'">
+                <div class="btn-group combox" ng-if="item.type=='combox'" style="margin-top: -15px;">
                     <label>{{item.label}}: </label>
                     <div uib-dropdown class="inner_combox">
                         <button id="btn-append-to-body" type="button" class="btn btn-default" uib-dropdown-toggle
                                 ng-disabled="config.readonly">
-                            {{model[item.id]}} <span class="fa fa-caret-down"></span>
+                            {{comboxLabel[item.id]}} <span class="fa fa-caret-down"></span>
                         </button>
                         <ul class="dropdown-menu" uib-dropdown-menu aria-labelledby="btn-append-to-body">
                             <li ng-repeat="op in item.options" ng-click="comboxSelect(op, item.id)">
-                                <a>{{op}}</a>
+                                <a>{{op.label}}</a>
                             </li>
                         </ul>
                     </div>

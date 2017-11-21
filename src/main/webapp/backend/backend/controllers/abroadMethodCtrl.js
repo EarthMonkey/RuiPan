@@ -192,9 +192,16 @@ define([''], function () {
                 })
         };
 
-        var comboxOpt = ["初一在读", '初二在读', '初三在读', '高一在读', '高二在读', '高三在读',
+        var comboxArr = ["初一在读", '初二在读', '初三在读', '高一在读', '高二在读', '高三在读',
             '大一在读', '大二在读', '大三在读', '大四在读', '大学毕业N年', '大专在读/毕业',
             '研一在读', '研二在读/毕业'];
+        var comboxOpt = [];
+        comboxArr.forEach(function (item) {
+            comboxOpt.push({
+                id: item,
+                label: item
+            })
+        });
 
         var methodField = [
             {id: 'subdivisionGrade', label: '年级分类', type: 'combox', options: comboxOpt},
