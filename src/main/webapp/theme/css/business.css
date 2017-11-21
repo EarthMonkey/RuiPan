@@ -2,7 +2,6 @@
  * styles of all business
  */
 
-
 /* abroad */
 .board {
     width: 100%;
@@ -526,7 +525,7 @@
 }
 
 .dialog_outer {
-    width: 620px;
+    width: 610px;
     margin-left: 25px;
     display: inline-block;
     vertical-align: top;
@@ -596,7 +595,7 @@
 
 /* 就业前景 */
 .prospect_container {
-    width: 50%;
+    width: 49.5%;
     min-height: 350px;
     display: inline-block;
     vertical-align: top;
@@ -607,7 +606,7 @@
 }
 
 .prospect_right {
-    margin-left: -5px;
+    margin-left: -7px;
     border-left: 4px solid #197bc0;
     color: #c01e5c;
     padding-left: 160px;
@@ -1405,8 +1404,8 @@ tbody.tr_clickable tr:hover {
 }
 
 .con_each_brief {
-    width: 470px;
-    margin: 30px 39px;
+    width: 469px;
+    margin: 30px 38px;
     display: inline-block;
     vertical-align: top;
 }
@@ -1722,4 +1721,19 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 
 .article {
     font-size: 16px;
+}
+
+/* 联系我们 */
+.fixed_col_7 {
+    padding-right: 35px;
+    width: 58%;
+    display: inline-block;
+    vertical-align: top
+}
+
+.fixed_col_5 {
+    padding-left: 35px;
+    width: 41%;
+    display: inline-block;
+    vertical-align: top;
 }
