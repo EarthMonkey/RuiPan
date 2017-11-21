@@ -60,4 +60,6 @@ public interface ConsultantService {
 
     //根据顾问业务id删除一条顾问业务
     public String deleteConsultantBusiness(Integer id);
+
+    public String deleteConsultantBusinessByBid(String category,Integer bid,Integer cid);
 }

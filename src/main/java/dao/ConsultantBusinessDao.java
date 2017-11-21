@@ -15,4 +15,6 @@ public interface ConsultantBusinessDao extends JpaRepository<ConsultantBusiness,
 
     @Query("select distinct cid from ConsultantBusiness where businessType=?1 and bid=?2")
     List<Integer> getConsultantIdByBid(String businessType,Integer bid);
+
+    public List<ConsultantBusiness> findAllByBusinessTypeAndBidAndCid(String businessType,Integer bid,Integer cid);
 }

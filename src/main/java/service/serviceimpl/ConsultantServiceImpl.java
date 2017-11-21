@@ -196,4 +196,14 @@ public class ConsultantServiceImpl implements ConsultantService {
         }
         return "not_exist";
     }
+
+    @Override
+    public String deleteConsultantBusinessByBid(String category, Integer bid, Integer cid) {
+        List<ConsultantBusiness> consultantBusinesses=consultantBusinessDao.findAllByBusinessTypeAndBidAndCid(category,bid,cid);
+        if(consultantBusinesses!=null&&consultantBusinesses.size()!=0){
+            consultantBusinessDao.delete(consultantBusinesses);
+            return "success";
+        }
+        return "not_exist";
+    }
 }

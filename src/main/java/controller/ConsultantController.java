@@ -1,5 +1,6 @@
 package controller;
 
+import constant.ConsultantBusinesType;
 import model.AnswerForOrder;
 import model.ConsultantBusiness;
 import model.OrderForConsultant;
@@ -214,5 +215,19 @@ public class ConsultantController {
     @SystemLog(module = "顾问管理", methods = "删除顾问业务")
     public String deleteConsultantBusiness(Integer id){
         return consultantService.deleteConsultantBusiness(id);
+    }
+
+    //根据年级id删除一条顾问业务
+    @DeleteMapping(value = "/deleteConsultantBusinessByGid")
+    @SystemLog(module = "顾问管理", methods = "删除顾问业务")
+    public String deleteConsultantBusinessByGid(Integer gid,Integer cid){
+        return consultantService.deleteConsultantBusinessByBid(ConsultantBusinesType.ClassifyByGrade,gid,cid);
+    }
+
+    //根据专业id删除一条顾问业务
+    @DeleteMapping(value = "/deleteConsultantBusinessByPid")
+    @SystemLog(module = "顾问管理", methods = "删除顾问业务")
+    public String deleteConsultantBusinessByPid(Integer pid,Integer cid){
+        return consultantService.deleteConsultantBusinessByBid(ConsultantBusinesType.ClassifyByProfession,pid,cid);
     }
 }
