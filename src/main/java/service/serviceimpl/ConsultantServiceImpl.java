@@ -117,7 +117,9 @@ public class ConsultantServiceImpl implements ConsultantService {
 
     @Override
     public void updateConsultant(ConsultantVO consultantVO) {
+        Consultant consultantOld=consultantDao.findOne(consultantVO.getId());
         Consultant consultant = consultantVO.toEntity();
+        consultant.setIsRecommend(consultantOld.getIsRecommend());
         consultantDao.saveAndFlush(consultant);
     }
 
