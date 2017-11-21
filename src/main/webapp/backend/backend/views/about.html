@@ -170,15 +170,16 @@
                     <tbody>
                     <tr ng-repeat="item in hasReply track by $index">
                         <td>{{item.content}}</td>
-                        <td>
-                            <div class="table_mod"><a ng-click="delToReply(item, $index)">删除</a></div>
-                        </td>
+
                         <td>{{item.name}}</td>
                         <td>{{item.email}}</td>
                         <td>{{item.phone}}</td>
                         <td>{{item.contactAt}}</td>
                         <td>{{item.replyMessage}}</td>
                         <td>{{item.replyAt}}</td>
+                        <td>
+                            <div class="table_mod"><a ng-click="delToReply(item, $index)">删除</a></div>
+                        </td>
                     </tr>
                     <tr ng-if="toReply.length==0">
                         <td class="no_data" colspan="7">无数据</td>

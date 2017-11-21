@@ -1520,6 +1520,11 @@ tbody.tr_clickable tr:hover {
     margin: 20px 0;
 }
 
+.each_cert img {
+    width: 100%;
+    height: 210px;
+}
+
 .cert_center {
     margin: 20px 100px;
 }
