@@ -52,7 +52,7 @@
             <!--<property name="hibernate.connection.url" value="jdbc:mysql://localhost:3306/ruipan?useUnicode=true&amp;characterEncoding=UTF-8" />-->
             <!--<property name="hibernate.connection.username" value="root" />-->
             <!--<property name="hibernate.connection.password" value="1215" />-->
-            <property name="hibernate.hbm2ddl.auto" value="update" />
+            <property name="hibernate.hbm2ddl.auto" value="none" />
             <property name="hibernate.show_sql" value="false" />
             <property name="hibernate.format_sql" value="false"/>
         </properties>
