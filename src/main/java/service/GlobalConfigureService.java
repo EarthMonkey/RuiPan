@@ -13,9 +13,9 @@ public interface GlobalConfigureService {
 
     public GlobalConfigure getConfigureByKey(String key);
 
-    public GlobalConfigure addConfigure(GlobalConfigure globalConfigure);
+    public GlobalConfigure addConfigure(String key,String value);
 
-    public GlobalConfigure updateConfigure(GlobalConfigure globalConfigure);
+    public GlobalConfigure updateConfigure(Integer id,String value);
 
     public String deleteConfigure(Integer id);
 }

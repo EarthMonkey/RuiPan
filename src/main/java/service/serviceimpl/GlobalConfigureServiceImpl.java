@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import service.GlobalConfigureService;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -28,12 +29,19 @@ public class GlobalConfigureServiceImpl implements GlobalConfigureService{
     }
 
     @Override
-    public GlobalConfigure addConfigure(GlobalConfigure globalConfigure) {
+    public GlobalConfigure addConfigure(String key,String value) {
+        GlobalConfigure globalConfigure=new GlobalConfigure();
+        globalConfigure.setKey(key);
+        globalConfigure.setValue(value);
+        globalConfigure.setUpdateAt(new Timestamp(System.currentTimeMillis()));
         return globalConfigureDao.saveAndFlush(globalConfigure);
     }
 
     @Override
-    public GlobalConfigure updateConfigure(GlobalConfigure globalConfigure) {
+    public GlobalConfigure updateConfigure(Integer id,String value) {
+        GlobalConfigure globalConfigure=globalConfigureDao.findOne(id);
+        globalConfigure.setValue(value);
+        globalConfigure.setUpdateAt(new Timestamp(System.currentTimeMillis()));
         return globalConfigureDao.saveAndFlush(globalConfigure);
     }
 
