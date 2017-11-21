@@ -167,7 +167,7 @@ public class SuccessfulCaseVO {
         languageScore=successfulCase.getLanguageScore();
         gpa=successfulCase.getGpa();
         gmatSatGre=successfulCase.getGmatSatGre();
-        undergraduateMajor=successfulCase.getTextPath();
+        undergraduateMajor=successfulCase.getUndergraduateMajor();
         textPath=successfulCase.getTextPath();
         flag=successfulCase.getFlag();
         updateAt=successfulCase.getUpdateAt();
