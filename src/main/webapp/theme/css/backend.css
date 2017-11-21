@@ -343,6 +343,7 @@ th .fa {
 
 .heart_div .fa {
     cursor: pointer;
+    font-size: 18px;
 }
 
 .heart_div .fa-heart {
@@ -565,4 +566,8 @@ th .fa {
 .preview_img_form img {
     width: 100%;
     height: 150px;
+}
+
+.limit_min_width th {
+    min-width: 75px;
 }

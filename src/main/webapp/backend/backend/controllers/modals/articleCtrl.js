@@ -15,8 +15,12 @@ define([''], function () {
              * modify：id
              * */
 
+            $scope.comboxLabel = {};
+            var comboxPos = {};
+
             $scope.comboxSelect = function (option, id) {
-                $scope.model[id] = option;
+                $scope.model[id] = option.id;
+                $scope.comboxLabel[id] = option.label;
             };
 
             // 输入框
@@ -37,13 +41,6 @@ define([''], function () {
                 readonly: initInfo.readonly
             };
 
-            if (initInfo.combox) {
-                $scope.combox.id = initInfo.combox.id;
-                $scope.combox.options = initInfo.combox.options;
-                $scope.combox.label = initInfo.combox.label;
-                // 绑定数据模型
-                $scope.model[initInfo.combox.id] = initInfo.combox.options[0];
-            }
             $scope.fields = initInfo.fields;
             $scope.title = initInfo.title;
 
@@ -56,7 +53,10 @@ define([''], function () {
                         file: '',
                         path: ''
                     };
-                    break;
+                }
+                if (initInfo.fields[i].type === 'combox') {
+                    $scope.comboxLabel[initInfo.fields[i].id] = '';
+                    comboxPos[initInfo.fields[i].id] = i;
                 }
             }
 
@@ -74,6 +74,15 @@ define([''], function () {
                         if (resp.textPath) {
                             commonService.getHTML($scope, resp.textPath);
                             $scope.model.path = resp.textPath;
+                        }
+                        // 初始化combox
+                        for (var key in $scope.comboxLabel) {
+                            var opts = initInfo.fields[comboxPos[key]].options;
+                            for (var i = 0; i < opts.length; i++) {
+                                if (opts[i].id == resp[key]) {
+                                    $scope.comboxLabel[key] = opts[i].label;
+                                }
+                            }
                         }
                     },
                     error: function (err) {

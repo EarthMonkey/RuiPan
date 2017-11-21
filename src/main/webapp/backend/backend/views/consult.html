@@ -2,6 +2,11 @@
 
 <div class="ui_view">
 
+    <div class="message" ng-show="message!=''"
+         ng-class="{'bg-success':message.type=='success', 'bg-danger': message.type=='danger'}">
+        {{message.content}}
+    </div>
+
     <div class="h_title">
         <h2>顾问管理</h2>
     </div>
@@ -10,29 +15,44 @@
     <div>
         <table class="table table-hover">
             <thead>
-            <th>顾问列表</th>
-            <th class="action_col"><a><i class="fa fa-plus"></i>添加</a></th>
+            <th>头像</th>
+            <th>姓名</th>
+            <th>国籍</th>
+            <th>专业</th>
+            <th>工作时长</th>
+            <th>获得offer</th>
+            <th>成功率</th>
+            <th>简介</th>
+            <th class="action_col"><a ng-click="addConsult()"><i class="fa fa-plus"></i>添加</a></th>
             </thead>
             <tbody>
-            <tr ng-repeat="item in consultIntro">
+            <tr ng-repeat="item in consultList track by $index">
                 <td>
                     <div class="consult_photo_preview">
-                        <img src="/theme/source/consult-1.jpg">
-                    </div>
-                    <div class="consult_intro">
-                        顾问信息，介绍等
+                        <img ng-src="{{'upload/images/' + item.headSculpture}}" alt="图片加载错误">
                     </div>
                 </td>
+                <td><a ng-click="getConsult(item)">{{item.name}}</a></td>
+                <td>{{item.country}}</td>
+                <td>{{item.profession}}</td>
+                <td>{{item.workingHours}}</td>
+                <td>{{item.offerNumber}}</td>
+                <td>{{item.applicationSuccessRate}}</td>
+                <td>{{item.synopsis}}</td>
                 <td>
                     <div class="heart_div">
                         <i class="fa" ng-click="star(item)"
-                           ng-class="{'fa-heart': item.starred, 'fa-heart-o': !item.starred}"></i>
+                           ng-class="{'fa-heart': item.isRecommend=='true', 'fa-heart-o': item.isRecommend=='false'}"></i>
+                        {{item.isRecommend=='true' ? '推荐' : ''}}
                     </div>
                     <div>
-                        <div class="table_mod border"><a>修改</a></div>
-                        <div class="table_mod"><a>删除</a></div>
+                        <div class="table_mod border"><a ng-click="modConsult(item)">修改</a></div>
+                        <div class="table_mod"><a ng-click="delConsult(item, pos)">删除</a></div>
                     </div>
                 </td>
+            </tr>
+            <tr ng-if="consultList.length==0">
+                <td class="no_data" colspan="9">无数据</td>
             </tr>
             </tbody>
         </table>
@@ -47,12 +67,12 @@
         <div class="filter_div">
             <span class="filter_tip">国家: </span>
             <span class="filter_option" ng-repeat="fc in filterCountry" ng-click="filterClick(0, fc)"
-                  ng-class="{active: selectedCoun==fc.id}">{{fc.label}}</span>
+                  ng-class="{active: selectedCoun==fc}">{{fc}}</span>
         </div>
         <div class="filter_div">
             <span class="filter_tip">学历: </span>
             <span class="filter_option" ng-repeat="fe in filterEdu" ng-click="filterClick(1, fe)"
-                  ng-class="{active: selectedEdu==fe.id}">{{fe.label}}</span>
+                  ng-class="{active: selectedEdu==fe}">{{fe}}</span>
         </div>
     </div>
 
@@ -60,15 +80,18 @@
     <div style="margin-top: 30px;">
         <table class="table table-hover">
             <thead>
-            <th>方案列表</th>
-            <th class="action_col"><a><i class="fa fa-plus"></i>添加</a></i></th>
+            <th>顾问姓名</th>
+            <th class="action_col"><a ng-click="addArrange()"><i class="fa fa-plus"></i>添加</a></i></th>
             </thead>
             <tbody>
-            <tr ng-repeat="temp in [0,1,2,3]">
-                <td><a>安排顾问列表</a></td>
+            <tr ng-repeat="item in arrangeList track by $index">
+                <td><a ng-click="getConsult(item)">{{item.name}}</a></td>
                 <td>
-                    <div class="table_mod"><a>删除</a></div>
+                    <div class="table_mod"><a ng-click="delArrange(item, $index)">删除</a></div>
                 </td>
+            </tr>
+            <tr ng-if="arrangeList.length==0">
+                <td class="no_data" colspan="2">无数据</td>
             </tr>
             </tbody>
         </table>

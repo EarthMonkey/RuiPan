@@ -8,6 +8,7 @@ define([''], function () {
 
     var abroadCountryCtrl = ['$scope', 'commonService', function ($scope, commonService) {
 
+        // 获取所有国家
         $.ajax({
             url: "/StudyAbroad/getAllCountry",
             type: 'GET',
