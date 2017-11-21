@@ -114,6 +114,6 @@ public class AboutUsController {
     @DeleteMapping(value = "/deleteContactUs")
     @SystemLog(module = "关于我们", methods = "删除消息")
     public String deleteContactUs(Integer id){
-        return aboutUsService.deleteCooperativePartner(id);
+        return aboutUsService.deleteContactUs(id);
     }
 }
