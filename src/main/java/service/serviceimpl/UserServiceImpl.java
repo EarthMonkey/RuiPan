@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import service.UserService;
 import util.GetAddress;
 import util.PasswordEncryption;
+import util.UserValidate;
 import vo.UserVO;
 
 import java.io.UnsupportedEncodingException;
@@ -54,6 +55,7 @@ public class UserServiceImpl implements UserService {
                 String address = getLastLoginAddress(user.getLastLoginIp());
                 userVO.setLastLoginAddress(address);
                 userVO.setLoginMessage("success");
+                userVO.setLicense(UserValidate.getLicense(username));
 
                 //更新该账户登录信息
                 user.setLastLoginTime(new Timestamp(System.currentTimeMillis()));

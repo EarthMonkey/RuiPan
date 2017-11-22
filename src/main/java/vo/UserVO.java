@@ -8,6 +8,7 @@ import java.sql.Timestamp;
 public class UserVO {
 
     private String username;
+    private String license;
     private Timestamp lastLoginTime;
     private String lastLoginAddress;
     private String loginMessage;
@@ -21,6 +22,14 @@ public class UserVO {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getLicense() {
+        return license;
+    }
+
+    public void setLicense(String license) {
+        this.license = license;
     }
 
     public Timestamp getLastLoginTime() {

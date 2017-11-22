@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 import service.UserService;
 import util.GetClientMessageUtils;
 import util.SystemLog;
+import util.UserValidate;
 import vo.UserVO;
 
 import javax.servlet.http.HttpServletRequest;
@@ -21,6 +22,18 @@ public class UserController {
 
     @Autowired
     UserService userService;
+
+    @GetMapping(value = "/validate")
+    public String validate( HttpServletRequest request){
+        if(request.getSession().getAttribute("User")!=null){
+            UserVO userVO=(UserVO)request.getSession().getAttribute("User");
+            if(UserValidate.validate(userVO.getUsername(),userVO.getLicense())){
+                return "true";
+            }
+
+        }
+        return "false";
+    }
 
     @PostMapping(value = "/login")
     @SystemLog(module = "用户管理", methods = "用户登录")
@@ -42,7 +55,6 @@ public class UserController {
         request.getSession(false).invalidate();
         return "logout_success";
     }
-
 
     //修改当前用户密码
     @PutMapping(value = "/changePassword")
