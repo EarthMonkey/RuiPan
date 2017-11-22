@@ -5,7 +5,7 @@
 define([''], function () {
     'use strict';
 
-    var abroadCtrl = ['$scope', '$state', function ($scope, $state) {
+    var abroadCtrl = ['$scope', '$state', '$timeout', function ($scope, $state, $timeout) {
 
         var country = $state.params.country;
         var type = $state.params.type;
@@ -26,26 +26,124 @@ define([''], function () {
         };
         $scope.couType = countryMap[country];
 
+        $scope.condition = [];
 
-        $scope.condition = [
-            {title: 'Top10', score: ['3.0', '95', '320', '700']},
-            {title: 'Top50', score: ['3.0', '95', '320', '700']},
-            {title: 'Top100', score: ['3.0', '95', '320', '700']}
-        ];
+        var couEnMap = {
+            america: '美国',
+            british: '英国',
+            australia: '澳洲',
+            canada: '加拿大',
+            global: '其他'
+        };
 
-        $scope.scoreType = ['GPA', 'TOFEL', 'GRE', 'GMAT'];
+        // 获取GID
+        $.ajax({
+            url: '/StudyAbroad/getGid?country=' + couEnMap[country] + "&grade=" + typeMap[type],
+            type: 'GET',
+            success: function (resp) {
+                getData(resp);
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+
+        function getData(gid) {
+
+            // 硬性条件
+            $.ajax({
+                url: '/StudyAbroad/getHardCondionByGid?gid=' + gid,
+                type: 'GET',
+                success: function (resp) {
+                    var count = 0;
+                    var temp = [];
+                    for (var key in resp) {
+                        if (count < 3) {
+                            temp.push(
+                                {title: key, content: resp[key]}
+                            )
+                        } else {
+                            break;
+                        }
+                        count++;
+                    }
+
+                    $timeout(function () {
+                        $scope.condition = temp;
+                    });
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+
+            // 申请要素
+            $.ajax({
+                url: '/StudyAbroad/getApplicationElementByGid?gid=' + gid,
+                type: 'GET',
+                success: function (resp) {
+                    resp.forEach(function (item) {
+                        if (item.category === "申请基本条件") {
+                            $scope.factorTab[0].synopsis = item.synopsis;
+                        } else if (item.category === '申请材料') {
+                            $scope.factorTab[1].synopsis = item.synopsis;
+                        } else if (item.category === '选校因素') {
+                            $scope.factorTab[2].synopsis = item.synopsis;
+                        } else {
+                            $scope.factorTab[3].synopsis = item.synopsis;
+                        }
+                    });
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+
+            // 研究生申请方案
+            $.ajax({
+                url: '/StudyAbroad/getApplicationSchemeByGid?gid=' + gid,
+                type: 'GET',
+                success: function (resp) {
+                    $scope.programs = resp;
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+
+            // 常见问题
+            $.ajax({
+                url: '/StudyAbroad/getPublishQuestionsByGid?gid=' + gid,
+                type: 'GET',
+                success: function (resp) {
+                    var center = Math.ceil(resp.length / 2);
+                    $scope.problems_r = resp.splice(center);
+                    $scope.problems_l = resp;
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+
+            // 根据gid获取业务顾问
+            $.ajax({
+                url: '/Consultant/getByGid?gid=' + gid,
+                type: 'GET',
+                success: function (resp) {
+                    $timeout(function () {
+                        $scope.consultants = resp;
+                    });
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            })
+        }
+
+        $scope.numberLabel = ['一', '二', '三', '四'];
 
         // 研究生申请方案
-        $scope.programs = [
-            {title: '大四在读', methods: ['申请博士', '申请博士', '单申ESL课程']},
-            {title: '大三在读', methods: ['（ESL）+申请转学', '申请硕士', '申请博士']},
-            {title: '大二在读', methods: ['（ESL）+申请转学', '申请硕士', '申请博士']},
-            {title: '大一在读', methods: ['（ESL）+申请转学', '申请硕士', '申请博士']},
-            {title: '研二在读/毕业', methods: ['申请博士', '申请博士', '单申ESL课程']},
-            {title: '研一在读', methods: ['申请博士', '申请博士', '单申ESL课程']},
-            {title: '大学毕业已工作N年', methods: ['申请博士', '申请博士', '单申ESL课程']},
-            {title: '大专在读/毕业', methods: ['（ESL）+插读大1-3', '（ESL）+专升硕', '单申ESL课程']}
-        ];
+        $scope.programs = [];
 
         $scope.factorTab = [
             {title: '申请基本条件要求', show: true},
@@ -61,66 +159,13 @@ define([''], function () {
             LAST_TAB = tab;
         };
 
-        $scope.baseCondition = [{
-            label: "学术背景",
-            span: "大学本科在读或本科硕士、毕业，建议大学GPA3.0以上"
-        }, {
-            label: "语言成绩",
-            span: "大学本科在读或本科硕士、毕业，建议大学GPA3.0以上"
-        }, {
-            label: "研究生考试",
-            span: "大学本科在读或本科硕士、毕业，建议大学GPA3.0以上"
-        }, {
-            label: "经济担保",
-            span: "大学本科在读或本科硕士、毕业，建议大学GPA3.0以上"
-        }, {
-            label: "实习经历",
-            span: "大学本科在读或本科硕士、毕业，建议大学GPA3.0以上"
-        }];
-
         // 外籍顾问
-        $scope.consultants = [{
-            img: '/theme/source/consult-1.jpg',
-            name: '狼叔',
-            special: '美国普林斯顿大学建筑业',
-            brief: '【公司创始人，领导公司在中国、东南亚、俄罗斯和印度等国家和地区发型了多款手机游戏软件】',
-            order: 127
-        }, {
-            img: '/theme/source/consult-2.jpg',
-            name: 'Daniel',
-            special: '美国普林斯顿大学东亚研究专业',
-            brief: '【公司创始人，领导公司在中国、东南亚、俄罗斯和印度等国家和地区发型了多款手机游戏软件】',
-            order: 127
-        }, {
-            img: '/theme/source/consult-3.jpg',
-            name: 'Adam',
-            special: '美国芝加哥大学哲学专业',
-            brief: '【公司创始人，领导公司在中国、东南亚、俄罗斯和印度等国家和地区发型了多款手机游戏软件】',
-            order: 127
-        }, {
-            img: '/theme/source/consult-4.jpg',
-            name: '休杰克曼',
-            special: '美国威廉姆斯学院生物、中文双学位',
-            brief: '【公司创始人，领导公司在中国、东南亚、俄罗斯和印度等国家和地区发型了多款手机游戏软件】',
-            order: 127
-        }];
+        $scope.consultants = [];
 
         // 问题资讯
         $scope.problems_l = [];
-        for (var i = 0; i < 4; i++) {
-            $scope.problems_l.push({
-                problem: "美国研究生学院录取学生主要参考什么因素？",
-                answer: '美国研究生学院录取学生主要参考成绩和个人因素背景，美国研究生学院录取学生主要参考成绩和个人因素背景'
-            });
-        }
 
         $scope.problems_r = [];
-        for (var i = 0; i < 4; i++) {
-            $scope.problems_r.push({
-                problem: "美国研究生学院录取学生主要参考什么因素？",
-                answer: '美国研究生学院录取学生主要参考成绩和个人因素背景'
-            });
-        }
 
         $scope.expandClick = function (answer) {
             answer.expanded = !answer.expanded;

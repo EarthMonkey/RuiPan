@@ -105,7 +105,7 @@ define([''], function () {
                     console.log(err);
                     showMess('danger', '获取常见问题失败');
                 }
-            })
+            });
         }
 
         // 增加硬性条件
