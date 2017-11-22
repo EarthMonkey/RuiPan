@@ -30,17 +30,19 @@
                 </tr>
                 </thead>
                 <tbody class="tr_clickable">
-                <tr ng-repeat="temp in leftBar track by $index" ng-class="{odd: $index%2==0}"
+                <tr ng-repeat="item in rankList track by $index" ng-class="{odd: $index%2==0}"
                     ng-click="getDetail()">
-                    <td class="rank_td">{{$index}}</td>
+                    <td class="rank_td">{{item.ranking}}</td>
                     <td>
-                        <div class="school_logo"></div>
+                        <div class="school_logo">
+                            <img ng-src="{{'upload/images/' + item.schoolBySid.schoolBadge}}">
+                        </div>
                         <div class="school_name">
-                            <div>宾法尼西亚大学</div>
-                            <span>University of Pennsylvania</span>
+                            <div>{{item.schoolBySid.collegeName}}</div>
+                            <span>{{item.schoolBySid.officialWebsite}}</span>
                         </div>
                     </td>
-                    <td>宾法尼西亚州费城</td>
+                    <td>{{item.schoolBySid.address}}</td>
                     <td class="apply_td">
                         <div><a>咨询录取条件</a></div>
                         <div style="border-left: 1px solid #197bc0"><a>测试录取率</a></div>
