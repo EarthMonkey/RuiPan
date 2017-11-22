@@ -1755,3 +1755,8 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     display: inline-block;
     vertical-align: top;
 }
+
+.auto_width .filter_option {
+    width: auto;
+    padding: 0 10px;
+}
