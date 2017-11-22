@@ -1049,7 +1049,8 @@ tbody.tr_clickable tr:hover {
 }
 
 .pro_each_item img {
-    width: 100%;
+    display: block;
+    width: 240px;
     height: 150px;
 }
 
@@ -1061,6 +1062,8 @@ tbody.tr_clickable tr:hover {
 .pro_each_item .info {
     font-size: 20px;
     color: #9b9b9b;
+    height: 60px;
+    overflow: hidden;
 }
 
 /* 语言培训 */

@@ -5,20 +5,37 @@
 define([''], function () {
     'use strict';
 
-    var promotionCtrl = ['$scope', '$state', '$timeout',function ($scope, $state, $timeout) {
+    var promotionCtrl = ['$scope', '$state', '$timeout', function ($scope, $state, $timeout) {
+
+
+        // 获取轮播图
+        $.ajax({
+            url: '/homepage/getCarouselFigure?category=背景提升',
+            type: 'GET',
+            success: function (resp) {
+                var temp = [];
+                resp.forEach(function (item, i) {
+                    temp.push({
+                        img: 'upload/images/' + item.imagePath,
+                        title: item.title,
+                        text: item.subTitle,
+                        id: i
+                    });
+                });
+                $timeout(function () {
+                    $scope.slides = temp;
+                });
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
 
         // 轮播图
         $scope.myInterval = 3000;
         $scope.noWrapSlides = false;
         $scope.active = 0;
         $scope.slides = [];
-        for (var i = 0; i < 3; i++) {
-            $scope.slides.push({
-                image: '/theme/source/promotion-' + i + '.png',
-                text: 'This is a title',
-                id: i
-            });
-        }
 
         // 左侧导航栏
         $scope.leftBar = [
@@ -45,6 +62,71 @@ define([''], function () {
                 } else {
                     $('.left_bar').removeClass('left_bar_fixed');
                 }
+            }
+        });
+
+        // 获取项目
+        $.ajax({
+            url: '/Promotion/getBackgroundPromoteByCategory?category=游学',
+            type: 'GET',
+            success: function (resp) {
+                console.log(resp);
+                $scope.tourList = resp;
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+
+        // 获取项目
+        $.ajax({
+            url: '/Promotion/getBackgroundPromoteByCategory?category=实习',
+            type: 'GET',
+            success: function (resp) {
+                console.log(resp);
+                $scope.practiceList = resp;
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+
+        // 获取项目
+        $.ajax({
+            url: '/Promotion/getBackgroundPromoteByCategory?category=科研',
+            type: 'GET',
+            success: function (resp) {
+                console.log(resp);
+                $scope.researchList = resp;
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+
+        // 获取项目
+        $.ajax({
+            url: '/Promotion/getBackgroundPromoteByCategory?category=国际义工',
+            type: 'GET',
+            success: function (resp) {
+                console.log(resp);
+                $scope.volunList = resp;
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+
+        // 获取项目
+        $.ajax({
+            url: '/Promotion/getBackgroundPromoteByCategory?category=短期项目',
+            type: 'GET',
+            success: function (resp) {
+                console.log(resp);
+                $scope.proList = resp;
+            },
+            error: function (err) {
+                console.log(err);
             }
         });
 
