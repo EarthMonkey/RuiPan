@@ -5,42 +5,79 @@
 define([''], function () {
     'use strict';
 
-    var homeCtrl = ['$scope', function ($scope) {
+    var homeCtrl = ['$scope', '$state', '$timeout', function ($scope, $state, $timeout) {
 
-            // 轮播图
-            $scope.myInterval = 5000;
-            $scope.noWrapSlides = false;
-            $scope.active = 0;
-            $scope.slides = [{
-                image: '/theme/source/homepage-bg.png',
-                title: '十三年如一日',
-                text: "探索在中国涉外教育服务的道路上",
-                id: 0
-            }, {
-                image: '/theme/source/promotion-0.png',
-                title: '十三年如一日',
-                text: "探索在中国涉外教育服务的道路上",
-                id: 1
-            }];
+        // 轮播图
+        $.ajax({
+            url: '/homepage/getCarouselFigure?category=首页',
+            type: 'GET',
+            success: function (resp) {
+                var temp = [];
+                resp.forEach(function (item, i) {
+                    temp.push({
+                        img: 'upload/images/' + item.imagePath,
+                        title: item.title,
+                        text: item.subTitle,
+                        id: i
+                    });
+                });
+                $timeout(function () {
+                    $scope.slides = temp;
+                });
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
 
-            // country tab
-            $scope.countryTab = [
-                {title: '美国', show: true},
-                {title: '英国'},
-                {title: '澳洲'},
-                {title: '加拿大'}
-            ];
+        // 轮播图
+        $scope.myInterval = 5000;
+        $scope.noWrapSlides = false;
+        $scope.active = 0;
+        $scope.slides = [];
 
-            var LAST_TAB = $scope.countryTab[0];
-            $scope.changeTab = function (tab) {
-                tab.show = true;
-                LAST_TAB.show = false;
-                LAST_TAB = tab;
-            };
+        // country tab
+        $scope.countryTab = [
+            {title: '美国', show: true},
+            {title: '英国'},
+            {title: '澳洲'},
+            {title: '加拿大'}
+        ];
 
-        }
+        var LAST_TAB = $scope.countryTab[0];
+        $scope.changeTab = function (tab) {
+            tab.show = true;
+            LAST_TAB.show = false;
+            LAST_TAB = tab;
+        };
 
-    ];
+        // 获取推荐顾问
+        $.ajax({
+            url: '/Consultant/getRecommendConsultant',
+            type: 'GET',
+            success: function (resp) {
+                resp.splice(5);
+                $timeout(function () {
+                    $scope.consultants = resp;
+                });
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+
+        // 获取合作学校
+        $.ajax({
+            url: '/AboutUs/getCooperativePartner',
+            type: 'GET',
+            success: function (resp) {
+                $scope.coopList = resp;
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+    }];
 
     var homeModule = angular.module('home.config');
     homeModule.controller('homeCtrl', homeCtrl);

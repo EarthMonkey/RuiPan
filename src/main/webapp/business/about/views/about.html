@@ -4,7 +4,7 @@
 <div class="carousel_div home_carousel">
     <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
         <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
-            <img ng-src="{{slide.image}}" style="margin:auto;">
+            <img ng-src="{{slide.img}}" style="margin:auto;">
             <div class="carousel-caption">
                 <h4>{{slide.title}}</h4>
                 <p>{{slide.text}}</p>
@@ -62,13 +62,13 @@
     <div class="title">专业顾问团队</div>
 
     <div class="team_photo_div">
-        <div class="each_photo_div" ng-repeat="temp in [0,1,2,3,4]">
+        <div class="each_photo_div" ng-repeat="item in consultants">
             <div class="each_photo">
-                <!--<img>-->
+                <img ng-src="{{'upload/images/' + item.headSculpture}}" alt="图片加载错误">
             </div>
             <div class="name">
-                Marta Bevacqua
-                <div>Paris, France</div>
+                {{item.name}}
+                <div>{{item.profession}}</div>
             </div>
         </div>
     </div>
@@ -145,7 +145,9 @@
     <!-- 合作伙伴代表 -->
     <div class="cooper_business_title">合作伙伴代表</div>
     <div>
-        <div class="each_present" ng-repeat="temp in [0,1,2,3,4,5,6]"></div>
+        <div class="each_present" ng-repeat="item in coopList">
+            <img ng-src="{{'upload/images/' + item.imagePath}}" alt="图片加载错误">
+        </div>
     </div>
 </div>
 
@@ -164,16 +166,16 @@
     <div class="row" style="margin-top: 70px;">
         <div class="col-md-7 fixed_col_7">
             <div class="each_input">
-                <input type="text" placeholder="您的姓名">
+                <input type="text" ng-model="contactModel.name" placeholder="您的姓名">
             </div>
             <div class="each_input">
-                <input type="text" placeholder="您的邮箱">
+                <input type="text" ng-model="contactModel.email" placeholder="您的邮箱">
             </div>
             <div class="each_input">
-                <input type="text" placeholder="您的电话">
+                <input type="text" ng-model="contactModel.phone" placeholder="您的电话">
             </div>
             <div class="each_input" style="height: 120px;">
-                <textarea placeholder="内容" style="height: 120px;"></textarea>
+                <textarea placeholder="内容" ng-model="contactModel.content" style="height: 120px;"></textarea>
             </div>
         </div>
 
@@ -230,6 +232,9 @@
         </div>
     </div>
 
-    <button class="contact_btn">联系我们</button>
+    <button class="contact_btn" ng-click="contact()">联系我们</button>
+    <p class="bg-success tip_div" ng-show="mesType==='success'">提交成功！请静候我们回复</p>
+    <p class="bg-danger tip_div" ng-show="mesType==='error'">提交失败，请稍后再试</p>
+    <p class="bg-warning tip_div" ng-show="mesType==='warn'">请填写完成信息</p>
 
 </div>

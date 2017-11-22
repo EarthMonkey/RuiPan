@@ -1384,8 +1384,11 @@ tbody.tr_clickable tr:hover {
 .each_photo {
     width: 180px;
     height: 180px;
+}
 
-    background: #afafaf;
+.each_photo img {
+    width: 180px;
+    height: 180px;
 }
 
 .each_photo_div .name {
@@ -1516,6 +1519,11 @@ tbody.tr_clickable tr:hover {
     margin: 0 20px;
 
     background-color: #d8d8d8;
+}
+
+.each_present img {
+    width: 117px;
+    height: 100px;
 }
 
 .honor_title {
@@ -1762,4 +1770,14 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .auto_width .filter_option {
     width: auto;
     padding: 0 10px;
+}
+
+.tip_div {
+    width: 230px;
+    height: 42px;
+    line-height: 42px;
+    text-align: center;
+    font-size: 16px;
+    display: inline-block;
+    margin-left: 10px;
 }

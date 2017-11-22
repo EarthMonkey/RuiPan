@@ -10,18 +10,18 @@
     <div class="language_carousel">
         <div uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides">
             <div uib-slide ng-repeat="slide in slides track by slide.id" index="slide.id">
-                <img ng-src="{{slide.image}}" style="margin:auto;">
+                <img ng-src="{{slide.img}}" style="margin:auto;">
                 <div class="carousel-caption">
-                    <h4>Slide {{slide.id}}</h4>
+                    <h4>{{slide.title}}</h4>
                     <p>{{slide.text}}</p>
                 </div>
             </div>
         </div>
     </div>
     <div class="lang_news_div">
-        <div class="each_news" ng-repeat="temp in [0,1,2,3]">
+        <div class="each_news" ng-repeat="item in newsList">
             <i class="glyphicon glyphicon-menu-right"></i>
-            合作办学资讯
+            {{item.title}}
         </div>
 
         <div class="more_news">
@@ -46,17 +46,17 @@
     <div class="border_body card">
         <!-- 页签 -->
         <div class="factor_tab_container blue">
-            <div class="factor_tab" ng-repeat="tab in highTab track by $index"
+            <div class="factor_tab tab_5" ng-repeat="tab in highTab track by $index"
                  ng-class="{no_border: $index==1, active: tab.show}" ng-click="changeTab(tab, 0)">
-                {{tab.title}}
+                {{tab.subclassification}}
             </div>
         </div>
         <!-- 卡片 -->
         <div class="methods_div">
-            <div class="pro_each_item" ng-repeat="temp in [0,1,2,3,4,5] track by $index">
-                <img src="/theme/source/practice.png">
-                <div class="title">【合作方案】</div>
-                <div class="info">体验名校课堂，获取名校教授推荐信</div>
+            <div class="pro_each_item" ng-repeat="item in highList track by $index">
+                <img ng-src="{{'upload/images/' + item.thumbnail}}" alt="图片加载错误">
+                <div class="title">【{{item.title}}】</div>
+                <div class="info">{{item.synopsis}}</div>
             </div>
         </div>
         <!-- 分页 -->
@@ -82,15 +82,15 @@
         <div class="factor_tab_container blue">
             <div class="factor_tab tab_5" ng-repeat="tab in careerTab track by $index"
                  ng-class="{no_border: $index==1, active: tab.show}" ng-click="changeTab(tab, 1)">
-                {{tab.title}}
+                {{tab.subclassification}}
             </div>
         </div>
         <!-- 卡片 -->
         <div class="methods_div">
-            <div class="pro_each_item" ng-repeat="temp in [0,1,2,3,4,5] track by $index">
-                <img src="/theme/source/practice.png">
-                <div class="title">【合作方案】</div>
-                <div class="info">体验名校课堂，获取名校教授推荐信</div>
+            <div class="pro_each_item" ng-repeat="item in careerList track by $index">
+                <img ng-src="{{'upload/images/' + item.thumbnail}}" alt="图片加载错误">
+                <div class="title">【{{item.title}}】</div>
+                <div class="info">{{item.synopsis}}</div>
             </div>
         </div>
         <!-- 分页 -->
@@ -116,15 +116,15 @@
         <div class="factor_tab_container blue">
             <div class="factor_tab tab_5" ng-repeat="tab in collegeTab track by $index"
                  ng-class="{no_border: $index==1, active: tab.show}" ng-click="changeTab(tab, 2)">
-                {{tab.title}}
+                {{tab.subclassification}}
             </div>
         </div>
         <!-- 卡片 -->
         <div class="methods_div">
-            <div class="pro_each_item" ng-repeat="temp in [0,1,2,3,4,5] track by $index">
-                <img src="/theme/source/practice.png">
-                <div class="title">【合作方案】</div>
-                <div class="info">体验名校课堂，获取名校教授推荐信</div>
+            <div class="pro_each_item" ng-repeat="item in colleList track by $index">
+                <img ng-src="{{'upload/images/' + item.thumbnail}}" alt="图片加载错误">
+                <div class="title">【{{item.title}}】</div>
+                <div class="info">{{item.synopsis}}</div>
             </div>
         </div>
         <!-- 分页 -->

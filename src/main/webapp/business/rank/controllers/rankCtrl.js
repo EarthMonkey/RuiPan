@@ -28,7 +28,6 @@ define([''], function () {
                 url: '/School/getAllSchoolRankingByPid?pid=' + bar.id,
                 type: 'GET',
                 success: function (resp) {
-                    console.log(resp)
                     $timeout(function () {
                         $scope.rankList = resp;
                     });

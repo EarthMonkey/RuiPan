@@ -49,15 +49,15 @@ define([''], function () {
             url: '/LanguageTraining/getTrainIntroducePublish?category=' + langType,
             type: 'GET',
             success: function (resp) {
-                console.log(resp);
                 $scope.introList = resp;
                 resp.forEach(function (item) {
                     $.ajax({
                         url: '/getText?path=' + item.textPath,
                         type: 'GET',
                         success: function (resp) {
-                            console.log(resp);
-                            item.content = resp;
+                            $timeout(function () {
+                                item.content = resp;
+                            });
                         },
                         error: function (err) {
                             console.log(err);
