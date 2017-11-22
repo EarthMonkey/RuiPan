@@ -5,7 +5,7 @@
 define([''], function () {
     'use strict';
 
-    var promotionCtrl = ['$scope', '$state', function ($scope, $state) {
+    var promotionCtrl = ['$scope', '$state', '$timeout',function ($scope, $state, $timeout) {
 
         // 轮播图
         $scope.myInterval = 3000;
@@ -52,8 +52,21 @@ define([''], function () {
         $scope.getDetail = function () {
 
             $state.go('promotionDetail', {id: 'test'});
-        }
+        };
 
+        // 获取三个推荐方案
+        $.ajax({
+            url: '/StudyAbroad/getRecommendApplicationScheme',
+            type: 'GET',
+            success: function (resp) {
+                $timeout(function () {
+                    $scope.recomendList = resp;
+                });
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
     }];
 
     var homeModule = angular.module('promotion.config');

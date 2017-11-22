@@ -18,16 +18,8 @@
 <!-- 左边导航 -->
 <div class="left_part">
 
-    <div class="ad_div">
-        <img src="/theme/source/intro-ad-1.png" alt="顾问方案">
-    </div>
-
-    <div class="ad_div">
-        <img src="/theme/source/intro-ad-2.png" alt="总监专案">
-    </div>
-
-    <div class="ad_div">
-        <img src="/theme/source/intro-ad-2.png" alt="总监专案">
+    <div class="ad_div" ng-repeat="item in recomendList">
+        <img ng-src="{{'upload/images/' + item.picturePath}}" alt="图片加载错误">
     </div>
 
     <div class="left_bar">

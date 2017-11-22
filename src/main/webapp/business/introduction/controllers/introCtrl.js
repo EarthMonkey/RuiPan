@@ -182,7 +182,6 @@ define([''], function () {
                 url: '/SuccessfulCase/getSuccessfulCaseByPid?pid=' + PID,
                 type: 'GET',
                 success: function (resp) {
-                    console.log(resp);
                     if (resp[0]) {
                         $scope.sucCase = resp[0];
                         getConsultant(resp[0].cid);
@@ -199,7 +198,6 @@ define([''], function () {
                 url: '/Consultant/getById?id=' + id,
                 type: 'GET',
                 success: function (resp) {
-                    console.log(resp)
                     $timeout(function () {
                         $scope.consultor = resp;
                     });
@@ -254,11 +252,22 @@ define([''], function () {
 
         // 院校排名
         $scope.rankCol = ['排名', '学校名', '成绩要求', '申请难度分析', '院校申请'];
-        $scope.rankData = [
-            {rank: 1, school: '卡耐基梅隆大学', score: '无最低分说明', difficulty: '申请难度大'},
-            {rank: 2, school: '哥伦比亚大学', score: '无最低分说明', difficulty: '申请难度大'},
-            {rank: 2, school: '普林斯顿大学', score: '无最低分说明', difficulty: '申请难度大'}
-        ]
+        $scope.rankData = [];
+
+        // 获取三个推荐方案
+        $.ajax({
+            url: '/StudyAbroad/getRecommendApplicationScheme',
+            type: 'GET',
+            success: function (resp) {
+                $timeout(function () {
+                    $scope.recomendList = resp;
+                });
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+
 
     }];
 

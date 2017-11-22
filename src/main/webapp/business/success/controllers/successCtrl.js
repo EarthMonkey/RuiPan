@@ -5,7 +5,7 @@
 define([''], function () {
     'use strict';
 
-    var successCtrl = ['$scope', '$state', function ($scope, $state) {
+    var successCtrl = ['$scope', '$state', '$timeout', function ($scope, $state, $timeout) {
 
         $scope.selectedCoun = 'america';
         $scope.filterCountry = [
@@ -43,6 +43,20 @@ define([''], function () {
 
             $state.go("successDetail", {sucId: 'example1'});
         };
+
+        // 获取三个推荐方案
+        $.ajax({
+            url: '/StudyAbroad/getRecommendApplicationScheme',
+            type: 'GET',
+            success: function (resp) {
+                $timeout(function () {
+                    $scope.recomendList = resp;
+                });
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
 
     }];
 
