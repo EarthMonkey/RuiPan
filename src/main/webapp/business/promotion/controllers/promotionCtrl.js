@@ -40,7 +40,7 @@ define([''], function () {
         $(window).scroll(function (e) {
             var wst = $(window).scrollTop();
             for (var i = 0; i < $scope.leftBar.length; i++) {
-                if (wst > 865) {
+                if (wst > 1043) {
                     $('.left_bar').addClass('left_bar_fixed');
                 } else {
                     $('.left_bar').removeClass('left_bar_fixed');

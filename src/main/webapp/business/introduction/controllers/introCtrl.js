@@ -5,11 +5,210 @@
 define([''], function () {
     'use strict';
 
-    var introCtrl = ['$scope', '$state', '$location', '$anchorScroll', function ($scope, $state, $location, $anchorScroll) {
+    var introCtrl = ['$scope', '$state', '$timeout', 'navListService', function ($scope, $state, $timeout, navListService) {
 
-        var country = $state.params.country;
-        var type = $state.params.type;
-        $scope.test = "专业介绍: " + country + " - " + type;
+        var couEnMap = {
+            america: '美国',
+            british: '英国',
+            australia: '澳洲',
+            canada: '加拿大',
+            global: '其他'
+        };
+
+        var country = couEnMap[$state.params.country];
+        $scope.country = country;
+        var tempType = $state.params.type.split('\.');
+        var PID = tempType[1];
+        $scope.sp = tempType[1];
+
+
+        // 获取子导航
+        $.ajax({
+            url: '/Profession/getAllCategoryByCountry?country=' + country,
+            type: 'GET',
+            success: function (resp) {
+
+                for (var key in resp) {
+                    var arr = resp[key];
+
+                    switch (key) {
+                        case '商科': {
+                            var chArr1 = [];
+                            arr.forEach(function (item) {
+                                chArr1.push({
+                                    text: item.subclassification,
+                                    assist: 'business.' + item.pid + '.' + item.subclassification,
+                                    link: navListService.navList[2]
+                                });
+                            });
+                            $timeout(function () {
+                                navListService.navChild_sp[0].children = chArr1;
+                                navListService.navChild_sp[0].assist = chArr1[0].assist;
+                                navListService.navChild[3].assist = chArr1[0].assist;
+                            });
+                            break;
+                        }
+                        case '理科': {
+                            var chArr2 = [];
+                            arr.forEach(function (item) {
+                                chArr2.push({
+                                    text: item.subclassification,
+                                    assist: 'science.' + item.pid + '.' + item.subclassification,
+                                    link: navListService.navList[2]
+                                });
+                            });
+                            $timeout(function () {
+                                navListService.navChild_sp[1].children = chArr2;
+                                navListService.navChild_sp[1].assist = chArr2[0].assist;
+                            });
+                            break;
+                        }
+                        case  '工科': {
+                            var chArr3 = [];
+                            arr.forEach(function (item) {
+                                chArr3.push({
+                                    text: item.subclassification,
+                                    assist: 'engineer.' + item.pid + '.' + item.subclassification,
+                                    link: navListService.navList[2]
+                                });
+                            });
+                            $timeout(function () {
+                                navListService.navChild_sp[2].children = chArr3;
+                                navListService.navChild_sp[2].assist = chArr3[0].assist;
+                            });
+                            break;
+                        }
+                        case  '文科': {
+                            var chArr4 = [];
+                            arr.forEach(function (item) {
+                                chArr4.push({
+                                    text: item.subclassification,
+                                    assist: 'liberal.' + item.pid + '.' + item.subclassification,
+                                    link: navListService.navList[2]
+                                });
+                            });
+                            $timeout(function () {
+                                navListService.navChild_sp[3].children = chArr4;
+                                navListService.navChild_sp[3].assist = chArr4[0].assist;
+                            });
+                            break;
+                        }
+                        case  '艺术': {
+                            var chArr5 = [];
+                            arr.forEach(function (item) {
+                                chArr5.push({
+                                    text: item.subclassification,
+                                    assist: 'art.' + item.pid + '.' + item.subclassification,
+                                    link: navListService.navList[2]
+                                });
+                            });
+                            $timeout(function () {
+                                navListService.navChild_sp[4].children = chArr5;
+                                navListService.navChild_sp[4].assist = chArr5[0].assist;
+                            });
+                            break;
+                        }
+                    }
+                }
+                getData();
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+
+
+        function getData() {
+
+            // 详情、建议
+            $.ajax({
+                url: '/Profession/getProfessionIntroducePublished?pid=' + PID,
+                type: 'GET',
+                success: function (resp) {
+                    $timeout(function () {
+                        $scope.detailAdvice = resp;
+                    });
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+
+            // 专业课程
+            $.ajax({
+                url: '/Profession/getProfessionCourse?pid=' + PID,
+                type: 'GET',
+                success: function (resp) {
+                    $timeout(function () {
+                        $scope.courseList = resp;
+                    });
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+
+            // 就业去向
+            $.ajax({
+                url: '/Profession/getEmploymentCompany?pid=' + PID,
+                type: 'GET',
+                success: function (resp) {
+                    resp.splice(5);
+                    $scope.prosWhere = resp;
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+
+            // 领域
+
+            // 专业院校排名
+            $.ajax({
+                url: '/School/getAllSchoolRankingByPid?pid=' + PID,
+                type: 'GET',
+                success: function (resp) {
+                    $timeout(function () {
+                        $scope.rankData = resp;
+                    });
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+
+            // 获取所有成功案例
+            $.ajax({
+                url: '/SuccessfulCase/getSuccessfulCaseByPid?pid=' + PID,
+                type: 'GET',
+                success: function (resp) {
+                    console.log(resp);
+                    if (resp[0]) {
+                        $scope.sucCase = resp[0];
+                        getConsultant(resp[0].cid);
+                    }
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+        }
+
+        function getConsultant(id) {
+            $.ajax({
+                url: '/Consultant/getById?id=' + id,
+                type: 'GET',
+                success: function (resp) {
+                    console.log(resp)
+                    $timeout(function () {
+                        $scope.consultor = resp;
+                    });
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            })
+        }
 
         // 左侧导航栏
         $scope.leftBar = [
@@ -33,7 +232,7 @@ define([''], function () {
         $(window).scroll(function (e) {
             var wst = $(window).scrollTop();
             for (var i = 0; i < $scope.leftBar.length; i++) {
-                if (wst > 630) {
+                if (wst > 812) {
                     $('.left_bar').addClass('left_bar_fixed');
                 } else {
                     $('.left_bar').removeClass('left_bar_fixed');
@@ -49,13 +248,7 @@ define([''], function () {
         ];
 
         // 就业前景
-        $scope.prosWhere = [
-            {img: '/theme/source/pro-where-1.png', text: '银行'},
-            {img: '/theme/source/pro-where-2.png', text: '证券'},
-            {img: '/theme/source/pro-where-3.png', text: '保险'},
-            {img: '/theme/source/pro-where-4.png', text: '投资机构'},
-            {img: '/theme/source/pro-where-5.png', text: '金融机构'}
-        ];
+        $scope.prosWhere = [];
 
         $scope.prosField = ['风险管理人士', '高校科研人员', '股票交易员', '证券分析师', '金融工程师'];
 

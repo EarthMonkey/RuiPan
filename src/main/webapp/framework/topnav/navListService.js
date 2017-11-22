@@ -101,7 +101,7 @@ define(function () {
             }, {
                 text: '专业介绍',
                 state: 'introduction',
-                assist: 'business.finance',
+                assist: 'business',
                 link: this.navList[2]
             }, {
                 text: '院校排名',
@@ -120,11 +120,11 @@ define(function () {
             {
                 text: '商科',
                 children: [
-                    {text: '金融', assist: 'business.finance', link: this.navList[2]},
-                    {text: '会计', assist: 'business.account', link: this.navList[2]},
-                    {text: '市场营销', assist: 'business.market', link: this.navList[2]}
+                    {text: '金融', assist: 'business.金融', link: this.navList[2]},
+                    {text: '会计', assist: 'business.会计', link: this.navList[2]},
+                    {text: '市场营销', assist: 'business.市场', link: this.navList[2]}
                 ],
-                assist: 'business.finance',
+                assist: 'business.金融',
                 link: this.navList[2]
             }, {
                 text: '理科',

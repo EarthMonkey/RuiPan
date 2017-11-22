@@ -11,6 +11,10 @@
         <img src="/theme/source/intro-ad-2.png" alt="总监专案">
     </div>
 
+    <div class="ad_div">
+        <img src="/theme/source/intro-ad-2.png" alt="总监专案">
+    </div>
+
     <div class="left_bar">
         <div ng-repeat="lb in leftBar" ng-click="barClick(lb)" ng-class="{active: lb.link==activeBar}">
             <a>{{lb.label}}</a>
@@ -33,9 +37,7 @@
         </div>
 
         <div class="border_body">
-            <p>金融工程是用数学和工程学的方法来建立金融模型（如描述股价运动的随机微分方程），并进而计算金融收益与风险的一门学科。在现代金融实践中有重要的作用。
-                在投资银行、对冲基金等公司中往往有专门研究和使用金融工程计算和管控风险的定量分析师。</p>
-            <p>学习和研究的内容主要包括证券衍生物定价，风险分析，金融模型，金融信息分析，和一些高级的金融理论。</p>
+            <p>{{detailAdvice.detailSynopsis}}</p>
         </div>
 
         <div class="border_body">
@@ -59,30 +61,28 @@
         </div>
 
         <div class="border_body">
-            <p>国内研究生课程设置一般是必修课程+选修课程，美国学校研究生课程设置除此方式之外还有必修课程+分支（方向）课程+选修课程的方式</p>
-
             <!-- 伪表格 -->
             <div class="border_body card">
                 <div class="card_th">
                     <div class="card_td width_30">专业方向</div>
                     <div class="card_td width_70">相关课程</div>
                 </div>
-                <div class="card_tb">
-                    <div class="card_td width_30">专业方向</div>
-                    <div class="card_td width_70">相关课程</div>
+                <div class="card_tb" ng-repeat="item in courseList">
+                    <div class="card_td width_30">{{item.majorField}}</div>
+                    <div class="card_td width_70">{{item.majorCourse}}</div>
                 </div>
             </div>
 
         </div>
 
-        <div class="border_body">
-            <div class="more_btn">
-                <a class="blue">
-                    了解更多<i class="glyphicon glyphicon-menu-right"></i>
-                </a>
-            </div>
-            <br style="clear: both;">
-        </div>
+        <!--<div class="border_body">-->
+            <!--<div class="more_btn">-->
+                <!--<a class="blue">-->
+                    <!--了解更多<i class="glyphicon glyphicon-menu-right"></i>-->
+                <!--</a>-->
+            <!--</div>-->
+            <!--<br style="clear: both;">-->
+        <!--</div>-->
     </div>
 
     <!-- 就业前景 -->
@@ -99,12 +99,12 @@
             <div class="prospect_container">
                 <div class="prospect_title">
                     <img src="/theme/img/prospect-where.svg" alt="就业去向">
-                    <span>就业去向a</span>
+                    <span>就业去向</span>
                 </div>
                 <div class="prospect_body">
                     <div ng-repeat="pw in prosWhere">
-                        <img ng-src="{{pw.img}}">
-                        {{pw.text}}
+                        <img ng-src="{{'upload/images/' + pw.logo}}" alt="图片加载错误">
+                        {{pw.employmentCompany}}
                     </div>
                 </div>
             </div>
@@ -178,10 +178,9 @@
         </div>
 
         <div class="border_body card">
-
-            <p>1、金融工程专业更加强调学生的数理背景，计算机的背景</p>
-            <p>2、金融工程专业更加强调学生的数理背景，计算机的背景。金融工程专业更加强调学生的数理背景，计算机的背景</p>
-
+            <p>
+                {{detailAdvice.applicationAdvice}}
+            </p>
             <div class="border_body flex_center">
                 <button>
                     获取申请建议
@@ -212,10 +211,10 @@
                 </thead>
                 <tbody>
                 <tr ng-repeat="row in rankData">
-                    <td class="orange">{{row.rank}}</td>
-                    <td>{{row.school}}</td>
-                    <td>{{row.score}}</td>
-                    <td>{{row.difficulty}}</td>
+                    <td class="orange">{{row.ranking}}</td>
+                    <td>{{row.schoolBySid.collegeName}}</td>
+                    <td>{{row.scoreRequirements}}</td>
+                    <td>{{row.applicationDifficulty}}</td>
                     <td>
                         <div><a class="orange">我的录取概率</a></div>
                         <div><a class="blue">我要申请</a></div>
@@ -238,20 +237,20 @@
 
         <div class="border_body card" style="padding: 20px 20px; position: relative;">
             <div class="name_div">
-                <span>李同学</span>
-                <span class="school">约翰霍普金斯大学</span>
-                <span class="school">金融工程</span>
+                <span>{{sucCase.name}}</span>
+                <span class="school">{{sucCase.schoolName}}</span>
+                <span class="school">{{sp}}</span>
             </div>
             <div class="each_row">
-                <span>录取国家：美国</span>
-                <span>学位：研究生</span>
-                <span>录取时间：2016-03-03</span>
+                <span>录取国家：{{country}}</span>
+                <span>学位：{{sucCase.degree}}</span>
+                <span>录取时间：{{sucCase.enrollmentTime}}</span>
             </div>
             <div class="each_row">
-                <span>语言成绩：<span class="blue">托福102</span></span>
-                <span>GPA：<span class="blue">85</span></span>
-                <span>GMAT/SAT/GRE：<span class="blue">SAT1870</span></span>
-                <span>本科专业：<span class="blue">金融工程</span></span>
+                <span>语言成绩：<span class="blue">{{sucCase.languageScore}}</span></span>
+                <span>GPA：<span class="blue">{{sucCase.gpa}}</span></span>
+                <span>GMAT/SAT/GRE：<span class="blue">{{sucCase.gmatSatGre}}</span></span>
+                <span>本科专业：<span class="blue">{{sucCase.undergraduateMajor}}</span></span>
             </div>
 
             <div class="border_body">
@@ -271,9 +270,9 @@
             <div style="padding: 10px 20px;">
                 <div class="photo_div">
                     <div class="img_div">
-                        <!--<img>-->
+                        <img ng-src="{{'upload/images/' + consultor.headSculpture}}" alt="图片加载错误">
                     </div>
-                    <div class="name">某某某</div>
+                    <div class="name">{{sucCase.consultantName}}</div>
                 </div>
 
                 <div class="dialog_outer">
@@ -286,15 +285,15 @@
                     </div>
 
                     <div class="each_row">
-                        <span>美国</span>
-                        <span>统计、机械工程、土木工程</span>
+                        <span>{{consultor.country}}</span>
+                        <span>{{consultor.profession}}</span>
                     </div>
                 </div>
 
                 <div class="each_row" style="padding:0 5px; margin-top: -15px;">
-                    <span>从业时间：<span class="blue">9</span></span>
-                    <span>获得offer：<span class="blue">103</span></span>
-                    <span>成功率：<span class="blue">100%</span></span>
+                    <span>从业时间：<span class="blue">{{consultor.workingHours}}</span></span>
+                    <span>获得offer：<span class="blue">{{consultor.offerNumber}}</span></span>
+                    <span>成功率：<span class="blue">{{consultor.applicationSuccessRate}}</span></span>
                 </div>
             </div>
 
