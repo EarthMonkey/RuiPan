@@ -73,7 +73,7 @@ define([], function () {
 
             if (nav.children) {
                 if (nav.state === "language") {
-                    langType = (langType) ? langType : 'teacher';
+                    langType = (langType) ? langType : '校长教师培训';
                     $state.go("language", {type: langType});
                     return;
                 }
