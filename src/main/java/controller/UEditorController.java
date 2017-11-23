@@ -17,7 +17,7 @@ import java.util.UUID;
 @RestController
 public class UEditorController {
 
-    @RequestMapping(value = "ueditorcontroller")
+    @RequestMapping(value = "/ueditorcontroller")
     @SystemLog(module = "UEditor后台控制" ,methods = "UEditor操作")
     public String controller(HttpServletRequest request, HttpServletResponse response) {
         try {

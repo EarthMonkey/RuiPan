@@ -39,11 +39,11 @@
         <listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
     </listener>
 
-    <!-- 为避免项目间冲突，定义唯一的 webAppRootKey -->
-    <context-param>
-        <param-name>RuiPan</param-name>
-        <param-value>scheduleProject</param-value>
-    </context-param>
+    <!--&lt;!&ndash; 为避免项目间冲突，定义唯一的 webAppRootKey &ndash;&gt;-->
+    <!--<context-param>-->
+        <!--<param-name>webAppRootKey</param-name>-->
+        <!--<param-value>RuiPan</param-value>-->
+    <!--</context-param>-->
 
     <!-- session失效时长 -->
     <session-config>
