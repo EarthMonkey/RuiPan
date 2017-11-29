@@ -1,2 +1,0 @@
-2017-10-18 22:17:51  [ org.hibernate.engine.jdbc.spi.SqlExceptionHelper.logExceptions(SqlExceptionHelper.java:131):org.hibernate.engine.jdbc.spi.SqlExceptionHelper:main:5734 ] - [ ERROR ]  Duplicate entry '0' for key 'PRIMARY'
-2017-10-18 22:17:51  [ org.hibernate.engine.jdbc.spi.SqlExceptionHelper.logExceptions(SqlExceptionHelper.java:131):org.hibernate.engine.jdbc.spi.SqlExceptionHelper:main:5751 ] - [ ERROR ]  Duplicate entry '0' for key 'PRIMARY'
