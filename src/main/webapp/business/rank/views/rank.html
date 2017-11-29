@@ -31,7 +31,7 @@
                 </thead>
                 <tbody class="tr_clickable">
                 <tr ng-repeat="item in rankList track by $index" ng-class="{odd: $index%2==0}"
-                    ng-click="getDetail()">
+                    ng-click="getDetail(item)">
                     <td class="rank_td">{{item.ranking}}</td>
                     <td>
                         <div class="school_logo">

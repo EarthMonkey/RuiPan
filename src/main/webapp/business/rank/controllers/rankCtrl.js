@@ -64,8 +64,8 @@ define([''], function () {
         });
 
 
-        $scope.getDetail = function () {
-            $state.go('schoolDetail', {name: 'Harvard'});
+        $scope.getDetail = function (item) {
+            $state.go('schoolDetail', {name: item.sid});
         }
 
     }];
