@@ -127,13 +127,10 @@ public class BinaryUploader {
 				}
 			}
 			String pathTemp = request.getSession().getServletContext().getRealPath(temp);
-			System.out.println(pathTemp+","+fileName);
-			System.out.println(new File(pathTemp).exists());
 			File targetFile = new File(pathTemp);
 			if(!targetFile.exists()){
 				targetFile.mkdirs();
 			}
-			System.out.println(new File(pathTemp).exists());
 			/************/
 			//State storageState = StorageManager.saveFileByInputStream(multipartFile.getInputStream(),savePath, maxSize);
 			State storageState = StorageManager.saveFileByInputStream(multipartFile.getInputStream(),pathTemp+"/"+fileName, maxSize);
@@ -148,7 +145,6 @@ public class BinaryUploader {
 
 		}catch (Exception e) {
 			e.printStackTrace();
-			System.out.println(e.getMessage());
 		}
 		return new BaseState(false, AppInfo.IO_ERROR);
 	}
