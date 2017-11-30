@@ -111,9 +111,8 @@ define([''], function () {
             };
 
             // 获取详情
-            $scope.getDetail = function () {
-
-                $state.go("successDetail", {sucId: 'example1'});
+            $scope.getDetail = function (item) {
+                $state.go("successDetail", {sucId: item.id});
             };
 
             // 获取三个推荐方案
