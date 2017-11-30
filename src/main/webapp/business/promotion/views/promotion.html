@@ -43,7 +43,7 @@
 
         <div class="border_body">
             <div class="pro_each_item" ng-repeat="item in tourList track by $index"
-                 ng-class="{last: $index%3==2}" ng-click="getDetail()">
+                 ng-class="{last: $index%3==2}" ng-click="getDetail(item)">
                 <img ng-src="{{'upload/images/' + item.thumbnail}}" alt="图片加载错误">
                 <div class="title">【{{item.title}}】</div>
                 <div class="info">{{item.synopsis}}</div>
@@ -61,7 +61,7 @@
 
         <div class="border_body">
             <div class="pro_each_item" ng-repeat="item in practiceList track by $index"
-                 ng-class="{last: $index%3==2}" ng-click="getDetail()">
+                 ng-class="{last: $index%3==2}" ng-click="getDetail(item)">
                 <img ng-src="{{'upload/images/' + item.thumbnail}}" alt="图片加载错误">
                 <div class="title">【{{item.title}}】</div>
                 <div class="info">{{item.synopsis}}</div>
@@ -79,7 +79,7 @@
 
         <div class="border_body">
             <div class="pro_each_item" ng-repeat="item in researchList track by $index"
-                 ng-class="{last: $index%3==2}" ng-click="getDetail()">
+                 ng-class="{last: $index%3==2}" ng-click="getDetail(item)">
                 <img ng-src="{{'upload/images/' + item.thumbnail}}" alt="图片加载错误">
                 <div class="title">【{{item.title}}】</div>
                 <div class="info">{{item.synopsis}}</div>
@@ -97,7 +97,7 @@
 
         <div class="border_body">
             <div class="pro_each_item" ng-repeat="item in volunList track by $index"
-                 ng-class="{last: $index%3==2}" ng-click="getDetail()">
+                 ng-class="{last: $index%3==2}" ng-click="getDetail(item)">
                 <img ng-src="{{'upload/images/' + item.thumbnail}}" alt="图片加载错误">
                 <div class="title">【{{item.title}}】</div>
                 <div class="info">{{item.synopsis}}</div>
@@ -115,7 +115,7 @@
 
         <div class="border_body">
             <div class="pro_each_item" ng-repeat="item in proList track by $index"
-                 ng-class="{last: $index%3==2}" ng-click="getDetail()">
+                 ng-class="{last: $index%3==2}" ng-click="getDetail(item)">
                 <img ng-src="{{'upload/images/' + item.thumbnail}}" alt="图片加载错误">
                 <div class="title">【{{item.title}}】</div>
                 <div class="info">{{item.synopsis}}</div>

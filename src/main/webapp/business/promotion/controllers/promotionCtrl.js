@@ -70,8 +70,9 @@ define([''], function () {
             url: '/Promotion/getBackgroundPromoteByCategory?category=游学',
             type: 'GET',
             success: function (resp) {
-                console.log(resp);
-                $scope.tourList = resp;
+                $timeout(function () {
+                    $scope.tourList = resp;
+                });
             },
             error: function (err) {
                 console.log(err);
@@ -83,8 +84,9 @@ define([''], function () {
             url: '/Promotion/getBackgroundPromoteByCategory?category=实习',
             type: 'GET',
             success: function (resp) {
-                console.log(resp);
-                $scope.practiceList = resp;
+                $timeout(function () {
+                    $scope.practiceList = resp;
+                });
             },
             error: function (err) {
                 console.log(err);
@@ -96,8 +98,9 @@ define([''], function () {
             url: '/Promotion/getBackgroundPromoteByCategory?category=科研',
             type: 'GET',
             success: function (resp) {
-                console.log(resp);
-                $scope.researchList = resp;
+                $timeout(function () {
+                    $scope.researchList = resp;
+                });
             },
             error: function (err) {
                 console.log(err);
@@ -109,8 +112,9 @@ define([''], function () {
             url: '/Promotion/getBackgroundPromoteByCategory?category=国际义工',
             type: 'GET',
             success: function (resp) {
-                console.log(resp);
-                $scope.volunList = resp;
+                $timeout(function () {
+                    $scope.volunList = resp;
+                });
             },
             error: function (err) {
                 console.log(err);
@@ -122,8 +126,9 @@ define([''], function () {
             url: '/Promotion/getBackgroundPromoteByCategory?category=短期项目',
             type: 'GET',
             success: function (resp) {
-                console.log(resp);
-                $scope.proList = resp;
+                $timeout(function () {
+                    $scope.proList = resp;
+                });
             },
             error: function (err) {
                 console.log(err);
@@ -131,9 +136,8 @@ define([''], function () {
         });
 
         // 详情
-        $scope.getDetail = function () {
-
-            $state.go('promotionDetail', {id: 'test'});
+        $scope.getDetail = function (item) {
+            $state.go('promotionDetail', {id: item.id});
         };
 
         // 获取三个推荐方案

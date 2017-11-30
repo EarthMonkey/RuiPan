@@ -4,12 +4,70 @@
 define([''], function () {
     'use strict';
 
-    var detailCtrl = ['$scope', '$state', function ($scope, $state) {
+    var detailCtrl = ['$scope', '$state', '$timeout',function ($scope, $state, $timeout) {
 
         var proId = $state.params.id;
-        console.log(proId);
 
-        $scope.proTitle = "耶鲁大学暑期项目";
+        $.ajax({
+            url: '/Promotion/getBackgroundPromote?id=' + proId,
+            type: 'GET',
+            success: function (resp) {
+                console.log(resp);
+                getHtml(resp.textPath);
+                $timeout(function () {
+                    $scope.articleModel = resp;
+                });
+            },
+            error: function (err) {
+                console.log(err);
+                console.log('fail to get article')
+            }
+        });
+
+
+        function getHtml(path) {
+            $.ajax({
+                url: '/getText?path=' + path,
+                type: 'GET',
+                success: function (resp) {
+                    $timeout(function () {
+                        $scope.articleModel.content = resp;
+                    });
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+        }
+
+        // 获取三个推荐方案
+        $.ajax({
+            url: '/StudyAbroad/getRecommendApplicationScheme',
+            type: 'GET',
+            success: function (resp) {
+                $timeout(function () {
+                    $scope.recomendList = resp;
+                });
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+
+        // 获取全局推荐案例
+        $.ajax({
+            url: '/SuccessfulCase/getRecommendSuccessfulCase',
+            type: 'GET',
+            success: function (resp) {
+                resp.splice(4);
+                $timeout(function () {
+                    $scope.recSucList = resp;
+                });
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
 
     }];
 

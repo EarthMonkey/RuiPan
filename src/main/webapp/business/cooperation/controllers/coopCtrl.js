@@ -166,6 +166,11 @@ define([''], function () {
                 }
             });
         }
+
+        $scope.getDetail = function (item) {
+            $state.go('promotionDetail', {id: item.id});
+        }
+
     }];
 
     var homeModule = angular.module('coop.config');

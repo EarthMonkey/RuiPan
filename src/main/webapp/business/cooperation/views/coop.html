@@ -53,7 +53,7 @@
         </div>
         <!-- 卡片 -->
         <div class="methods_div">
-            <div class="pro_each_item" ng-repeat="item in highList track by $index">
+            <div class="pro_each_item" ng-repeat="item in highList track by $index" ng-click="getDetail(item)">
                 <img ng-src="{{'upload/images/' + item.thumbnail}}" alt="图片加载错误">
                 <div class="title">【{{item.title}}】</div>
                 <div class="info">{{item.synopsis}}</div>
@@ -87,7 +87,7 @@
         </div>
         <!-- 卡片 -->
         <div class="methods_div">
-            <div class="pro_each_item" ng-repeat="item in careerList track by $index">
+            <div class="pro_each_item" ng-repeat="item in careerList track by $index" ng-click="getDetail(item)">
                 <img ng-src="{{'upload/images/' + item.thumbnail}}" alt="图片加载错误">
                 <div class="title">【{{item.title}}】</div>
                 <div class="info">{{item.synopsis}}</div>
@@ -121,7 +121,7 @@
         </div>
         <!-- 卡片 -->
         <div class="methods_div">
-            <div class="pro_each_item" ng-repeat="item in colleList track by $index">
+            <div class="pro_each_item" ng-repeat="item in colleList track by $index" ng-click="getDetail(item)">
                 <img ng-src="{{'upload/images/' + item.thumbnail}}" alt="图片加载错误">
                 <div class="title">【{{item.title}}】</div>
                 <div class="info">{{item.synopsis}}</div>
