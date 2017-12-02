@@ -2,6 +2,8 @@ package dao.daoImpl;
 
 import dao.ComplexSituationDao;
 import model.SuccessfulCase;
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import vo.SuccessfulCaseVO;
@@ -23,35 +25,44 @@ public class ComplexSituationDaoImpl implements ComplexSituationDao{
     @Autowired
     EntityManagerFactory entityManagerFactory;
 
+    private static Log logger = LogFactory.getLog(ComplexSituationDaoImpl.class);
+
     @Override
     public Map<String, List<SuccessfulCaseVO>> getSuccessfulCaseByCountry(Integer limit) {
 
         EntityManager em=entityManagerFactory.createEntityManager();
-        String sql="select pc1.country,sc1.* " +
-                "from successful_case sc1 join profession_category pc1 on sc1.pid = pc1.pid  " +
-                "where ? > (select count(*) " +
-                "from successful_case sc2 join profession_category pc2 on sc2.pid = pc2.pid " +
-                "where pc1.country = pc2.country " +
-                "and sc1.updateAt < sc2.updateAt ) " +
-                "order by pc1.country,sc1.updateAt";
-        Query query =  em.createNativeQuery(sql);
-        query.setParameter(1,limit);
+        Map<String, List<SuccessfulCaseVO>> result = new LinkedHashMap<String, List<SuccessfulCaseVO>>();
+        try {
+            String sql = "select pc1.country,sc1.* " +
+                    "from successful_case sc1 join profession_category pc1 on sc1.pid = pc1.pid  " +
+                    "where ? > (select count(*) " +
+                    "from successful_case sc2 join profession_category pc2 on sc2.pid = pc2.pid " +
+                    "where pc1.country = pc2.country " +
+                    "and sc1.updateAt < sc2.updateAt ) " +
+                    "order by pc1.country,sc1.updateAt";
+            Query query = em.createNativeQuery(sql);
+            query.setParameter(1, limit);
 
-        List<Object[]> objecArraytList = query.getResultList();
-        Map<String,List<SuccessfulCaseVO>> result=new LinkedHashMap<String, List<SuccessfulCaseVO>>();
-        for (Object[] o:objecArraytList) {
-            SuccessfulCaseVO successfulCaseVO=toVO(o);
-            String country=(String)o[0];
-            if(result.containsKey(country)){
-                result.get(country).add(successfulCaseVO);
-            }else{
-                List<SuccessfulCaseVO> successfulCaseVOS=new ArrayList<SuccessfulCaseVO>();
-                successfulCaseVOS.add(successfulCaseVO);
-                result.put(country,successfulCaseVOS);
+            List<Object[]> objecArraytList = query.getResultList();
+
+            for (Object[] o : objecArraytList) {
+                SuccessfulCaseVO successfulCaseVO = toVO(o);
+                String country = (String) o[0];
+                if (result.containsKey(country)) {
+                    result.get(country).add(successfulCaseVO);
+                } else {
+                    List<SuccessfulCaseVO> successfulCaseVOS = new ArrayList<SuccessfulCaseVO>();
+                    successfulCaseVOS.add(successfulCaseVO);
+                    result.put(country, successfulCaseVOS);
+                }
             }
+        }catch (Exception e){
+            logger.error(e);
+        }finally {
+            em.close();
+            return result;
         }
-        em.close();
-        return result;
+
     }
 
     private SuccessfulCaseVO toVO(Object[] o){
@@ -60,15 +71,16 @@ public class ComplexSituationDaoImpl implements ComplexSituationDao{
         successfulCaseVO.setPid((Integer)o[2]);
         successfulCaseVO.setSid((Integer)o[3]);
         successfulCaseVO.setCid((Integer)o[4]);
-        successfulCaseVO.setDegree((String)o[5]);
-        successfulCaseVO.setEnrollmentTime((String)o[6]);
-        successfulCaseVO.setLanguageScore((String)o[7]);
-        successfulCaseVO.setGpa((String)o[8]);
-        successfulCaseVO.setGmatSatGre((String)o[9]);
-        successfulCaseVO.setUndergraduateMajor((String)o[10]);
-        successfulCaseVO.setTextPath((String)o[11]);
-        successfulCaseVO.setFlag((Integer)o[12]);
-        successfulCaseVO.setUpdateAt((Timestamp)o[13]);
+        successfulCaseVO.setName((String)o[5]);
+        successfulCaseVO.setDegree((String)o[6]);
+        successfulCaseVO.setEnrollmentTime((String)o[7]);
+        successfulCaseVO.setLanguageScore((String)o[8]);
+        successfulCaseVO.setGpa((String)o[9]);
+        successfulCaseVO.setGmatSatGre((String)o[10]);
+        successfulCaseVO.setUndergraduateMajor((String)o[11]);
+        successfulCaseVO.setTextPath((String)o[12]);
+        successfulCaseVO.setFlag((Integer)o[13]);
+        successfulCaseVO.setUpdateAt((Timestamp)o[14]);
         return successfulCaseVO;
     }
 //    public HostelPlan getAvailableRoomByHidAndTimeAndPeopleNum(int hid, int peopleNum, Timestamp startAt, Timestamp endAt, double money) {
