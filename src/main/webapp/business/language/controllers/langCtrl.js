@@ -76,6 +76,10 @@ define([''], function () {
         $scope.active = 0;
         $scope.slides = [];
 
+        // 资讯
+        $scope.getNew = function (id) {
+            $state.go('news', {url: 'language', id: id});
+        }
 
     }];
 

@@ -1604,7 +1604,6 @@ tbody.tr_clickable tr:hover {
     width: 60px;
     height: 60px;
     margin: 0 120px;
-    background-color: #d8d8d8;
 }
 
 .feature_title {
@@ -1760,6 +1759,12 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
     font-size: 24px;
     width: 100%;
     text-align: center;
+}
+
+.time_div {
+    color: #afafaf;
+    font-size: 16px;
+    margin-top: 10px;
 }
 
 .article_hr {

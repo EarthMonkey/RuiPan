@@ -25,9 +25,9 @@ define(['lazy-load/lazyLoad'],
                 controllers: ['business/cooperation/controllers/detailCtrl']
             }
         }, {
-            name: 'cooperationNews',
-            url: '/cooperation-news/:id',
-            templateUrl: 'business/cooperation/views/cooperation-news.html',
+            name: 'news',
+            url: '/news/:url/:id',
+            templateUrl: 'business/cooperation/views/news.html',
             controller: 'newsCtrl',
             scripts: {
                 controllers: ['business/cooperation/controllers/newsCtrl']

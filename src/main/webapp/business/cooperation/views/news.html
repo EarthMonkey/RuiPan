@@ -34,17 +34,25 @@
     <div>
         <ol class="breadcrumb">
             <li><a href="/#/home">首页</a></li>
-            <li><a href="/#/cooperation">合作办学</a></li>
+            <li><a ng-click="stateGo()">{{backUrl.label}}</a></li>
             <li>【{{articleModel.title}}】</li>
         </ol>
     </div>
 
     <!-- 项目详情 -->
     <div class="article_title">
-        【{{articleModel.title}}】 {{articleModel.synopsis}}
+        【{{articleModel.title}}】
+
+        <div class="time_div">发布日期：{{articleModel.pulishTime}}</div>
     </div>
 
     <hr class="article_hr">
+
+    <div>
+        <blockquote>
+            {{articleModel.synopsis}}
+        </blockquote>
+    </div>
 
     <div class="article">
         <div ng-bind-html="articleModel.content" style="min-height: 600px;"></div>

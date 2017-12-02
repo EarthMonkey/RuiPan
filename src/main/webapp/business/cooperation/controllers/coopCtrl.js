@@ -166,12 +166,14 @@ define([''], function () {
             });
         }
 
+        // 合作办学详情
         $scope.getDetail = function (item) {
             $state.go('cooperationDetail', {id: item.id});
         };
 
+        // 资讯
         $scope.getNew = function (id) {
-            $state.go('cooperationNews', {id: id});
+            $state.go('news', {url: 'cooperation', id: id});
         }
 
     }];

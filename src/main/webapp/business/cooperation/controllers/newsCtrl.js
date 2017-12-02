@@ -4,15 +4,34 @@
 define([''], function () {
     'use strict';
 
-    var newsCtrl = ['$scope', '$state', '$timeout',function ($scope, $state, $timeout) {
+    var newsCtrl = ['$scope', '$state', '$timeout', function ($scope, $state, $timeout) {
 
-        var proId = $state.params.id;
+        var urlMap = {
+            'cooperation': '合作办学',
+            'language': '语言培训'
+        };
+
+        $scope.backUrl = {
+            url: $state.params.url,
+            label: urlMap[$state.params.url]
+        };
+        var newsId = $state.params.id;
+
+        $scope.stateGo = function () {
+            var url = $scope.backUrl.url;
+            if (url === 'language') {
+                $state.go(url, {type: '校长教师培训'});
+            } else {
+                $state.go(url);
+            }
+
+        };
 
         $.ajax({
-            url: '/News/getNewsById?id=' + proId,
+            url: '/News/getNewsById?id=' + newsId,
             type: 'GET',
             success: function (resp) {
-                console.log(resp);
+                resp.pulishTime = new Date(resp.pulishTime);
                 getHtml(resp.textPath);
                 $timeout(function () {
                     $scope.articleModel = resp;
@@ -72,5 +91,5 @@ define([''], function () {
     }];
 
     var homeModule = angular.module('coop.config');
-    homeModule.controller('newsCtrl', detailCtrl);
+    homeModule.controller('newsCtrl', newsCtrl);
 });
