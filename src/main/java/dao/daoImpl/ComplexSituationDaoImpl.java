@@ -33,13 +33,13 @@ public class ComplexSituationDaoImpl implements ComplexSituationDao{
         EntityManager em=entityManagerFactory.createEntityManager();
         Map<String, List<SuccessfulCaseVO>> result = new LinkedHashMap<String, List<SuccessfulCaseVO>>();
         try {
-            String sql = "select pc1.country,sc1.* " +
-                    "from successful_case sc1 join profession_category pc1 on sc1.pid = pc1.pid  " +
+            String sql = "select v1.* " +
+                    "from v_successful_case v1 " +
                     "where ? > (select count(*) " +
-                    "from successful_case sc2 join profession_category pc2 on sc2.pid = pc2.pid " +
-                    "where pc1.country = pc2.country " +
-                    "and sc1.updateAt < sc2.updateAt ) " +
-                    "order by pc1.country,sc1.updateAt";
+                    "            from v_successful_case v2 " +
+                    "            where v1.country = v2.country " +
+                    "                  and v1.updateAt < v2.updateAt ) " +
+                    "            order by v1.country,v1.updateAt";
             Query query = em.createNativeQuery(sql);
             query.setParameter(1, limit);
 
@@ -81,6 +81,9 @@ public class ComplexSituationDaoImpl implements ComplexSituationDao{
         successfulCaseVO.setTextPath((String)o[12]);
         successfulCaseVO.setFlag((Integer)o[13]);
         successfulCaseVO.setUpdateAt((Timestamp)o[14]);
+        successfulCaseVO.setProfessionName((String)o[15]);
+        successfulCaseVO.setSchoolName((String)o[16]);
+        successfulCaseVO.setConsultantName((String)o[17]);
         return successfulCaseVO;
     }
 //    public HostelPlan getAvailableRoomByHidAndTimeAndPeopleNum(int hid, int peopleNum, Timestamp startAt, Timestamp endAt, double money) {

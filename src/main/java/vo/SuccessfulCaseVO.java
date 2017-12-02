@@ -10,6 +10,7 @@ public class SuccessfulCaseVO {
     private Integer pid;
     private Integer sid;
     private Integer cid;
+    private String professionName;
     private String schoolName;
     private String consultantName;
     private String name;
@@ -57,6 +58,14 @@ public class SuccessfulCaseVO {
 
     public void setCid(Integer cid) {
         this.cid = cid;
+    }
+
+    public String getProfessionName() {
+        return professionName;
+    }
+
+    public void setProfessionName(String professionName) {
+        this.professionName = professionName;
     }
 
     public String getSchoolName() {
