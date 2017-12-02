@@ -77,6 +77,23 @@ define([''], function () {
                 console.log(err);
             }
         });
+
+        // 成功案例
+        $.ajax({
+            url: '/SuccessfulCase/getSuccessfulCaseGroupByCountry?limit=5',
+            type: 'GET',
+            success: function (resp) {
+                console.log(resp);
+                $timeout(function () {
+                    $scope.homeSuccess = resp;
+                });
+            },
+            error: function (err) {
+                console.log(err);
+                console.log('fail to get success');
+            }
+        })
+
     }];
 
     var homeModule = angular.module('home.config');
