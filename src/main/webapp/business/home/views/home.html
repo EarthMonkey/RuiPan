@@ -86,42 +86,28 @@
             <div class="board card">
                 <!-- 页签 -->
                 <div class="factor_tab_container blue">
-                    <div class="factor_tab" ng-repeat="tab in countryTab track by $index"
+                    <div class="factor_tab tab_5" ng-repeat="tab in countryTab track by $index"
                          ng-class="{no_border: $index==3, active: tab.show}" ng-click="changeTab(tab, 0)">
                         {{tab.title}}
                     </div>
                 </div>
 
                 <!-- 主体部分 -->
-                <!-- 美国 -->
-                <div class="home_success" ng-show="countryTab[0].show">
-                    <div class="each_success" ng-repeat="temp in [0,1,2,3,4,5,6]">
-                        <div class="circle_div"></div>
-                        <!-- 简介 -->
-                        <div>
-                            托福：<span class="blue">112</span>GRE：<span class="blue">327</span>
-                        </div>
-                        <div class="brief_success">
-                            李同学 成功录取 芝加哥大学 Financial…
-                        </div>
+                <div ng-repeat="eachCountry in countryTab">
+                    <div class="home_success" ng-show="eachCountry.show">
+                        <div class="each_success" ng-repeat="item in eachCountry.cases" ng-click="getSucDetail(item.id)">
+                            <div class="circle_div"></div>
+                            <!-- 简介 -->
+                            <div>
+                                语言成绩：<span class="blue">{{item.languageScore}}</span>
+                            </div>
+                            <div class="brief_success">
+                                {{item.name}} &nbsp;成功录取 &nbsp;{{item.schoolName}} &nbsp;{{item.professionName}}
+                            </div>
 
-                        <i class="glyphicon glyphicon-ok-circle"></i>
+                            <i class="glyphicon glyphicon-ok-circle"></i>
+                        </div>
                     </div>
-                </div>
-
-                <!-- 英国 -->
-                <div class="home_success" ng-show="countryTab[1].show">
-                    英国
-                </div>
-
-                <!-- 澳洲 -->
-                <div class="home_success" ng-show="countryTab[2].show">
-                    澳洲
-                </div>
-
-                <!-- 加拿大 -->
-                <div class="home_success" ng-show="countryTab[3].show">
-                    加拿大
                 </div>
             </div>
         </div>

@@ -4,14 +4,15 @@
 define([''], function () {
     'use strict';
 
-    var detailCtrl = ['$scope', '$state', '$timeout',function ($scope, $state, $timeout) {
+    var newsCtrl = ['$scope', '$state', '$timeout',function ($scope, $state, $timeout) {
 
         var proId = $state.params.id;
 
         $.ajax({
-            url: '/Promotion/getBackgroundPromote?id=' + proId,
+            url: '/News/getNewsById?id=' + proId,
             type: 'GET',
             success: function (resp) {
+                console.log(resp);
                 getHtml(resp.textPath);
                 $timeout(function () {
                     $scope.articleModel = resp;
@@ -70,6 +71,6 @@ define([''], function () {
 
     }];
 
-    var homeModule = angular.module('promotion.config');
-    homeModule.controller('detailCtrl', detailCtrl);
+    var homeModule = angular.module('coop.config');
+    homeModule.controller('newsCtrl', detailCtrl);
 });

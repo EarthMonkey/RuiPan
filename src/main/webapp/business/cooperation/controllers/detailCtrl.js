@@ -9,7 +9,7 @@ define([''], function () {
         var proId = $state.params.id;
 
         $.ajax({
-            url: '/Promotion/getBackgroundPromote?id=' + proId,
+            url: '/CooperativeEducation/getCooperativeSchemeById?id=' + proId,
             type: 'GET',
             success: function (resp) {
                 getHtml(resp.textPath);
@@ -70,6 +70,6 @@ define([''], function () {
 
     }];
 
-    var homeModule = angular.module('promotion.config');
+    var homeModule = angular.module('coop.config');
     homeModule.controller('detailCtrl', detailCtrl);
 });

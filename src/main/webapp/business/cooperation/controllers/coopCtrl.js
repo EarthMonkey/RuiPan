@@ -146,7 +146,6 @@ define([''], function () {
                 url: '/CooperativeEducation/getCooperativeSchemeByCcid?ccid=' + LAST_TAB[syb].id,
                 type: 'GET',
                 success: function (resp) {
-                    console.log(resp);
                     if (syb === 0) {
                         $timeout(function () {
                             $scope.highList = resp;
@@ -168,7 +167,11 @@ define([''], function () {
         }
 
         $scope.getDetail = function (item) {
-            $state.go('promotionDetail', {id: item.id});
+            $state.go('cooperationDetail', {id: item.id});
+        };
+
+        $scope.getNew = function (id) {
+            $state.go('cooperationNews', {id: id});
         }
 
     }];

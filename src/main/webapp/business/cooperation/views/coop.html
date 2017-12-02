@@ -19,7 +19,7 @@
         </div>
     </div>
     <div class="lang_news_div">
-        <div class="each_news" ng-repeat="item in newsList">
+        <div class="each_news" ng-repeat="item in newsList" ng-click="getNew(item.id)">
             <i class="glyphicon glyphicon-menu-right"></i>
             {{item.title}}
         </div>

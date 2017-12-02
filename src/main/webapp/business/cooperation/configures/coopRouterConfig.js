@@ -16,6 +16,22 @@ define(['lazy-load/lazyLoad'],
             scripts: {
                 controllers: ['business/cooperation/controllers/coopCtrl']
             }
+        }, {
+            name: 'cooperationDetail',
+            url: '/cooperation-detail/:id',
+            templateUrl: 'business/cooperation/views/cooperation-detail.html',
+            controller: 'detailCtrl',
+            scripts: {
+                controllers: ['business/cooperation/controllers/detailCtrl']
+            }
+        }, {
+            name: 'cooperationNews',
+            url: '/cooperation-news/:id',
+            templateUrl: 'business/cooperation/views/cooperation-news.html',
+            controller: 'newsCtrl',
+            scripts: {
+                controllers: ['business/cooperation/controllers/newsCtrl']
+            }
         }];
 
         var coopModule = angular.module('coop.config', ['ui.router']);

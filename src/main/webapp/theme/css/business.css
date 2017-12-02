@@ -243,6 +243,8 @@
 .each_consult img {
     width: 100%;
     height: 280px;
+    background-color: #d8d8d8;
+    display: block;
 }
 
 .consult_info {
@@ -387,14 +389,16 @@
 }
 
 .ad_div {
-    width: 100%;
+    width: 240px;
     height: 150px;
     margin-bottom: 30px;
 }
 
 .ad_div img {
-    width: 100%;
+    width: 240px;
     height: 150px;
+    background-color: #d8d8d8;
+    display: block;
 }
 
 .flex_center {
@@ -521,6 +525,7 @@
 .photo_div .img_div img {
     width: 90px;
     height: 100px;
+    background-color: #d8d8d8;
 }
 
 .photo_div .name {
@@ -648,6 +653,7 @@
     margin-right: 10px;
     display: inline-block;
     vertical-align: bottom;
+    background-color: #d8d8d8;
 }
 
 .prospect_title span {
@@ -674,6 +680,7 @@
     -moz-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
     margin-right: 15px;
+    background-color: #d8d8d8;
 }
 
 .left_bar a {
@@ -752,6 +759,7 @@
 .school_logo img {
     width: 35px;
     height: 35px;
+    background-color: #d8d8d8;
 }
 
 .school_name {
@@ -791,9 +799,6 @@ tbody.tr_clickable tr:hover {
     width: 100%;
     height: 40px;
     line-height: 40px;
-    text-align: center;
-    color: #197bc0;
-    font-size: 18px;
     position: relative;
     margin-top: -10px;
     -webkit-box-shadow: 0 1px 1px #e1e8ed;
@@ -818,6 +823,7 @@ tbody.tr_clickable tr:hover {
 .detail_school_logo img {
     width: 200px;
     height: 200px;
+    background-color: #d8d8d8;
 }
 
 .detail_school_name {
@@ -855,6 +861,7 @@ tbody.tr_clickable tr:hover {
 .school_photo img {
     width: 70px;
     height: 70px;
+    background-color: #d8d8d8;
 }
 
 .tab_3 {
@@ -864,6 +871,7 @@ tbody.tr_clickable tr:hover {
 .detail_info {
     font-size: 14px;
     padding: 30px 30px;
+    min-height: 240px;
 }
 
 .detail_info p {
@@ -957,6 +965,7 @@ tbody.tr_clickable tr:hover {
 .ex_school_logo img {
     width: 150px;
     height: 150px;
+    background-color: #d8d8d8;
 }
 
 .ex_brief {
@@ -1052,6 +1061,7 @@ tbody.tr_clickable tr:hover {
     display: block;
     width: 240px;
     height: 150px;
+    background-color: #d8d8d8;
 }
 
 .pro_each_item .title {
@@ -1079,6 +1089,7 @@ tbody.tr_clickable tr:hover {
 .language_ad_div img {
     width: 100%;
     height: 200px;
+    background-color: #d8d8d8;
 }
 
 .language_carousel {
@@ -1091,6 +1102,7 @@ tbody.tr_clickable tr:hover {
 .language_carousel img {
     width: 100%;
     height: 370px;
+    background-color: #d8d8d8;
 }
 
 .lang_news_div {
@@ -1299,6 +1311,7 @@ tbody.tr_clickable tr:hover {
     padding-left: 30px;
     border-left: 1px solid #197bc0;
     position: relative;
+    cursor: pointer;
 }
 
 .each_success .blue {
@@ -1389,6 +1402,8 @@ tbody.tr_clickable tr:hover {
 .each_photo img {
     width: 180px;
     height: 180px;
+    background-color: #d8d8d8;
+    display: block;
 }
 
 .each_photo_div .name {
@@ -1494,6 +1509,7 @@ tbody.tr_clickable tr:hover {
 .each_cooper_business img {
     width: 100%;
     height: 170px;
+    background-color: #d8d8d8;
 }
 
 .each_cooper_business .cover {
@@ -1524,6 +1540,7 @@ tbody.tr_clickable tr:hover {
 .each_present img {
     width: 117px;
     height: 100px;
+    background-color: #d8d8d8;
 }
 
 .honor_title {
@@ -1547,6 +1564,7 @@ tbody.tr_clickable tr:hover {
 .each_cert img {
     width: 100%;
     height: 210px;
+    background-color: #d8d8d8;
 }
 
 .cert_center {
@@ -1586,6 +1604,7 @@ tbody.tr_clickable tr:hover {
     width: 60px;
     height: 60px;
     margin: 0 120px;
+    background-color: #d8d8d8;
 }
 
 .feature_title {
@@ -1709,6 +1728,7 @@ input:-ms-input-placeholder, textarea:-ms-input-placeholder {
 .suc_left img {
     width: 150px;
     height: 150px;
+    background-color: #d8d8d8;
 }
 
 .suc_right {

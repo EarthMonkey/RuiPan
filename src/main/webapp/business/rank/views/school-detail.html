@@ -7,7 +7,16 @@
 
 <!-- 顶部英文+logo -->
 <div class="detail_top_info">
-    <!--Harvard College，86 Brattle Street，Cambridge, MA 02138-->
+
+    <!-- 路径导航 -->
+    <div style="margin-left: 210px;position: relative;top: -9px;">
+        <ol class="breadcrumb">
+            <li><a href="/#/home">首页</a></li>
+            <li><a href="/#/rank/america">院校排名</a></li>
+            <li>【{{schoolObj.collegeName}}】</li>
+        </ol>
+    </div>
+
     <div class="detail_school_logo">
         <img ng-src="{{'upload/images/' + schoolObj.schoolBadge}}" alt="图片加载失败">
     </div>

@@ -1,0 +1,53 @@
+<!-- Created by L.H.S on 2017/11/11. -->
+
+<div class="language_ad_div" style="height: 300px;">
+    <img style="height: 300px;" src="/theme/source/promotion-detail.png">
+</div>
+<!-- 占位符（满屏采用absolute布局） -->
+<div style="height: 80px;"></div>
+
+
+<!-- 左边导航 -->
+<div class="left_part">
+
+    <div class="ad_div" ng-repeat="item in recomendList">
+        <img ng-src="{{'upload/images/' + item.picturePath}}" alt="图片加载错误">
+    </div>
+
+    <!-- 案例推荐 -->
+    <div class="board_title" style="width: 240px;">
+        <span class="title_text" style="width: 110px;">案例推荐</span>
+        <hr style="width: 110px">
+    </div>
+
+    <div>
+        <div class="each_ex" ng-repeat="item in recSucList track by $index">
+            <div class="ex_order">{{$index+1}}</div>
+            <div class="ex_info" style="text-align: left">{{item.slogan}}</div>
+        </div>
+    </div>
+
+</div>
+
+<div class="right_part">
+    <!-- 路径导航 -->
+    <div>
+        <ol class="breadcrumb">
+            <li><a href="/#/home">首页</a></li>
+            <li><a href="/#/cooperation">合作办学</a></li>
+            <li>【{{articleModel.title}}】</li>
+        </ol>
+    </div>
+
+    <!-- 项目详情 -->
+    <div class="article_title">
+        【{{articleModel.title}}】 {{articleModel.synopsis}}
+    </div>
+
+    <hr class="article_hr">
+
+    <div class="article">
+        <div ng-bind-html="articleModel.content" style="min-height: 600px;"></div>
+    </div>
+
+</div>

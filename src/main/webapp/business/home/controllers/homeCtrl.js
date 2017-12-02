@@ -37,18 +37,39 @@ define([''], function () {
         $scope.slides = [];
 
         // country tab
-        $scope.countryTab = [
-            {title: '美国', show: true},
-            {title: '英国'},
-            {title: '澳洲'},
-            {title: '加拿大'}
-        ];
+        $scope.countryTab = [];
 
         var LAST_TAB = $scope.countryTab[0];
         $scope.changeTab = function (tab) {
             tab.show = true;
             LAST_TAB.show = false;
             LAST_TAB = tab;
+        };
+
+        // 成功案例
+        $.ajax({
+            url: '/SuccessfulCase/getSuccessfulCaseGroupByCountry?limit=5',
+            type: 'GET',
+            success: function (resp) {
+                var keys = Object.keys(resp);
+                $timeout(function () {
+                    keys.forEach(function (key) {
+                        $scope.countryTab.push({
+                            title: key,
+                            cases: resp[key]
+                        });
+                    });
+                    $scope.countryTab[0].show = true;
+                });
+            },
+            error: function (err) {
+                console.log(err);
+                console.log('fail to get success');
+            }
+        });
+
+        $scope.getSucDetail = function (id) {
+            $state.go("successDetail", {sucId: id});
         };
 
         // 获取推荐顾问
@@ -77,22 +98,6 @@ define([''], function () {
                 console.log(err);
             }
         });
-
-        // 成功案例
-        $.ajax({
-            url: '/SuccessfulCase/getSuccessfulCaseGroupByCountry?limit=5',
-            type: 'GET',
-            success: function (resp) {
-                console.log(resp);
-                $timeout(function () {
-                    $scope.homeSuccess = resp;
-                });
-            },
-            error: function (err) {
-                console.log(err);
-                console.log('fail to get success');
-            }
-        })
 
     }];
 
