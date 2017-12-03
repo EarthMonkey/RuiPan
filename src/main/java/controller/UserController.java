@@ -27,7 +27,7 @@ public class UserController {
     public String validate( HttpServletRequest request){
         if(request.getSession().getAttribute("User")!=null){
             UserVO userVO=(UserVO)request.getSession().getAttribute("User");
-            if(UserValidate.validate(userVO.getUsername(),userVO.getLicense())){
+            if(UserValidate.validate(userVO.getLicense())){
                 return "true";
             }
 

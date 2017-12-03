@@ -55,7 +55,7 @@ public class UserServiceImpl implements UserService {
                 String address = getLastLoginAddress(user.getLastLoginIp());
                 userVO.setLastLoginAddress(address);
                 userVO.setLoginMessage("success");
-                userVO.setLicense(UserValidate.getLicense(username));
+                userVO.setLicense(UserValidate.getLicense());
 
                 //更新该账户登录信息
                 user.setLastLoginTime(new Timestamp(System.currentTimeMillis()));

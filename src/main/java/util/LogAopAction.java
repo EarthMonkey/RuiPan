@@ -2,12 +2,11 @@ package util;
 
 import java.lang.reflect.Method;
 import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
 
 import dao.LogDao;
+import exception.AccessDeniedException;
 import model.Logentity;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -86,9 +85,12 @@ public class LogAopAction {
                 if(userVO==null){
                     //如果没有登录且不是登陆操作，则为非法访问后台，直接返回到登录界面
                     if(!methodName.equals("login")){
-                        // TODO: 2017/11/4
+//                        throw new AccessDeniedException();
                     }
                 }else{
+                    if(!UserValidate.validate(userVO.getLicense())){ //用户二次鉴权,避免伪造请求
+//                        throw new AccessDeniedException();
+                    }
                     log.setUsername(userVO.getUsername());
                 }
 
@@ -105,7 +107,6 @@ public class LogAopAction {
                     //保存进数据库
                     logDao.saveAndFlush(log);
                 } catch (Throwable e) {
-                    // TODO Auto-generated catch block
                     long end = System.currentTimeMillis();
                     log.setResponsetime((int)(end-start));
                     log.setCommite("执行失败");

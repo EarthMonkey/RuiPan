@@ -85,6 +85,16 @@
     <task:annotation-driven executor="executor" scheduler="scheduler" />
     <!--理论上只需要加上<task:annotation-driven />这句配置就可以了，这些参数都不是必须的。-->
 
+    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+        <!-- <property name="defaultErrorView" value="rediret:/error"></property>   -->
+        <property name="exceptionMappings">
+            <props>
+                <prop key="exception.AccessDeniedException">redirect:/backend.html</prop>
+                <!--<prop key="exception.AccessDeniedException">forward:/backend.html</prop>-->
+            </props>
+        </property>
+    </bean>
+
     <aop:aspectj-autoproxy proxy-target-class="true" />
     <bean id="logAopAction" class="util.LogAopAction"></bean>
 
