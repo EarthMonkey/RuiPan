@@ -41,7 +41,8 @@ public class UserController {
 
         UserVO user = userService.login(username, password, GetClientMessageUtils.getIpAddr(request));
         if (user.getLoginMessage().equalsIgnoreCase("success")) {
-            request.getSession(false).invalidate();
+            if(request.getSession(false)!=null)
+                request.getSession(false).invalidate();
             request.getSession(true);
             request.getSession().setAttribute("User", user);
         }
