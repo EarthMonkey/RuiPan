@@ -31,14 +31,30 @@ define(['ui-router/angular-ui-router',
 
         framework_backend.run(function ($rootScope, $state) {
             $rootScope.$on('$stateChangeStart', function (event, toState) {
-                var sessionStorage = window.sessionStorage;
-                var user = sessionStorage.getItem("user");
 
-                if (!user && toState.name !== "login") {
-                    event.preventDefault();
-                    $state.transitionTo("login", null, {notify:false});
-                    $state.go('login');
-                }
+                // 判断是否登录
+                $.ajax({
+                    url: '/validate',
+                    type: 'GET',
+                    success: function (resp) {
+                        console.log(resp);
+                        if (resp == 'true' || resp == true) {
+                            // 已登录
+                            if (toState.name === "login") {
+                                $state.go('backend.abroadCountry');
+                            }
+
+                        } else {
+                            // 未登录
+                            event.preventDefault();
+                            $state.transitionTo("login", null, {notify: false});
+                            $state.go('login');
+                        }
+                    },
+                    error: function (err) {
+                        console.log(err);
+                    }
+                });
             });
         });
 

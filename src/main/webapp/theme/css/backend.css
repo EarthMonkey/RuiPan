@@ -64,6 +64,17 @@ p {
     box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
     border-radius: 8px;
     padding: 20px 0;
+    position: relative;
+}
+
+.login_error {
+    position: absolute;
+    width: 200px;
+    bottom: 5px;
+    left: 50%;
+    transform: translate(-100px, 0);
+    text-align: center;
+    color: red;
 }
 
 .login_input {

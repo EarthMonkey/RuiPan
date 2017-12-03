@@ -10,10 +10,6 @@ define([], function () {
         $scope.menus = {
             url: 'framework/backend/topbar.html'
         };
-
-        var sessionStorage = window.sessionStorage;
-        $scope.username = sessionStorage.getItem("user");
-
     }];
 
     return topbarCtrl;
