@@ -19,7 +19,7 @@ public class UserValidate {
         String uuid = UUID.randomUUID().toString().replaceAll("-", "");
 
         try {
-            return uuid + PasswordEncryption.getEncryptedPassword(uuid, salt);
+            return uuid +"-"+ PasswordEncryption.getEncryptedPassword(uuid, salt);
         } catch (NoSuchAlgorithmException e) {
             logger.error(e);
         } catch (InvalidKeySpecException e) {

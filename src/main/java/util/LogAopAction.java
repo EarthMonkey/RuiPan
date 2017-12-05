@@ -85,12 +85,12 @@ public class LogAopAction {
                 if(userVO==null){
                     //用户首次鉴权，如果没有登录且不是登陆操作，则为非法访问后台，直接返回到登录界面
                     if(!methodName.equals("login")){
-//                        throw new AccessDeniedException();
+                        throw new AccessDeniedException();
                     }
                 }else{
                     //用户二次鉴权,避免伪造请求，后期可增加ip黑名单，防范黑客攻击
                     if(!UserValidate.validate(userVO.getLicense())){
-//                        throw new AccessDeniedException();
+                        throw new AccessDeniedException();
                     }
                     log.setUsername(userVO.getUsername());
                 }
