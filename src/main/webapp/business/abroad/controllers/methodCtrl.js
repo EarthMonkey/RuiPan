@@ -1,28 +1,28 @@
 /**
  * Created by L.H.S on 2017/11/11.
  */
-
 define([''], function () {
     'use strict';
 
-    var detailCtrl = ['$scope', '$state', '$timeout', function ($scope, $state, $timeout) {
+    var detailCtrl = ['$scope', '$state', '$timeout',function ($scope, $state, $timeout) {
 
-        var sucId = $state.params.sucId;
+        var proId = $state.params.id;
 
         $.ajax({
-            url: '/SuccessfulCase/getSuccessfulCase?id=' + sucId,
+            url: '/StudyAbroad/getApplicationSchemeById?id=' + proId,
             type: 'GET',
             success: function (resp) {
                 getHtml(resp.textPath);
                 $timeout(function () {
-                    $scope.successCase = resp;
+                    $scope.articleModel = resp;
                 });
             },
             error: function (err) {
-                console.log("fail to get success case");
                 console.log(err);
+                console.log('fail to get article')
             }
         });
+
 
         function getHtml(path) {
             $.ajax({
@@ -30,13 +30,13 @@ define([''], function () {
                 type: 'GET',
                 success: function (resp) {
                     $timeout(function () {
-                        $scope.successCase.content = resp;
+                        $scope.articleModel.content = resp;
                     });
                 },
                 error: function (err) {
                     console.log(err);
                 }
-            })
+            });
         }
 
         // 获取三个推荐方案
@@ -75,6 +75,6 @@ define([''], function () {
 
     }];
 
-    var successModule = angular.module('success.config');
-    successModule.controller('detailCtrl', detailCtrl);
+    var homeModule = angular.module('abroad.config');
+    homeModule.controller('methodCtrl', detailCtrl);
 });

@@ -152,6 +152,11 @@ define([''], function () {
             {title: '所需费用'}
         ];
 
+        // 获取方案详情
+        $scope.getMethodDetail = function (item) {
+            $state.go("method", {id: item.id});
+        };
+
         var LAST_TAB = $scope.factorTab[0];
         $scope.changeTab = function (tab) {
             tab.show = true;

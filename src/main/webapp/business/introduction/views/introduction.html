@@ -107,12 +107,12 @@
                     <span>就业领域</span>
                 </div>
                 <div class="prospect_body">
-                    <div ng-repeat="pf in prosField">{{pf}}</div>
+                    <div ng-repeat="pf in prosField">{{pf.post}}</div>
                 </div>
             </div>
 
             <div class="center_circle">
-                <div class="money">$80310</div>
+                <div class="money">${{salary}}</div>
                 美国就业平均薪资
             </div>
         </div>
@@ -136,15 +136,9 @@
                     <div class="card_td width_30">成绩</div>
                     <div class="card_td width_70">名校申请建议</div>
                 </div>
-                <div class="card_tb" ng-repeat="ac in condition">
-                    <div class="card_td width_30">{{ac.label}}</div>
-                    <div class="card_td width_70">{{ac.score}}</div>
-                </div>
-                <div class="card_tb">
-                    <div class="card_td width_30">学生背景要求</div>
-                    <div class="card_td width_70" style="font-size: 14px; text-align: left;">
-                        美国的金融工程专业的院校申请比较看重学生的推荐信、实习经历。学生在准备的过程中需要做好自己的硬件成绩和软件条件的平衡，丰富自身的背景，准备好相关的成绩和材料。
-                    </div>
+                <div class="card_tb" ng-repeat="ac in conList">
+                    <div class="card_td width_30">{{ac.item}}</div>
+                    <div class="card_td width_70">{{ac.advice}}</div>
                 </div>
             </div>
         </div>

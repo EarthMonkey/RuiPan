@@ -14,7 +14,7 @@
     </div>
 
     <div>
-        <div class="each_ex" ng-repeat="item in recSucList track by $index">
+        <div class="each_ex" ng-repeat="item in recSucList track by $index" ng-click="getCaseDetail(item)">
             <div class="ex_order">{{$index+1}}</div>
             <div class="ex_info" style="text-align: left">{{item.slogan}}</div>
         </div>

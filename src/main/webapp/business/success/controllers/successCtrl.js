@@ -110,7 +110,7 @@ define([''], function () {
                 console.log($scope.currentPage);
             };
 
-            // 获取详情
+            // 获取案例详情
             $scope.getDetail = function (item) {
                 $state.go("successDetail", {sucId: item.id});
             };

@@ -16,6 +16,14 @@ define(['lazy-load/lazyLoad'],
             scripts: {
                 controllers: ['business/abroad/controllers/abroadCtrl']
             }
+        }, {
+            name: 'method',
+            url: '/method/:id',
+            templateUrl: 'business/abroad/views/method.html',
+            controller: 'methodCtrl',
+            scripts: {
+                controllers: ['business/abroad/controllers/methodCtrl']
+            }
         }];
 
         var abroadModule = angular.module('abroad.config', ['ui.router']);

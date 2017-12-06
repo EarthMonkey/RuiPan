@@ -121,7 +121,7 @@
 
         <!-- 更多 -->
         <div class="get_more success">
-            <a href="">了解更多<i class="glyphicon glyphicon-menu-right"></i></a>
+            <a ui-sref="success">了解更多<i class="glyphicon glyphicon-menu-right"></i></a>
         </div>
     </div>
 </div>
@@ -243,8 +243,8 @@
 <div class="main_body">
     <div class="honor_title">荣誉资质</div>
     <div>
-        <div class="each_cert" ng-repeat="temp in [0,1,2,3,4,5] track by $index" ng-class="{cert_center: $index%3==1}">
-            <img src="/theme/source/cert.png">
+        <div class="each_cert" ng-repeat="item in honours track by $index" ng-class="{cert_center: $index%3==1}">
+            <img ng-src="{{'upload/images/' + item.imagePath}}" alt="图片加载错误">
         </div>
     </div>
 </div>

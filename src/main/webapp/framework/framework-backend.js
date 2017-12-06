@@ -37,7 +37,6 @@ define(['ui-router/angular-ui-router',
                     url: '/validate',
                     type: 'GET',
                     success: function (resp) {
-                        console.log(resp);
                         if (resp == 'true' || resp == true) {
                             // 已登录
                             if (toState.name === "login") {

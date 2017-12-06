@@ -45,7 +45,7 @@
         <div class="each_program" ng-repeat="(title, arr) in programs track by $index"
              ng-class="{no_border: $index%4==3}">
             <div class="title">{{title}}</div>
-            <div ng-repeat="item in arr track by $index" class="program">
+            <div ng-repeat="item in arr track by $index" class="program" ng-click="getMethodDetail(item)">
                 方案{{numberLabel[$index]}}：{{item.title}}
             </div>
         </div>

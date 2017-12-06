@@ -68,6 +68,11 @@ define([''], function () {
             }
         });
 
+        // 获取案例详情
+        $scope.getCaseDetail = function (item) {
+            $state.go("successDetail", {sucId: item.id});
+        };
+
     }];
 
     var homeModule = angular.module('coop.config');

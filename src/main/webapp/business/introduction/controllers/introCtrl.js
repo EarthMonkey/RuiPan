@@ -162,6 +162,51 @@ define([''], function () {
             });
 
             // 领域
+            $.ajax({
+                url: '/Profession/getEmploymentPost?pid=' + PID,
+                type: 'GET',
+                success: function (resp) {
+                    $scope.prosField = resp;
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+
+            // 申请条件
+            $.ajax({
+                url: '/Profession/getApplicationAdvice?pid=' + PID,
+                type: 'GET',
+                success: function (resp) {
+                    $timeout(function () {
+                        $scope.conList = resp;
+                    });
+                },
+                error: function (err) {
+                    console.log(err);
+                }
+            });
+
+            // 薪资水平
+            $.ajax({
+                url: '/Profession/getSalary?pid=' + PID,
+                type: 'GET',
+                success: function (resp) {
+                    if (resp.length > 0) {
+                        var sum = 0;
+                        resp.forEach(function (item) {
+                            sum += Number(item.salary);
+                        });
+                        $timeout(function () {
+                            $scope.salary = (sum / resp.length).toFixed(0);
+                        });
+                    }
+                },
+                error: function (err) {
+                    console.log(err);
+                    showMess('danger', '获取薪资水平失败');
+                }
+            });
 
             // 专业院校排名
             $.ajax({
@@ -239,16 +284,14 @@ define([''], function () {
         });
 
         // 申请条件
-        $scope.condition = [
-            {label: 'GPA', score: 3.5},
-            {label: 'GRE', score: "325 + 3.5"},
-            {label: 'TOFEL', score: 105}
-        ];
+        $scope.conList = [];
 
         // 就业前景
         $scope.prosWhere = [];
 
-        $scope.prosField = ['风险管理人士', '高校科研人员', '股票交易员', '证券分析师', '金融工程师'];
+        $scope.prosField = [];
+
+        $scope.salary = 0;
 
         // 院校排名
         $scope.rankCol = ['排名', '学校名', '成绩要求', '申请难度分析', '院校申请'];

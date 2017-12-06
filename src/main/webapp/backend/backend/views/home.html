@@ -43,8 +43,42 @@
         </table>
     </div>
 
+    <div class="h_title" style="margin-top: 30px;">
+        <h2>荣誉资质管理</h2>
+    </div>
+
+    <!-- 两个表格并列 -->
+    <div>
+        <table class="table table-hover">
+            <thead>
+            <th>图片</th>
+            <th>名称</th>
+            <th>获取时间</th>
+            <th class="action_col"><a ng-click="addHonour()"><i class="fa fa-plus"></i>添加</a></th>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in honours track by $index">
+                <td>
+                    <div class="photo_preview">
+                        <img ng-src="{{'upload/images/' + item.imagePath}}" alt="图片加载失败">
+                    </div>
+                </td>
+                <td>{{item.name}}</td>
+                <td>{{item.getAt}}</td>
+                <td>
+                    <div class="table_mod"><a ng-click="delHonour(item, $index)">删除</a></div>
+                </td>
+            </tr>
+            <tr ng-if="carousList.length==0">
+                <td class="no_data" colspan="6">无数据</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+
     <!-- 三个特色业务管理 -->
-    <div style="margin-top: 30px;">
+    <div style="margin-top: 50px;">
         <table class="table table-hover">
             <thead>
             <th style="width: 180px;">三个特色业务</th>

@@ -98,12 +98,75 @@ define([''], function () {
                 });
         };
 
+        // 荣誉资质
+        $scope.honours = [];
+
+        $.ajax({
+            url: '/homepage/getHonor',
+            type: 'GET',
+            success: function (resp) {
+                $scope.honours = resp;
+            },
+            error: function (err) {
+                console.log(err);
+                showMess('danger', '获取荣誉资质失败');
+            }
+        });
+
+        $scope.addHonour = function () {
+            var fields = [
+                {id: 'name', label: '荣誉名称'},
+                {id: 'getAt', label: '获取时间'},
+                {id: 'imagePath', label: '证书图片', type: 'img'}
+            ];
+
+            commonService.openTextForm('添加荣誉资质', fields).result
+                .then(function (data) {
+                    $.ajax({
+                        url: '/homepage/addHonor',
+                        type: 'POST',
+                        data: data,
+                        success: function (resp) {
+                            $scope.honours.push(resp);
+                            showMess('success', '添加成功');
+                        },
+                        error: function (err) {
+                            console.log(err);
+                            showMess('danger', '添加荣誉资质失败');
+                        }
+                    });
+                });
+        };
+
+        $scope.delHonour = function (item, pos) {
+            commonService.confirm("荣誉资质：" + item.name).result
+                .then(function (resp) {
+                    if (resp) {
+
+                        $.ajax({
+                            url: '/homepage/deleteHonor?id=' + item.id,
+                            type: 'DELETE',
+                            success: function () {
+                                $scope.honours.splice(pos, 1);
+                                showMess('success', '删除成功');
+                            },
+                            error: function (err) {
+                                console.log(err);
+                                showMess('danger', '删除荣誉资质失败');
+                            }
+                        });
+
+                    }
+                });
+        };
+
         function showMess(type, data) {
             commonService.showMessage($scope, {
                 type: type,
                 content: data
             });
         }
+
     }];
 
     var backendModule = angular.module('backend.config');

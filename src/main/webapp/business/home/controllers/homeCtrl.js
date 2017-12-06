@@ -92,7 +92,24 @@ define([''], function () {
             url: '/AboutUs/getCooperativePartner',
             type: 'GET',
             success: function (resp) {
-                $scope.coopList = resp;
+                $timeout(function () {
+                    $scope.coopList = resp;
+                });
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+
+        // 荣誉资质
+        $scope.honours = [];
+        $.ajax({
+            url: '/homepage/getHonor',
+            type: 'GET',
+            success: function (resp) {
+                $timeout(function () {
+                    $scope.honours = resp;
+                });
             },
             error: function (err) {
                 console.log(err);
