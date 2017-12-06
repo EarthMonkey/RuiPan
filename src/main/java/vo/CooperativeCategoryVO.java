@@ -45,20 +45,22 @@ public class CooperativeCategoryVO {
         this.updateAt = updateAt;
     }
 
-    public CooperativeCategory toEntity(){
-        CooperativeCategory cooperativeCategory=new CooperativeCategory();
+    public CooperativeCategory toEntity() {
+        CooperativeCategory cooperativeCategory = new CooperativeCategory();
         cooperativeCategory.setId(id);
         cooperativeCategory.setCategory(category);
         cooperativeCategory.setSubclassification(subclassification);
-        updateAt=new Timestamp(System.currentTimeMillis());
+        updateAt = new Timestamp(System.currentTimeMillis());
         cooperativeCategory.setUpdateAt(updateAt);
         return cooperativeCategory;
     }
 
-    public void update(CooperativeCategory cooperativeCategory){
-        id=cooperativeCategory.getId();
-        category=cooperativeCategory.getCategory();
-        subclassification=cooperativeCategory.getSubclassification();
-        updateAt=cooperativeCategory.getUpdateAt();
+    public void update(CooperativeCategory cooperativeCategory) {
+        if (cooperativeCategory != null) {
+            id = cooperativeCategory.getId();
+            category = cooperativeCategory.getCategory();
+            subclassification = cooperativeCategory.getSubclassification();
+            updateAt = cooperativeCategory.getUpdateAt();
+        }
     }
 }

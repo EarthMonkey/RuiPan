@@ -164,8 +164,8 @@ public class SuccessfulCaseVO {
         this.updateAt = updateAt;
     }
 
-    public SuccessfulCase toEntity(){
-        SuccessfulCase successfulCase=new SuccessfulCase();
+    public SuccessfulCase toEntity() {
+        SuccessfulCase successfulCase = new SuccessfulCase();
         successfulCase.setId(id);
         successfulCase.setPid(pid);
         successfulCase.setSid(sid);
@@ -179,25 +179,27 @@ public class SuccessfulCaseVO {
         successfulCase.setUndergraduateMajor(undergraduateMajor);
         successfulCase.setTextPath(textPath);
         successfulCase.setFlag(flag);
-        updateAt=new Timestamp(System.currentTimeMillis());
+        updateAt = new Timestamp(System.currentTimeMillis());
         successfulCase.setUpdateAt(updateAt);
         return successfulCase;
     }
 
-    public void update(SuccessfulCase successfulCase){
-        id=successfulCase.getId();
-        pid=successfulCase.getPid();
-        sid=successfulCase.getSid();
-        cid=successfulCase.getCid();
-        name=successfulCase.getName();
-        degree=successfulCase.getDegree();
-        enrollmentTime=successfulCase.getEnrollmentTime();
-        languageScore=successfulCase.getLanguageScore();
-        gpa=successfulCase.getGpa();
-        gmatSatGre=successfulCase.getGmatSatGre();
-        undergraduateMajor=successfulCase.getUndergraduateMajor();
-        textPath=successfulCase.getTextPath();
-        flag=successfulCase.getFlag();
-        updateAt=successfulCase.getUpdateAt();
+    public void update(SuccessfulCase successfulCase) {
+        if (successfulCase != null) {
+            id = successfulCase.getId();
+            pid = successfulCase.getPid();
+            sid = successfulCase.getSid();
+            cid = successfulCase.getCid();
+            name = successfulCase.getName();
+            degree = successfulCase.getDegree();
+            enrollmentTime = successfulCase.getEnrollmentTime();
+            languageScore = successfulCase.getLanguageScore();
+            gpa = successfulCase.getGpa();
+            gmatSatGre = successfulCase.getGmatSatGre();
+            undergraduateMajor = successfulCase.getUndergraduateMajor();
+            textPath = successfulCase.getTextPath();
+            flag = successfulCase.getFlag();
+            updateAt = successfulCase.getUpdateAt();
+        }
     }
 }
