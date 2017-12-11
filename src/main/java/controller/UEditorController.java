@@ -27,9 +27,7 @@ public class UEditorController {
         }
         response.setHeader("Content-Type" , "text/html");
         String rootPath = request.getServletContext().getRealPath("/");
-        String result=new ActionEnter( request, rootPath).exec();
-        System.out.println(result);
-        return result;
+        return new ActionEnter( request, rootPath).exec();
     }
 
     @PostMapping(value = "/uploadText")
