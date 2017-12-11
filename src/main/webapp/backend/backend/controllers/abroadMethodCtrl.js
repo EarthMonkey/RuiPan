@@ -59,6 +59,7 @@ define([''], function () {
 
         // 初始化数据
         function getData() {
+            $scope.methodList = [];
             // 获取所有方案
             $.ajax({
                 url: '/StudyAbroad/getApplicationSchemeByGid?gid=' + GID,
