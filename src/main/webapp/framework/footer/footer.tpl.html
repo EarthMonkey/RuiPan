@@ -9,11 +9,11 @@
 
         <div class="footer_block" ng-repeat="fn in footerNav">
             <div class="footer_title">
-                <a ng-click="navLink(fn.state, {text: fn.children[0].text, country: 'america'}, 'postgraduate')">{{fn.text}}</a>
+                <a ng-click="navLink(fn)">{{fn.text}}</a>
             </div>
 
             <div ng-repeat="fc in fn.children">
-                <a ng-click="navLink(fn.state, fc, fc.assist)">{{fc.text}}</a>
+                <a ng-click="navLink(fc)">{{fc.text}}</a>
             </div>
         </div>
 
