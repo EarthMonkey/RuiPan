@@ -15,6 +15,14 @@ define(['lazy-load/lazyLoad'],
             scripts: {
                 controllers: ['business/home/controllers/homeCtrl']
             }
+        }, {
+            name: 'consultant',
+            url: '/consultant-detail/:conId',
+            templateUrl: 'business/home/views/consultant-detail.html',
+            controller: 'consultDetailCtrl',
+            scripts: {
+                controllers: ['business/home/controllers/consultDetailCtrl']
+            }
         }];
 
         var homeModule = angular.module('home.config', ['ui.router']);

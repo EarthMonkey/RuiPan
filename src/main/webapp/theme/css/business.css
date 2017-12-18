@@ -822,6 +822,7 @@ tbody.tr_clickable tr:hover {
 .detail_school_logo img {
     width: 200px;
     height: 200px;
+    display: inline-block;
     background-color: #d8d8d8;
 }
 

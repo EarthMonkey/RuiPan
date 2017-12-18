@@ -116,6 +116,10 @@ define([''], function () {
             }
         });
 
+        // 获取顾问详情
+        $scope.getConsultDetail = function (item) {
+            $state.go("consultant", {conId: item.id});
+        };
     }];
 
     var homeModule = angular.module('home.config');

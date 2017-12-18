@@ -134,7 +134,7 @@
     <div class="title">专业顾问团队</div>
 
     <div class="team_photo_div">
-        <div class="each_photo_div" ng-repeat="item in consultants">
+        <div class="each_photo_div" ng-repeat="item in consultants" ng-click="getConsultDetail(item)">
             <div class="each_photo">
                 <img ng-src="{{'upload/images/' + item.headSculpture}}" alt="图片加载错误">
             </div>

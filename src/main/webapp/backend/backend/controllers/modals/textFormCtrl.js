@@ -109,7 +109,7 @@ define([''], function () {
 
             $scope.ok = function () {
 
-                if (ImgObj !== '') { // 县山川图片
+                if (ImgObj !== '') { // 先上传图片
                     if (initObj) {
                         if (ImgObj.file !== '') {
                             uploadImg();
@@ -139,6 +139,14 @@ define([''], function () {
                             return;
                         }
                     }
+
+                    if ($scope.fields[0].type === 'password') {
+                        if ($scope.model.newPassword !== $scope.model.confirmPass) {
+                            showError("两次密码不一致");
+                            return;
+                        }
+                    }
+
                     $uibModalInstance.close($scope.model);
                 }
 

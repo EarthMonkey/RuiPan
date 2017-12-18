@@ -100,6 +100,11 @@ define([''], function () {
 
         };
 
+        // 获取顾问详情
+        $scope.getConsultDetail = function (item) {
+            $state.go("consultant", {conId: item.id});
+        };
+
         function showMess(type) {
             $scope.mesType = type;
             $timeout(function () {

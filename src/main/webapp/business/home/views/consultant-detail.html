@@ -1,0 +1,67 @@
+<!-- Created by L.H.S on 2017/11/11. -->
+
+<div class="language_ad_div" style="top: 279px;">
+    <img src="/theme/source/rank-detail.png">
+</div>
+<div style="height: 200px;"></div>
+
+<!-- 顶部英文+logo -->
+<div class="detail_top_info">
+
+    <!-- 路径导航 -->
+    <div style="margin-left: 210px;position: relative;top: -9px;">
+        <ol class="breadcrumb">
+            <li><a href="/#/home">首页</a></li>
+            <li>顾问【{{consultModel.name}}】</li>
+        </ol>
+    </div>
+
+    <div class="detail_school_logo">
+        <img ng-src="{{'upload/images/' + consultModel.headSculpture}}" alt="图片加载失败">
+    </div>
+</div>
+
+<div style="margin-top: 50px;">
+    <!-- 左边导航 -->
+    <div class="left_part">
+
+        <div class="ad_div" ng-repeat="item in recomendList">
+            <img ng-src="{{'upload/images/' + item.picturePath}}" alt="图片加载错误">
+        </div>
+
+        <!-- 案例推荐 -->
+        <div class="board_title" style="width: 240px;">
+            <span class="title_text" style="width: 110px;">案例推荐</span>
+            <hr style="width: 110px">
+        </div>
+
+        <div>
+            <div class="each_ex" ng-repeat="item in recSucList track by $index" ng-click="getCaseDetail(item)">
+                <div class="ex_order">{{$index+1}}</div>
+                <div class="ex_info" style="text-align: left">{{item.slogan}}</div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="right_part">
+
+        <!-- 项目详情 -->
+        <div class="article_title">
+            【{{consultModel.name}}】 {{consultModel.profession}}
+        </div>
+
+        <hr class="article_hr">
+
+        <div>
+            <blockquote>
+                {{consultModel.synopsis}}
+            </blockquote>
+        </div>
+
+        <div class="article">
+            <div ng-bind-html="consultModel.content" style="min-height: 600px;"></div>
+        </div>
+
+    </div>
+</div>

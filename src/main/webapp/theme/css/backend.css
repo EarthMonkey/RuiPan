@@ -398,7 +398,8 @@ th .fa {
     width: 100px;
 }
 
-.modal-body .login_input input[type='text'] {
+.modal-body .login_input input[type='text'],
+.modal-body .login_input input[type='password'] {
     width: 400px;
 }
 
