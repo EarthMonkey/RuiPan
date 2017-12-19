@@ -140,7 +140,7 @@ define([''], function () {
                         }
                     }
 
-                    if ($scope.fields[0].type === 'password') {
+                    if ($scope.fields[1] && $scope.fields[1].type === 'password') {
                         if ($scope.model.newPassword !== $scope.model.confirmPass) {
                             showError("两次密码不一致");
                             return;
