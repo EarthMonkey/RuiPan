@@ -92,7 +92,6 @@ public class ProfessionController {
 
     //根据国家获取大分类及其下所有小分类具体信息
     @GetMapping(value = "/getAllCategoryByCountry")
-    @SystemLog(module = "专业管理", methods = "获取专业分类信息")
     public Map<String,List<ProfessionCategoryVO>> getAllCategoryByCountry(String country) {
         return professionService.getAllCategoryByCountry(country);
     }
