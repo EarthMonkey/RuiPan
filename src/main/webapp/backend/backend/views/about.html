@@ -17,22 +17,73 @@
             <thead>
             <th>
                 公司介绍
-                <a style="float: right"><i class="fa fa-pencil"></i>修改</a>
+                <a ng-click="modIntroduce()" style="float: right"><i class="fa fa-pencil"></i>修改</a>
             </th>
             </thead>
             <tbody>
             <tr>
                 <td>
                     <div class="auto_td_div">
-                        <p>金融工程是用数学和工程学的方法来建立金融模型（如描述股价运动的随机微分方程），并进而计算金融收益与风险的一门学科。在现代金融实践中有重要的作用。
-                            在投资银行、对冲基金等公司中往往有专门研究和使用金融工程计算和管控风险的定量分析师。</p>
-                        <p>学习和研究的内容主要包括证券衍生物定价，风险分析，金融模型，金融信息分析，和一些高级的金融理论。</p>
+                        {{companyInfo.introduce.value}}
                     </div>
                 </td>
             </tr>
             </tbody>
         </table>
     </div>
+
+    <div class="h_title" style="margin-top: 50px;">
+        <h2>公司特点</h2>
+    </div>
+
+    <div style="margin-top: 30px;">
+        <table class="table table-hover">
+            <thead>
+            <th>特点</th>
+            <th>描述</th>
+            <th class="action_col"><i class="fa fa-pencil"></i>修改</th>
+            </thead>
+            <tbody>
+            <tr>
+                <td>特点一</td>
+                <td>
+                    <div class="auto_td_div">
+                        {{companyInfo.characteristic1.value}}
+                    </div>
+                </td>
+                <td>
+                    <a ng-click="modCharacter('characteristic1')">修改</a>
+                </td>
+            </tr>
+            <tr>
+                <td>特点二</td>
+                <td>
+                    <div class="auto_td_div">
+                        {{companyInfo.characteristic2.value}}
+                    </div>
+                </td>
+                <td>
+                    <a ng-click="modCharacter('characteristic2')">修改</a>
+                </td>
+            </tr>
+            <tr>
+                <td>特点三</td>
+                <td>
+                    <div class="auto_td_div">
+                        {{companyInfo.characteristic3.value}}
+                    </div>
+                </td>
+                <td>
+                    <a ng-click="modCharacter('characteristic3')">修改</a>
+                </td>
+            </tr>
+            <tr ng-if="coopList.length==0">
+                <td class="no_data" colspan="7">无数据</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
 
     <div class="h_title" style="margin-top: 50px;">
         <h2>合作过的学校和企业</h2>
@@ -78,38 +129,55 @@
     <div style="margin-top: 30px;">
         <table class="table table-striped">
             <thead>
-            <th>
-                联系方式
-                <a style="float: right"><i class="fa fa-pencil"></i>修改</a>
-            </th>
+            <th>联系方式</th>
+            <th>详情</th>
+            <th style="width: 85px;"><i class="fa fa-pencil"></i>修改</th>
             </thead>
             <tbody>
             <tr>
+                <td>地址</td>
+                <td>{{contactInfo.address.value}}</td>
                 <td>
-                    <div class="auto_td_div">
-                        <p>
-                            <label>地址：</label>
-                            北京市
-                            朝阳区
-                            一二路6号商务楼507室
-                        </p>
-                        <p>
-                            <label>电话：</label>
-                            +62 202 555 0117
-                        </p>
-                        <p>
-                            <label>邮箱：</label>
-                            ruipan@163.com
-                        </p>
-                        <p>
-                            <label>Q Q：</label>
-                            12345678
-                        </p>
-                        <p>
-                            <label>微信：</label>
-                            ruipanliuxue
-                        </p>
+                    <a ng-click="modContact('address', '公司地址')">修改</a>
+                </td>
+            </tr>
+            <tr>
+                <td>电话</td>
+                <td>{{contactInfo.phoneNumber.value}}</td>
+                <td>
+                    <a ng-click="modContact('phoneNumber', '电话号码')">修改</a>
+                </td>
+            </tr>
+            <tr>
+                <td>邮箱</td>
+                <td>{{contactInfo.email.value}}</td>
+                <td>
+                    <a ng-click="modContact('email', '邮箱账号')">修改</a>
+                </td>
+            </tr>
+            <tr>
+                <td>Q Q</td>
+                <td>{{contactInfo.qq.value}}</td>
+                <td>
+                    <a ng-click="modContact('qq', 'QQ号码')">修改</a>
+                </td>
+            </tr>
+            <tr>
+                <td>微信</td>
+                <td>{{contactInfo.wChart.value}}</td>
+                <td>
+                    <a ng-click="modContact('wChart', '微信号码')">修改</a>
+                </td>
+            </tr>
+            <tr>
+                <td>微信二维码</td>
+                <td>
+                    <div class="logo_preview" style="width: 100px;">
+                        <img ng-src="{{'/upload/images/'+contactInfo.qrcode.value}}" alt="二维码加载失败">
                     </div>
+                </td>
+                <td>
+                    <a ng-click="modContact('qrcode', '微信二维码')">修改</a>
                 </td>
             </tr>
             </tbody>

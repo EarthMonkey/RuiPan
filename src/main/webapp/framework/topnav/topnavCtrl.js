@@ -124,7 +124,19 @@ define([], function () {
 
         $rootScope.refreshComb = function (op) {
             $scope.selectedComb = op;
-        }
+        };
+
+        // 获取联系方式
+        $.ajax({
+            url: '/Configure/getContactInformation',
+            type: 'GET',
+            success: function (resp) {
+                $scope.contactInfo = resp;
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
 
     }];
 

@@ -21,7 +21,6 @@ define([''], function () {
         var PID = tempType[1];
         $scope.sp = tempType[1];
 
-
         // 获取子导航
         $.ajax({
             url: '/Profession/getAllCategoryByCountry?country=' + country,

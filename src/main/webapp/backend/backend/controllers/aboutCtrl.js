@@ -12,6 +12,122 @@ define([''], function () {
         $scope.toReply = []; // 未答复
         $scope.hasReply = []; // 已答复
 
+        // 获取公司介绍
+        $.ajax({
+            url: '/Configure/getCompanyInformation',
+            type: 'GET',
+            success: function (resp) {
+                $scope.companyInfo = resp;
+            },
+            error: function (err) {
+                console.log(err);
+                showMess('danger', '获取公司介绍失败');
+            }
+        });
+
+        var introField = [{
+            id: 'introduce',
+            label: '公司介绍',
+            type: 'textarea'
+        }];
+        // 更新公司介绍
+        $scope.modIntroduce = function () {
+            commonService.openTextForm('更新公司介绍', introField, {introduce: $scope.companyInfo.introduce.value})
+                .result.then(function (data) {
+                    $.ajax({
+                        url: '/Configure/update',
+                        type: 'PUT',
+                        data: {
+                            id: $scope.companyInfo.introduce.id,
+                            value: data.introduce
+                        },
+                        success: function () {
+                            $scope.companyInfo.introduce.value = data.introduce;
+                            showMess('success', '更新成功');
+                        },
+                        error: function (err) {
+                            console.log(err);
+                            showMess('danger', '更新失败');
+                        }
+                    })
+            })
+        };
+
+        var characterField = [{
+            id: 'character',
+            label: '特点描述',
+            type: 'textarea'
+        }];
+
+        // 更新公司特点
+        $scope.modCharacter = function (id) {
+            commonService.openTextForm("更新公司特点", characterField, {character: $scope.companyInfo[id].value})
+                .result.then(function (data) {
+                    $.ajax({
+                        url: '/Configure/update',
+                        type: 'PUT',
+                        data: {
+                            id: $scope.companyInfo[id].id,
+                            value: data.character
+                        },
+                        success: function () {
+                            $scope.companyInfo[id].value = data.character;
+                            showMess('success', '更新成功');
+                        },
+                        error: function (err) {
+                            console.log(err);
+                            showMess('danger', '更新失败');
+                        }
+                    })
+            });
+        };
+
+        // 获取联系方式
+        $.ajax({
+            url: '/Configure/getContactInformation',
+            type: 'GET',
+            success: function (resp) {
+                $scope.contactInfo = resp;
+            },
+            error: function (err) {
+                console.log(err);
+                showMess('danger', '获取联系方式失败');
+            }
+        });
+
+        // 更新联系方式
+        $scope.modContact = function (id, label) {
+            var contactField = [{
+                id: 'contact',
+                label: label,
+                type: 'textarea'
+            }];
+
+            if (id === 'qrcode') {
+                contactField[0].type = 'img';
+            }
+
+            commonService.openTextForm("更新联系方式", contactField, {contact: $scope.contactInfo[id].value})
+                .result.then(function (data) {
+                $.ajax({
+                    url: '/Configure/update',
+                    type: 'PUT',
+                    data: {
+                        id: $scope.contactInfo[id].id,
+                        value: data.contact
+                    },
+                    success: function () {
+                        $scope.contactInfo[id].value = data.contact;
+                        showMess('success', '更新成功');
+                    },
+                    error: function (err) {
+                        console.log(err);
+                        showMess('danger', '更新失败');
+                    }
+                })
+            });
+        };
+
         // 获取合作学校
         $.ajax({
             url: '/AboutUs/getCooperativePartner',

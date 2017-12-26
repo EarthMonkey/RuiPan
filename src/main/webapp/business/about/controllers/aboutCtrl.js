@@ -112,6 +112,30 @@ define([''], function () {
             }, 3000);
         }
 
+        // 获取公司介绍
+        $.ajax({
+            url: '/Configure/getCompanyInformation',
+            type: 'GET',
+            success: function (resp) {
+                $scope.companyInfo = resp;
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+
+        // 获取联系方式
+        $.ajax({
+            url: '/Configure/getContactInformation',
+            type: 'GET',
+            success: function (resp) {
+                $scope.contactInfo = resp;
+            },
+            error: function (err) {
+                console.log(err);
+                showMess('danger', '获取联系方式失败');
+            }
+        });
     }];
 
     var homeModule = angular.module('about.config');

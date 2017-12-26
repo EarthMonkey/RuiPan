@@ -95,12 +95,14 @@
     <div class="each_online wechat_div">
         <i class="fa fa-wechat fa-2x"></i>
         <!-- 二维码 -->
-        <div class="qrcode_div"></div>
+        <div class="qrcode_div">
+            <img ng-src="{{'/upload/images/'+contactInfo.qrcode.value}}"  alt="二维码加载失败">
+        </div>
     </div>
     <div class="each_online phone_div" >
         <i class="fa fa-phone fa-2x"></i>
         <div class="phone_number_div">
-            12345678901
+            {{contactInfo.phoneNumber.value}}
         </div>
     </div>
 
