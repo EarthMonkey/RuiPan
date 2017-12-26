@@ -1,6 +1,9 @@
 package service;
 
 import model.GlobalConfigure;
+import vo.CompanyVO;
+import vo.ContactInformationVO;
+import vo.HomePageVO;
 
 import java.util.List;
 
@@ -18,4 +21,10 @@ public interface GlobalConfigureService {
     public GlobalConfigure updateConfigure(Integer id,String value);
 
     public String deleteConfigure(Integer id);
+
+    public ContactInformationVO getContactInformation();
+
+    public CompanyVO getCompanyInformation();
+
+    public HomePageVO getHomepageInformation();
 }

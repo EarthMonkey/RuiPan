@@ -1,6 +1,7 @@
 package dao.daoImpl;
 
 import dao.ComplexSituationDao;
+import model.GlobalConfigure;
 import model.SuccessfulCase;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -13,6 +14,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -86,7 +88,32 @@ public class ComplexSituationDaoImpl implements ComplexSituationDao{
         successfulCaseVO.setConsultantName((String)o[17]);
         return successfulCaseVO;
     }
-//    public HostelPlan getAvailableRoomByHidAndTimeAndPeopleNum(int hid, int peopleNum, Timestamp startAt, Timestamp endAt, double money) {
+
+    @Override
+    public Map<String, GlobalConfigure> getGlobalConfigures(String start) {
+
+        EntityManager em=entityManagerFactory.createEntityManager();
+        Map<String, GlobalConfigure> result=new HashMap<String, GlobalConfigure>();
+        try {
+            String sql = "SELECT * " +
+                    "FROM global_configure g " +
+                    "WHERE g.key LIKE ?";
+            Query query = em.createNativeQuery(sql, GlobalConfigure.class);
+            query.setParameter(1, start + "%");
+            List<GlobalConfigure> list = query.getResultList();
+
+            for (GlobalConfigure globalConfigure : list) {
+                result.put(globalConfigure.getKey(),globalConfigure);
+            }
+        }catch (Exception e){
+            logger.error(e);
+        }finally {
+            em.close();
+        }
+        return result;
+    }
+
+    //    public HostelPlan getAvailableRoomByHidAndTimeAndPeopleNum(int hid, int peopleNum, Timestamp startAt, Timestamp endAt, double money) {
 //        EntityManager em=entityManagerFactory.createEntityManager();
 //        String sql = "SELECT * " +
 //                "FROM hostel_plan p " +

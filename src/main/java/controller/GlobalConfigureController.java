@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import service.GlobalConfigureService;
 import util.SystemLog;
+import vo.CompanyVO;
+import vo.ContactInformationVO;
+import vo.HomePageVO;
 
 import java.util.List;
 
@@ -57,5 +60,22 @@ public class GlobalConfigureController {
     public String delete(Integer id){
         return globalConfigureService.deleteConfigure(id);
     }
+
+    @GetMapping(value = "getContactInformation")
+    public ContactInformationVO getContactInformation(){
+        return globalConfigureService.getContactInformation();
+    }
+
+    @GetMapping(value = "getCompanyInformation")
+    public CompanyVO getCompanyInformation(){
+        return globalConfigureService.getCompanyInformation();
+    }
+
+    @GetMapping(value = "getHomepageInformation")
+    public HomePageVO getHomepageInformation(){
+        return globalConfigureService.getHomepageInformation();
+    }
+
+
 
 }
