@@ -45,7 +45,7 @@
     </div>
 
     <!-- 内容 -->
-    <div style="margin-top: 30px;">
+    <div style="margin-top: 30px; min-height: 570px;">
 
         <div class="ex_content" ng-repeat="item in successList" ng-click="getDetail(item)">
             <div class="ex_school_logo">
@@ -70,9 +70,9 @@
         </div>
 
         <!-- 分页 -->
-        <div class="pagination_div">
-            <ul uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()"></ul>
-        </div>
+        <!--<div class="pagination_div">-->
+            <!--<ul uib-pagination total-items="totalItems" ng-model="currentPage" ng-change="pageChanged()"></ul>-->
+        <!--</div>-->
 
     </div>
 </div>
