@@ -12,7 +12,7 @@ define([''], function () {
             url: '/getUserMessage',
             type: 'GET',
             success: function (resp) {
-                resp.lastLoginTime = new Date(resp.lastLoginTime).Format("yyyy-MM-dd hh:mm:ss")
+                resp.lastLoginTime = new Date(resp.lastLoginTime).Format("yyyy-MM-dd hh:mm:ss");
                 $scope.userInfo = resp;
             },
             error: function (err) {
@@ -58,7 +58,11 @@ define([''], function () {
             url: '/getAllUser',
             type: 'GET',
             success: function (resp) {
-                console.log(resp);
+                resp.forEach(function (item) {
+                    if (item.lastLoginTime) {
+                        item.lastLoginTime = new Date(item.lastLoginTime).Format("yyyy-MM-dd hh:mm:ss");
+                    }
+                });
                 $scope.userList = resp;
             },
             error: function (err) {
@@ -102,18 +106,18 @@ define([''], function () {
 
         };
 
-        // 修改密码
 
         // 删除user
         $scope.deleteUser = function (item, pos) {
-            commonService.confirm('用户：' + item).result
+            commonService.confirm('用户：' + item.username).result
                 .then(function (resp) {
                     if (resp) {
                         $.ajax({
-                            url: '/deleteUser',
+                            url: '/deleteUser?username=' + item.username,
                             type: 'DELETE',
                             success: function () {
                                 showMess('success', '删除成功');
+                                $scope.userList.splice(pos, 1);
                             },
                             error: function (err) {
                                 console.log(err);

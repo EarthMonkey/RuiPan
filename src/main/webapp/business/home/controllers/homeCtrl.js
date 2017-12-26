@@ -87,9 +87,9 @@ define([''], function () {
             }
         });
 
-        // 获取合作学校
+        // 服务的学校和企业
         $.ajax({
-            url: '/AboutUs/getCooperativePartner',
+            url: '/homepage/getServedCompany',
             type: 'GET',
             success: function (resp) {
                 $timeout(function () {

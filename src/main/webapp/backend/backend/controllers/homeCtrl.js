@@ -9,6 +9,7 @@ define([''], function () {
     var homeCtrl = ['$scope', '$state', 'commonService', function ($scope, $state, commonService) {
 
         $scope.carousList = [];
+        $scope.serviceList = [];
 
         // 获取轮播图
         $.ajax({
@@ -156,6 +157,93 @@ define([''], function () {
                             }
                         });
 
+                    }
+                });
+        };
+
+        // 服务的学校和企业
+        $.ajax({
+            url: '/homepage/getServedCompany',
+            type: 'GET',
+            success: function (resp) {
+                $scope.serviceList = resp;
+            },
+            error: function (err) {
+                console.log(err);
+                showMess('danger', '获取服务的学校失败');
+            }
+        });
+
+        var coopFields = [
+            {id: 'name', label: '单位名称'},
+            {id: 'country', label: '所属国家'},
+            {id: 'category', label: '所属类型'},
+            {id: 'briefIntroduce', label: '单位简介', type: 'textarea'},
+            {id: 'imagePath', label: 'logo图标', type: 'img'}
+        ];
+
+        // 增加合作
+        $scope.addCoop = function () {
+
+            commonService.openTextForm('添加服务', coopFields).result
+                .then(function (data) {
+                    $.ajax({
+                        url: '/homepage/addServedCompany',
+                        type: 'POST',
+                        data: data,
+                        success: function (resp) {
+                            $scope.serviceList.push(resp);
+                            showMess('success', '添加成功');
+                        },
+                        error: function (err) {
+                            console.log(err);
+                            showMess('danger', '添加失败');
+                        }
+                    })
+                });
+
+        };
+
+        // 修改合作
+        $scope.modCoop = function (item, pos) {
+
+            commonService.openTextForm('修改服务', coopFields, item).result
+                .then(function (data) {
+                    data.id = item.id;
+                    $.ajax({
+                        url: '/homepage/updateServedCompany',
+                        type: 'PUT',
+                        data: data,
+                        success: function (resp) {
+                            $scope.serviceList[pos] = data;
+                            showMess('success', '修改成功');
+                        },
+                        error: function (err) {
+                            console.log(err);
+                            showMess('danger', '修改失败');
+                        }
+                    })
+                });
+
+        };
+
+        // 删除合作
+        $scope.delCoop = function (item, pos) {
+            commonService.confirm('服务：' + item.name).result
+                .then(function (resp) {
+                    if (resp) {
+                        $.ajax({
+                            url: '/homepage/deleteServedCompany?id=' + item.id,
+                            type: 'DELETE',
+                            success: function () {
+                                $scope.serviceList.splice(pos, 1);
+                                showMess('success', '删除成功');
+                            },
+                            error: function (err) {
+                                console.log(err);
+                                showMess('danger', '删除失败');
+                            }
+                        })
                     }
                 });
         };
