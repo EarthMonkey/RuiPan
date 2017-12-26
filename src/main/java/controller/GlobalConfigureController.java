@@ -49,7 +49,7 @@ public class GlobalConfigureController {
 
     //更新一条配置数据
     @PutMapping(value = "update")
-    @SystemLog(module = "全局配置", methods = "更新配置")
+//    @SystemLog(module = "全局配置", methods = "更新配置")
     public GlobalConfigure update(Integer id,String value){
         return globalConfigureService.updateConfigure(id,value);
     }

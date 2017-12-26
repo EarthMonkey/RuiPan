@@ -32,7 +32,7 @@ public class GlobalConfigure {
     }
 
     @Basic
-    @Column(name = "key")
+    @Column(name = "config_key")
     public String getKey() {
         return key;
     }
@@ -42,7 +42,7 @@ public class GlobalConfigure {
     }
 
     @Basic
-    @Column(name = "value")
+    @Column(name = "config_value")
     public String getValue() {
         return value;
     }

@@ -97,7 +97,7 @@ public class ComplexSituationDaoImpl implements ComplexSituationDao{
         try {
             String sql = "SELECT * " +
                     "FROM global_configure g " +
-                    "WHERE g.key LIKE ?";
+                    "WHERE g.config_key LIKE ?";
             Query query = em.createNativeQuery(sql, GlobalConfigure.class);
             query.setParameter(1, start + "%");
             List<GlobalConfigure> list = query.getResultList();
