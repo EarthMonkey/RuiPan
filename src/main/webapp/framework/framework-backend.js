@@ -34,7 +34,7 @@ define(['ui-router/angular-ui-router',
 
                 // 判断是否登录
                 $.ajax({
-                    url: '/validate',
+                    url: 'validate',
                     type: 'GET',
                     success: function (resp) {
                         if (resp == 'true' || resp == true) {
