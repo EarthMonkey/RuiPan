@@ -203,7 +203,6 @@ define([''], function () {
                 },
                 error: function (err) {
                     console.log(err);
-                    showMess('danger', '获取薪资水平失败');
                 }
             });
 
