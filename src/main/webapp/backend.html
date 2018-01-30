@@ -5,41 +5,32 @@
     <title>瑞泮国际教育科技有限公司</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <!-- SEO优化 -->
     <meta name="keywords" content="瑞泮,abroad">
     <meta name="description" content="北京瑞泮国际教育科技有限公司">
-    <!--框架必须的CSS文件,可定制化-->
-    <link type="text/css" href="./theme/bootstrap/bootstrap.css" rel="stylesheet">
-    <link type="text/css" href="./theme/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     <link type="text/css" href="./theme/css/backend.css" rel="stylesheet">
     <link type="image/x-icon" href="./theme/img/icon.png" rel="icon"/>
 </head>
 <body>
 
-<!--页面顶层导航区-->
 <nav ng-controller="topbarCtrl">
     <div id="login_nav" ng-include="menus.url"></div>
 </nav>
 
-<!--中间内容区-->
 <div id="content">
     <div ui-view></div>
 </div>
 
-<!-- 模块化代码加载起始处，入口js为main.js -->
-<script type="text/javascript" src="./lib/jquery.min.js"></script>
-<!-- ueditor -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/angular.js/1.5.8/angular.min.js"></script>
+<script src="https://cdn.bootcss.com/angular.js/1.5.8/angular-animate.min.js"></script>
+<script src="https://cdn.bootcss.com/angular.js/1.5.8/angular-touch.min.js"></script>
+<script src="https://cdn.bootcss.com/angular.js/1.5.8/angular-sanitize.min.js"></script>
+<script src="https://cdn.bootcss.com/require.js/2.3.4/require.min.js"></script>
+<script src="https://cdn.bootcss.com/angular-ui-bootstrap/2.5.0/ui-bootstrap-tpls.min.js"></script>
 <script type="text/javascript" src="./lib/ueditor/ueditor.config.js"></script>
 <script type="text/javascript" src="./lib/ueditor/ueditor.all.js"></script>
-<!-- angular -->
-<script type="text/javascript" src="./lib/angular/angular.js"></script>
-<script type="text/javascript" src="./lib/angular/angular-animate.js"></script>
-<script type="text/javascript" src="./lib/angular/angular-touch.js"></script>
-<script type="text/javascript" src="./lib/angular/angular-sanitize.js"></script>
-<script type="text/javascript" src="./lib/require.js"></script>
-<!-- bootstrap -->
-<script type="text/javascript" src="./lib/bootstrap/ui-bootstrap-tpls.js"></script>
-<!-- main -->
 <script type="text/javascript" src="./main-backend.js"></script>
 <script type="text/javascript" src="./lib/ueditor/angular-ueditor.js"></script>
 
