@@ -25,7 +25,7 @@ define([''], function () {
 
             // 轮播图
             $.ajax({
-                url: '/homepage/getCarouselFigure?category=' + $scope.selectedType,
+                url: 'homepage/getCarouselFigure?category=' + $scope.selectedType,
                 type: 'GET',
                 success: function (resp) {
                     $scope.carousList = resp;
@@ -38,7 +38,7 @@ define([''], function () {
 
             // 资讯
             $.ajax({
-                url: '/News/getAllNewsByCategory?category=' + $scope.selectedType,
+                url: 'News/getAllNewsByCategory?category=' + $scope.selectedType,
                 type: 'GET',
                 success: function (resp) {
                     $scope.newsList = resp;
@@ -51,7 +51,7 @@ define([''], function () {
 
             // 介绍信息
             $.ajax({
-                url: '/LanguageTraining/getTrainIntroducePublish?category=' + $scope.selectedType,
+                url: 'LanguageTraining/getTrainIntroducePublish?category=' + $scope.selectedType,
                 type: 'GET',
                 success: function (resp) {
                     $scope.introList = resp;
@@ -77,7 +77,7 @@ define([''], function () {
             commonService.openTextForm('添加轮播图', carousFields).result
                 .then(function (data) {
                     $.ajax({
-                        url: '/homepage/addCarouselFigure',
+                        url: 'homepage/addCarouselFigure',
                         type: 'POST',
                         data: data,
                         success: function (resp) {
@@ -100,7 +100,7 @@ define([''], function () {
                 .then(function (data) {
                     data.id = item.id;
                     $.ajax({
-                        url: '/homepage/updateCarouselFigure',
+                        url: 'homepage/updateCarouselFigure',
                         type: 'PUT',
                         data: data,
                         success: function (resp) {
@@ -122,7 +122,7 @@ define([''], function () {
                 .then(function (resp) {
                     if (resp) {
                         $.ajax({
-                            url: '/homepage/deleteCarouselFigure?id=' + item.id,
+                            url: 'homepage/deleteCarouselFigure?id=' + item.id,
                             type: 'DELETE',
                             success: function () {
                                 $scope.carousList.splice(pos, 1);
@@ -150,7 +150,7 @@ define([''], function () {
                 title: '添加' + $scope.selectedType + '资讯',
                 fields: newsField,
                 backState: 'backend.language',
-                ajaxUrl: '/News/addNews',
+                ajaxUrl: 'News/addNews',
                 category: $scope.selectedType,
                 gidKey: 'category'
             };
@@ -164,12 +164,12 @@ define([''], function () {
                 title: '修改' + $scope.selectedType + '资讯',
                 fields: newsField,
                 backState: 'backend.language',
-                ajaxUrl: '/News/updateNews',
+                ajaxUrl: 'News/updateNews',
                 category: $scope.selectedType,
                 gidKey: 'category',
                 initObj: {
                     objId: item.id,
-                    url: '/News/getNewsById?id=' + item.id
+                    url: 'News/getNewsById?id=' + item.id
                 }
             };
 
@@ -184,7 +184,7 @@ define([''], function () {
                     if (resp) {
 
                         $.ajax({
-                            url: '/News/deleteNews?id=' + item.id,
+                            url: 'News/deleteNews?id=' + item.id,
                             type: 'DELETE',
                             success: function () {
                                 $scope.newsList.splice(pos, 1);
@@ -207,12 +207,12 @@ define([''], function () {
                 title: '修改' + $scope.selectedType + '资讯',
                 fields: newsField,
                 backState: 'backend.language',
-                ajaxUrl: '/News/updateNews',
+                ajaxUrl: 'News/updateNews',
                 category: $scope.selectedType,
                 gidKey: 'category',
                 initObj: {
                     objId: item.id,
-                    url: '/News/getNewsById?id=' + item.id
+                    url: 'News/getNewsById?id=' + item.id
                 },
                 readonly: true
             };
@@ -227,7 +227,7 @@ define([''], function () {
                 title: '添加' + $scope.selectedType + '介绍块',
                 fields: [{id: 'title', label: '模块标题'}],
                 backState: 'backend.language',
-                ajaxUrl: '/LanguageTraining/addTrainIntroduce',
+                ajaxUrl: 'LanguageTraining/addTrainIntroduce',
                 category: $scope.selectedType,
                 gidKey: 'category'
             };
@@ -242,12 +242,12 @@ define([''], function () {
                 title: '修改' + $scope.selectedType + '介绍块',
                 fields: [{id: 'title', label: '模块标题'}],
                 backState: 'backend.language',
-                ajaxUrl: '/LanguageTraining/updateTrainIntroduce',
+                ajaxUrl: 'LanguageTraining/updateTrainIntroduce',
                 category: $scope.selectedType,
                 gidKey: 'category',
                 initObj: {
                     objId: item.id,
-                    url: '/LanguageTraining/getTrainIntroduceById?id=' + item.id
+                    url: 'LanguageTraining/getTrainIntroduceById?id=' + item.id
                 }
             };
 
@@ -261,7 +261,7 @@ define([''], function () {
                 .then(function (resp) {
                     if (resp) {
                         $.ajax({
-                            url: '/LanguageTraining/deleteTrainIntroduce?id=' + item.id,
+                            url: 'LanguageTraining/deleteTrainIntroduce?id=' + item.id,
                             type: 'DELETE',
                             success: function () {
                                 $scope.introList.splice(pos, 1);
@@ -282,12 +282,12 @@ define([''], function () {
                 title: '介绍块详情',
                 fields: [{id: 'title', label: '模块标题'}],
                 backState: 'backend.language',
-                ajaxUrl: '/LanguageTraining/updateTrainIntroduce',
+                ajaxUrl: 'LanguageTraining/updateTrainIntroduce',
                 category: $scope.selectedType,
                 gidKey: 'category',
                 initObj: {
                     objId: item.id,
-                    url: '/LanguageTraining/getTrainIntroduceById?id=' + item.id
+                    url: 'LanguageTraining/getTrainIntroduceById?id=' + item.id
                 },
                 readonly: true
             };

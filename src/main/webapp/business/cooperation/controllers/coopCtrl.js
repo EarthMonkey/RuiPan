@@ -9,7 +9,7 @@ define([''], function () {
 
         // 轮播图
         $.ajax({
-            url: '/homepage/getCarouselFigure?category=合作办学',
+            url: 'homepage/getCarouselFigure?category=合作办学',
             type: 'GET',
             success: function (resp) {
                 var temp = [];
@@ -38,7 +38,7 @@ define([''], function () {
 
         // 资讯
         $.ajax({
-            url: '/News/getLatestNewsByCategory?category=合作办学',
+            url: 'News/getLatestNewsByCategory?category=合作办学',
             type: 'GET',
             success: function (resp) {
                 $scope.newsList = resp;
@@ -51,7 +51,7 @@ define([''], function () {
         // 高中
         $scope.highTab = [];
         $.ajax({
-            url: '/CooperativeEducation/getSubclassificationByCategory?category=高中',
+            url: 'CooperativeEducation/getSubclassificationByCategory?category=高中',
             type: 'GET',
             success: function (resp) {
                 $scope.highTab = resp;
@@ -76,7 +76,7 @@ define([''], function () {
         // 职业
         $scope.careerTab = [];
         $.ajax({
-            url: '/CooperativeEducation/getSubclassificationByCategory?category=职业学院',
+            url: 'CooperativeEducation/getSubclassificationByCategory?category=职业学院',
             type: 'GET',
             success: function (resp) {
                 $scope.careerTab = resp;
@@ -107,7 +107,7 @@ define([''], function () {
             {title: '中澳'}
         ];
         $.ajax({
-            url: '/CooperativeEducation/getSubclassificationByCategory?category=大学',
+            url: 'CooperativeEducation/getSubclassificationByCategory?category=大学',
             type: 'GET',
             success: function (resp) {
                 $scope.collegeTab = resp;
@@ -143,7 +143,7 @@ define([''], function () {
             }
 
             $.ajax({
-                url: '/CooperativeEducation/getCooperativeSchemeByCcid?ccid=' + LAST_TAB[syb].id,
+                url: 'CooperativeEducation/getCooperativeSchemeByCcid?ccid=' + LAST_TAB[syb].id,
                 type: 'GET',
                 success: function (resp) {
                     if (syb === 0) {

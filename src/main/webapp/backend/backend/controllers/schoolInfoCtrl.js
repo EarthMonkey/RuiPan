@@ -18,7 +18,7 @@ define([''], function () {
 
         // 获取国家
         $.ajax({
-            url: "/StudyAbroad/getAllCountry",
+            url: "StudyAbroad/getAllCountry",
             type: 'GET',
             success: function (data) {
                 $scope.filterCountry = data;
@@ -36,7 +36,7 @@ define([''], function () {
         // 根据国家获取学校
         function getData() {
             $.ajax({
-                url: '/School/getSchoolPublished?country=' + $scope.selectedCoun,
+                url: 'School/getSchoolPublished?country=' + $scope.selectedCoun,
                 type: 'GET',
                 success: function (resp) {
                     $scope.schoolList = resp;
@@ -67,7 +67,7 @@ define([''], function () {
                 combox: combox,
                 fields: fields,
                 backState: 'backend.schoolInfo',
-                ajaxUrl: '/School/addSchool'
+                ajaxUrl: 'School/addSchool'
             };
             $state.go('backend.article', {initInfo: JSON.stringify(initInfo)});
         };
@@ -83,10 +83,10 @@ define([''], function () {
                 combox: combox,
                 fields: fields,
                 backState: 'backend.schoolInfo',
-                ajaxUrl: '/School/updateSchool',
+                ajaxUrl: 'School/updateSchool',
                 initObj: {
                     objId: item.sid,
-                    url: '/School/getSchoolBySid?sid=' + item.sid
+                    url: 'School/getSchoolBySid?sid=' + item.sid
                 }
             };
             if (readonly) {
@@ -99,7 +99,7 @@ define([''], function () {
             commonService.confirm("学校：" + item.collegeName).result.then(function (resp) {
                 if (resp) {
                     $.ajax({
-                        url: '/School/deleteSchool?sid=' + item.sid,
+                        url: 'School/deleteSchool?sid=' + item.sid,
                         type: 'DELETE',
                         success: function () {
                             $scope.schoolList.splice(pos, 1);

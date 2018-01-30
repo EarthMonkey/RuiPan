@@ -14,7 +14,7 @@ define([''], function () {
 
         // 获取公司介绍
         $.ajax({
-            url: '/Configure/getCompanyInformation',
+            url: 'Configure/getCompanyInformation',
             type: 'GET',
             success: function (resp) {
                 $scope.companyInfo = resp;
@@ -35,7 +35,7 @@ define([''], function () {
             commonService.openTextForm('更新公司介绍', introField, {introduce: $scope.companyInfo.introduce.value})
                 .result.then(function (data) {
                     $.ajax({
-                        url: '/Configure/update',
+                        url: 'Configure/update',
                         type: 'PUT',
                         data: {
                             id: $scope.companyInfo.introduce.id,
@@ -64,7 +64,7 @@ define([''], function () {
             commonService.openTextForm("更新公司特点", characterField, {character: $scope.companyInfo[id].value})
                 .result.then(function (data) {
                     $.ajax({
-                        url: '/Configure/update',
+                        url: 'Configure/update',
                         type: 'PUT',
                         data: {
                             id: $scope.companyInfo[id].id,
@@ -84,7 +84,7 @@ define([''], function () {
 
         // 获取联系方式
         $.ajax({
-            url: '/Configure/getContactInformation',
+            url: 'Configure/getContactInformation',
             type: 'GET',
             success: function (resp) {
                 $scope.contactInfo = resp;
@@ -110,7 +110,7 @@ define([''], function () {
             commonService.openTextForm("更新联系方式", contactField, {contact: $scope.contactInfo[id].value})
                 .result.then(function (data) {
                 $.ajax({
-                    url: '/Configure/update',
+                    url: 'Configure/update',
                     type: 'PUT',
                     data: {
                         id: $scope.contactInfo[id].id,
@@ -130,7 +130,7 @@ define([''], function () {
 
         // 获取合作学校
         $.ajax({
-            url: '/AboutUs/getCooperativePartner',
+            url: 'AboutUs/getCooperativePartner',
             type: 'GET',
             success: function (resp) {
                 $scope.coopList = resp;
@@ -143,7 +143,7 @@ define([''], function () {
 
         // 获取未答复
         $.ajax({
-            url: '/AboutUs/getUnreplyedContactUs',
+            url: 'AboutUs/getUnreplyedContactUs',
             type: 'GET',
             success: function (resp) {
                 $scope.toReply = resp;
@@ -156,7 +156,7 @@ define([''], function () {
 
         // 获取已答复
         $.ajax({
-            url: '/AboutUs/getReplyedContactUs',
+            url: 'AboutUs/getReplyedContactUs',
             type: 'GET',
             success: function (resp) {
                 $scope.hasReply = resp;
@@ -182,7 +182,7 @@ define([''], function () {
             commonService.openTextForm('添加合作', coopFields).result
                 .then(function (data) {
                     $.ajax({
-                        url: '/AboutUs/addCooperativePartner',
+                        url: 'AboutUs/addCooperativePartner',
                         type: 'POST',
                         data: data,
                         success: function (resp) {
@@ -205,7 +205,7 @@ define([''], function () {
                 .then(function (data) {
                     data.id = item.id;
                     $.ajax({
-                        url: '/AboutUs/updateCooperativePartner',
+                        url: 'AboutUs/updateCooperativePartner',
                         type: 'PUT',
                         data: data,
                         success: function (resp) {
@@ -227,7 +227,7 @@ define([''], function () {
                 .then(function (resp) {
                     if (resp) {
                         $.ajax({
-                            url: '/AboutUs/deleteCooperativePartner?id=' + item.id,
+                            url: 'AboutUs/deleteCooperativePartner?id=' + item.id,
                             type: 'DELETE',
                             success: function () {
                                 $scope.coopList.splice(pos, 1);
@@ -259,7 +259,7 @@ define([''], function () {
                     data.id = item.id;
 
                     $.ajax({
-                        url: '/AboutUs/replyContactUs',
+                        url: 'AboutUs/replyContactUs',
                         type: 'PUT',
                         data: data,
                         success: function (resp) {
@@ -284,7 +284,7 @@ define([''], function () {
                 .then(function (resp) {
                     if (resp) {
                         $.ajax({
-                            url: '/AboutUs/deleteContactUs?id=' + item.id,
+                            url: 'AboutUs/deleteContactUs?id=' + item.id,
                             type: 'DELETE',
                             success: function () {
                                 $scope.toReply.splice(pos, 1);
@@ -307,7 +307,7 @@ define([''], function () {
                 .then(function (resp) {
                     if (resp) {
                         $.ajax({
-                            url: '/AboutUs/deleteContactUs?id=' + item.id,
+                            url: 'AboutUs/deleteContactUs?id=' + item.id,
                             type: 'DELETE',
                             success: function () {
                                 $scope.hasReply.splice(pos, 1);

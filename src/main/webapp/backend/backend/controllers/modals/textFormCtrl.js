@@ -82,7 +82,7 @@ define([''], function () {
                 formData.append('oneFile', ImgObj.file);
 
                 $.ajax({
-                    url: '/oneUpload',
+                    url: 'oneUpload',
                     type: 'POST',
                     data: formData,
                     processData: false,

@@ -10,7 +10,7 @@ define([''], function () {
         var conId = $state.params.conId;
 
         $.ajax({
-            url: '/Consultant/getById?id=' + conId,
+            url: 'Consultant/getById?id=' + conId,
             type: 'GET',
             success: function (resp) {
                 getHtml(resp.textPath);
@@ -26,7 +26,7 @@ define([''], function () {
 
         function getHtml(path) {
             $.ajax({
-                url: '/getText?path=' + path,
+                url: 'getText?path=' + path,
                 type: 'GET',
                 success: function (resp) {
                     $timeout(function () {
@@ -41,7 +41,7 @@ define([''], function () {
 
         // 获取三个推荐方案
         $.ajax({
-            url: '/StudyAbroad/getRecommendApplicationScheme',
+            url: 'StudyAbroad/getRecommendApplicationScheme',
             type: 'GET',
             success: function (resp) {
                 $timeout(function () {
@@ -55,7 +55,7 @@ define([''], function () {
 
         // 获取全局推荐案例
         $.ajax({
-            url: '/SuccessfulCase/getRecommendSuccessfulCase',
+            url: 'SuccessfulCase/getRecommendSuccessfulCase',
             type: 'GET',
             success: function (resp) {
                 resp.splice(4);

@@ -36,7 +36,7 @@ define([''], function () {
 
         // 获取国家
         $.ajax({
-            url: "/StudyAbroad/getAllCountry",
+            url: "StudyAbroad/getAllCountry",
             type: 'GET',
             success: function (data) {
                 $scope.filterCountry = data;
@@ -53,7 +53,7 @@ define([''], function () {
         function getSpClass() {
             Sp_Map = [[]];
             $.ajax({
-                url: '/Profession/getAllCategoryByCountry?country=' + $scope.selectedCoun,
+                url: 'Profession/getAllCategoryByCountry?country=' + $scope.selectedCoun,
                 type: 'GET',
                 success: function (resp) {
                     $scope.filterEdu = [];
@@ -89,7 +89,7 @@ define([''], function () {
         function getData() {
             // 获取所有院校排名
             $.ajax({
-                url: '/School/getAllSchoolRankingByPid?pid=' + $scope.selectedSp.pid,
+                url: 'School/getAllSchoolRankingByPid?pid=' + $scope.selectedSp.pid,
                 type: 'GET',
                 success: function (resp) {
                     $scope.rankList = resp;
@@ -112,7 +112,7 @@ define([''], function () {
         $scope.addRank = function () {
             // 根据国家获取学校
             $.ajax({
-                url: '/School/getSchoolPublished?country=' + $scope.selectedCoun,
+                url: 'School/getSchoolPublished?country=' + $scope.selectedCoun,
                 type: 'GET',
                 success: function (resp) {
                     var nameOption = [];
@@ -132,7 +132,7 @@ define([''], function () {
                         }
 
                         $.ajax({
-                            url: '/School/addSchoolRanking',
+                            url: 'School/addSchoolRanking',
                             type: 'POST',
                             data: data,
                             success: function (resp) {
@@ -157,7 +157,7 @@ define([''], function () {
         $scope.modRank = function (row, pos) {
             // 根据国家获取学校
             $.ajax({
-                url: '/School/getSchoolPublished?country=' + $scope.selectedCoun,
+                url: 'School/getSchoolPublished?country=' + $scope.selectedCoun,
                 type: 'GET',
                 success: function (resp) {
                     console.log(resp);
@@ -180,7 +180,7 @@ define([''], function () {
                         }
 
                         $.ajax({
-                            url: '/School/updateSchoolRanking',
+                            url: 'School/updateSchoolRanking',
                             type: 'PUT',
                             data: data,
                             success: function (resp) {
@@ -206,7 +206,7 @@ define([''], function () {
             commonService.confirm('排名信息：' + item.schoolBySid.collegeName).result.then(function (resp) {
                 if (resp) {
                     $.ajax({
-                        url: '/School/deleteSchoolRanking?id=' + item.id,
+                        url: 'School/deleteSchoolRanking?id=' + item.id,
                         type: 'DELETE',
                         success: function () {
                             $scope.rankList.splice(pos, 1);
@@ -239,10 +239,10 @@ define([''], function () {
                 combox: combox,
                 fields: detailFields,
                 backState: 'backend.schoolRank',
-                ajaxUrl: '/School/updateSchool',
+                ajaxUrl: 'School/updateSchool',
                 initObj: {
                     objId: item.sid,
-                    url: '/School/getSchoolBySid?sid=' + item.sid
+                    url: 'School/getSchoolBySid?sid=' + item.sid
                 },
                 readonly: true
             };

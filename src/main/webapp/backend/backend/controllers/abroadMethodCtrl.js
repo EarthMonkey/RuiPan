@@ -39,7 +39,7 @@ define([''], function () {
         getGid();
         function getGid() {
             $.ajax({
-                url: '/StudyAbroad/getGid?country=' + $scope.selectedCoun + "&grade=" + $scope.selectedEdu,
+                url: 'StudyAbroad/getGid?country=' + $scope.selectedCoun + "&grade=" + $scope.selectedEdu,
                 type: 'GET',
                 success: function (resp) {
                     GID = resp;
@@ -62,7 +62,7 @@ define([''], function () {
             $scope.methodList = [];
             // 获取所有方案
             $.ajax({
-                url: '/StudyAbroad/getApplicationSchemeByGid?gid=' + GID,
+                url: 'StudyAbroad/getApplicationSchemeByGid?gid=' + GID,
                 type: 'GET',
                 success: function (resp) {
                     Method_Opt = [];
@@ -82,7 +82,7 @@ define([''], function () {
 
         // 获取三个推荐方案
         $.ajax({
-            url: '/StudyAbroad/getRecommendApplicationScheme',
+            url: 'StudyAbroad/getRecommendApplicationScheme',
             type: 'GET',
             success: function (resp) {
                 $scope.recomendList = resp;
@@ -113,7 +113,7 @@ define([''], function () {
                     }
 
                     $.ajax({
-                        url: '/StudyAbroad/addRecommendApplicationScheme',
+                        url: 'StudyAbroad/addRecommendApplicationScheme',
                         type: 'POST',
                         data: data,
                         success: function (resp) {
@@ -156,7 +156,7 @@ define([''], function () {
                     }
 
                     $.ajax({
-                        url: '/StudyAbroad/updateRecommendApplicationScheme',
+                        url: 'StudyAbroad/updateRecommendApplicationScheme',
                         type: 'PUT',
                         data: data,
                         success: function (resp) {
@@ -178,7 +178,7 @@ define([''], function () {
                 .then(function (resp) {
                     if (resp) {
                         $.ajax({
-                            url: '/StudyAbroad/deleteRecommendApplicationScheme?id=' + item.id,
+                            url: 'StudyAbroad/deleteRecommendApplicationScheme?id=' + item.id,
                             type: 'DELETE',
                             success: function () {
                                 $scope.recomendList.splice(pos, 1);
@@ -216,7 +216,7 @@ define([''], function () {
                 title: '添加方案',
                 fields: methodField,
                 backState: 'backend.abroadMethod',
-                ajaxUrl: '/StudyAbroad/addApplicationScheme',
+                ajaxUrl: 'StudyAbroad/addApplicationScheme',
                 gid: GID,
                 gidKey: 'gid'
             };
@@ -229,7 +229,7 @@ define([''], function () {
                 title: '修改方案',
                 fields: methodField,
                 backState: 'backend.abroadMethod',
-                ajaxUrl: '/StudyAbroad/updateApplicationScheme',
+                ajaxUrl: 'StudyAbroad/updateApplicationScheme',
                 gid: GID,
                 gidKey: 'gid',
                 initObj: {
@@ -246,7 +246,7 @@ define([''], function () {
                 .then(function (resp) {
                     if (resp) {
                         $.ajax({
-                            url: '/StudyAbroad/deleteApplicationScheme?id=' + item.id,
+                            url: 'StudyAbroad/deleteApplicationScheme?id=' + item.id,
                             type: 'DELETE',
                             success: function () {
                                 showMess('success', '删除成功');
@@ -267,7 +267,7 @@ define([''], function () {
                 title: '方案详情',
                 fields: methodField,
                 backState: 'backend.abroadMethod',
-                ajaxUrl: '/StudyAbroad/updateApplicationScheme',
+                ajaxUrl: 'StudyAbroad/updateApplicationScheme',
                 gid: GID,
                 gidKey: 'gid',
                 initObj: {

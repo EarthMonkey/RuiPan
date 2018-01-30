@@ -92,7 +92,7 @@ define([''], function () {
         // 上传html
         service.uploadHTML = function ($scope, text) {
             $.ajax({
-                url: '/uploadText',
+                url: 'uploadText',
                 type: 'POST',
                 data: {text: text},
                 success: function (resp) {
@@ -108,7 +108,7 @@ define([''], function () {
         // 获取html
         service.getHTML = function ($scope, path) {
             $.ajax({
-                url: '/getText?path=' + path,
+                url: 'getText?path=' + path,
                 type: 'GET',
                 success: function (resp) {
                     $scope.getHtmlCallback(resp);
@@ -123,7 +123,7 @@ define([''], function () {
         // 更新HTML
         service.updateHTML = function ($scope, text, path) {
             $.ajax({
-                url: "/updateText",
+                url: "updateText",
                 type: 'PUT',
                 data: {
                     text: text,

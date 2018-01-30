@@ -39,7 +39,7 @@ define([''], function () {
         getGid();
         function getGid() {
             $.ajax({
-                url: '/StudyAbroad/getGid?country=' + $scope.selectedCoun + "&grade=" + $scope.selectedEdu,
+                url: 'StudyAbroad/getGid?country=' + $scope.selectedCoun + "&grade=" + $scope.selectedEdu,
                 type: 'GET',
                 success: function (resp) {
                     GID = resp;
@@ -59,7 +59,7 @@ define([''], function () {
         function getData() {
             // 硬性条件
             $.ajax({
-                url: '/StudyAbroad/getHardCondionByGid?gid=' + GID,
+                url: 'StudyAbroad/getHardCondionByGid?gid=' + GID,
                 type: 'GET',
                 success: function (resp) {
                     for (var key in resp) {
@@ -76,7 +76,7 @@ define([''], function () {
 
             // 申请要素
             $.ajax({
-                url: '/StudyAbroad/getApplicationElementByGid?gid=' + GID,
+                url: 'StudyAbroad/getApplicationElementByGid?gid=' + GID,
                 type: 'GET',
                 success: function (resp) {
                     resp.forEach(function (item) {
@@ -96,7 +96,7 @@ define([''], function () {
 
             // 常见问题
             $.ajax({
-                url: '/StudyAbroad/getQuestionsByGid?gid=' + GID,
+                url: 'StudyAbroad/getQuestionsByGid?gid=' + GID,
                 type: 'GET',
                 success: function (resp) {
                     $scope.questionList = resp;
@@ -121,7 +121,7 @@ define([''], function () {
             conditonInstance.result.then(function (resp) {
                 resp.gid = GID;
                 $.ajax({
-                    url: "/StudyAbroad/addHardCondition",
+                    url: "StudyAbroad/addHardCondition",
                     type: 'POST',
                     data: resp,
                     success: function (data) {
@@ -143,7 +143,7 @@ define([''], function () {
                 resp.id = item.id;
                 resp.gid = GID;
                 $.ajax({
-                    url: '/StudyAbroad/changeHardCondition',
+                    url: 'StudyAbroad/changeHardCondition',
                     type: 'PUT',
                     data: resp,
                     success: function (data) {
@@ -164,7 +164,7 @@ define([''], function () {
             conditionInstance.result.then(function (resp) {
                 if (resp) {
                     $.ajax({
-                        url: '/StudyAbroad/deleteHardCondition?id=' + item.id,
+                        url: 'StudyAbroad/deleteHardCondition?id=' + item.id,
                         type: 'DELETE',
                         success: function () {
                             $scope.conditionList.splice(pos, 1);
@@ -196,10 +196,9 @@ define([''], function () {
                 tab.textPath = "";
                 tab.flag = 1;
 
-                console.log(tab);
                 if (tab.id) { // 修改
                     $.ajax({
-                        url: '/StudyAbroad/updateApplicationElement',
+                        url: 'StudyAbroad/updateApplicationElement',
                         type: 'PUT',
                         data: tab,
                         success: function (resp) {
@@ -214,7 +213,7 @@ define([''], function () {
 
                 } else { // 创建
                     $.ajax({
-                        url: '/StudyAbroad/addApplicationElement',
+                        url: 'StudyAbroad/addApplicationElement',
                         type: 'POST',
                         data: tab,
                         success: function (resp) {
@@ -243,7 +242,7 @@ define([''], function () {
             questionInstance.result.then(function (data) {
                 data.gid = GID;
                 $.ajax({
-                    url: '/StudyAbroad/addQuestion',
+                    url: 'StudyAbroad/addQuestion',
                     type: 'POST',
                     data: data,
                     success: function (resp) {
@@ -267,7 +266,7 @@ define([''], function () {
                 data.id = item.id;
 
                 $.ajax({
-                    url: '/StudyAbroad/updateQuestion',
+                    url: 'StudyAbroad/updateQuestion',
                     type: 'PUT',
                     data: data,
                     success: function () {
@@ -288,7 +287,7 @@ define([''], function () {
             quesInstance.result.then(function (resp) {
                 if (resp) {
                     $.ajax({
-                        url: '/StudyAbroad/deleteQuestion?id=' + item.id,
+                        url: 'StudyAbroad/deleteQuestion?id=' + item.id,
                         type: 'DELETE',
                         success: function () {
                             $scope.questionList.splice(pos, 1);

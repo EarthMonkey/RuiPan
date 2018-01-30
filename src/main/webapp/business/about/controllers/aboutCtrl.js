@@ -9,7 +9,7 @@ define([''], function () {
 
         // 轮播图
         $.ajax({
-            url: '/homepage/getCarouselFigure?category=首页',
+            url: 'homepage/getCarouselFigure?category=首页',
             type: 'GET',
             success: function (resp) {
                 var temp = [];
@@ -38,7 +38,7 @@ define([''], function () {
 
         // 获取推荐顾问
         $.ajax({
-            url: '/Consultant/getRecommendConsultant',
+            url: 'Consultant/getRecommendConsultant',
             type: 'GET',
             success: function (resp) {
                 resp.splice(5);
@@ -53,7 +53,7 @@ define([''], function () {
 
         // 获取合作学校
         $.ajax({
-            url: '/AboutUs/getCooperativePartner',
+            url: 'AboutUs/getCooperativePartner',
             type: 'GET',
             success: function (resp) {
                 $scope.coopList = resp;
@@ -86,7 +86,7 @@ define([''], function () {
             }
 
             $.ajax({
-                url: '/AboutUs/addContactUs',
+                url: 'AboutUs/addContactUs',
                 type: 'POST',
                 data: $scope.contactModel,
                 success: function () {
@@ -114,7 +114,7 @@ define([''], function () {
 
         // 获取公司介绍
         $.ajax({
-            url: '/Configure/getCompanyInformation',
+            url: 'Configure/getCompanyInformation',
             type: 'GET',
             success: function (resp) {
                 $scope.companyInfo = resp;
@@ -126,7 +126,7 @@ define([''], function () {
 
         // 获取联系方式
         $.ajax({
-            url: '/Configure/getContactInformation',
+            url: 'Configure/getContactInformation',
             type: 'GET',
             success: function (resp) {
                 $scope.contactInfo = resp;

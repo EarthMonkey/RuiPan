@@ -23,7 +23,7 @@ define([''], function () {
 
         // 获取子导航
         $.ajax({
-            url: '/Profession/getAllCategoryByCountry?country=' + country,
+            url: 'Profession/getAllCategoryByCountry?country=' + country,
             type: 'GET',
             success: function (resp) {
 
@@ -121,7 +121,7 @@ define([''], function () {
 
             // 详情、建议
             $.ajax({
-                url: '/Profession/getProfessionIntroducePublished?pid=' + PID,
+                url: 'Profession/getProfessionIntroducePublished?pid=' + PID,
                 type: 'GET',
                 success: function (resp) {
                     $timeout(function () {
@@ -135,7 +135,7 @@ define([''], function () {
 
             // 专业课程
             $.ajax({
-                url: '/Profession/getProfessionCourse?pid=' + PID,
+                url: 'Profession/getProfessionCourse?pid=' + PID,
                 type: 'GET',
                 success: function (resp) {
                     $timeout(function () {
@@ -149,7 +149,7 @@ define([''], function () {
 
             // 就业去向
             $.ajax({
-                url: '/Profession/getEmploymentCompany?pid=' + PID,
+                url: 'Profession/getEmploymentCompany?pid=' + PID,
                 type: 'GET',
                 success: function (resp) {
                     resp.splice(5);
@@ -162,7 +162,7 @@ define([''], function () {
 
             // 领域
             $.ajax({
-                url: '/Profession/getEmploymentPost?pid=' + PID,
+                url: 'Profession/getEmploymentPost?pid=' + PID,
                 type: 'GET',
                 success: function (resp) {
                     $scope.prosField = resp;
@@ -174,7 +174,7 @@ define([''], function () {
 
             // 申请条件
             $.ajax({
-                url: '/Profession/getApplicationAdvice?pid=' + PID,
+                url: 'Profession/getApplicationAdvice?pid=' + PID,
                 type: 'GET',
                 success: function (resp) {
                     $timeout(function () {
@@ -188,7 +188,7 @@ define([''], function () {
 
             // 薪资水平
             $.ajax({
-                url: '/Profession/getSalary?pid=' + PID,
+                url: 'Profession/getSalary?pid=' + PID,
                 type: 'GET',
                 success: function (resp) {
                     if (resp.length > 0) {
@@ -209,7 +209,7 @@ define([''], function () {
 
             // 专业院校排名
             $.ajax({
-                url: '/School/getAllSchoolRankingByPid?pid=' + PID,
+                url: 'School/getAllSchoolRankingByPid?pid=' + PID,
                 type: 'GET',
                 success: function (resp) {
                     $timeout(function () {
@@ -223,7 +223,7 @@ define([''], function () {
 
             // 获取所有成功案例
             $.ajax({
-                url: '/SuccessfulCase/getSuccessfulCaseByPid?pid=' + PID,
+                url: 'SuccessfulCase/getSuccessfulCaseByPid?pid=' + PID,
                 type: 'GET',
                 success: function (resp) {
                     if (resp[0]) {
@@ -239,7 +239,7 @@ define([''], function () {
 
         function getConsultant(id) {
             $.ajax({
-                url: '/Consultant/getById?id=' + id,
+                url: 'Consultant/getById?id=' + id,
                 type: 'GET',
                 success: function (resp) {
                     $timeout(function () {
@@ -298,7 +298,7 @@ define([''], function () {
 
         // 获取三个推荐方案
         $.ajax({
-            url: '/StudyAbroad/getRecommendApplicationScheme',
+            url: 'StudyAbroad/getRecommendApplicationScheme',
             type: 'GET',
             success: function (resp) {
                 $timeout(function () {

@@ -9,7 +9,7 @@ define([''], function () {
     var userCtrl = ['$scope', 'commonService', function ($scope, commonService) {
 
         $.ajax({
-            url: '/getUserMessage',
+            url: 'getUserMessage',
             type: 'GET',
             success: function (resp) {
                 resp.lastLoginTime = new Date(resp.lastLoginTime).Format("yyyy-MM-dd hh:mm:ss");
@@ -31,7 +31,7 @@ define([''], function () {
             commonService.openTextForm('修改密码', pwdFields).result
                 .then(function (data) {
                     $.ajax({
-                        url: '/changePassword',
+                        url: 'changePassword',
                         type: 'PUT',
                         data: {
                             oldPassword: data.oldPassword,
@@ -55,7 +55,7 @@ define([''], function () {
         $scope.userList = [];
         // 获取所有user
         $.ajax({
-            url: '/getAllUser',
+            url: 'getAllUser',
             type: 'GET',
             success: function (resp) {
                 resp.forEach(function (item) {
@@ -83,7 +83,7 @@ define([''], function () {
             commonService.openTextForm('添加用户', field).result
                 .then(function (data) {
                     $.ajax({
-                        url: '/addUser',
+                        url: 'addUser',
                         type: 'POST',
                         data: {
                             username: data.username,
@@ -113,7 +113,7 @@ define([''], function () {
                 .then(function (resp) {
                     if (resp) {
                         $.ajax({
-                            url: '/deleteUser?username=' + item.username,
+                            url: 'deleteUser?username=' + item.username,
                             type: 'DELETE',
                             success: function () {
                                 showMess('success', '删除成功');

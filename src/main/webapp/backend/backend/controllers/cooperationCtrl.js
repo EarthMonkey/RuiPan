@@ -14,7 +14,7 @@ define([''], function () {
 
         // 获取轮播图
         $.ajax({
-            url: '/homepage/getCarouselFigure?category=合作办学',
+            url: 'homepage/getCarouselFigure?category=合作办学',
             type: 'GET',
             success: function (resp) {
                 $scope.carousList = resp;
@@ -39,7 +39,7 @@ define([''], function () {
                 .then(function (data) {
                     data.category = '合作办学';
                     $.ajax({
-                        url: '/homepage/addCarouselFigure',
+                        url: 'homepage/addCarouselFigure',
                         type: 'POST',
                         data: data,
                         success: function (resp) {
@@ -63,7 +63,7 @@ define([''], function () {
                     data.category = '合作办学';
                     data.id = item.id;
                     $.ajax({
-                        url: '/homepage/updateCarouselFigure',
+                        url: 'homepage/updateCarouselFigure',
                         type: 'PUT',
                         data: data,
                         success: function (resp) {
@@ -85,7 +85,7 @@ define([''], function () {
                 .then(function (resp) {
                     if (resp) {
                         $.ajax({
-                            url: '/homepage/deleteCarouselFigure?id=' + item.id,
+                            url: 'homepage/deleteCarouselFigure?id=' + item.id,
                             type: 'DELETE',
                             success: function () {
                                 $scope.carousList.splice(pos, 1);
@@ -102,7 +102,7 @@ define([''], function () {
 
         // 资讯列表
         $.ajax({
-            url: '/News/getAllNewsByCategory?category=合作办学',
+            url: 'News/getAllNewsByCategory?category=合作办学',
             type: 'GET',
             success: function (resp) {
                 $scope.newsList = resp;
@@ -126,7 +126,7 @@ define([''], function () {
                 title: '添加合作办学资讯',
                 fields: newsField,
                 backState: 'backend.cooperation',
-                ajaxUrl: '/News/addNews',
+                ajaxUrl: 'News/addNews',
                 category: '合作办学',
                 gidKey: 'category'
             };
@@ -140,12 +140,12 @@ define([''], function () {
                 title: '修改合作办学资讯',
                 fields: newsField,
                 backState: 'backend.cooperation',
-                ajaxUrl: '/News/updateNews',
+                ajaxUrl: 'News/updateNews',
                 category: '合作办学',
                 gidKey: 'category',
                 initObj: {
                     objId: item.id,
-                    url: '/News/getNewsById?id=' + item.id
+                    url: 'News/getNewsById?id=' + item.id
                 }
             };
 
@@ -160,7 +160,7 @@ define([''], function () {
                     if (resp) {
 
                         $.ajax({
-                            url: '/News/deleteNews?id=' + item.id,
+                            url: 'News/deleteNews?id=' + item.id,
                             type: 'DELETE',
                             success: function () {
                                 $scope.newsList.splice(pos, 1);
@@ -183,12 +183,12 @@ define([''], function () {
                 title: '修改' + $scope.selectedType + '资讯',
                 fields: newsField,
                 backState: 'backend.cooperation',
-                ajaxUrl: '/News/updateNews',
+                ajaxUrl: 'News/updateNews',
                 category: '合作办学',
                 gidKey: 'category',
                 initObj: {
                     objId: item.id,
-                    url: '/News/getNewsById?id=' + item.id
+                    url: 'News/getNewsById?id=' + item.id
                 },
                 readonly: true
             };
@@ -210,7 +210,7 @@ define([''], function () {
             $scope.filterCountry = [];
 
             $.ajax({
-                url: '/CooperativeEducation/getSubclassificationByCategory?category=' + $scope.selectedType,
+                url: 'CooperativeEducation/getSubclassificationByCategory?category=' + $scope.selectedType,
                 type: 'GET',
                 success: function (resp) {
                     $scope.filterCountry = resp;
@@ -243,7 +243,7 @@ define([''], function () {
             }
 
             $.ajax({
-                url: '/CooperativeEducation/getCooperativeSchemeByCcid?ccid=' + $scope.selectedCoun.id,
+                url: 'CooperativeEducation/getCooperativeSchemeByCcid?ccid=' + $scope.selectedCoun.id,
                 type: 'GET',
                 success: function (resp) {
                     $scope.methodList = resp;
@@ -269,7 +269,7 @@ define([''], function () {
                     data.category = $scope.selectedType;
 
                     $.ajax({
-                        url: '/CooperativeEducation/addCooperativeCategory',
+                        url: 'CooperativeEducation/addCooperativeCategory',
                         type: 'POST',
                         data: data,
                         success: function (resp) {
@@ -288,7 +288,7 @@ define([''], function () {
                 .then(function (resp) {
                     if (resp) {
                         $.ajax({
-                            url: '/CooperativeEducation/deleteCooperativeCategory?id=' + item.id,
+                            url: 'CooperativeEducation/deleteCooperativeCategory?id=' + item.id,
                             type: 'DELETE',
                             success: function () {
                                 $scope.filterCountry.splice(pos, 1);
@@ -322,7 +322,7 @@ define([''], function () {
                 title: '添加' + $scope.selectedCoun.subclassification + $scope.selectedType + '合作办学方案',
                 fields: methodField,
                 backState: 'backend.cooperation',
-                ajaxUrl: '/CooperativeEducation/addCooperativeScheme',
+                ajaxUrl: 'CooperativeEducation/addCooperativeScheme',
                 ccid: $scope.selectedCoun.id,
                 gidKey: 'ccid'
             };
@@ -337,12 +337,12 @@ define([''], function () {
                 title: '添加' + $scope.selectedCoun.subclassification + $scope.selectedType + '合作办学方案',
                 fields: methodField,
                 backState: 'backend.cooperation',
-                ajaxUrl: '/CooperativeEducation/updateCooperativeScheme',
+                ajaxUrl: 'CooperativeEducation/updateCooperativeScheme',
                 ccid: $scope.selectedCoun.id,
                 gidKey: 'ccid',
                 initObj: {
                     objId: item.id,
-                    url: '/CooperativeEducation/getCooperativeSchemeById?id=' + item.id
+                    url: 'CooperativeEducation/getCooperativeSchemeById?id=' + item.id
                 }
             };
 
@@ -356,7 +356,7 @@ define([''], function () {
                 .then(function (resp) {
                     if (resp) {
                         $.ajax({
-                            url: '/CooperativeEducation/deleteCooperativeScheme?id=' + item.id,
+                            url: 'CooperativeEducation/deleteCooperativeScheme?id=' + item.id,
                             type: 'DELETE',
                             success: function () {
                                 $scope.methodList.splice(pos, 1);
@@ -379,12 +379,12 @@ define([''], function () {
                 title: $scope.selectedCoun.subclassification + $scope.selectedType + '合作办学方案',
                 fields: methodField,
                 backState: 'backend.cooperation',
-                ajaxUrl: '/CooperativeEducation/updateCooperativeScheme',
+                ajaxUrl: 'CooperativeEducation/updateCooperativeScheme',
                 ccid: $scope.selectedCoun.id,
                 gidKey: 'ccid',
                 initObj: {
                     objId: item.id,
-                    url: '/CooperativeEducation/getCooperativeSchemeById?id=' + item.id
+                    url: 'CooperativeEducation/getCooperativeSchemeById?id=' + item.id
                 },
                 readonly: true
             };

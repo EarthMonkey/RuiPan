@@ -38,7 +38,7 @@ define([''], function () {
 
         // 获取GID
         $.ajax({
-            url: '/StudyAbroad/getGid?country=' + couEnMap[country] + "&grade=" + typeMap[type],
+            url: 'StudyAbroad/getGid?country=' + couEnMap[country] + "&grade=" + typeMap[type],
             type: 'GET',
             success: function (resp) {
                 getData(resp);
@@ -52,7 +52,7 @@ define([''], function () {
 
             // 硬性条件
             $.ajax({
-                url: '/StudyAbroad/getHardCondionByGid?gid=' + gid,
+                url: 'StudyAbroad/getHardCondionByGid?gid=' + gid,
                 type: 'GET',
                 success: function (resp) {
                     var count = 0;
@@ -79,7 +79,7 @@ define([''], function () {
 
             // 申请要素
             $.ajax({
-                url: '/StudyAbroad/getApplicationElementByGid?gid=' + gid,
+                url: 'StudyAbroad/getApplicationElementByGid?gid=' + gid,
                 type: 'GET',
                 success: function (resp) {
                     resp.forEach(function (item) {
@@ -101,7 +101,7 @@ define([''], function () {
 
             // 研究生申请方案
             $.ajax({
-                url: '/StudyAbroad/getApplicationSchemeByGid?gid=' + gid,
+                url: 'StudyAbroad/getApplicationSchemeByGid?gid=' + gid,
                 type: 'GET',
                 success: function (resp) {
                     $scope.programs = resp;
@@ -113,7 +113,7 @@ define([''], function () {
 
             // 常见问题
             $.ajax({
-                url: '/StudyAbroad/getPublishQuestionsByGid?gid=' + gid,
+                url: 'StudyAbroad/getPublishQuestionsByGid?gid=' + gid,
                 type: 'GET',
                 success: function (resp) {
                     var center = Math.ceil(resp.length / 2);
@@ -127,7 +127,7 @@ define([''], function () {
 
             // 根据gid获取业务顾问
             $.ajax({
-                url: '/Consultant/getByGid?gid=' + gid,
+                url: 'Consultant/getByGid?gid=' + gid,
                 type: 'GET',
                 success: function (resp) {
                     $timeout(function () {

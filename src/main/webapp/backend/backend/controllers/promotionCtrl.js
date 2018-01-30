@@ -13,7 +13,7 @@ define([''], function () {
 
         // 获取轮播图
         $.ajax({
-            url: '/homepage/getCarouselFigure?category=背景提升',
+            url: 'homepage/getCarouselFigure?category=背景提升',
             type: 'GET',
             success: function (resp) {
                 $scope.carousList = resp;
@@ -38,7 +38,7 @@ define([''], function () {
                 .then(function (data) {
                     data.category = '背景提升';
                     $.ajax({
-                        url: '/homepage/addCarouselFigure',
+                        url: 'homepage/addCarouselFigure',
                         type: 'POST',
                         data: data,
                         success: function (resp) {
@@ -62,7 +62,7 @@ define([''], function () {
                     data.category = '背景提升';
                     data.id = item.id;
                     $.ajax({
-                        url: '/homepage/updateCarouselFigure',
+                        url: 'homepage/updateCarouselFigure',
                         type: 'PUT',
                         data: data,
                         success: function (resp) {
@@ -84,7 +84,7 @@ define([''], function () {
                 .then(function (resp) {
                     if (resp) {
                         $.ajax({
-                            url: '/homepage/deleteCarouselFigure?id=' + item.id,
+                            url: 'homepage/deleteCarouselFigure?id=' + item.id,
                             type: 'DELETE',
                             success: function () {
                                 $scope.carousList.splice(pos, 1);
@@ -113,7 +113,7 @@ define([''], function () {
         // 获取项目
         function getProject() {
             $.ajax({
-                url: '/Promotion/getBackgroundPromoteByCategory?category=' + $scope.selectedType,
+                url: 'Promotion/getBackgroundPromoteByCategory?category=' + $scope.selectedType,
                 type: 'GET',
                 success: function (resp) {
                     $scope.methodList = resp;
@@ -140,7 +140,7 @@ define([''], function () {
                 title: '添加' + $scope.selectedType + '项目',
                 fields: methodField,
                 backState: 'backend.promotion',
-                ajaxUrl: '/Promotion/addBackgroundPromote',
+                ajaxUrl: 'Promotion/addBackgroundPromote',
                 category: $scope.selectedType,
                 gidKey: 'category'
             };
@@ -155,12 +155,12 @@ define([''], function () {
                 title: '添加' + $scope.selectedType + '项目',
                 fields: methodField,
                 backState: 'backend.promotion',
-                ajaxUrl: '/Promotion/updateBackgroundPromote',
+                ajaxUrl: 'Promotion/updateBackgroundPromote',
                 category: $scope.selectedType,
                 gidKey: 'category',
                 initObj: {
                     objId: item.id,
-                    url: '/Promotion/getBackgroundPromote?id=' + item.id
+                    url: 'Promotion/getBackgroundPromote?id=' + item.id
                 }
             };
 
@@ -174,7 +174,7 @@ define([''], function () {
                 .then(function (resp) {
                     if (resp) {
                         $.ajax({
-                            url: '/Promotion/deleteBackgroundPromote?id=' + item.id,
+                            url: 'Promotion/deleteBackgroundPromote?id=' + item.id,
                             type: 'DELETE',
                             success: function () {
                                 $scope.methodList.splice(pos, 1);
@@ -197,12 +197,12 @@ define([''], function () {
                 title: $scope.selectedType + '项目',
                 fields: methodField,
                 backState: 'backend.promotion',
-                ajaxUrl: '/Promotion/updateBackgroundPromote',
+                ajaxUrl: 'Promotion/updateBackgroundPromote',
                 category: $scope.selectedType,
                 gidKey: 'category',
                 initObj: {
                     objId: item.id,
-                    url: '/Promotion/getBackgroundPromote?id=' + item.id
+                    url: 'Promotion/getBackgroundPromote?id=' + item.id
                 },
                 readonly: true
             };

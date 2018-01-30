@@ -27,7 +27,7 @@ define([''], function () {
 
         // 获取所有顾问
         $.ajax({
-            url: '/Consultant/get',
+            url: 'Consultant/get',
             type: 'GET',
             success: function (resp) {
                 resp.forEach(function (item) {
@@ -60,7 +60,7 @@ define([''], function () {
 
         // 获取国家
         $.ajax({
-            url: "/StudyAbroad/getAllCountry",
+            url: "StudyAbroad/getAllCountry",
             type: 'GET',
             success: function (data) {
                 $scope.filterCountry = data;
@@ -77,7 +77,7 @@ define([''], function () {
         function getSpClass() {
             Sp_Map = [[]];
             $.ajax({
-                url: '/Profession/getAllCategoryByCountry?country=' + $scope.selectedCoun,
+                url: 'Profession/getAllCategoryByCountry?country=' + $scope.selectedCoun,
                 type: 'GET',
                 success: function (resp) {
                     $scope.filterEdu = [];
@@ -109,7 +109,7 @@ define([''], function () {
             // 根据国家获取学校
             School_Map = [];
             $.ajax({
-                url: '/School/getSchoolPublished?country=' + $scope.selectedCoun,
+                url: 'School/getSchoolPublished?country=' + $scope.selectedCoun,
                 type: 'GET',
                 success: function (resp) {
                     resp.forEach(function (item) {
@@ -140,7 +140,7 @@ define([''], function () {
 
             // 获取所有成功案例
             $.ajax({
-                url: '/SuccessfulCase/getSuccessfulCaseByPid?pid=' + $scope.selectedSp.pid,
+                url: 'SuccessfulCase/getSuccessfulCaseByPid?pid=' + $scope.selectedSp.pid,
                 type: 'GET',
                 success: function (resp) {
                     $scope.successList = resp;
@@ -158,7 +158,7 @@ define([''], function () {
 
             // 获取全局推荐案例
             $.ajax({
-                url: '/SuccessfulCase/getRecommendSuccessfulCase',
+                url: 'SuccessfulCase/getRecommendSuccessfulCase',
                 type: 'GET',
                 success: function (resp) {
                     $scope.recomendList = resp;
@@ -192,7 +192,7 @@ define([''], function () {
                 title: '增加成功案例',
                 fields: sucFields,
                 backState: 'backend.success',
-                ajaxUrl: '/SuccessfulCase/addSuccessfulCase',
+                ajaxUrl: 'SuccessfulCase/addSuccessfulCase',
                 pid: $scope.selectedSp.pid,
                 gidKey: 'pid'
             };
@@ -210,12 +210,12 @@ define([''], function () {
                 title: '增加成功案例',
                 fields: sucFields,
                 backState: 'backend.success',
-                ajaxUrl: '/SuccessfulCase/updateSuccessfulCase',
+                ajaxUrl: 'SuccessfulCase/updateSuccessfulCase',
                 pid: $scope.selectedSp.pid,
                 gidKey: 'pid',
                 initObj: {
                     objId: item.id,
-                    url: '/SuccessfulCase/getSuccessfulCase?id=' + item.id
+                    url: 'SuccessfulCase/getSuccessfulCase?id=' + item.id
                 }
             };
 
@@ -229,7 +229,7 @@ define([''], function () {
                 .then(function (resp) {
                     if (resp) {
                         $.ajax({
-                            url: '/SuccessfulCase/deleteSuccessfulCase?id=' + item.id,
+                            url: 'SuccessfulCase/deleteSuccessfulCase?id=' + item.id,
                             type: 'DELETE',
                             success: function () {
                                 $scope.successList.splice(pos, 1);
@@ -254,12 +254,12 @@ define([''], function () {
                 title: '增加成功案例',
                 fields: sucFields,
                 backState: 'backend.success',
-                ajaxUrl: '/SuccessfulCase/updateSuccessfulCase',
+                ajaxUrl: 'SuccessfulCase/updateSuccessfulCase',
                 pid: $scope.selectedSp.pid,
                 gidKey: 'pid',
                 initObj: {
                     objId: item.id,
-                    url: '/SuccessfulCase/getSuccessfulCase?id=' + item.id
+                    url: 'SuccessfulCase/getSuccessfulCase?id=' + item.id
                 },
                 readonly: true
             };
@@ -281,7 +281,7 @@ define([''], function () {
                     delete data.case;
 
                     $.ajax({
-                        url: '/SuccessfulCase/addRecommendSuccessfulCase',
+                        url: 'SuccessfulCase/addRecommendSuccessfulCase',
                         type: 'POST',
                         data: data,
                         success: function (resp) {
@@ -306,7 +306,7 @@ define([''], function () {
             commonService.openTextForm('增加推荐', field, {slogan: item.slogan}).result
                 .then(function (data) {
                     $.ajax({
-                        url: '/SuccessfulCase/updateRecommendSuccessfulCase',
+                        url: 'SuccessfulCase/updateRecommendSuccessfulCase',
                         type: 'PUT',
                         data: {
                             id: item.id,
@@ -333,7 +333,7 @@ define([''], function () {
                     if (resp) {
 
                         $.ajax({
-                            url: '/SuccessfulCase/deleteRecommendSuccessfulCase?id=' + item.id,
+                            url: 'SuccessfulCase/deleteRecommendSuccessfulCase?id=' + item.id,
                             type: 'DELETE',
                             success: function () {
                                 $scope.recomendList.splice(pos, 1);

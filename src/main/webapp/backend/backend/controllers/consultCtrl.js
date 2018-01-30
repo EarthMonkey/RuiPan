@@ -19,7 +19,7 @@ define([''], function () {
 
             if (item.isRecommend=='false') { // 推荐
                 $.ajax({
-                    url: '/Consultant/recommend',
+                    url: 'Consultant/recommend',
                     type: 'PUT',
                     data: {id: item.id},
                     success: function () {
@@ -34,7 +34,7 @@ define([''], function () {
             } else { // 不推荐
 
                 $.ajax({
-                    url: '/Consultant/cancleRecommend',
+                    url: 'Consultant/cancleRecommend',
                     type: 'PUT',
                     data: {id: item.id},
                     success: function () {
@@ -51,7 +51,7 @@ define([''], function () {
 
         // 获取所有顾问
         $.ajax({
-            url: '/Consultant/get',
+            url: 'Consultant/get',
             type: 'GET',
             success: function (resp) {
                 $scope.consultList = resp;
@@ -64,7 +64,7 @@ define([''], function () {
 
         // 获取所有国家
         $.ajax({
-            url: "/StudyAbroad/getAllCountry",
+            url: "StudyAbroad/getAllCountry",
             type: 'GET',
             success: function (data) {
                 $scope.filterCountry = data;
@@ -95,7 +95,7 @@ define([''], function () {
                 title: '添加顾问',
                 fields: consutlFields,
                 backState: 'backend.consult',
-                ajaxUrl: '/Consultant/add'
+                ajaxUrl: 'Consultant/add'
             };
 
             $state.go("backend.article", {initInfo: JSON.stringify(initInfo)});
@@ -108,10 +108,10 @@ define([''], function () {
                 title: '修改顾问信息',
                 fields: consutlFields,
                 backState: 'backend.consult',
-                ajaxUrl: '/Consultant/updateConsultant',
+                ajaxUrl: 'Consultant/updateConsultant',
                 initObj: {
                     objId: item.id,
-                    url: '/Consultant/getById?id=' + item.id
+                    url: 'Consultant/getById?id=' + item.id
                 }
             };
 
@@ -125,7 +125,7 @@ define([''], function () {
                 .then(function (resp) {
                     if (resp) {
                         $.ajax({
-                            url: '/Consultant/delete?id=' + item.id,
+                            url: 'Consultant/delete?id=' + item.id,
                             type: 'DELETE',
                             success: function () {
                                 $scope.consultList.splice(pos, 1);
@@ -146,10 +146,10 @@ define([''], function () {
                 title: '修改顾问信息',
                 fields: consutlFields,
                 backState: 'backend.consult',
-                ajaxUrl: '/Consultant/updateConsultant',
+                ajaxUrl: 'Consultant/updateConsultant',
                 initObj: {
                     objId: item.id,
-                    url: '/Consultant/getById?id=' + item.id
+                    url: 'Consultant/getById?id=' + item.id
                 },
                 readonly: true
             };
@@ -174,7 +174,7 @@ define([''], function () {
 
         function getGid() {
             $.ajax({
-                url: '/StudyAbroad/getGid?country=' + $scope.selectedCoun + "&grade=" + $scope.selectedEdu,
+                url: 'StudyAbroad/getGid?country=' + $scope.selectedCoun + "&grade=" + $scope.selectedEdu,
                 type: 'GET',
                 success: function (resp) {
                     GID = resp;
@@ -190,7 +190,7 @@ define([''], function () {
         // 根据gid获取业务顾问
         function getArrange() {
             $.ajax({
-                url: '/Consultant/getByGid?gid=' + GID,
+                url: 'Consultant/getByGid?gid=' + GID,
                 type: 'GET',
                 success: function (resp) {
                     $scope.arrangeList = resp;
@@ -220,7 +220,7 @@ define([''], function () {
                     var conId = arr[1];
                     var cName = arr[0];
                     $.ajax({
-                        url: '/Consultant/addConsultantBusinessByGid',
+                        url: 'Consultant/addConsultantBusinessByGid',
                         type: 'POST',
                         data: {
                             cid: conId,
@@ -248,7 +248,7 @@ define([''], function () {
                 .then(function (resp) {
                     if (resp) {
                         $.ajax({
-                            url: '/Consultant/deleteConsultantBusinessByGid?gid=' + GID + '&cid=' + item.id,
+                            url: 'Consultant/deleteConsultantBusinessByGid?gid=' + GID + '&cid=' + item.id,
                             type: 'DELETE',
                             success: function () {
                                 $scope.arrangeList.splice(pos, 1);

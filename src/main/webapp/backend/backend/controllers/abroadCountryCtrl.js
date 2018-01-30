@@ -10,7 +10,7 @@ define([''], function () {
 
         // 获取所有国家
         $.ajax({
-            url: "/StudyAbroad/getAllCountry",
+            url: "StudyAbroad/getAllCountry",
             type: 'GET',
             success: function (data) {
                 $scope.countryList = data;
@@ -28,7 +28,7 @@ define([''], function () {
 
             modalInstance.result.then(function (resp) {
                 $.ajax({
-                    url: "/StudyAbroad/addCountry",
+                    url: "StudyAbroad/addCountry",
                     type: 'POST',
                     data: resp,
                     success: function (data) {
@@ -52,7 +52,7 @@ define([''], function () {
             messageInstance.result.then(function (resp) {
                 if (resp) {
                     $.ajax({
-                        url: '/StudyAbroad/deleteCountry?country=' + item,
+                        url: 'StudyAbroad/deleteCountry?country=' + item,
                         type: 'DELETE',
                         success: function () {
                             $scope.countryList.splice(pos, 1);

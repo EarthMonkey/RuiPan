@@ -27,7 +27,7 @@ define([''], function () {
             }
 
             $.ajax({
-                url: '/login',
+                url: 'login',
                 type: 'POST',
                 data: {
                     username: $scope.user.username,

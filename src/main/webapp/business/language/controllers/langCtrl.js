@@ -11,7 +11,7 @@ define([''], function () {
 
         // 轮播图
         $.ajax({
-            url: '/homepage/getCarouselFigure?category=' + langType,
+            url: 'homepage/getCarouselFigure?category=' + langType,
             type: 'GET',
             success: function (resp) {
                 var temp = [];
@@ -34,7 +34,7 @@ define([''], function () {
 
         // 资讯
         $.ajax({
-            url: '/News/getLatestNewsByCategory?category=' + langType,
+            url: 'News/getLatestNewsByCategory?category=' + langType,
             type: 'GET',
             success: function (resp) {
                 $scope.newsList = resp;
@@ -46,13 +46,13 @@ define([''], function () {
 
         // 介绍信息
         $.ajax({
-            url: '/LanguageTraining/getTrainIntroducePublish?category=' + langType,
+            url: 'LanguageTraining/getTrainIntroducePublish?category=' + langType,
             type: 'GET',
             success: function (resp) {
                 $scope.introList = resp;
                 resp.forEach(function (item) {
                     $.ajax({
-                        url: '/getText?path=' + item.textPath,
+                        url: 'getText?path=' + item.textPath,
                         type: 'GET',
                         success: function (resp) {
                             $timeout(function () {

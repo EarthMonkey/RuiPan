@@ -13,7 +13,7 @@ define([''], function () {
 
         // 获取轮播图
         $.ajax({
-            url: '/homepage/getCarouselFigure?category=首页',
+            url: 'homepage/getCarouselFigure?category=首页',
             type: 'GET',
             success: function (resp) {
                 $scope.carousList = resp;
@@ -38,7 +38,7 @@ define([''], function () {
                 .then(function (data) {
                     data.category = '首页';
                     $.ajax({
-                        url: '/homepage/addCarouselFigure',
+                        url: 'homepage/addCarouselFigure',
                         type: 'POST',
                         data: data,
                         success: function (resp) {
@@ -62,7 +62,7 @@ define([''], function () {
                     data.category = '首页';
                     data.id = item.id;
                     $.ajax({
-                        url: '/homepage/updateCarouselFigure',
+                        url: 'homepage/updateCarouselFigure',
                         type: 'PUT',
                         data: data,
                         success: function (resp) {
@@ -84,7 +84,7 @@ define([''], function () {
                 .then(function (resp) {
                     if (resp) {
                         $.ajax({
-                            url: '/homepage/deleteCarouselFigure?id=' + item.id,
+                            url: 'homepage/deleteCarouselFigure?id=' + item.id,
                             type: 'DELETE',
                             success: function () {
                                 $scope.carousList.splice(pos, 1);
@@ -103,7 +103,7 @@ define([''], function () {
         $scope.honours = [];
 
         $.ajax({
-            url: '/homepage/getHonor',
+            url: 'homepage/getHonor',
             type: 'GET',
             success: function (resp) {
                 $scope.honours = resp;
@@ -124,7 +124,7 @@ define([''], function () {
             commonService.openTextForm('添加荣誉资质', fields).result
                 .then(function (data) {
                     $.ajax({
-                        url: '/homepage/addHonor',
+                        url: 'homepage/addHonor',
                         type: 'POST',
                         data: data,
                         success: function (resp) {
@@ -145,7 +145,7 @@ define([''], function () {
                     if (resp) {
 
                         $.ajax({
-                            url: '/homepage/deleteHonor?id=' + item.id,
+                            url: 'homepage/deleteHonor?id=' + item.id,
                             type: 'DELETE',
                             success: function () {
                                 $scope.honours.splice(pos, 1);
@@ -163,7 +163,7 @@ define([''], function () {
 
         // 服务的学校和企业
         $.ajax({
-            url: '/homepage/getServedCompany',
+            url: 'homepage/getServedCompany',
             type: 'GET',
             success: function (resp) {
                 $scope.serviceList = resp;
@@ -188,7 +188,7 @@ define([''], function () {
             commonService.openTextForm('添加服务', coopFields).result
                 .then(function (data) {
                     $.ajax({
-                        url: '/homepage/addServedCompany',
+                        url: 'homepage/addServedCompany',
                         type: 'POST',
                         data: data,
                         success: function (resp) {
@@ -211,7 +211,7 @@ define([''], function () {
                 .then(function (data) {
                     data.id = item.id;
                     $.ajax({
-                        url: '/homepage/updateServedCompany',
+                        url: 'homepage/updateServedCompany',
                         type: 'PUT',
                         data: data,
                         success: function (resp) {
@@ -233,7 +233,7 @@ define([''], function () {
                 .then(function (resp) {
                     if (resp) {
                         $.ajax({
-                            url: '/homepage/deleteServedCompany?id=' + item.id,
+                            url: 'homepage/deleteServedCompany?id=' + item.id,
                             type: 'DELETE',
                             success: function () {
                                 $scope.serviceList.splice(pos, 1);

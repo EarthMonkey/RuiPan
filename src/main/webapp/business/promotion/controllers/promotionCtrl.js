@@ -10,7 +10,7 @@ define([''], function () {
 
         // 获取轮播图
         $.ajax({
-            url: '/homepage/getCarouselFigure?category=背景提升',
+            url: 'homepage/getCarouselFigure?category=背景提升',
             type: 'GET',
             success: function (resp) {
                 var temp = [];
@@ -67,7 +67,7 @@ define([''], function () {
 
         // 获取项目
         $.ajax({
-            url: '/Promotion/getBackgroundPromoteByCategory?category=游学',
+            url: 'Promotion/getBackgroundPromoteByCategory?category=游学',
             type: 'GET',
             success: function (resp) {
                 $timeout(function () {
@@ -81,7 +81,7 @@ define([''], function () {
 
         // 获取项目
         $.ajax({
-            url: '/Promotion/getBackgroundPromoteByCategory?category=实习',
+            url: 'Promotion/getBackgroundPromoteByCategory?category=实习',
             type: 'GET',
             success: function (resp) {
                 $timeout(function () {
@@ -95,7 +95,7 @@ define([''], function () {
 
         // 获取项目
         $.ajax({
-            url: '/Promotion/getBackgroundPromoteByCategory?category=科研',
+            url: 'Promotion/getBackgroundPromoteByCategory?category=科研',
             type: 'GET',
             success: function (resp) {
                 $timeout(function () {
@@ -109,7 +109,7 @@ define([''], function () {
 
         // 获取项目
         $.ajax({
-            url: '/Promotion/getBackgroundPromoteByCategory?category=国际义工',
+            url: 'Promotion/getBackgroundPromoteByCategory?category=国际义工',
             type: 'GET',
             success: function (resp) {
                 $timeout(function () {
@@ -123,7 +123,7 @@ define([''], function () {
 
         // 获取项目
         $.ajax({
-            url: '/Promotion/getBackgroundPromoteByCategory?category=短期项目',
+            url: 'Promotion/getBackgroundPromoteByCategory?category=短期项目',
             type: 'GET',
             success: function (resp) {
                 $timeout(function () {
@@ -142,7 +142,7 @@ define([''], function () {
 
         // 获取三个推荐方案
         $.ajax({
-            url: '/StudyAbroad/getRecommendApplicationScheme',
+            url: 'StudyAbroad/getRecommendApplicationScheme',
             type: 'GET',
             success: function (resp) {
                 $timeout(function () {

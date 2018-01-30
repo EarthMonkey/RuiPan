@@ -13,7 +13,7 @@ define([''], function () {
 
         // 获取国家
         $.ajax({
-            url: "/StudyAbroad/getAllCountry",
+            url: "StudyAbroad/getAllCountry",
             type: 'GET',
             success: function (data) {
                 $scope.filterCountry = data;
@@ -37,7 +37,7 @@ define([''], function () {
         // 获取分类
         function getData() {
             $.ajax({
-                url: '/Profession/getAllCategoryByCountry?country=' + $scope.selectedCoun,
+                url: 'Profession/getAllCategoryByCountry?country=' + $scope.selectedCoun,
                 type: 'GET',
                 success: function (resp) {
                     $scope.spList = [];
@@ -66,7 +66,7 @@ define([''], function () {
 
             spInstance.result.then(function (data) {
                 $.ajax({
-                    url: '/Profession/addProfessionCategory',
+                    url: 'Profession/addProfessionCategory',
                     type: 'POST',
                     data: data,
                     success: function (resp) {
@@ -84,7 +84,7 @@ define([''], function () {
         // 删除分类
         $scope.delSp = function (item, pos) {
             $.ajax({
-                url: '/Profession/deleteProfessionCategory?pid=' + item.pid,
+                url: 'Profession/deleteProfessionCategory?pid=' + item.pid,
                 type: 'DELETE',
                 success: function () {
                     $scope.spList.splice(pos, 1);

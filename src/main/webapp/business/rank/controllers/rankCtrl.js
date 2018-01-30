@@ -25,7 +25,7 @@ define([''], function () {
 
             // 获取所有院校排名
             $.ajax({
-                url: '/School/getAllSchoolRankingByPid?pid=' + bar.id,
+                url: 'School/getAllSchoolRankingByPid?pid=' + bar.id,
                 type: 'GET',
                 success: function (resp) {
                     $timeout(function () {
@@ -40,7 +40,7 @@ define([''], function () {
 
         // 获取筛选类别
         $.ajax({
-            url: '/Profession/getAllCategoryByCountry?country=' + country,
+            url: 'Profession/getAllCategoryByCountry?country=' + country,
             type: 'GET',
             success: function (resp) {
                 var temp = [];

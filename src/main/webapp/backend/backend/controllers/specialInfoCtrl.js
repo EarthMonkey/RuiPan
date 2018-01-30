@@ -35,7 +35,7 @@ define([''], function () {
 
         // 获取国家
         $.ajax({
-            url: "/StudyAbroad/getAllCountry",
+            url: "StudyAbroad/getAllCountry",
             type: 'GET',
             success: function (data) {
                 $scope.filterCountry = data;
@@ -52,7 +52,7 @@ define([''], function () {
         function getSpClass() {
             Sp_Map = [[]];
             $.ajax({
-                url: '/Profession/getAllCategoryByCountry?country=' + $scope.selectedCoun,
+                url: 'Profession/getAllCategoryByCountry?country=' + $scope.selectedCoun,
                 type: 'GET',
                 success: function (resp) {
                     $scope.filterEdu = [];
@@ -93,7 +93,7 @@ define([''], function () {
         function getData() {
             // 详情、建议
             $.ajax({
-                url: '/Profession/getProfessionIntroducePublished?pid=' + $scope.selectedSp.pid,
+                url: 'Profession/getProfessionIntroducePublished?pid=' + $scope.selectedSp.pid,
                 type: 'GET',
                 success: function (resp) {
                     $scope.detailAdvice = resp;
@@ -106,7 +106,7 @@ define([''], function () {
 
             // 专业课程
             $.ajax({
-                url: '/Profession/getProfessionCourse?pid=' + $scope.selectedSp.pid,
+                url: 'Profession/getProfessionCourse?pid=' + $scope.selectedSp.pid,
                 type: 'GET',
                 success: function (resp) {
                     $scope.courseList = resp;
@@ -119,7 +119,7 @@ define([''], function () {
 
             // 就业去向、领域
             $.ajax({
-                url: '/Profession/getEmploymentCompany?pid=' + $scope.selectedSp.pid,
+                url: 'Profession/getEmploymentCompany?pid=' + $scope.selectedSp.pid,
                 type: 'GET',
                 success: function (resp) {
                     $scope.workList = resp;
@@ -132,7 +132,7 @@ define([''], function () {
 
             // 领域
             $.ajax({
-                url: '/Profession/getEmploymentPost?pid=' + $scope.selectedSp.pid,
+                url: 'Profession/getEmploymentPost?pid=' + $scope.selectedSp.pid,
                 type: 'GET',
                 success: function (resp) {
                     $scope.fieldList = resp;
@@ -145,7 +145,7 @@ define([''], function () {
 
             // 申请条件
             $.ajax({
-                url: '/Profession/getApplicationAdvice?pid=' + $scope.selectedSp.pid,
+                url: 'Profession/getApplicationAdvice?pid=' + $scope.selectedSp.pid,
                 type: 'GET',
                 success: function (resp) {
                     $scope.conList = resp;
@@ -158,7 +158,7 @@ define([''], function () {
 
             // 薪资水平
             $.ajax({
-                url: '/Profession/getSalary?pid=' + $scope.selectedSp.pid,
+                url: 'Profession/getSalary?pid=' + $scope.selectedSp.pid,
                 type: 'GET',
                 success: function (resp) {
                     $scope.salaryList = resp;
@@ -186,12 +186,12 @@ define([''], function () {
                     {id: 'detailSynopsis', label: '详情导语', type: 'textarea'}
                 ],
                 backState: 'backend.specialInfo',
-                ajaxUrl: '/Profession/addProfessionIntroduce',
+                ajaxUrl: 'Profession/addProfessionIntroduce',
                 pid: $scope.selectedSp.pid,
                 gidKey: 'pid',
                 initObj: {
                     objId: $scope.selectedSp.pid,
-                    url: '/Profession/getProfessionIntroducePublished?pid=' + $scope.selectedSp.pid
+                    url: 'Profession/getProfessionIntroducePublished?pid=' + $scope.selectedSp.pid
                 }
             };
             $state.go('backend.article', {initInfo: JSON.stringify(initInfo)});
@@ -205,12 +205,12 @@ define([''], function () {
                     {id: 'detailSynopsis', label: '详情导语', type: 'textarea'}
                 ],
                 backState: 'backend.specialInfo',
-                ajaxUrl: '/Profession/addProfessionIntroduce',
+                ajaxUrl: 'Profession/addProfessionIntroduce',
                 pid: $scope.selectedSp.pid,
                 pdiKey: 'pid',
                 initObj: {
                     objId: $scope.detailAdvice.pid,
-                    url: '/Profession/getProfessionIntroducePublished?pid=' + $scope.detailAdvice.pid
+                    url: 'Profession/getProfessionIntroducePublished?pid=' + $scope.detailAdvice.pid
                 },
                 readonly: true
             };
@@ -224,7 +224,7 @@ define([''], function () {
             courInstance.result.then(function (data) {
                 data.pid = $scope.selectedSp.pid;
                 $.ajax({
-                    url: '/Profession/addProfessionCourse',
+                    url: 'Profession/addProfessionCourse',
                     type: "POST",
                     data: data,
                     success: function (resp) {
@@ -246,7 +246,7 @@ define([''], function () {
                 data.pid = $scope.selectedSp.pid;
                 data.id = item.id;
                 $.ajax({
-                    url: '/Profession/updateProfessionCourse',
+                    url: 'Profession/updateProfessionCourse',
                     type: 'PUT',
                     data: data,
                     success: function (resp) {
@@ -266,7 +266,7 @@ define([''], function () {
             courInstance.result.then(function (resp) {
                 if (resp) {
                     $.ajax({
-                        url: '/Profession/deleteProfessionCourse?id=' + item.id,
+                        url: 'Profession/deleteProfessionCourse?id=' + item.id,
                         type: 'DELETE',
                         success: function () {
                             $scope.courseList.splice(pos, 1);
@@ -293,7 +293,7 @@ define([''], function () {
                     data.pid = $scope.selectedSp.pid;
 
                     $.ajax({
-                        url: '/Profession/addEmploymentCompany',
+                        url: 'Profession/addEmploymentCompany',
                         type: 'POST',
                         data: data,
                         success: function (resp) {
@@ -317,7 +317,7 @@ define([''], function () {
                     data.id = item.id;
 
                     $.ajax({
-                        url: '/Profession/updateEmploymentCompany',
+                        url: 'Profession/updateEmploymentCompany',
                         type: 'PUT',
                         data: data,
                         success: function (resp) {
@@ -338,7 +338,7 @@ define([''], function () {
                 .then(function (resp) {
                     if (resp) {
                         $.ajax({
-                            url: '/Profession/deleteEmploymentCompany?id=' + item.id,
+                            url: 'Profession/deleteEmploymentCompany?id=' + item.id,
                             type: 'DELETE',
                             success: function () {
                                 $scope.workList.splice(pos, 1);
@@ -361,7 +361,7 @@ define([''], function () {
                     data.pid = $scope.selectedSp.pid;
 
                     $.ajax({
-                        url: '/Profession/addEmploymentPost',
+                        url: 'Profession/addEmploymentPost',
                         type: 'POST',
                         data: data,
                         success: function (resp) {
@@ -383,7 +383,7 @@ define([''], function () {
                 .then(function (resp) {
                     if (resp) {
                         $.ajax({
-                            url: '/Profession/deleteEmploymentPost?id=' + item.id,
+                            url: 'Profession/deleteEmploymentPost?id=' + item.id,
                             type: 'DELETE',
                             success: function () {
                                 $scope.fieldList.splice(pos, 1);
@@ -410,7 +410,7 @@ define([''], function () {
                     data.pid = $scope.selectedSp.pid;
 
                     $.ajax({
-                        url: '/Profession/addApplicationAdvice',
+                        url: 'Profession/addApplicationAdvice',
                         type: 'POST',
                         data: data,
                         success: function (resp) {
@@ -434,7 +434,7 @@ define([''], function () {
                     data.id = item.id;
 
                     $.ajax({
-                        url: '/Profession/updateApplicationAdvice',
+                        url: 'Profession/updateApplicationAdvice',
                         type: 'PUT',
                         data: data,
                         success: function (resp) {
@@ -456,7 +456,7 @@ define([''], function () {
                 .then(function (resp) {
                     if (resp) {
                         $.ajax({
-                            url: '/Profession/deleteApplicationAdvice?id=' + item.id,
+                            url: 'Profession/deleteApplicationAdvice?id=' + item.id,
                             type: 'DELETE',
                             success: function () {
                                 $scope.conList.splice(pos, 1);
@@ -483,7 +483,7 @@ define([''], function () {
                     data.pid = $scope.selectedSp.pid;
 
                     $.ajax({
-                        url: '/Profession/addSalary',
+                        url: 'Profession/addSalary',
                         type: 'POST',
                         data: data,
                         success: function (resp) {
@@ -507,7 +507,7 @@ define([''], function () {
                     data.id = item.id;
 
                     $.ajax({
-                        url: '/Profession/updateSalary',
+                        url: 'Profession/updateSalary',
                         type: 'PUT',
                         data: data,
                         success: function (resp) {
@@ -529,7 +529,7 @@ define([''], function () {
                 .then(function (resp) {
                     if (resp) {
                         $.ajax({
-                            url: '/Profession/deleteSalary?id=' + item.id,
+                            url: 'Profession/deleteSalary?id=' + item.id,
                             type: 'DELETE',
                             success: function () {
                                 $scope.salaryList.splice(pos, 1);

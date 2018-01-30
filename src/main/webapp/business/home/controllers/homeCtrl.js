@@ -9,7 +9,7 @@ define([''], function () {
 
         // 轮播图
         $.ajax({
-            url: '/homepage/getCarouselFigure?category=首页',
+            url: 'homepage/getCarouselFigure?category=首页',
             type: 'GET',
             success: function (resp) {
                 var temp = [];
@@ -48,7 +48,7 @@ define([''], function () {
 
         // 成功案例
         $.ajax({
-            url: '/SuccessfulCase/getSuccessfulCaseGroupByCountry?limit=5',
+            url: 'SuccessfulCase/getSuccessfulCaseGroupByCountry?limit=5',
             type: 'GET',
             success: function (resp) {
                 var keys = Object.keys(resp);
@@ -74,7 +74,7 @@ define([''], function () {
 
         // 获取推荐顾问
         $.ajax({
-            url: '/Consultant/getRecommendConsultant',
+            url: 'Consultant/getRecommendConsultant',
             type: 'GET',
             success: function (resp) {
                 resp.splice(5);
@@ -89,7 +89,7 @@ define([''], function () {
 
         // 服务的学校和企业
         $.ajax({
-            url: '/homepage/getServedCompany',
+            url: 'homepage/getServedCompany',
             type: 'GET',
             success: function (resp) {
                 $timeout(function () {
@@ -104,7 +104,7 @@ define([''], function () {
         // 荣誉资质
         $scope.honours = [];
         $.ajax({
-            url: '/homepage/getHonor',
+            url: 'homepage/getHonor',
             type: 'GET',
             success: function (resp) {
                 $timeout(function () {

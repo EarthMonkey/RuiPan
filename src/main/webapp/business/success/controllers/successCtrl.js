@@ -36,7 +36,7 @@ define([''], function () {
 
             // 获取国家
             $.ajax({
-                url: "/StudyAbroad/getAllCountry",
+                url: "StudyAbroad/getAllCountry",
                 type: 'GET',
                 success: function (data) {
                     $scope.filterCountry = data;
@@ -51,7 +51,7 @@ define([''], function () {
             // 获取大类
             function getSpClass() {
                 $.ajax({
-                    url: '/Profession/getAllCategoryByCountry?country=' + $scope.selectedCoun,
+                    url: 'Profession/getAllCategoryByCountry?country=' + $scope.selectedCoun,
                     type: 'GET',
                     success: function (resp) {
                         $scope.filterEdu = [];
@@ -89,7 +89,7 @@ define([''], function () {
 
                 // 获取所有成功案例
                 $.ajax({
-                    url: '/SuccessfulCase/getSuccessfulCaseByPid?pid=' + $scope.selectedSp.pid,
+                    url: 'SuccessfulCase/getSuccessfulCaseByPid?pid=' + $scope.selectedSp.pid,
                     type: 'GET',
                     success: function (resp) {
                         $timeout(function () {
@@ -117,7 +117,7 @@ define([''], function () {
 
             // 获取三个推荐方案
             $.ajax({
-                url: '/StudyAbroad/getRecommendApplicationScheme',
+                url: 'StudyAbroad/getRecommendApplicationScheme',
                 type: 'GET',
                 success: function (resp) {
                     $timeout(function () {
@@ -131,7 +131,7 @@ define([''], function () {
 
             // 获取全局推荐案例
             $.ajax({
-                url: '/SuccessfulCase/getRecommendSuccessfulCase',
+                url: 'SuccessfulCase/getRecommendSuccessfulCase',
                 type: 'GET',
                 success: function (resp) {
                     resp.splice(4);

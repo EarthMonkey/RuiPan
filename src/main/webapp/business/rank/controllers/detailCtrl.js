@@ -10,7 +10,7 @@ define([''], function () {
         var sid = $state.params.name;
 
         $.ajax({
-            url: '/School/getSchoolBySid?sid=' + sid,
+            url: 'School/getSchoolBySid?sid=' + sid,
             type: 'GET',
             success: function (resp) {
                 console.log(resp);
@@ -26,7 +26,7 @@ define([''], function () {
 
         function getHtml(path) {
             $.ajax({
-                url: '/getText?path=' + path,
+                url: 'getText?path=' + path,
                 type: 'GET',
                 success: function (resp) {
                     $timeout(function () {
@@ -39,7 +39,7 @@ define([''], function () {
             })
         }
 
-        $scope.schoolImg = ['/theme/source/school-photo-1.png', '/theme/source/school-photo-2.png', '/theme/source/school-photo-3.png'];
+        $scope.schoolImg = ['theme/source/school-photo-1.png', 'theme/source/school-photo-2.png', 'theme/source/school-photo-3.png'];
 
         $scope.tabs = [
             {title: '院校介绍', show: true},
