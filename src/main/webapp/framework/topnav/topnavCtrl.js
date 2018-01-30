@@ -128,7 +128,7 @@ define([], function () {
 
         // 获取联系方式
         $.ajax({
-            url: '/Configure/getContactInformation',
+            url: 'Configure/getContactInformation',
             type: 'GET',
             success: function (resp) {
                 $scope.contactInfo = resp;

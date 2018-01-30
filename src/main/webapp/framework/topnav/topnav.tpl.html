@@ -3,7 +3,7 @@
 <!-- 顶部导航栏 -->
 <nav class="navbar navbar-default" role="navigation">
     <div class="navbar-header">
-        <img src="/theme/img/logo.svg" alt="瑞泮国际教育">
+        <img src="theme/img/logo.svg" alt="瑞泮国际教育">
     </div>
 
     <div class="collapse navbar-collapse">
@@ -14,7 +14,7 @@
                 <ul ng-if="na.children!=null" class="dropdown-menu">
                     <li ng-repeat="child in na.children track by $index" class="dropdown">
                         <a ng-click="navListLink(na, child.country, $index, child.type)">
-                            <img ng-if="child.country" ng-src="{{'/theme/img/' + child.country + '.svg'}}" alt="留学">
+                            <img ng-if="child.country" ng-src="{{'theme/img/' + child.country + '.svg'}}" alt="留学">
                             {{child.text}}
                         </a>
                     </li>
@@ -30,7 +30,7 @@
 
     <!-- 中间插图 -->
     <div class="top_bg">
-        <img src="/theme/source/school-detail-bg.png">
+        <img src="theme/source/school-detail-bg.png">
     </div>
 
     <!-- 二级导航栏 -->
@@ -41,9 +41,9 @@
             <div class="nav_combox">
                 <!-- 国家下拉框 -->
                 <img ng-if="combox.length>0&&selectedComb.country"
-                     ng-src="{{'/theme/img/' + selectedComb.country + '.svg'}}" alt="留学">
+                     ng-src="{{'theme/img/' + selectedComb.country + '.svg'}}" alt="留学">
                 <!-- 无下拉框，显示logo图标 -->
-                <img ng-show="combox.length==0" src="/theme/img/alt-img.svg" alt="瑞泮国际"
+                <img ng-show="combox.length==0" src="theme/img/alt-img.svg" alt="瑞泮国际"
                      style="width: 100%; height: 70px;">
 
                 <!-- 下拉框 -->
@@ -55,7 +55,7 @@
                     <ul class="dropdown-menu" uib-dropdown-menu aria-labelledby="simple-dropdown">
                         <li ng-repeat="op in combox" class="dropdown">
                             <a ng-click="combSelect(op)">
-                                <img ng-if="op.country" ng-src="{{'/theme/img/' + op.country + '.svg'}}" alt="留学">
+                                <img ng-if="op.country" ng-src="{{'theme/img/' + op.country + '.svg'}}" alt="留学">
                                 {{op.text}}
                             </a>
                         </li>
