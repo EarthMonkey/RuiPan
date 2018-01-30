@@ -1112,7 +1112,7 @@ tbody.tr_clickable tr:hover {
     height: 370px;
     margin-left: 10px;
     padding: 15px 15px;
-    background: url("/theme/img/language-news-bg.png") 100%;
+    background: url("../img/language-news-bg.png") 100%;
     position: relative;
     color: #fff;
     font-size: 20px;
@@ -1433,7 +1433,7 @@ tbody.tr_clickable tr:hover {
 .brief_consult {
     width: 100%;
     height: 440px;
-    background: url("/theme/img/consult-bg.png") no-repeat;
+    background: url("../img/consult-bg.png") no-repeat;
     background-size: 100%;
 }
 
@@ -1503,7 +1503,7 @@ tbody.tr_clickable tr:hover {
     position: absolute;
     top: 20px;
     left: 0;
-    background-image: url('/theme/img/flag-h.svg');
+    background-image: url('../img/flag-h.svg');
 }
 
 .each_cooper_business img {
