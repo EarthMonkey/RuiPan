@@ -105,7 +105,7 @@
             <tr ng-repeat="item in coopList track by $index">
                 <td>
                     <div class="logo_preview">
-                        <img ng-src="{{'/upload/images/' + item.imagePath}}" alt="图片加载失败">
+                        <img ng-src="{{'upload/images/' + item.imagePath}}" alt="图片加载失败">
                     </div>
                 </td>
                 <td>{{item.name}}</td>
@@ -173,7 +173,7 @@
                 <td>微信二维码</td>
                 <td>
                     <div class="logo_preview" style="width: 100px;">
-                        <img ng-src="{{'/upload/images/'+contactInfo.qrcode.value}}" alt="二维码加载失败">
+                        <img ng-src="{{'upload/images/'+contactInfo.qrcode.value}}" alt="二维码加载失败">
                     </div>
                 </td>
                 <td>

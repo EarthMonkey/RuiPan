@@ -151,7 +151,7 @@
             <tr ng-repeat="item in serviceList track by $index">
                 <td>
                     <div class="logo_preview">
-                        <img ng-src="{{'/upload/images/' + item.imagePath}}" alt="图片加载失败">
+                        <img ng-src="{{'upload/images/' + item.imagePath}}" alt="图片加载失败">
                     </div>
                 </td>
                 <td>{{item.name}}</td>

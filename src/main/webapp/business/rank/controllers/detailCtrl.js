@@ -13,7 +13,6 @@ define([''], function () {
             url: 'School/getSchoolBySid?sid=' + sid,
             type: 'GET',
             success: function (resp) {
-                console.log(resp);
                 getHtml(resp.textPath);
                 $timeout(function () {
                     $scope.schoolObj = resp;
