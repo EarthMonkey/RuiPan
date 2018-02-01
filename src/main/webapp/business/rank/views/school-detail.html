@@ -69,12 +69,62 @@
 
             <!-- 录取要求 -->
             <div class="detail_info" ng-show="tabs[1].show">
-                <p>录取要求</p>
+                <p ng-if="conData.length==0||!conData">暂无数据</p>
+
+                <div class="border_body">
+                    <table>
+                        <thead>
+                        <tr>
+                            <td>要求</td>
+                            <td ng-repeat="col in conData">
+                                {{col.profession}}
+                            </td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>升级要求</td>
+                            <td ng-repeat="row in conData">
+                                {{row.scoreRequirements}}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>申请难度</td>
+                            <td ng-repeat="row in conData">
+                                {{row.applicationDifficulty}}
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
 
             <!-- 录取榜 -->
             <div class="detail_info" ng-show="tabs[2].show">
-                <p>录取榜</p>
+
+                <p ng-if="successList.length==0||!successList">暂无数据</p>
+
+                <div class="ex_content" ng-repeat="item in successList" ng-click="getDetail(item)">
+                    <div class="ex_school_logo">
+                        <img ng-src="{{'upload/images/' + item.schoolBadge}}">
+                    </div>
+                    <div class="ex_brief">
+                        <div class="brief_each">
+                            <span class="tip">学生: </span>
+                            <span class="name">{{item.name}}</span>
+                            <span class="tip">成绩: </span>
+                            {{item.languageScore}}
+                            <span class="tip" style="margin-left: 10px;">GPA: </span>
+                            {{item.gpa}}
+                        </div>
+                        <div class="brief_each">
+                            <span class="tip">录取学校: </span>
+                            <span>{{item.schoolName}}</span>
+
+                            <div class="ex_apply_btn">我要申请<i class="glyphicon glyphicon-menu-right"></i></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 

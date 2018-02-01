@@ -49,7 +49,7 @@
 
         <div class="ex_content" ng-repeat="item in successList" ng-click="getDetail(item)">
             <div class="ex_school_logo">
-                <img src="theme/source/Harvard.png">
+                <img ng-src="{{'upload/images/' + item.schoolBadge}}">
             </div>
             <div class="ex_brief">
                 <div class="brief_each">

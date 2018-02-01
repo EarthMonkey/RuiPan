@@ -9,6 +9,7 @@ define([''], function () {
 
         var sid = $state.params.name;
 
+        // 院校介绍
         $.ajax({
             url: 'School/getSchoolBySid?sid=' + sid,
             type: 'GET',
@@ -22,6 +23,40 @@ define([''], function () {
                 console.log(err);
             }
         });
+
+        // 录取要求
+        $.ajax({
+            url: 'School/getProfessionRequirementsBySid?sid=' + sid,
+            type: 'GET',
+            success: function (resp) {
+                console.log(resp)
+                $timeout(function () {
+                    $scope.conData = resp;
+                });
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+
+        // 录取榜
+        $.ajax({
+            url: 'SuccessfulCase/getSuccessfulCaseBySid?sid=' + sid,
+            type: 'GET',
+            success: function (resp) {
+                $timeout(function () {
+                    $scope.successList = resp;
+                });
+            },
+            error: function (err) {
+                console.log(err);
+            }
+        });
+
+        // 获取案例详情
+        $scope.getDetail = function (item) {
+            $state.go("successDetail", {sucId: item.id});
+        };
 
         function getHtml(path) {
             $.ajax({
