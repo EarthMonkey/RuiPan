@@ -12,6 +12,7 @@ public class SuccessfulCaseVO {
     private Integer cid;
     private String professionName;
     private String schoolName;
+    private String schoolBadge;
     private String consultantName;
     private String name;
     private String degree;
@@ -74,6 +75,14 @@ public class SuccessfulCaseVO {
 
     public void setSchoolName(String schoolName) {
         this.schoolName = schoolName;
+    }
+
+    public String getSchoolBadge() {
+        return schoolBadge;
+    }
+
+    public void setSchoolBadge(String schoolBadge) {
+        this.schoolBadge = schoolBadge;
     }
 
     public String getConsultantName() {
@@ -190,6 +199,9 @@ public class SuccessfulCaseVO {
             pid = successfulCase.getPid();
             sid = successfulCase.getSid();
             cid = successfulCase.getCid();
+            schoolName=successfulCase.getSchoolBySid().getCollegeName();
+            schoolBadge=successfulCase.getSchoolBySid().getSchoolBadge();
+            consultantName=successfulCase.getConsultantByCid().getName();
             name = successfulCase.getName();
             degree = successfulCase.getDegree();
             enrollmentTime = successfulCase.getEnrollmentTime();
